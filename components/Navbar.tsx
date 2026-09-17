@@ -36,30 +36,11 @@ export default function Navbar() {
   return (
     <header className="reference-nav-wrap">
       <nav className="reference-nav" aria-label="Primary navigation">
-        <Link href="/" className="reference-brand" aria-label="STRIVERSE home" style={{ flex: "0 0 274px", minWidth: 274 }}>
+        <Link href="/" className="reference-brand" aria-label="STRIVERSE home" style={{ flex: "0 0 294px", minWidth: 294 }}>
           <span className="reference-brand-icon-clip" style={{ width: 54, height: 40, overflow: "hidden", display: "block", flex: "0 0 54px", position: "relative", background: "transparent" }}>
-            <Image
-              src="/striverse-logo-only.png"
-              alt=""
-              width={58}
-              height={58}
-              priority
-              className="reference-brand-icon"
-              style={{
-                position: "absolute",
-                left: 0,
-                top: 0,
-                width: 54,
-                height: 54,
-                maxWidth: "none",
-                objectFit: "contain",
-                mixBlendMode: "normal",
-                background: "transparent",
-                filter: "drop-shadow(0 0 8px rgba(0,229,255,.22))",
-              }}
-            />
+            <Image src="/striverse-logo-only.png" alt="" width={58} height={58} priority className="reference-brand-icon" style={{ position: "absolute", left: 0, top: 0, width: 54, height: 54, maxWidth: "none", objectFit: "contain", mixBlendMode: "normal", background: "transparent", filter: "drop-shadow(0 0 8px rgba(0,229,255,.22))" }} />
           </span>
-          <Image src="/applogo1.png" alt="STRIVERSE" width={220} height={39} priority className="reference-brand-wordmark" style={{ width: 220, height: "auto", flex: "0 0 220px", display: "block" }} />
+          <Image src="/applogo1.png" alt="STRIVERSE" width={240} height={43} priority className="reference-brand-wordmark" style={{ width: 240, height: "auto", flex: "0 0 240px", display: "block" }} />
         </Link>
 
         <div className="reference-nav-links" style={{ flex: "0 0 auto", minWidth: 0, gap: 10, whiteSpace: "nowrap" }}>
