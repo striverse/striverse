@@ -35,14 +35,58 @@ export default function Navbar() {
   return (
     <header className="reference-nav-wrap">
       <nav className="reference-nav" aria-label="Primary navigation">
-        <Link href="/" className="reference-brand" aria-label="STRIVERSE home">
-          <span className="reference-brand-icon-clip" style={{ width: 54, height: 40, overflow: "hidden", display: "block", flex: "0 0 auto", position: "relative", background: "transparent" }}>
-            <Image src="/striverse-logo-only.png" alt="" width={58} height={58} priority className="reference-brand-icon" style={{ position: "absolute", left: 0, top: 0, width: 54, height: 54, maxWidth: "none", objectFit: "contain", mixBlendMode: "screen" }} />
+        <Link
+          href="/"
+          className="reference-brand"
+          aria-label="STRIVERSE home"
+          style={{ flex: "0 0 274px", minWidth: 274 }}
+        >
+          <span
+            className="reference-brand-icon-clip"
+            style={{
+              width: 54,
+              height: 40,
+              overflow: "hidden",
+              display: "block",
+              flex: "0 0 54px",
+              position: "relative",
+              background: "transparent",
+            }}
+          >
+            <Image
+              src="/striverse-logo-only.png"
+              alt=""
+              width={58}
+              height={58}
+              priority
+              className="reference-brand-icon"
+              style={{
+                position: "absolute",
+                left: 0,
+                top: 0,
+                width: 54,
+                height: 54,
+                maxWidth: "none",
+                objectFit: "contain",
+                mixBlendMode: "screen",
+              }}
+            />
           </span>
-          <Image src="/applogo1.png" alt="STRIVERSE" width={290} height={53} priority className="reference-brand-wordmark" />
+          <Image
+            src="/applogo1.png"
+            alt="STRIVERSE"
+            width={220}
+            height={39}
+            priority
+            className="reference-brand-wordmark"
+            style={{ width: 220, height: "auto", flex: "0 0 220px", display: "block" }}
+          />
         </Link>
 
-        <div className="reference-nav-links">
+        <div
+          className="reference-nav-links"
+          style={{ flex: "0 0 auto", minWidth: 0, gap: 20, whiteSpace: "nowrap" }}
+        >
           <a className="is-active" href="#">Home</a>
           <a href="#about">About</a>
           <a href="#features">Features</a>
@@ -63,18 +107,55 @@ export default function Navbar() {
           </div>
         </div>
 
-        <div className="reference-nav-actions">
-          <label className="reference-search-bar" style={{ display: "flex", alignItems: "center", width: 180, height: 42, padding: "0 12px", gap: 8, border: "1px solid rgba(152,173,220,.38)", borderRadius: 22, background: "rgba(22,31,62,.72)", flex: "0 0 auto" }}>
+        <div
+          className="reference-nav-actions"
+          style={{ marginLeft: "auto", gap: 10, flex: "0 0 auto", minWidth: 0 }}
+        >
+          <label
+            className="reference-search-bar"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              width: 135,
+              height: 42,
+              padding: "0 10px",
+              gap: 7,
+              border: "1px solid rgba(152,173,220,.38)",
+              borderRadius: 22,
+              background: "rgba(22,31,62,.72)",
+              flex: "0 0 135px",
+            }}
+          >
             <span className="reference-search-icon" />
-            <input type="search" placeholder="Search STRIVERSE..." aria-label="Search STRIVERSE" style={{ width: "100%", minWidth: 0, border: 0, outline: 0, background: "transparent", color: "white", font: "inherit", fontSize: 13 }} />
+            <input
+              type="search"
+              placeholder="Search..."
+              aria-label="Search STRIVERSE"
+              style={{
+                width: "100%",
+                minWidth: 0,
+                border: 0,
+                outline: 0,
+                background: "transparent",
+                color: "white",
+                font: "inherit",
+                fontSize: 12,
+              }}
+            />
           </label>
 
-          <button type="button" className={`reference-theme ${isLight ? "is-light" : ""}`} aria-label={isLight ? "Switch to dark theme" : "Switch to light theme"} aria-pressed={isLight} onClick={() => {
-            const next = !isLight;
-            setIsLight(next);
-            document.documentElement.dataset.mode = next ? "light" : "dark";
-            localStorage.setItem("striverse-theme", next ? "light" : "dark");
-          }}>
+          <button
+            type="button"
+            className={`reference-theme ${isLight ? "is-light" : ""}`}
+            aria-label={isLight ? "Switch to dark theme" : "Switch to light theme"}
+            aria-pressed={isLight}
+            onClick={() => {
+              const next = !isLight;
+              setIsLight(next);
+              document.documentElement.dataset.mode = next ? "light" : "dark";
+              localStorage.setItem("striverse-theme", next ? "light" : "dark");
+            }}
+          >
             <span className="reference-sun">☼</span>
             <span className="reference-theme-knob">{isLight ? "☀" : "☾"}</span>
           </button>
