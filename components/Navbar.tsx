@@ -85,7 +85,7 @@ export default function Navbar() {
 
         <div
           className="reference-nav-links"
-          style={{ flex: "0 0 auto", minWidth: 0, gap: 12, whiteSpace: "nowrap" }}
+          style={{ flex: "0 0 auto", minWidth: 0, gap: 10, whiteSpace: "nowrap" }}
         >
           <a className="is-active" href="#">Home</a>
           <a href="#about">About</a>
@@ -109,21 +109,21 @@ export default function Navbar() {
 
         <div
           className="reference-nav-actions"
-          style={{ marginLeft: "auto", gap: 10, flex: "0 0 auto", minWidth: 0 }}
+          style={{ marginLeft: "auto", gap: 8, flex: "0 0 auto", minWidth: 0 }}
         >
           <label
             className="reference-search-bar"
             style={{
               display: "flex",
               alignItems: "center",
-              width: 135,
+              width: 130,
               height: 42,
               padding: "0 10px",
               gap: 7,
               border: "1px solid rgba(152,173,220,.38)",
               borderRadius: 22,
               background: "rgba(22,31,62,.72)",
-              flex: "0 0 135px",
+              flex: "0 0 130px",
             }}
           >
             <span className="reference-search-icon" />
