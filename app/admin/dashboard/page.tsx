@@ -30,7 +30,7 @@ export default function AdminDashboard() {
         });
 
         if (!res.ok) {
-          router.replace("/login/admin");
+          router.replace("/admin/login");
           return;
         }
 
@@ -38,7 +38,7 @@ export default function AdminDashboard() {
         setAdmin(data.admin);
       } catch (error) {
         console.error(error);
-        router.replace("/login/admin");
+        router.replace("/admin/login");
       } finally {
         setLoading(false);
       }
@@ -84,18 +84,14 @@ export default function AdminDashboard() {
 
   return (
     <main className="min-h-screen bg-[#050816] text-white">
-      {/* Background */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute left-20 top-20 h-72 w-72 rounded-full bg-cyan-500/20 blur-[120px]" />
         <div className="absolute bottom-20 right-20 h-72 w-72 rounded-full bg-blue-500/20 blur-[120px]" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-6 py-8">
-        {/* Header */}
         <div className="mb-10 flex items-center justify-between">
           <div>
-           
-
             <p className="mt-2 text-gray-400">
               Welcome back,{" "}
               <span className="font-semibold text-cyan-400">
@@ -111,7 +107,6 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        {/* Stats */}
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {stats.map((card) => {
             const Icon = card.icon;
@@ -123,18 +118,11 @@ export default function AdminDashboard() {
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-gray-400">
-                      {card.title}
-                    </p>
-
-                    <h2 className="mt-3 text-3xl font-bold">
-                      {card.value}
-                    </h2>
+                    <p className="text-sm text-gray-400">{card.title}</p>
+                    <h2 className="mt-3 text-3xl font-bold">{card.value}</h2>
                   </div>
 
-                  <div
-                    className={`rounded-2xl bg-white/5 p-4 ${card.color}`}
-                  >
+                  <div className={`rounded-2xl bg-white/5 p-4 ${card.color}`}>
                     <Icon size={30} />
                   </div>
                 </div>
@@ -143,37 +131,27 @@ export default function AdminDashboard() {
           })}
         </div>
 
-        {/* Quick Actions */}
         <div className="mt-10 rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
-          <h2 className="mb-6 text-2xl font-bold">
-            Quick Actions
-          </h2>
+          <h2 className="mb-6 text-2xl font-bold">Quick Actions</h2>
 
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             <button className="rounded-2xl bg-cyan-500 px-6 py-4 font-semibold transition hover:bg-cyan-600">
               Manage Users
             </button>
-
             <button className="rounded-2xl bg-green-500 px-6 py-4 font-semibold transition hover:bg-green-600">
               Verify Purchases
             </button>
-
             <button className="rounded-2xl bg-yellow-500 px-6 py-4 font-semibold transition hover:bg-yellow-600">
               Announcements
             </button>
-
             <button className="rounded-2xl bg-purple-500 px-6 py-4 font-semibold transition hover:bg-purple-600">
               Analytics
             </button>
           </div>
         </div>
 
-        {/* Recent Activity */}
         <div className="mt-10 rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
-          <h2 className="mb-4 text-2xl font-bold">
-            Recent Admin Activity
-          </h2>
-
+          <h2 className="mb-4 text-2xl font-bold">Recent Admin Activity</h2>
           <div className="rounded-2xl border border-dashed border-white/10 p-10 text-center text-gray-400">
             Recent purchases and admin actions will appear here.
           </div>
