@@ -37,7 +37,9 @@ export default function Navbar() {
     <header className="reference-nav-wrap">
       <nav className="reference-nav" aria-label="Primary navigation">
         <Link href="/" className="reference-brand" aria-label="STRIVERSE home">
-          <Image src="/striverse-symbol.png" alt="" width={58} height={52} priority className="reference-brand-icon" />
+          <span className="reference-brand-icon-clip">
+            <Image src="/striverse-logo-only.png" alt="" width={58} height={52} priority className="reference-brand-icon" />
+          </span>
           <Image src="/applogo1.png" alt="STRIVERSE" width={290} height={53} priority className="reference-brand-wordmark" />
         </Link>
 
@@ -63,26 +65,15 @@ export default function Navbar() {
         </div>
 
         <div className="reference-nav-actions">
-          <button
-            type="button"
-            className="reference-icon-btn"
-            aria-label="Search"
-            onClick={() => setSearchOpen((value) => !value)}
-          >
+          <button type="button" className="reference-icon-btn" aria-label="Search" onClick={() => setSearchOpen((value) => !value)}>
             <span className="reference-search-icon" />
           </button>
-          <button
-            type="button"
-            className={`reference-theme ${isLight ? "is-light" : ""}`}
-            aria-label={isLight ? "Switch to dark theme" : "Switch to light theme"}
-            aria-pressed={isLight}
-            onClick={() => {
-              const next = !isLight;
-              setIsLight(next);
-              document.documentElement.dataset.mode = next ? "light" : "dark";
-              localStorage.setItem("striverse-theme", next ? "light" : "dark");
-            }}
-          >
+          <button type="button" className={`reference-theme ${isLight ? "is-light" : ""}`} aria-label={isLight ? "Switch to dark theme" : "Switch to light theme"} aria-pressed={isLight} onClick={() => {
+            const next = !isLight;
+            setIsLight(next);
+            document.documentElement.dataset.mode = next ? "light" : "dark";
+            localStorage.setItem("striverse-theme", next ? "light" : "dark");
+          }}>
             <span className="reference-sun">☼</span>
             <span className="reference-theme-knob">{isLight ? "☀" : "☾"}</span>
           </button>
