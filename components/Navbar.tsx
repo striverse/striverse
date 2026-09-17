@@ -37,7 +37,7 @@ export default function Navbar() {
     <header className="reference-nav-wrap">
       <nav className="reference-nav" aria-label="Primary navigation">
         <Link href="/" className="reference-brand" aria-label="STRIVERSE home">
-          <Image src="/striverse-logo-only.png" alt="" width={58} height={52} priority className="reference-brand-icon" />
+          <Image src="/striverse-symbol.png" alt="" width={58} height={52} priority className="reference-brand-icon" />
           <Image src="/applogo1.png" alt="STRIVERSE" width={290} height={53} priority className="reference-brand-wordmark" />
         </Link>
 
