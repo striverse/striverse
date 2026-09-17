@@ -28,19 +28,16 @@ export default function Navbar() {
   return (
     <header className="reference-nav-wrap">
       <nav className="reference-nav" aria-label="Primary navigation">
-        <Link href="/" className="reference-brand" aria-label="STRIVERSE home" style={{ flex: "0 0 330px", minWidth: 330 }}>
+        <Link href="/" className="reference-brand" aria-label="STRIVERSE home">
           <span className="reference-brand-icon-clip" style={{ width: 54, height: 40, overflow: "hidden", display: "block", flex: "0 0 54px", position: "relative", background: "transparent" }}>
             <Image src="/striverse-logo-only.png" alt="" width={58} height={58} priority className="reference-brand-icon" style={{ position: "absolute", left: 0, top: 0, width: 54, height: 54, maxWidth: "none", objectFit: "contain", mixBlendMode: "normal", background: "transparent", filter: "drop-shadow(0 0 8px rgba(0,229,255,.22))" }} />
           </span>
-          <Image src="/applogo1.png" alt="STRIVERSE" width={270} height={48} priority className="reference-brand-wordmark" style={{ width: 270, height: "auto", flex: "0 0 270px", display: "block" }} />
+          <Image src="/applogo1.png" alt="STRIVERSE" width={290} height={52} priority className="reference-brand-wordmark" style={{ width: 290, height: "auto", flex: "0 0 290px", display: "block" }} />
         </Link>
 
-        <div className="reference-nav-links" style={{ flex: "0 0 auto", minWidth: 0, gap: 14, whiteSpace: "nowrap" }}>
+        <div className="reference-nav-links" style={{ flex: "0 0 auto", minWidth: 0, gap: 12, whiteSpace: "nowrap" }}>
           <a className="is-active" href="#">Home</a><a href="#about">About</a><a href="#features">Features</a><a href="#tokenomics">Tokenomics</a><a href="#community">Community</a>
-          <div className="reference-more">
-            <button type="button" onClick={() => setMoreOpen((value) => !value)} aria-expanded={moreOpen}>More <span className={`reference-chevron ${moreOpen ? "open" : ""}`} /></button>
-            {moreOpen && <div className="reference-more-menu"><a href="#staking" onClick={() => setMoreOpen(false)}>Staking</a><a href="#vesting" onClick={() => setMoreOpen(false)}>Vesting</a><a href="#airdrop" onClick={() => setMoreOpen(false)}>Airdrop</a><a href="#roadmap" onClick={() => setMoreOpen(false)}>Roadmap</a></div>}
-          </div>
+          <div className="reference-more"><button type="button" onClick={() => setMoreOpen((value) => !value)} aria-expanded={moreOpen}>More <span className={`reference-chevron ${moreOpen ? "open" : ""}`} /></button>{moreOpen && <div className="reference-more-menu"><a href="#staking" onClick={() => setMoreOpen(false)}>Staking</a><a href="#vesting" onClick={() => setMoreOpen(false)}>Vesting</a><a href="#airdrop" onClick={() => setMoreOpen(false)}>Airdrop</a><a href="#roadmap" onClick={() => setMoreOpen(false)}>Roadmap</a></div>}</div>
         </div>
 
         <div className="reference-nav-actions" style={{ marginLeft: "auto", gap: 8, flex: "0 0 auto", minWidth: 0 }}>
@@ -52,17 +49,17 @@ export default function Navbar() {
       </nav>
       <style jsx global>{`
         @media (min-width: 1201px) {
-          .reference-nav { grid-template-columns: 330px minmax(0, 1fr) auto !important; gap: 8px !important; }
-          .reference-brand { gap: 4px !important; }
-          .reference-brand-wordmark { width: 270px !important; height: 48px !important; }
-          .reference-nav-links { justify-content: flex-start !important; gap: 14px !important; }
+          .reference-nav { grid-template-columns: 350px minmax(0, 1fr) auto !important; gap: 6px !important; }
+          .reference-brand { gap: 3px !important; width: 350px !important; min-width: 350px !important; }
+          .reference-brand-wordmark { width: 290px !important; height: 52px !important; }
+          .reference-nav-links { justify-content: flex-start !important; gap: 12px !important; }
           .reference-nav-actions { gap: 8px !important; }
         }
         @media (max-width: 1200px) and (min-width: 901px) {
-          .reference-nav { grid-template-columns: 315px minmax(0, 1fr) auto !important; gap: 8px !important; }
-          .reference-brand { gap: 4px !important; }
-          .reference-brand-wordmark { width: 250px !important; }
-          .reference-nav-links { gap: 12px !important; }
+          .reference-nav { grid-template-columns: 330px minmax(0, 1fr) auto !important; gap: 6px !important; }
+          .reference-brand { gap: 3px !important; width: 330px !important; min-width: 330px !important; }
+          .reference-brand-wordmark { width: 270px !important; }
+          .reference-nav-links { gap: 10px !important; }
         }
       `}</style>
     </header>
