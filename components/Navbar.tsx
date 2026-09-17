@@ -85,7 +85,7 @@ export default function Navbar() {
 
         <div
           className="reference-nav-links"
-          style={{ flex: "0 0 auto", minWidth: 0, gap: 20, whiteSpace: "nowrap" }}
+          style={{ flex: "0 0 auto", minWidth: 0, gap: 12, whiteSpace: "nowrap" }}
         >
           <a className="is-active" href="#">Home</a>
           <a href="#about">About</a>
