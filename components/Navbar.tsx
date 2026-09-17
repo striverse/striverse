@@ -37,8 +37,19 @@ export default function Navbar() {
     <header className="reference-nav-wrap">
       <nav className="reference-nav" aria-label="Primary navigation">
         <Link href="/" className="reference-brand" aria-label="STRIVERSE home">
-          <span className="reference-brand-icon-clip">
-            <Image src="/striverse-logo-only.png" alt="" width={58} height={52} priority className="reference-brand-icon" />
+          <span
+            className="reference-brand-icon-clip"
+            style={{ width: 54, height: 43, overflow: "hidden", display: "block", flex: "0 0 auto", position: "relative" }}
+          >
+            <Image
+              src="/striverse-logo-only.png"
+              alt=""
+              width={58}
+              height={52}
+              priority
+              className="reference-brand-icon"
+              style={{ position: "absolute", left: 0, top: 0, width: 54, height: "auto", maxWidth: "none" }}
+            />
           </span>
           <Image src="/applogo1.png" alt="STRIVERSE" width={290} height={53} priority className="reference-brand-wordmark" />
         </Link>
