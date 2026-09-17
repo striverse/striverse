@@ -36,14 +36,14 @@ export default function Navbar() {
   return (
     <header className="reference-nav-wrap">
       <nav className="reference-nav" aria-label="Primary navigation">
-        <Link href="/" className="reference-brand" aria-label="STRIVERSE home" style={{ flex: "0 0 350px", minWidth: 350 }}>
+        <Link href="/" className="reference-brand" aria-label="STRIVERSE home" style={{ flex: "0 0 340px", minWidth: 340 }}>
           <span className="reference-brand-icon-clip" style={{ width: 54, height: 40, overflow: "hidden", display: "block", flex: "0 0 54px", position: "relative", background: "transparent" }}>
             <Image src="/striverse-logo-only.png" alt="" width={58} height={58} priority className="reference-brand-icon" style={{ position: "absolute", left: 0, top: 0, width: 54, height: 54, maxWidth: "none", objectFit: "contain", mixBlendMode: "normal", background: "transparent", filter: "drop-shadow(0 0 8px rgba(0,229,255,.22))" }} />
           </span>
-          <Image src="/applogo1.png" alt="STRIVERSE" width={270} height={48} priority className="reference-brand-wordmark" style={{ width: 270, height: "auto", flex: "0 0 270px", display: "block" }} />
+          <Image src="/applogo1.png" alt="STRIVERSE" width={260} height={48} priority className="reference-brand-wordmark" style={{ width: 260, height: "auto", flex: "0 0 260px", display: "block" }} />
         </Link>
 
-        <div className="reference-nav-links" style={{ flex: "0 0 auto", minWidth: 0, gap: 16, whiteSpace: "nowrap" }}>
+        <div className="reference-nav-links" style={{ flex: "0 0 auto", minWidth: 0, gap: 15, whiteSpace: "nowrap" }}>
           <a className="is-active" href="#">Home</a>
           <a href="#about">About</a>
           <a href="#features">Features</a>
@@ -60,7 +60,7 @@ export default function Navbar() {
           </div>
         </div>
 
-        <div className="reference-nav-actions" style={{ marginLeft: "auto", gap: 8, flex: "0 0 auto", minWidth: 0 }}>
+        <div className="reference-nav-actions" style={{ marginLeft: "auto", gap: 10, flex: "0 0 auto", minWidth: 0 }}>
           <button type="button" className="reference-icon-btn" aria-label={searchOpen ? "Close search" : "Open search"} aria-expanded={searchOpen} onClick={() => setSearchOpen((value) => !value)} style={{ width: 44, height: 44 }}>
             <span className="reference-search-icon" />
           </button>
@@ -85,33 +85,34 @@ export default function Navbar() {
       <style jsx global>{`
         @media (min-width: 1201px) {
           .reference-nav {
-            grid-template-columns: 350px minmax(0, 1fr) auto !important;
+            grid-template-columns: 340px minmax(0, 1fr) auto !important;
             gap: 12px !important;
           }
           .reference-brand {
             gap: 10px !important;
           }
           .reference-brand-wordmark {
-            width: 270px !important;
+            width: 260px !important;
             height: 48px !important;
           }
           .reference-nav-links {
-            justify-content: flex-start !important;
-            gap: 16px !important;
+            justify-content: center !important;
+            gap: 15px !important;
           }
           .reference-nav-actions {
-            gap: 8px !important;
+            gap: 10px !important;
           }
         }
         @media (max-width: 1200px) and (min-width: 901px) {
           .reference-nav {
-            grid-template-columns: 330px minmax(0, 1fr) auto !important;
+            grid-template-columns: 320px minmax(0, 1fr) auto !important;
             gap: 10px !important;
           }
           .reference-brand-wordmark {
-            width: 250px !important;
+            width: 245px !important;
           }
           .reference-nav-links {
+            justify-content: center !important;
             gap: 12px !important;
           }
         }
