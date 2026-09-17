@@ -15,7 +15,6 @@ export default function Navbar() {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [moreOpen, setMoreOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
   const [isLight, setIsLight] = useState(false);
 
   useEffect(() => {
@@ -39,16 +38,33 @@ export default function Navbar() {
         <Link href="/" className="reference-brand" aria-label="STRIVERSE home">
           <span
             className="reference-brand-icon-clip"
-            style={{ width: 54, height: 43, overflow: "hidden", display: "block", flex: "0 0 auto", position: "relative" }}
+            style={{
+              width: 54,
+              height: 40,
+              overflow: "hidden",
+              display: "block",
+              flex: "0 0 auto",
+              position: "relative",
+              background: "transparent",
+            }}
           >
             <Image
               src="/striverse-logo-only.png"
               alt=""
               width={58}
-              height={52}
+              height={58}
               priority
               className="reference-brand-icon"
-              style={{ position: "absolute", left: 0, top: 0, width: 54, height: "auto", maxWidth: "none", mixBlendMode: "screen" }}
+              style={{
+                position: "absolute",
+                left: 0,
+                top: 0,
+                width: 54,
+                height: 54,
+                maxWidth: "none",
+                objectFit: "contain",
+                mixBlendMode: "screen",
+              }}
             />
           </span>
           <Image src="/applogo1.png" alt="STRIVERSE" width={290} height={53} priority className="reference-brand-wordmark" />
@@ -73,43 +89,33 @@ export default function Navbar() {
               </div>
             )}
           </div>
-
-          <div
-            className="reference-search-inline"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              width: searchOpen ? 150 : 42,
-              height: 42,
-              overflow: "hidden",
-              border: "1px solid rgba(152,173,220,.28)",
-              borderRadius: 22,
-              background: "rgba(22,31,62,.72)",
-              transition: "width .25s ease",
-              flex: "0 0 auto",
-            }}
-          >
-            <button
-              type="button"
-              className="reference-icon-btn"
-              aria-label={searchOpen ? "Close search" : "Open search"}
-              onClick={() => setSearchOpen((value) => !value)}
-              style={{ width: 40, height: 40, minWidth: 40, border: 0, background: "transparent" }}
-            >
-              <span className="reference-search-icon" />
-            </button>
-            {searchOpen && (
-              <input
-                autoFocus
-                placeholder="Search..."
-                aria-label="Search STRIVERSE"
-                style={{ width: 100, border: 0, outline: 0, background: "transparent", color: "white", font: "inherit", fontSize: 13 }}
-              />
-            )}
-          </div>
         </div>
 
         <div className="reference-nav-actions">
+          <label
+            className="reference-search-bar"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              width: 180,
+              height: 42,
+              padding: "0 12px",
+              gap: 8,
+              border: "1px solid rgba(152,173,220,.38)",
+              borderRadius: 22,
+              background: "rgba(22,31,62,.72)",
+              flex: "0 0 auto",
+            }}
+          >
+            <span className="reference-search-icon" />
+            <input
+              type="search"
+              placeholder="Search STRIVERSE..."
+              aria-label="Search STRIVERSE"
+              style={{ width: "100%", minWidth: 0, border: 0, outline: 0, background: "transparent", color: "white", font: "inherit", fontSize: 13 }}
+            />
+          </label>
+
           <button type="button" className={`reference-theme ${isLight ? "is-light" : ""}`} aria-label={isLight ? "Switch to dark theme" : "Switch to light theme"} aria-pressed={isLight} onClick={() => {
             const next = !isLight;
             setIsLight(next);
