@@ -112,59 +112,16 @@ export default function Navbar() {
           className="reference-nav-actions"
           style={{ marginLeft: "auto", gap: 8, flex: "0 0 auto", minWidth: 0 }}
         >
-          {searchOpen ? (
-            <label
-              className="reference-search-bar"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                width: 130,
-                height: 42,
-                padding: "0 10px",
-                gap: 7,
-                border: "1px solid rgba(152,173,220,.38)",
-                borderRadius: 22,
-                background: "rgba(22,31,62,.72)",
-                flex: "0 0 130px",
-              }}
-            >
-              <button
-                type="button"
-                aria-label="Close search"
-                onClick={() => setSearchOpen(false)}
-                style={{ border: 0, padding: 0, background: "transparent", display: "grid", placeItems: "center", cursor: "pointer" }}
-              >
-                <span className="reference-search-icon" />
-              </button>
-              <input
-                autoFocus
-                type="search"
-                placeholder="Search..."
-                aria-label="Search STRIVERSE"
-                style={{
-                  width: "100%",
-                  minWidth: 0,
-                  border: 0,
-                  outline: 0,
-                  background: "transparent",
-                  color: "white",
-                  font: "inherit",
-                  fontSize: 12,
-                }}
-              />
-            </label>
-          ) : (
-            <button
-              type="button"
-              className="reference-icon-btn"
-              aria-label="Open search"
-              aria-expanded={searchOpen}
-              onClick={() => setSearchOpen(true)}
-              style={{ width: 44, height: 44 }}
-            >
-              <span className="reference-search-icon" />
-            </button>
-          )}
+          <button
+            type="button"
+            className="reference-icon-btn"
+            aria-label={searchOpen ? "Close search" : "Open search"}
+            aria-expanded={searchOpen}
+            onClick={() => setSearchOpen((value) => !value)}
+            style={{ width: 44, height: 44 }}
+          >
+            <span className="reference-search-icon" />
+          </button>
 
           <button
             type="button"
@@ -184,6 +141,13 @@ export default function Navbar() {
           <Link href="/login" className="reference-wallet">Connect Wallet</Link>
           <Link href={appHref} className="reference-launch">Launch App <span>↗</span></Link>
         </div>
+
+        {searchOpen && (
+          <div className="reference-search-popover">
+            <input autoFocus placeholder="Search STRIVERSE..." aria-label="Search STRIVERSE" />
+            <span>⌕</span>
+          </div>
+        )}
       </nav>
     </header>
   );
