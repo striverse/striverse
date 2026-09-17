@@ -7,19 +7,34 @@ import { Coins, Globe2, PlayCircle, UserRound, Users } from "lucide-react";
 interface HeroStats {
   raised: number;
   tokenPrice: number;
+  community: number;
+  potentialUsers: number;
+  communityDriven: number;
 }
 
 const formatNumber = (value: number) => new Intl.NumberFormat("en-US").format(value);
 
 export default function Hero() {
-  const [stats, setStats] = useState<HeroStats>({ raised: 0, tokenPrice: 0 });
+  const [stats, setStats] = useState<HeroStats>({
+    raised: 0,
+    tokenPrice: 0,
+    community: 50000,
+    potentialUsers: 1000000,
+    communityDriven: 100,
+  });
 
   useEffect(() => {
     fetch("/api/presale/stats", { cache: "no-store" })
       .then(async (res) => {
         const data = await res.json();
         if (res.ok) {
-          setStats({ raised: Number(data.raised ?? 0), tokenPrice: Number(data.tokenPrice ?? 0) });
+          setStats({
+            raised: Number(data.raised ?? 0),
+            tokenPrice: Number(data.tokenPrice ?? 0),
+            community: Number(data.community ?? data.investors ?? 50000),
+            potentialUsers: Number(data.potentialUsers ?? 1000000),
+            communityDriven: Number(data.communityDriven ?? 100),
+          });
         }
       })
       .catch(() => undefined);
@@ -83,7 +98,7 @@ export default function Hero() {
           <div className="reference-stats">
             <div className="reference-stat">
               <span className="reference-stat-icon"><Users size={28} /></span>
-              <div><b>50K+</b><small>Community</small></div>
+              <div><b>{formatNumber(stats.community)}+</b><small>Community</small></div>
             </div>
             <div className="reference-stat">
               <span className="reference-stat-icon"><Coins size={28} /></span>
@@ -91,11 +106,11 @@ export default function Hero() {
             </div>
             <div className="reference-stat">
               <span className="reference-stat-icon"><UserRound size={28} /></span>
-              <div><b>1M+</b><small>Potential Users</small></div>
+              <div><b>{formatNumber(stats.potentialUsers)}+</b><small>Potential Users</small></div>
             </div>
             <div className="reference-stat">
               <span className="reference-stat-icon"><Globe2 size={28} /></span>
-              <div><b>100%</b><small>Community Driven</small></div>
+              <div><b>{stats.communityDriven}%</b><small>Community Driven</small></div>
             </div>
           </div>
         </div>
