@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Coins, Globe2, PlayCircle, UserRound, Users } from "lucide-react";
+import { Coins, PlayCircle, UserRound, Users } from "lucide-react";
 
 interface HeroStats {
   raised: number;
@@ -94,7 +94,6 @@ export default function Hero() {
               <div><b>1M+</b><small>Potential Users</small></div>
             </div>
             <div className="reference-stat">
-              <span className="reference-stat-icon"><Globe2 size={28} /></span>
               <div><b>100%</b><small>Community Driven</small></div>
             </div>
           </div>
@@ -105,11 +104,6 @@ export default function Hero() {
           <span>GROW</span>
           <span>BELONG</span>
         </div>
-      </div>
-
-      <div className="reference-hero-scroll">
-        <span />
-        <b>⌄</b>
       </div>
     </section>
   );
