@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { requireStaff } from "@/lib/adminGuard";
+import { requireDeveloper, requireStaff } from "@/lib/adminGuard";
 
 const DEFAULTS = {
   community: 50000,
@@ -30,8 +30,8 @@ export async function GET() {
 }
 
 export async function PUT(req: NextRequest) {
-  const admin = await requireStaff(req);
-  if (!admin) return NextResponse.json({ success: false, message: "Unauthorized" }, { status: 401 });
+  const admin = await requireDeveloper(req);
+  if (!admin) return NextResponse.json({ success: false, message: "Developer access required." }, { status: 403 });
 
   try {
     const body = await req.json();
