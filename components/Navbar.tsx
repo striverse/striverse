@@ -36,11 +36,11 @@ export default function Navbar() {
   return (
     <header className="reference-nav-wrap">
       <nav className="reference-nav" aria-label="Primary navigation">
-        <Link href="/" className="reference-brand" aria-label="STRIVERSE home" style={{ flex: "0 0 320px", minWidth: 320 }}>
+        <Link href="/" className="reference-brand" aria-label="STRIVERSE home" style={{ flex: "0 0 350px", minWidth: 350 }}>
           <span className="reference-brand-icon-clip" style={{ width: 54, height: 40, overflow: "hidden", display: "block", flex: "0 0 54px", position: "relative", background: "transparent" }}>
             <Image src="/striverse-logo-only.png" alt="" width={58} height={58} priority className="reference-brand-icon" style={{ position: "absolute", left: 0, top: 0, width: 54, height: 54, maxWidth: "none", objectFit: "contain", mixBlendMode: "normal", background: "transparent", filter: "drop-shadow(0 0 8px rgba(0,229,255,.22))" }} />
           </span>
-          <Image src="/applogo1.png" alt="STRIVERSE" width={240} height={43} priority className="reference-brand-wordmark" style={{ width: 240, height: "auto", flex: "0 0 240px", display: "block" }} />
+          <Image src="/applogo1.png" alt="STRIVERSE" width={270} height={48} priority className="reference-brand-wordmark" style={{ width: 270, height: "auto", flex: "0 0 270px", display: "block" }} />
         </Link>
 
         <div className="reference-nav-links" style={{ flex: "0 0 auto", minWidth: 0, gap: 16, whiteSpace: "nowrap" }}>
@@ -85,15 +85,15 @@ export default function Navbar() {
       <style jsx global>{`
         @media (min-width: 1201px) {
           .reference-nav {
-            grid-template-columns: 320px minmax(0, 1fr) auto !important;
+            grid-template-columns: 350px minmax(0, 1fr) auto !important;
             gap: 12px !important;
           }
           .reference-brand {
             gap: 10px !important;
           }
           .reference-brand-wordmark {
-            width: 240px !important;
-            height: 44px !important;
+            width: 270px !important;
+            height: 48px !important;
           }
           .reference-nav-links {
             justify-content: flex-start !important;
@@ -105,8 +105,11 @@ export default function Navbar() {
         }
         @media (max-width: 1200px) and (min-width: 901px) {
           .reference-nav {
-            grid-template-columns: 300px minmax(0, 1fr) auto !important;
+            grid-template-columns: 330px minmax(0, 1fr) auto !important;
             gap: 10px !important;
+          }
+          .reference-brand-wordmark {
+            width: 250px !important;
           }
           .reference-nav-links {
             gap: 12px !important;
