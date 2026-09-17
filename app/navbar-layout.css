@@ -1,0 +1,39 @@
+/* FINAL NAVBAR BALANCE */
+
+.reference-nav {
+  grid-template-columns: 320px minmax(0, 1fr) auto;
+  gap: 12px;
+}
+
+.reference-brand {
+  gap: 10px;
+}
+
+.reference-brand-wordmark {
+  width: 240px;
+  height: 44px;
+}
+
+.reference-nav-links {
+  justify-content: flex-start;
+  gap: 16px;
+}
+
+.reference-nav-actions {
+  gap: 8px;
+}
+
+@media (max-width: 1200px) and (min-width: 901px) {
+  .reference-nav {
+    grid-template-columns: 300px minmax(0, 1fr) auto;
+    gap: 10px;
+  }
+
+  .reference-brand-wordmark {
+    width: 220px;
+  }
+
+  .reference-nav-links {
+    gap: 12px;
+  }
+}
