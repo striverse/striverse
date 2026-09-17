@@ -36,24 +36,8 @@ export default function Navbar() {
   return (
     <header className="reference-nav-wrap">
       <nav className="reference-nav" aria-label="Primary navigation">
-        <Link
-          href="/"
-          className="reference-brand"
-          aria-label="STRIVERSE home"
-          style={{ flex: "0 0 274px", minWidth: 274 }}
-        >
-          <span
-            className="reference-brand-icon-clip"
-            style={{
-              width: 54,
-              height: 40,
-              overflow: "hidden",
-              display: "block",
-              flex: "0 0 54px",
-              position: "relative",
-              background: "transparent",
-            }}
-          >
+        <Link href="/" className="reference-brand" aria-label="STRIVERSE home" style={{ flex: "0 0 274px", minWidth: 274 }}>
+          <span className="reference-brand-icon-clip" style={{ width: 54, height: 40, overflow: "hidden", display: "block", flex: "0 0 54px", position: "relative", background: "transparent" }}>
             <Image
               src="/striverse-logo-only.png"
               alt=""
@@ -69,72 +53,42 @@ export default function Navbar() {
                 height: 54,
                 maxWidth: "none",
                 objectFit: "contain",
-                mixBlendMode: "screen",
+                mixBlendMode: "normal",
+                background: "transparent",
+                filter: "drop-shadow(0 0 8px rgba(0,229,255,.22))",
               }}
             />
           </span>
-          <Image
-            src="/applogo1.png"
-            alt="STRIVERSE"
-            width={220}
-            height={39}
-            priority
-            className="reference-brand-wordmark"
-            style={{ width: 220, height: "auto", flex: "0 0 220px", display: "block" }}
-          />
+          <Image src="/applogo1.png" alt="STRIVERSE" width={220} height={39} priority className="reference-brand-wordmark" style={{ width: 220, height: "auto", flex: "0 0 220px", display: "block" }} />
         </Link>
 
-        <div
-          className="reference-nav-links"
-          style={{ flex: "0 0 auto", minWidth: 0, gap: 10, whiteSpace: "nowrap" }}
-        >
+        <div className="reference-nav-links" style={{ flex: "0 0 auto", minWidth: 0, gap: 10, whiteSpace: "nowrap" }}>
           <a className="is-active" href="#">Home</a>
           <a href="#about">About</a>
           <a href="#features">Features</a>
           <a href="#tokenomics">Tokenomics</a>
           <a href="#community">Community</a>
           <div className="reference-more">
-            <button type="button" onClick={() => setMoreOpen((value) => !value)} aria-expanded={moreOpen}>
-              More <span className={`reference-chevron ${moreOpen ? "open" : ""}`} />
-            </button>
-            {moreOpen && (
-              <div className="reference-more-menu">
-                <a href="#staking" onClick={() => setMoreOpen(false)}>Staking</a>
-                <a href="#vesting" onClick={() => setMoreOpen(false)}>Vesting</a>
-                <a href="#airdrop" onClick={() => setMoreOpen(false)}>Airdrop</a>
-                <a href="#roadmap" onClick={() => setMoreOpen(false)}>Roadmap</a>
-              </div>
-            )}
+            <button type="button" onClick={() => setMoreOpen((value) => !value)} aria-expanded={moreOpen}>More <span className={`reference-chevron ${moreOpen ? "open" : ""}`} /></button>
+            {moreOpen && <div className="reference-more-menu">
+              <a href="#staking" onClick={() => setMoreOpen(false)}>Staking</a>
+              <a href="#vesting" onClick={() => setMoreOpen(false)}>Vesting</a>
+              <a href="#airdrop" onClick={() => setMoreOpen(false)}>Airdrop</a>
+              <a href="#roadmap" onClick={() => setMoreOpen(false)}>Roadmap</a>
+            </div>}
           </div>
         </div>
 
-        <div
-          className="reference-nav-actions"
-          style={{ marginLeft: "auto", gap: 8, flex: "0 0 auto", minWidth: 0 }}
-        >
-          <button
-            type="button"
-            className="reference-icon-btn"
-            aria-label={searchOpen ? "Close search" : "Open search"}
-            aria-expanded={searchOpen}
-            onClick={() => setSearchOpen((value) => !value)}
-            style={{ width: 44, height: 44 }}
-          >
+        <div className="reference-nav-actions" style={{ marginLeft: "auto", gap: 8, flex: "0 0 auto", minWidth: 0 }}>
+          <button type="button" className="reference-icon-btn" aria-label={searchOpen ? "Close search" : "Open search"} aria-expanded={searchOpen} onClick={() => setSearchOpen((value) => !value)} style={{ width: 44, height: 44 }}>
             <span className="reference-search-icon" />
           </button>
-
-          <button
-            type="button"
-            className={`reference-theme ${isLight ? "is-light" : ""}`}
-            aria-label={isLight ? "Switch to dark theme" : "Switch to light theme"}
-            aria-pressed={isLight}
-            onClick={() => {
-              const next = !isLight;
-              setIsLight(next);
-              document.documentElement.dataset.mode = next ? "light" : "dark";
-              localStorage.setItem("striverse-theme", next ? "light" : "dark");
-            }}
-          >
+          <button type="button" className={`reference-theme ${isLight ? "is-light" : ""}`} aria-label={isLight ? "Switch to dark theme" : "Switch to light theme"} aria-pressed={isLight} onClick={() => {
+            const next = !isLight;
+            setIsLight(next);
+            document.documentElement.dataset.mode = next ? "light" : "dark";
+            localStorage.setItem("striverse-theme", next ? "light" : "dark");
+          }}>
             <span className="reference-sun">☼</span>
             <span className="reference-theme-knob">{isLight ? "☀" : "☾"}</span>
           </button>
@@ -142,12 +96,10 @@ export default function Navbar() {
           <Link href={appHref} className="reference-launch">Launch App <span>↗</span></Link>
         </div>
 
-        {searchOpen && (
-          <div className="reference-search-popover">
-            <input autoFocus placeholder="Search STRIVERSE..." aria-label="Search STRIVERSE" />
-            <span>⌕</span>
-          </div>
-        )}
+        {searchOpen && <div className="reference-search-popover">
+          <input autoFocus placeholder="Search STRIVERSE..." aria-label="Search STRIVERSE" />
+          <span>⌕</span>
+        </div>}
       </nav>
     </header>
   );
