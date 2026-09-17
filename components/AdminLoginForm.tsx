@@ -7,18 +7,18 @@ import { ShieldCheck } from "lucide-react";
 export default function AdminLoginForm() {
   const router = useRouter();
   const [email, setEmail] = useState("");
-  const [phrase, setPhrase] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch("/api/auth/login", {
+      const res = await fetch("/api/auth/admin-login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
-        body: JSON.stringify({ email, recoveryPhrase: phrase }),
+        body: JSON.stringify({ email, password }),
       });
       const data = await res.json();
       if (!res.ok) return alert(data.message || "Login failed.");
@@ -43,14 +43,30 @@ export default function AdminLoginForm() {
           </div>
           <p className="text-xs uppercase tracking-[.3em] text-cyan-300/70">Secure Access</p>
           <h1 className="mt-2 text-3xl font-bold">Admin / Developer Login</h1>
-          <p className="text-white/50 mt-2">Sign in with your recovery phrase.</p>
+          <p className="text-white/50 mt-2">Sign in with your email and password.</p>
         </div>
 
         <form onSubmit={handleLogin} className="space-y-5">
-          <input type="email" placeholder="Email Address" value={email} onChange={e => setEmail(e.target.value)} required className="w-full rounded-xl bg-black/40 border border-cyan-500/20 px-4 py-4 outline-none focus:border-cyan-400" />
-          <textarea placeholder="Enter your 12-word recovery phrase" value={phrase} onChange={e => setPhrase(e.target.value)} required rows={4} className="w-full resize-none rounded-xl bg-black/40 border border-cyan-500/20 px-4 py-4 outline-none focus:border-cyan-400" />
+          <input
+            type="email"
+            placeholder="Email Address"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            required
+            autoComplete="email"
+            className="w-full rounded-xl bg-black/40 border border-cyan-500/20 px-4 py-4 outline-none focus:border-cyan-400"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            required
+            autoComplete="current-password"
+            className="w-full rounded-xl bg-black/40 border border-cyan-500/20 px-4 py-4 outline-none focus:border-cyan-400"
+          />
           <button disabled={loading} className="w-full rounded-xl bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 py-4 font-bold disabled:opacity-60">
-            {loading ? "Verifying…" : "Sign In Securely"}
+            {loading ? "Signing in…" : "Sign In"}
           </button>
         </form>
       </div>
