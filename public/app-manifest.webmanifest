@@ -1,0 +1,10 @@
+{
+  "name": "STRIVERSE",
+  "short_name": "STRIVERSE",
+  "description": "STRIVERSE mobile experience",
+  "start_url": "/app",
+  "display": "standalone",
+  "background_color": "#040713",
+  "theme_color": "#7c4dff",
+  "icons": [{"src":"/striverse-symbol.png","sizes":"1254x1254","type":"image/png"}]
+}

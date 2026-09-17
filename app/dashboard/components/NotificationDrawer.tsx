@@ -1,0 +1,14 @@
+"use client";
+import { useEffect, useState } from "react";
+import { Bell, CheckCheck, X, Circle } from "lucide-react";
+
+type Notification={id:string; title:string; message:string; type:string; isRead:boolean; createdAt:string};
+export default function NotificationDrawer({open,onClose}:{open:boolean;onClose:()=>void}){
+ const [items,setItems]=useState<Notification[]>([]); const [loading,setLoading]=useState(false);
+ async function load(){setLoading(true);try{const r=await fetch('/api/user/notifications',{credentials:'include',cache:'no-store'});const d=await r.json();if(r.ok)setItems(d.notifications||[])}finally{setLoading(false)}}
+ useEffect(()=>{if(open)load()},[open]);
+ async function markAll(){await fetch('/api/user/notifications',{method:'PATCH',headers:{'Content-Type':'application/json'},credentials:'include',body:JSON.stringify({all:true})});setItems(x=>x.map(n=>({...n,isRead:true})))}
+ async function read(id:string){await fetch('/api/user/notifications',{method:'PATCH',headers:{'Content-Type':'application/json'},credentials:'include',body:JSON.stringify({id})});setItems(x=>x.map(n=>n.id===id?{...n,isRead:true}:n))}
+ if(!open)return null;
+ return <div className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm" onClick={onClose}><aside onClick={e=>e.stopPropagation()} className="absolute right-0 top-0 h-full w-full max-w-md border-l border-white/10 bg-[#050816]/95 p-5 shadow-2xl"><div className="flex items-center justify-between"><div><div className="flex items-center gap-2"><Bell className="text-cyan-300" size={20}/><h2 className="text-xl font-bold">Notifications</h2></div><p className="mt-1 text-xs text-slate-500">Account and purchase updates</p></div><button onClick={onClose} className="rounded-xl p-2 hover:bg-white/10"><X size={19}/></button></div><div className="mt-5 flex justify-end"><button onClick={markAll} className="inline-flex items-center gap-1.5 text-xs text-cyan-300 hover:text-white"><CheckCheck size={14}/> Mark all read</button></div><div className="mt-4 space-y-3 overflow-y-auto pb-8">{loading?<div className="py-12 text-center text-slate-500">Loading…</div>:items.length===0?<div className="rounded-2xl border border-white/10 bg-white/[.03] p-8 text-center text-slate-500">You’re all caught up.</div>:items.map(n=><button key={n.id} onClick={()=>read(n.id)} className={`w-full rounded-2xl border p-4 text-left transition ${n.isRead?'border-white/5 bg-white/[.02]':'border-cyan-400/20 bg-cyan-400/[.06]'}`}><div className="flex gap-3"><Circle size={10} className={`mt-1.5 shrink-0 ${n.isRead?'text-slate-600':'fill-cyan-300 text-cyan-300'}`}/><div><div className="font-semibold">{n.title}</div><p className="mt-1 text-sm leading-5 text-slate-400">{n.message}</p><div className="mt-2 text-[11px] text-slate-600">{new Date(n.createdAt).toLocaleString()}</div></div></div></button>)}</div></aside></div>
+}

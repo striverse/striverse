@@ -1,0 +1,4 @@
+CREATE TABLE "PresalePackage" ("id" TEXT NOT NULL, "name" TEXT NOT NULL, "usdtAmount" DOUBLE PRECISION NOT NULL, "stvAmount" DOUBLE PRECISION NOT NULL, "referralBonusPercent" DOUBLE PRECISION NOT NULL DEFAULT 25, "isActive" BOOLEAN NOT NULL DEFAULT true, "sortOrder" INTEGER NOT NULL DEFAULT 0, "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP, "updatedAt" TIMESTAMP(3) NOT NULL, CONSTRAINT "PresalePackage_pkey" PRIMARY KEY ("id"));
+CREATE UNIQUE INDEX "PresalePackage_name_key" ON "PresalePackage"("name");
+CREATE TABLE "PaymentWallet" ("id" TEXT NOT NULL, "network" "Network" NOT NULL, "address" TEXT NOT NULL, "isActive" BOOLEAN NOT NULL DEFAULT true, "updatedAt" TIMESTAMP(3) NOT NULL, CONSTRAINT "PaymentWallet_pkey" PRIMARY KEY ("id"));
+CREATE UNIQUE INDEX "PaymentWallet_network_key" ON "PaymentWallet"("network");

@@ -1,0 +1,4 @@
+import { NextResponse } from "next/server";
+import jwt from "jsonwebtoken";
+import { prisma } from "@/lib/prisma";
+export async function GET(req:Request){try{const token=req.headers.get("cookie")?.split("; ").find(c=>c.startsWith("token="))?.split("=")[1];if(!token)return NextResponse.json({success:false,message:"Unauthorized"},{status:401});const {id}=jwt.verify(token,process.env.JWT_SECRET!) as {id:string};const withdrawals=await prisma.referralWithdrawal.findMany({where:{userId:id},orderBy:{createdAt:"desc"},take:50,select:{id:true,amount:true,walletAddress:true,network:true,status:true,adminRemarks:true,payoutTxHash:true,createdAt:true,updatedAt:true}});return NextResponse.json({success:true,withdrawals});}catch{return NextResponse.json({success:false,message:"Unauthorized"},{status:401})}}

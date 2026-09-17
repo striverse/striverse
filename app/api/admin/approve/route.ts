@@ -1,0 +1,3 @@
+import { NextRequest,NextResponse } from "next/server";
+import { verifyAdmin } from "@/lib/adminAuth";
+export async function POST(req:NextRequest){const admin=await verifyAdmin();if(!admin)return NextResponse.json({success:false,message:"Unauthorized"},{status:401});const {purchaseId}=await req.json();if(!purchaseId)return NextResponse.json({success:false,message:"Purchase ID is required."},{status:400});const base=new URL(`/api/admin/purchases/${purchaseId}/approve`,req.url);const r=await fetch(base,{method:'POST',headers:{cookie:req.headers.get('cookie')||''}});const data=await r.json();return NextResponse.json(data,{status:r.status});}

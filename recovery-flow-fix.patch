@@ -1,0 +1,164 @@
+diff --git a/app/api/auth/recovery/verify/route.ts b/app/api/auth/recovery/verify/route.ts
+new file mode 100644
+index 0000000..cceb9fd
+--- /dev/null
++++ b/app/api/auth/recovery/verify/route.ts
+@@ -0,0 +1,36 @@
++import { NextResponse } from "next/server";
++import bcrypt from "bcryptjs";
++import { prisma } from "@/lib/prisma";
++
++export async function POST(req: Request) {
++  try {
++    const { email, resetCode } = await req.json();
++    const normalizedEmail = String(email || "").trim().toLowerCase();
++    const code = String(resetCode || "").trim();
++
++    if (!normalizedEmail || !code) {
++      return NextResponse.json({ success: false, message: "Email and reset code are required." }, { status: 400 });
++    }
++
++    const user = await prisma.user.findUnique({ where: { email: normalizedEmail } });
++    if (!user || user.role !== "USER") {
++      return NextResponse.json({ success: false, message: "Invalid recovery details." }, { status: 401 });
++    }
++    if (!user.recoveryUsed || !user.recoveryResetCodeHash || !user.recoveryResetCodeExpiresAt) {
++      return NextResponse.json({ success: false, message: "No approved recovery reset is available." }, { status: 409 });
++    }
++    if (user.recoveryResetCodeExpiresAt.getTime() < Date.now()) {
++      return NextResponse.json({ success: false, message: "Recovery reset code has expired." }, { status: 410 });
++    }
++
++    const validCode = await bcrypt.compare(code, user.recoveryResetCodeHash);
++    if (!validCode) {
++      return NextResponse.json({ success: false, message: "Invalid recovery reset code." }, { status: 401 });
++    }
++
++    return NextResponse.json({ success: true, message: "Reset code verified. Create your new recovery phrase on this device." });
++  } catch (error) {
++    console.error("Recovery code verification error:", error);
++    return NextResponse.json({ success: false, message: "Unable to verify recovery code." }, { status: 500 });
++  }
++}
+diff --git a/app/app/page.tsx b/app/app/page.tsx
+index dd9111a..d4983b0 100644
+--- a/app/app/page.tsx
++++ b/app/app/page.tsx
+@@ -26,6 +26,7 @@ const packages = [
+ ];
+ 
+ const demoWords = ["lunar", "signal", "cosmic", "orbit", "stellar", "pulse", "nebula", "vector", "quantum", "galaxy", "aurora", "voyage"];
++const recoveryWords = ["nova","orbit","stellar","cosmic","luna","aurora","orion","nebula","celestial","quantum","eclipse","galaxy","vertex","pulse","zenith","comet","meteor","solstice","equinox","infinity","radiant","voyager","astral","horizon","phoenix","spectrum","gravity","zen","matrix","vortex","prism","atlas"];
+ 
+ function format(n: number) { return new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 }).format(n); }
+ 
+@@ -50,6 +51,10 @@ export default function StriverseApp() {
+   const [resetRequested, setResetRequested] = useState(false);
+   const [resetEmail, setResetEmail] = useState("");
+   const [resetPhone, setResetPhone] = useState("");
++  const [resetCode, setResetCode] = useState("");
++  const [newRecoveryPhrase, setNewRecoveryPhrase] = useState<string[]>([]);
++  const [newRecoveryConfirm, setNewRecoveryConfirm] = useState<string[]>([]);
++  const [resetStage, setResetStage] = useState<"request" | "pending" | "code" | "phrase" | "complete">("request");
+   const [resetLoading, setResetLoading] = useState(false);
+   const [resetError, setResetError] = useState("");
+   const [launchMessage, setLaunchMessage] = useState("");
+@@ -90,6 +95,7 @@ export default function StriverseApp() {
+         return;
+       }
+       setResetRequested(true);
++      setResetStage("pending");
+     } catch {
+       setResetError("Unable to submit recovery request. Please try again.");
+     } finally {
+@@ -97,6 +103,76 @@ export default function StriverseApp() {
+     }
+   }
+ 
++  function generateNewRecoveryPhrase() {
++    const words = [...recoveryWords];
++    const result: string[] = [];
++    while (result.length < 12) {
++      const values = new Uint32Array(1);
++      crypto.getRandomValues(values);
++      const index = values[0] % words.length;
++      result.push(words.splice(index, 1)[0]);
++    }
++    setNewRecoveryPhrase(result);
++    setNewRecoveryConfirm([]);
++    setResetError("");
++  }
++
++  async function verifyRecoveryResetCode() {
++    const email = resetEmail.trim().toLowerCase();
++    const code = resetCode.trim();
++    if (!email || !code) {
++      setResetError("Enter your registered email and reset code.");
++      return;
++    }
++    setResetLoading(true);
++    setResetError("");
++    try {
++      const res = await fetch("/api/auth/recovery/verify", {
++        method: "POST",
++        headers: { "Content-Type": "application/json" },
++        body: JSON.stringify({ email, resetCode: code }),
++      });
++      const data = await res.json();
++      if (!res.ok || !data.success) {
++        setResetError(data.message || "Invalid or expired reset code.");
++        return;
++      }
++      generateNewRecoveryPhrase();
++      setResetStage("phrase");
++    } catch {
++      setResetError("Unable to verify the reset code. Please try again.");
++    } finally {
++      setResetLoading(false);
++    }
++  }
++
++  async function completeRecoveryReset() {
++    const phraseText = newRecoveryPhrase.join(" ");
++    if (newRecoveryPhrase.length !== 12 || newRecoveryConfirm.join(" ") !== phraseText) {
++      setResetError("Confirm all 12 recovery words in the correct order.");
++      return;
++    }
++    setResetLoading(true);
++    setResetError("");
++    try {
++      const res = await fetch("/api/auth/recovery/complete", {
++        method: "POST",
++        headers: { "Content-Type": "application/json" },
++        body: JSON.stringify({ email: resetEmail.trim().toLowerCase(), resetCode: resetCode.trim(), recoveryPhrase: phraseText }),
++      });
++      const data = await res.json();
++      if (!res.ok || !data.success) {
++        setResetError(data.message || "Unable to save your new recovery phrase.");
++        return;
++      }
++      setResetStage("complete");
++    } catch {
++      setResetError("Unable to complete recovery. Please try again.");
++    } finally {
++      setResetLoading(false);
++    }
++  }
++
+   if (showSplash) {
+     return (
+       <div className="striverse-splash" role="img" aria-label="Striverse splash screen">
+@@ -179,7 +255,12 @@ function AuthFlow({ auth, setAuth, referral, setReferral, phrase, phraseConfirm,
+     {auth === "phrase" && <div className="auth-card"><Back onClick={() => setAuth("signup")}/><p className="eyebrow">SECURE YOUR ACCOUNT</p><h2>Your 12-word recovery phrase</h2><p className="muted">Save it offline. Striverse will never display it to an admin.</p><div className="phrase-grid">{phrase.map((w: string, i: number) => <div key={w}><small>{i+1}</small>{showPhrase ? w : "••••••"}</div>)}</div><button className="secondary" onClick={() => setShowPhrase(!showPhrase)}>{showPhrase ? "Hide Phrase" : "Reveal Phrase"}</button><button className="primary" onClick={() => setAuth("confirm")}>I Saved It <Check size={18}/></button></div>}
+     {auth === "confirm" && <div className="auth-card"><Back onClick={() => setAuth("phrase")}/><p className="eyebrow">CONFIRM PHRASE</p><h2>Confirm your recovery phrase</h2><p className="muted">Tap the words in the correct order.</p><div className="phrase-grid selectable">{[...phrase].sort(() => Math.random()-.5).map((w: string) => <button key={w} onClick={() => setPhraseConfirm((p: string[]) => p.includes(w) ? p.filter(x=>x!==w) : [...p,w])}>{w}</button>)}</div><div className="confirm-line">{phraseConfirm.map((w: string, i: number) => <span key={i}>{i+1}. {w}</span>)}</div><button className="primary" disabled={phraseConfirm.length !== phrase.length || phraseConfirm.join(" ") !== phrase.join(" ")} onClick={finishSignup}>Activate Account <Check size={18}/></button></div>}
+     {auth === "login" && <div className="auth-card"><Back onClick={() => setAuth("welcome")}/><p className="eyebrow">SIGN IN</p><h2>Welcome back</h2><p className="muted">Use your registered email and recovery phrase.</p><input placeholder="Email address" type="email"/><input placeholder="12-word recovery phrase" type="password"/><button className="primary" onClick={() => setAuth("done")}>Sign In <ChevronRight size={18}/></button><button className="link-btn" onClick={() => setAuth("forgot")}>Forgot recovery phrase?</button></div>}
+-    {auth === "forgot" && <div className="auth-card"><Back onClick={() => setAuth("login")}/><LockKeyhole size={42} color={theme.accent}/><p className="eyebrow">RECOVERY</p><h2>Forgot your phrase?</h2><p className="muted">Enter your registered details. An admin will review the request. Your recovery phrase is never shown to the admin.</p>{resetRequested ? <div className="status-box success"><Check size={20}/> Reset request submitted.<br/><small>Admin verification is pending.</small></div> : <><input placeholder="Registered email address" type="email" value={resetEmail} onChange={e=>setResetEmail(e.target.value)}/><input placeholder="Registered mobile number" type="tel" value={resetPhone} onChange={e=>setResetPhone(e.target.value)}/>{resetError && <p className="error-text">{resetError}</p>}<button className="danger" disabled={resetLoading || !resetEmail.trim() || !resetPhone.trim()} onClick={submitRecoveryRequest}>{resetLoading ? "Submitting…" : "Request Admin Reset"}</button></>}</div>}
++    {auth === "forgot" && <div className="auth-card"><Back onClick={() => setAuth("login")}/><LockKeyhole size={42} color={theme.accent}/><p className="eyebrow">RECOVERY</p><h2>{resetStage === "phrase" || resetStage === "complete" ? "Create a new recovery phrase" : "Forgot your phrase?"}</h2>{resetStage === "request" && <><p className="muted">Enter your registered email and mobile number. An admin will review the request. Your recovery phrase is never shown to the admin.</p><input placeholder="Registered email address" type="email" value={resetEmail} onChange={e=>setResetEmail(e.target.value)}/><input placeholder="Registered mobile number" type="tel" value={resetPhone} onChange={e=>setResetPhone(e.target.value)}/>{resetError && <p className="error-text">{resetError}</p>}<button className="danger" disabled={resetLoading || !resetEmail.trim() || !resetPhone.trim()} onClick={submitRecoveryRequest}>{resetLoading ? "Submitting…" : "Request Admin Reset"}</button></>}
++      {resetStage === "pending" && <><p className="muted">Your request is waiting for admin verification. After approval, enter the one-time reset code you receive from the trusted support channel.</p><div className="status-box success"><Check size={20}/> Reset request submitted.<br/><small>Admin verification is pending.</small></div><button className="primary" onClick={() => { setResetStage("code"); setResetError(""); }}>I Have My Reset Code</button></>}
++      {resetStage === "code" && <><p className="muted">Enter the one-time reset code provided by the verified admin. The code does not reveal your old recovery phrase.</p><input placeholder="One-time reset code" value={resetCode} onChange={e=>setResetCode(e.target.value)}/>{resetError && <p className="error-text">{resetError}</p>}<button className="primary" disabled={resetLoading || !resetCode.trim()} onClick={verifyRecoveryResetCode}>{resetLoading ? "Verifying…" : "Verify Reset Code"}</button></>}
++      {resetStage === "phrase" && <><p className="muted">Your new recovery phrase has been generated on this device. Save it offline. Striverse never shows it to admins.</p><div className="phrase-grid">{newRecoveryPhrase.map((w: string, i: number) => <div key={`${w}-${i}`}><small>{i+1}</small>{w}</div>)}</div><p className="muted">Confirm the 12 words in the same order.</p><div className="phrase-grid selectable">{[...newRecoveryPhrase].sort(() => Math.random()-.5).map((w: string, i: number) => <button key={`${w}-${i}`} onClick={() => setNewRecoveryConfirm((p: string[]) => p.includes(w) ? p.filter(x=>x!==w) : [...p,w])}>{w}</button>)}</div><div className="confirm-line">{newRecoveryConfirm.map((w: string, i: number) => <span key={i}>{i+1}. {w}</span>)}</div>{resetError && <p className="error-text">{resetError}</p>}<button className="primary" disabled={resetLoading || newRecoveryConfirm.length !== 12 || newRecoveryConfirm.join(" ") !== newRecoveryPhrase.join(" ")} onClick={completeRecoveryReset}>{resetLoading ? "Saving…" : "Save New Recovery Phrase"}</button></>}
++      {resetStage === "complete" && <><p className="muted">Your new recovery phrase is saved. Keep it offline and private. The one-time reset code can no longer be used.</p><div className="status-box success"><Check size={20}/> Recovery completed successfully.</div><button className="primary" onClick={() => setAuth("login")}>Continue to Sign In <ChevronRight size={18}/></button></>}
++    </div>}
+   </div>
+ }
+ 

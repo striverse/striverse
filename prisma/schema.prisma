@@ -1,0 +1,427 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  USER
+  ADMIN
+  DEVELOPER
+}
+
+enum Rank {
+  STRIVE_ONE
+  STRIVE_PRIME
+  STRIVE_CORE
+  STRIVE_LEGEND
+  STRIVE_X
+}
+
+enum Network {
+  BEP20
+  ERC20
+  TRC20
+}
+
+model User {
+  id       String @id @default(cuid())
+  fullName String
+  email    String @unique
+  phone    String
+  password String
+
+  otp                 String?
+  otpExpiresAt        DateTime?
+  passwordResetTokens PasswordResetToken[]
+  role                UserRole             @default(USER)
+  isVerified          Boolean              @default(false)
+
+  referralCode String @unique
+
+  referredById String?
+
+  referredBy User? @relation("UserReferrals", fields: [referredById], references: [id])
+
+  referrals User[] @relation("UserReferrals")
+
+  totalReferrals   Int   @default(0)
+  referralEarnings Float @default(0)
+
+  purchases Purchase[]
+  referralWithdrawals ReferralWithdrawal[]
+  notifications Notification[]
+  referralConversions ReferralConversion[]
+  partnerRewardsReceived PartnerReward[] @relation("PartnerRewardBeneficiary")
+  partnerRewardsGenerated PartnerReward[] @relation("PartnerRewardSource")
+  adminPermissions AdminPermission[]
+  assignedTasks AdminTask[] @relation("AssignedTasks")
+  createdTasks AdminTask[] @relation("CreatedTasks")
+  specialBonusesReceived SpecialBonus[] @relation("SpecialBonusUser")
+  specialBonusesCreated SpecialBonus[] @relation("SpecialBonusCreator")
+
+  purchaseWallet PurchaseWallet?
+  bonusWallet    BonusWallet?
+
+  image String?
+
+  country String?
+
+  walletAddress String?
+
+  walletNetwork Network?
+
+  currentRank Rank @default(STRIVE_ONE)
+
+  directBusiness Float @default(0)
+
+  isBlocked Boolean @default(false)
+
+  withdrawEnabled Boolean @default(true)
+
+  purchaseEnabled Boolean @default(true)
+
+  bonusConversionEnabled Boolean @default(true)
+
+  walletLocked Boolean @default(false)
+
+  recoveryUsed Boolean @default(false)
+  recoveryPhraseHash String?
+  recoveryCreatedAt DateTime?
+  recoveryRequestedAt DateTime?
+  recoveryResetAt DateTime?
+  recoveryResetCodeHash String?
+  recoveryResetCodeExpiresAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Purchase {
+  id     String @id @default(cuid())
+  userId String
+
+  usdtAmount Float
+  stvAmount  Float
+  packageName String
+
+  referralBonusUSDT Float @default(0)
+  referralUnlockAt DateTime?
+  referralBonusReleased Boolean @default(false)
+
+  network       Network
+  txHash        String  @unique
+  walletAddress String
+
+  proofImage String
+
+  status PurchaseStatus @default(PENDING)
+
+  verificationStatus PurchaseVerificationStatus @default(NOT_VERIFIED)
+  verificationMessage String?
+  verifiedAt DateTime?
+
+  adminRemarks String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id])
+  partnerRewards PartnerReward[]
+}
+
+enum PurchaseStatus {
+  PENDING
+  APPROVED
+  PAID
+  REJECTED
+}
+
+enum PurchaseVerificationStatus {
+  NOT_VERIFIED
+  VERIFIED
+  FAILED
+}
+
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  title     String
+  message   String
+  type      String   @default("INFO")
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, isRead, createdAt])
+}
+
+model PasswordResetToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  userId    String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model PresaleSettings {
+  id String @id @default(cuid())
+
+  tokenPrice   Float @default(0.0009)
+  hardCap      Float @default(500000)
+  raisedAmount Float @default(150000)
+
+  manualInvestors Int @default(0)
+
+  totalTokens BigInt @default(8888888888)
+
+  startDate DateTime
+  endDate   DateTime
+
+  updatedAt DateTime @updatedAt
+}
+
+model PurchaseWallet {
+  id String @id @default(cuid())
+
+  userId String @unique
+
+  totalPurchasedUSDT Float @default(0)
+
+  totalPurchasedSTV Float @default(0)
+
+  lockedSTV Float @default(0)
+
+  unlockedSTV Float @default(0)
+
+  purchaseCount Int @default(0)
+
+  lastPurchaseAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model BonusWallet {
+  id String @id @default(cuid())
+
+  userId String @unique
+
+  cashbackPending   Float @default(0)
+  cashbackAvailable Float @default(0)
+  cashbackWithdrawn Float @default(0)
+
+  referralPending   Float @default(0)
+  referralAvailable Float @default(0)
+  referralWithdrawn Float @default(0)
+
+  performancePending   Float @default(0)
+  performanceAvailable Float @default(0)
+  performanceWithdrawn Float @default(0)
+
+  specialPending   Float @default(0)
+  specialAvailable Float @default(0)
+  specialWithdrawn Float @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+enum WithdrawalStatus {
+  PENDING
+  APPROVED
+  PAID
+  REJECTED
+}
+
+model ReferralWithdrawal {
+  id String @id @default(cuid())
+  userId String
+  amount Float
+  walletAddress String
+  network Network
+  status WithdrawalStatus @default(PENDING)
+  adminRemarks String?
+  payoutTxHash String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, status])
+}
+
+model ReferralConversion {
+  id String @id @default(cuid())
+  userId String
+  usdtAmount Float
+  stvAmount Float
+  rate Float @default(1000)
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+}
+
+model SecurityAuditLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  actorRole UserRole @default(USER)
+  action    String
+  metadata  String?
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  @@index([userId, createdAt])
+  @@index([action, createdAt])
+}
+
+model PresalePackage {
+  id String @id @default(cuid())
+  name String @unique
+  usdtAmount Float
+  stvAmount Float
+  isActive Boolean @default(true)
+  isCollapsed Boolean @default(false)
+  sortOrder Int @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PaymentWallet {
+  id String @id @default(cuid())
+  network Network @unique
+  address String
+  isActive Boolean @default(true)
+  updatedAt DateTime @updatedAt
+}
+
+
+model PartnerRewardConfig {
+  id String @id @default(cuid())
+  directPercent Float @default(20)
+  level1Percent Float @default(15)
+  level2Percent Float @default(10)
+  level3Percent Float @default(5)
+  unlockHours Int @default(24)
+  minWithdrawalUSDT Float @default(50)
+  conversionRate Float @default(1000)
+  settlementDays Int @default(10)
+  withdrawalProcessingHours Int @default(48)
+  operatingStartHour Int @default(10)
+  operatingEndHour Int @default(18)
+  timezone String @default("Asia/Kolkata")
+  special3Set Float @default(50)
+  special6Set Float @default(150)
+  special9Set Float @default(300)
+  updatedAt DateTime @updatedAt
+}
+
+model PartnerReward {
+  id String @id @default(cuid())
+  beneficiaryId String
+  sourceUserId String
+  purchaseId String
+  kind String
+  level Int?
+  amount Float
+  unlockAt DateTime
+  status String @default("PENDING")
+  releasedAt DateTime?
+  createdAt DateTime @default(now())
+  beneficiary User @relation("PartnerRewardBeneficiary", fields: [beneficiaryId], references: [id], onDelete: Cascade)
+  sourceUser User @relation("PartnerRewardSource", fields: [sourceUserId], references: [id], onDelete: Cascade)
+  purchase Purchase @relation(fields: [purchaseId], references: [id], onDelete: Cascade)
+  @@index([beneficiaryId, status, unlockAt])
+  @@index([purchaseId, kind])
+}
+
+model AppSetting {
+  id String @id @default(cuid())
+  key String @unique
+  value String
+  updatedAt DateTime @updatedAt
+}
+
+model AdminPermission {
+  id String @id @default(cuid())
+  adminId String
+  module String
+  action String
+  scope String @default("ASSIGNED")
+  enabled Boolean @default(true)
+  admin User @relation(fields: [adminId], references: [id], onDelete: Cascade)
+  @@unique([adminId, module, action])
+}
+
+model AdminTask {
+  id String @id @default(cuid())
+  title String
+  description String?
+  assignedAdminId String?
+  status String @default("OPEN")
+  priority String @default("NORMAL")
+  dueAt DateTime?
+  createdById String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  assignedAdmin User? @relation("AssignedTasks", fields: [assignedAdminId], references: [id], onDelete: SetNull)
+  createdBy User @relation("CreatedTasks", fields: [createdById], references: [id], onDelete: Restrict)
+  @@index([assignedAdminId, status])
+}
+
+model Campaign {
+  id String @id @default(cuid())
+  name String
+  description String?
+  startAt DateTime
+  endAt DateTime
+  incentiveUSDT Float @default(0)
+  isActive Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Banner {
+  id String @id @default(cuid())
+  title String
+  description String?
+  imageUrl String?
+  buttonText String?
+  buttonLink String?
+  target String @default("ALL")
+  frequency String @default("ONCE")
+  startAt DateTime?
+  endAt DateTime?
+  isActive Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SpecialBonus {
+  id String @id @default(cuid())
+  userId String
+  amount Float
+  reason String
+  status String @default("AVAILABLE")
+  createdById String
+  createdAt DateTime @default(now())
+  user User @relation("SpecialBonusUser", fields: [userId], references: [id], onDelete: Cascade)
+  createdBy User @relation("SpecialBonusCreator", fields: [createdById], references: [id], onDelete: Restrict)
+  @@index([userId, createdAt])
+}

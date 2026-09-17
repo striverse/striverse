@@ -1,0 +1,2 @@
+ALTER TYPE "WithdrawalStatus" ADD VALUE IF NOT EXISTS 'PAID';
+ALTER TABLE "ReferralWithdrawal" ADD COLUMN IF NOT EXISTS "payoutTxHash" TEXT;

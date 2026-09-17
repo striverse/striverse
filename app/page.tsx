@@ -1,0 +1,153 @@
+"use client";
+
+import Link from "next/link";
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+
+
+
+const features = [
+  ["01", "Invest", "Grow your portfolio with clear STV ecosystem opportunities."],
+  ["02", "Stake", "Earn rewards while supporting the network and community."],
+  ["03", "Vest", "Track long-term allocations and unlocks with clear visibility."],
+  ["04", "Airdrops", "Be part of community campaigns, rewards and exclusive drops."],
+];
+
+const distribution = [
+  ["Community & Airdrop", "Community allocation"],
+  ["Staking Rewards", "Rewards reserve"],
+  ["Ecosystem Growth", "Development & expansion"],
+  ["Liquidity", "Market liquidity"],
+  ["Team & Operations", "Long-term operations"],
+];
+
+const roadmap = [
+  ["01", "Foundation", "Website, documentation and community foundation."],
+  ["02", "Ecosystem", "STV ecosystem experiences and product expansion."],
+  ["03", "Rewards", "Staking, vesting and community reward experiences."],
+  ["04", "Expansion", "Broader ecosystem integrations and community growth."],
+];
+
+export default function Home() {
+  return (
+    <main className="reference-site">
+      <Navbar />
+      <Hero />
+
+      <section id="features" className="site-section features-section">
+        <div className="section-shell">
+          <p className="section-kicker">FEATURES</p>
+          <div className="section-heading-row">
+            <h2>Everything You Need to<br /><span>Build a Better Tomorrow</span></h2>
+            <p>One connected ecosystem for investing, staking, vesting and community participation.</p>
+          </div>
+          <div className="feature-grid">
+            {features.map(([num, title, text]) => (
+              <article className="feature-card" key={num}>
+                <span className="card-number">{num}</span>
+                <div className="card-orb" />
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="about" className="site-section about-section">
+        <div className="section-shell split-section">
+          <div>
+            <p className="section-kicker">ABOUT</p>
+            <h2>STRIVERSE is built for the next dimension.</h2>
+          </div>
+          <div className="section-copy">
+            <p>STRIVERSE brings the core pieces of a digital asset ecosystem together in one focused experience.</p>
+            <p>Explore STV, participate in the ecosystem, track your activity and discover new ways to engage with the community.</p>
+            <Link href="/register" className="text-link">Explore the ecosystem ↗</Link>
+          </div>
+        </div>
+      </section>
+
+      <section id="staking" className="site-section dark-panel-section">
+        <div className="section-shell split-section panel-split">
+          <div>
+            <p className="section-kicker">STAKING</p>
+            <h2>Put your STV<br /><span>to work.</span></h2>
+          </div>
+          <div className="feature-panel">
+            <div className="panel-glow" />
+            <div className="panel-top"><span>STV STAKING</span><b>LIVE EXPERIENCE</b></div>
+            <div className="staking-metric"><strong>Stake</strong><span>Lock STV and participate in the reward experience.</span></div>
+            <div className="metric-row"><div><b>APY</b><span>Connected data</span></div><div><b>TERM</b><span>Pool dependent</span></div><div><b>REWARD</b><span>STV</span></div></div>
+            <Link href="/app" className="panel-button">Open Staking ↗</Link>
+          </div>
+        </div>
+      </section>
+
+      <section id="vesting" className="site-section vesting-section">
+        <div className="section-shell split-section">
+          <div>
+            <p className="section-kicker">VESTING</p>
+            <h2>Clear unlocks.<br /><span>Clear visibility.</span></h2>
+          </div>
+          <div className="vesting-card">
+            <div className="vesting-line"><span>Allocation</span><b>STV</b></div>
+            <div className="vesting-progress"><span /></div>
+            <div className="vesting-grid"><div><small>VESTED</small><b>Connected data</b></div><div><small>CLAIMABLE</small><b>Connected data</b></div><div><small>NEXT UNLOCK</small><b>Schedule</b></div></div>
+            <p>Vesting schedules can be surfaced here once the project's final allocation and unlock rules are connected.</p>
+            <Link href="/app" className="text-link">View vesting ↗</Link>
+          </div>
+        </div>
+      </section>
+
+      <section id="tokenomics" className="site-section token-section">
+        <div className="section-shell">
+          <p className="section-kicker">TOKENOMICS</p>
+          <div className="section-heading-row"><h2>STV <span>tokenomics.</span></h2><p>A clean overview of the categories that can power the STRIVERSE ecosystem.</p></div>
+          <div className="token-layout">
+            <div className="token-ring"><div><b>STV</b><span>ECOSYSTEM</span></div></div>
+            <div className="distribution-list">{distribution.map(([title, desc], i) => <div className="distribution-row" key={title}><span>0{i+1}</span><div><b>{title}</b><small>{desc}</small></div><em>—</em></div>)}</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="more" className="site-section more-section">
+        <div className="section-shell">
+          <p className="section-kicker">MORE</p>
+          <h2>Airdrop.<br /><span>Roadmap. Community.</span></h2>
+          <div className="more-grid">
+            <article id="airdrop" className="more-card"><span>AIRDROP</span><h3>Grow with the community.</h3><p>Show eligibility, allocation, campaign progress and claim status here when the live airdrop rules are connected.</p><Link href="/register">Check eligibility ↗</Link></article>
+            <article id="products" className="more-card"><span>PRODUCTS</span><h3>Explore the STRIVERSE app.</h3><p>Sign in to access the connected STV experiences, including the available ecosystem packages and account tools.</p><Link href="/app">Open the app ↗</Link></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="roadmap" className="site-section roadmap-section">
+        <div className="section-shell">
+          <p className="section-kicker">ROADMAP</p>
+          <div className="section-heading-row"><h2>Build.<br /><span>Grow. Belong.</span></h2><p>A flexible roadmap that can evolve with the ecosystem and confirmed delivery milestones.</p></div>
+          <div className="roadmap-grid">{roadmap.map(([num, title, text]) => <article key={num} className="roadmap-card"><span>{num}</span><div className="roadmap-dot" /><h3>{title}</h3><p>{text}</p></article>)}</div>
+        </div>
+      </section>
+
+      <section id="community" className="site-section community-section">
+        <div className="community-shell">
+          <p className="section-kicker">COMMUNITY</p>
+          <h2>Build the next dimension<br /><span>together.</span></h2>
+          <p>Join the STRIVERSE community and follow the ecosystem as it grows.</p>
+          <div className="community-actions"><a href="#about" className="panel-button">Explore STRIVERSE ↗</a><a href="#features" className="outline-button">Discover features ↗</a></div>
+        </div>
+      </section>
+
+      <footer className="site-footer">
+        <div className="footer-shell">
+          <div><p className="section-kicker">STRIVERSE</p><h3>Strive. Grow. Belong.</h3><p>Next-generation digital ecosystem built around STV.</p></div>
+          <div><b>Explore</b><a href="#about">About</a><a href="#features">Features</a><a href="#staking">Staking</a></div>
+          <div><b>Token</b><a href="#tokenomics">Tokenomics</a><a href="#vesting">Vesting</a><a href="#airdrop">Airdrop</a><a href="#roadmap">Roadmap</a></div>
+          <div><b>Community</b><a href="#community">Community</a><Link href="/register">Register</Link><Link href="/login">Login</Link></div>
+        </div>
+        <div className="footer-bottom"><span>© 2026 STRIVERSE</span><span>All Rights Reserved.</span></div>
+      </footer>
+    </main>
+  );
+}
