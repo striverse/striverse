@@ -6,6 +6,8 @@ import { Coins, Globe2, PlayCircle, UserRound, Users } from "lucide-react";
 
 interface HeroStats {
   raised: number;
+  hardCap: number;
+  progress: number;
   tokenPrice: number;
   community: number;
   potentialUsers: number;
@@ -42,6 +44,8 @@ const pad = (value: number) => String(value).padStart(2, "0");
 export default function Hero() {
   const [stats, setStats] = useState<HeroStats>({
     raised: 0,
+    hardCap: 0,
+    progress: 0,
     tokenPrice: 0,
     community: 50000,
     potentialUsers: 1000000,
@@ -58,6 +62,8 @@ export default function Hero() {
           const endDate = data.endDate ?? null;
           setStats({
             raised: Number(data.raised ?? 0),
+            hardCap: Number(data.hardCap ?? 0),
+            progress: Number(data.progress ?? 0),
             tokenPrice: Number(data.tokenPrice ?? 0),
             community: Number(data.community ?? data.investors ?? 50000),
             potentialUsers: Number(data.potentialUsers ?? 1000000),
@@ -100,16 +106,16 @@ export default function Hero() {
           <p className="reference-lead">Explore a next-generation ecosystem built around STV,<br className="desktop-break" />with investing, staking, vesting, airdrops, and a connected<br className="desktop-break" />community — all in one place.</p>
           <div className="reference-hero-actions"><Link href="/register" className="reference-primary-cta">Explore STRIVERSE <span>↗</span></Link><a href="#invest" className="reference-video-cta"><span className="reference-play"><PlayCircle size={18} strokeWidth={1.7} /></span>Watch Video</a></div>
 
-          <div className="reference-countdown relative mt-6 w-full max-w-[720px] overflow-hidden rounded-[26px] border border-cyan-300/25 bg-[#031126]/75 p-4 shadow-[0_0_45px_rgba(25,220,255,.10)] backdrop-blur-xl sm:p-5" aria-label="Presale countdown">
+          <div className="reference-countdown relative mt-6 w-full max-w-[760px] overflow-hidden rounded-[28px] border border-cyan-300/25 bg-[#020b1b]/80 p-4 shadow-[0_0_55px_rgba(25,220,255,.12)] backdrop-blur-2xl sm:p-5" aria-label="STV Token Presale countdown">
             <div className="pointer-events-none absolute -right-12 -top-14 h-32 w-32 rounded-full bg-cyan-400/15 blur-3xl" />
             <div className="pointer-events-none absolute -bottom-16 left-1/3 h-32 w-32 rounded-full bg-violet-500/15 blur-3xl" />
             <div className="relative flex items-center justify-between gap-4">
               <div>
                 <div className="flex items-center gap-2 text-[10px] font-black tracking-[.32em] text-cyan-200/70 sm:text-xs">
                   <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-cyan-300 shadow-[0_0_12px_#67e8f9]" />
-                  PRESALE COUNTDOWN
+                  STV TOKEN PRESALE • LIVE SALE
                 </div>
-                <div className="mt-1 text-sm font-bold text-white sm:text-base">The next phase starts when the clock reaches zero.</div>
+                <div className="mt-1 text-sm font-bold text-white sm:text-base">Secure your STV allocation before the presale closes.</div>
               </div>
               {countdown.ended && <span className="rounded-full border border-red-300/30 bg-red-400/10 px-3 py-1.5 text-xs font-black tracking-widest text-red-200">ENDED</span>}
             </div>
@@ -129,6 +135,20 @@ export default function Hero() {
               </div>
             )}
 
+            <div className="relative mt-4 overflow-hidden rounded-2xl border border-white/10 bg-white/[.035] p-3 sm:p-4">
+              <div className="mb-2 flex items-center justify-between gap-3 text-[9px] font-black uppercase tracking-[.18em] text-slate-400 sm:text-[10px]">
+                <span>STV PRESALE PROGRESS</span>
+                <span className="text-cyan-200">{Math.min(100, Math.max(0, stats.progress)).toFixed(2)}%</span>
+              </div>
+              <div className="h-1.5 overflow-hidden rounded-full bg-white/10">
+                <div className="h-full rounded-full bg-gradient-to-r from-cyan-400 via-sky-300 to-violet-400 shadow-[0_0_18px_rgba(34,211,238,.55)]" style={{ width: `${Math.min(100, Math.max(0, stats.progress))}%` }} />
+              </div>
+              <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
+                <div><small className="block text-[8px] font-black uppercase tracking-[.16em] text-slate-500">Raised</small><b className="text-sm text-white sm:text-base">${formatNumber(stats.raised)}</b></div>
+                <div><small className="block text-[8px] font-black uppercase tracking-[.16em] text-slate-500">Hard Cap</small><b className="text-sm text-white sm:text-base">${formatNumber(stats.hardCap)}</b></div>
+                <div className="col-span-2 sm:col-span-1"><small className="block text-[8px] font-black uppercase tracking-[.16em] text-slate-500">STV Price</small><b className="text-sm text-cyan-200 sm:text-base">${stats.tokenPrice}</b></div>
+              </div>
+            </div>
             <div className="relative mt-3 flex items-center justify-between text-[9px] uppercase tracking-[.2em] text-slate-500 sm:text-[10px]">
               <span>LIVE • AUTO UPDATES EVERY SECOND</span>
               <span className="hidden sm:inline">{stats.endDate ? new Date(stats.endDate).toLocaleDateString() : "—"}</span>
