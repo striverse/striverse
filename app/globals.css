@@ -2284,8 +2284,8 @@ html[data-mode="light"] .reference-wallet {
 
 /* Hero */
 .reference-hero-live {
-  min-height: 735px;
-  height: min(100vh, 900px);
+  min-height: 930px;
+  height: auto;
   position: relative;
   overflow: hidden;
   isolation: isolate;
