@@ -7,10 +7,10 @@ import Hero from "@/components/Hero";
 
 
 const features = [
-  ["01", "Invest", "Grow your portfolio with clear STV ecosystem opportunities."],
-  ["02", "Stake", "Earn rewards while supporting the network and community."],
-  ["03", "Vest", "Track long-term allocations and unlocks with clear visibility."],
-  ["04", "Airdrops", "Be part of community campaigns, rewards and exclusive drops."],
+  ["01", "Invest", "Grow your portfolio with clear STV ecosystem opportunities.", "invest"],
+  ["02", "Stake", "Earn rewards while supporting the network and community.", "stake"],
+  ["03", "Vest", "Track long-term allocations and unlocks with clear visibility.", "vest"],
+  ["04", "Airdrops", "Be part of community campaigns, rewards and exclusive drops.", "airdrop"],
 ];
 
 const distribution = [
@@ -28,6 +28,34 @@ const roadmap = [
   ["04", "Expansion", "Broader ecosystem integrations and community growth."],
 ];
 
+function FeatureIcon({ type }: { type: string }) {
+  if (type === "invest") return (
+    <svg viewBox="0 0 48 48" aria-hidden="true">
+      <path d="M10 32V21m9 11V16m10 16V11m9 21V7" />
+      <path d="m8 18 9-7 9 4 13-10" />
+      <path d="M34 7h5v5" />
+    </svg>
+  );
+  if (type === "stake") return (
+    <svg viewBox="0 0 48 48" aria-hidden="true">
+      <path d="M24 7v34M12 14h18a7 7 0 0 1 0 14H18a7 7 0 0 0 0 14h18" />
+      <circle cx="24" cy="24" r="20" />
+    </svg>
+  );
+  if (type === "vest") return (
+    <svg viewBox="0 0 48 48" aria-hidden="true">
+      <circle cx="24" cy="24" r="17" />
+      <path d="M24 13v12l8 5M24 4v5M24 39v5" />
+    </svg>
+  );
+  return (
+    <svg viewBox="0 0 48 48" aria-hidden="true">
+      <path d="M24 8 29 19l11 5-11 5-5 11-5-11-11-5 11-5 5-11Z" />
+      <path d="M37 7v8M41 11h-8" />
+    </svg>
+  );
+}
+
 export default function Home() {
   return (
     <main className="reference-site">
@@ -42,10 +70,11 @@ export default function Home() {
             <p>One connected ecosystem for investing, staking, vesting and community participation.</p>
           </div>
           <div className="feature-grid">
-            {features.map(([num, title, text]) => (
+            {features.map(([num, title, text, icon]) => (
               <article className="feature-card" key={num}>
                 <span className="card-number">{num}</span>
                 <div className="card-orb" />
+                <div className="feature-icon"><FeatureIcon type={icon} /></div>
                 <h3>{title}</h3>
                 <p>{text}</p>
               </article>
