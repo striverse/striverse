@@ -38,9 +38,6 @@ export async function GET() {
     const potentialUsers = Number(appMap.get("hero_potential_users") ?? 1000000);
     const communityDriven = Number(appMap.get("hero_community_driven") ?? 100);
 
-    // STV presale closes on April 8, 2027 at 23:59:59 IST.
-    const presaleEndDate = "2027-04-08T23:59:59+05:30";
-
     const progress = effective.hardCap > 0
       ? Number(((raised / effective.hardCap) * 100).toFixed(2))
       : 0;
