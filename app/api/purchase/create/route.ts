@@ -163,6 +163,22 @@ const networkEnum = network as Network;
       );
     }
 
+    // STV presale closes on April 8, 2027 at 23:59:59 IST.
+    // Enforce the same cutoff on the server so purchases cannot be submitted after the public countdown ends.
+    const presaleEnd = new Date("2027-04-08T23:59:59+05:30");
+    if (new Date() > presaleEnd) {
+      return NextResponse.json(
+        { success: false, message: "STV Token Presale has ended. New purchases are no longer accepted." },
+        { status: 403 }
+      );
+    }
+
+    // Check operating hours before writing the payment proof to disk.
+    const partnerConfig = await getPartnerConfig();
+    if (!isWithinOperatingHours(new Date(), partnerConfig.timezone, partnerConfig.operatingStartHour, partnerConfig.operatingEndHour)) {
+      return NextResponse.json({success:false,message:`Purchases are accepted only between ${partnerConfig.operatingStartHour}:00 and ${partnerConfig.operatingEndHour}:00 (${partnerConfig.timezone}).`},{status:403});
+    }
+
     // Create uploads folder
     const uploadDir = path.join(
       process.cwd(),
@@ -191,10 +207,6 @@ const networkEnum = network as Network;
     );
 
     // Create purchase. Direct reward is configured centrally; package-level referral percentages are not used.
-    const partnerConfig = await getPartnerConfig();
-    if (!isWithinOperatingHours(new Date(), partnerConfig.timezone, partnerConfig.operatingStartHour, partnerConfig.operatingEndHour)) {
-      return NextResponse.json({success:false,message:`Purchases are accepted only between ${partnerConfig.operatingStartHour}:00 and ${partnerConfig.operatingEndHour}:00 (${partnerConfig.timezone}).`},{status:403});
-    }
     const purchase = await prisma.purchase.create({
       data: {
         userId: decoded.id,
