@@ -29,29 +29,38 @@ const roadmap = [
 ];
 
 function FeatureIcon({ type }: { type: string }) {
+  const common = { viewBox: "0 0 64 64", "aria-hidden": true as const };
   if (type === "invest") return (
-    <svg viewBox="0 0 48 48" aria-hidden="true">
-      <path d="M10 32V21m9 11V16m10 16V11m9 21V7" />
-      <path d="m8 18 9-7 9 4 13-10" />
-      <path d="M34 7h5v5" />
+    <svg {...common}>
+      <defs><linearGradient id="investLogo" x1="8" y1="56" x2="56" y2="8"><stop stopColor="#19d9eb"/><stop offset="1" stopColor="#7b55ff"/></linearGradient></defs>
+      <path d="M32 5 56 19v26L32 59 8 45V19L32 5Z" fill="none" stroke="url(#investLogo)" strokeWidth="2.5"/>
+      <path d="m17 39 10-10 7 6 13-15" fill="none" stroke="#63e9f5" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M43 20h4v4" fill="none" stroke="#a78bff" strokeWidth="3" strokeLinecap="round"/>
     </svg>
   );
   if (type === "stake") return (
-    <svg viewBox="0 0 48 48" aria-hidden="true">
-      <path d="M24 7v34M12 14h18a7 7 0 0 1 0 14H18a7 7 0 0 0 0 14h18" />
-      <circle cx="24" cy="24" r="20" />
+    <svg {...common}>
+      <defs><linearGradient id="stakeLogo" x1="10" y1="54" x2="54" y2="10"><stop stopColor="#18dce9"/><stop offset="1" stopColor="#8b55ff"/></linearGradient></defs>
+      <circle cx="32" cy="32" r="25" fill="none" stroke="url(#stakeLogo)" strokeWidth="2.5"/>
+      <path d="M20 23h19a8 8 0 0 1 0 16H25a5 5 0 0 0 0 10h17" fill="none" stroke="#65eaf4" strokeWidth="4" strokeLinecap="round"/>
+      <path d="M32 14v36" stroke="#a98cff" strokeWidth="3" strokeLinecap="round"/>
     </svg>
   );
   if (type === "vest") return (
-    <svg viewBox="0 0 48 48" aria-hidden="true">
-      <circle cx="24" cy="24" r="17" />
-      <path d="M24 13v12l8 5M24 4v5M24 39v5" />
+    <svg {...common}>
+      <defs><linearGradient id="vestLogo" x1="8" y1="56" x2="56" y2="8"><stop stopColor="#23d9e9"/><stop offset="1" stopColor="#8157ff"/></linearGradient></defs>
+      <path d="M32 6 53 18v24L32 54 11 42V18L32 6Z" fill="none" stroke="url(#vestLogo)" strokeWidth="2.5"/>
+      <circle cx="32" cy="31" r="11" fill="none" stroke="#64e7f3" strokeWidth="3.5"/>
+      <path d="M32 23v9l6 4" fill="none" stroke="#b092ff" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M27 12h10" stroke="#64e7f3" strokeWidth="3" strokeLinecap="round"/>
     </svg>
   );
   return (
-    <svg viewBox="0 0 48 48" aria-hidden="true">
-      <path d="M24 8 29 19l11 5-11 5-5 11-5-11-11-5 11-5 5-11Z" />
-      <path d="M37 7v8M41 11h-8" />
+    <svg {...common}>
+      <defs><linearGradient id="airdropLogo" x1="8" y1="56" x2="56" y2="8"><stop stopColor="#19dce9"/><stop offset="1" stopColor="#9b50ff"/></linearGradient></defs>
+      <path d="M32 7 39 24l18 8-18 8-7 17-7-17-18-8 18-8 7-17Z" fill="none" stroke="url(#airdropLogo)" strokeWidth="2.5" strokeLinejoin="round"/>
+      <path d="M32 17v20M22 27h20" stroke="#69eaf5" strokeWidth="3.5" strokeLinecap="round"/>
+      <path d="m48 10 2 5m2-2-5 2" stroke="#ad8cff" strokeWidth="2.5" strokeLinecap="round"/>
     </svg>
   );
 }
