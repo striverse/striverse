@@ -2912,6 +2912,7 @@ html[data-mode="light"] .reference-wallet {
 
 /* Reference artwork: keep the approved visual on the right, behind the live hero copy. */
 .reference-hero-art{
+  display:none!important;
   position:absolute;
   z-index:7;
   top:0;
