@@ -3296,3 +3296,26 @@ html[data-mode="light"] .reference-search-popover input { color: #071226; }
     width: 100% !important;
   }
 }
+
+
+/* DESKTOP HERO BASELINE — align presale panel bottom with the hero CTA row. */
+@media (min-width: 901px) {
+  .reference-hero-content {
+    align-items: stretch !important;
+  }
+
+  .reference-countdown {
+    min-height: 100% !important;
+    height: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  .reference-hero-copy {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .reference-hero-actions {
+    margin-top: auto !important;
+  }
+}
