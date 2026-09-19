@@ -165,7 +165,8 @@ const networkEnum = network as Network;
 
     // STV presale closes on April 8, 2027 at 23:59:59 IST.
     // Enforce the same cutoff on the server so purchases cannot be submitted after the public countdown ends.
-    const presaleEnd = new Date("2027-04-08T23:59:59+05:30");
+    const presaleSettings = await prisma.presaleSettings.findFirst();
+    const presaleEnd = presaleSettings?.endDate ?? new Date("2027-04-08T18:29:59.000Z");
     if (new Date() > presaleEnd) {
       return NextResponse.json(
         { success: false, message: "STV Token Presale has ended. New purchases are no longer accepted." },
