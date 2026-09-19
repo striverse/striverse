@@ -200,10 +200,6 @@ export default function Hero() {
                 </div>
               </div>
             )}
-            <div className="relative mt-3 flex items-center justify-between text-[9px] uppercase tracking-[.2em] text-slate-500 sm:text-[10px]">
-              <span>LIVE • AUTO UPDATES EVERY SECOND</span>
-              <span className="hidden sm:inline">{stats.endDate ? new Date(stats.endDate).toLocaleDateString() : "—"}</span>
-            </div>
           </div>
         </div>
         <div className="reference-side-copy"><span>STRIVE</span><span>GROW</span><span>BELONG</span></div>
