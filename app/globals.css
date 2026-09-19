@@ -2919,8 +2919,8 @@ html[data-mode="light"] .reference-wallet {
   width:67%;
   height:100%;
   background-image:linear-gradient(90deg, rgba(2,8,23,1) 0%, rgba(2,8,23,.72) 10%, rgba(2,8,23,.08) 34%, rgba(2,8,23,0) 100%), url('/reference/striverse-reference-hero-clean-navbar.png');
-  background-size:cover;
-  background-position:center center;
+  background-size:100% 100%;
+  background-position:24% center;
   background-repeat:no-repeat;
   pointer-events:none;
   mix-blend-mode:screen;
