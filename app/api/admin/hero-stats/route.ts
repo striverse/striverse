@@ -21,7 +21,7 @@ async function getValues() {
   return {
     community: settings?.manualInvestors ?? DEFAULTS.community,
     tokenPrice: settings?.tokenPrice ?? DEFAULTS.tokenPrice,
-    hardCap: settings?.hardCap ?? DEFAULTS.hardCap,
+    hardCap: settings?.hardCap === 500000 ? DEFAULTS.hardCap : (settings?.hardCap ?? DEFAULTS.hardCap),
     endDate: settings?.endDate?.toISOString() ?? DEFAULTS.endDate,
     raised: settings?.raisedAmount ?? DEFAULTS.raised,
     potentialUsers: Number(map.get("hero_potential_users") ?? DEFAULTS.potentialUsers),
