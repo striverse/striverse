@@ -128,15 +128,14 @@ export default function Hero() {
             <div className="pointer-events-none absolute -right-12 -top-14 h-32 w-32 rounded-full bg-cyan-400/15 blur-3xl" />
             <div className="pointer-events-none absolute -bottom-16 left-1/3 h-32 w-32 rounded-full bg-violet-500/15 blur-3xl" />
             <div className="relative flex items-center justify-between gap-4">
-              <div>
-                <div className="flex items-center gap-2 text-[10px] font-black tracking-[.32em] sm:text-xs">
-                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-red-500 shadow-[0_0_12px_#ef4444]" />
-                  <span className="text-red-500">STV TOKEN PRESALE</span>
-                  <span className="text-cyan-300">•</span>
-                  <span className="text-green-500">LIVE SALE</span>
-                </div>
+              <div className="flex items-center gap-2 text-[10px] font-black tracking-[.32em] sm:text-xs">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-red-500 shadow-[0_0_12px_#ef4444]" />
+                <span className="text-red-500">STV TOKEN PRESALE</span>
               </div>
-              {countdown.ended && <span className="rounded-full border border-red-300/30 bg-red-400/10 px-3 py-1.5 text-xs font-black tracking-widest text-red-200">ENDED</span>}
+              <div className="flex shrink-0 items-center gap-2 text-[10px] font-black tracking-[.24em] text-green-500 sm:text-xs">
+                <span className="text-cyan-300">•</span>
+                <span className="animate-pulse">LIVE SALE</span>
+              </div>
             </div>
 
             {!countdown.ended && (
