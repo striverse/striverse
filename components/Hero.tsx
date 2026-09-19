@@ -44,6 +44,16 @@ const getCountdown = (endDate: string | null): Countdown => {
 
 const pad = (value: number) => String(value).padStart(2, "0");
 
+const PRESALE_THEMES = [
+  "white-blue",
+  "cyan-purple",
+  "orange-gold",
+  "pink-magenta",
+  "green-teal",
+  "ocean-blue",
+  "purple-violet",
+] as const;
+
 export default function Hero() {
   const [stats, setStats] = useState<HeroStats>({
     raised: 0,
@@ -59,8 +69,21 @@ export default function Hero() {
     presaleAllocatedTokens: 2222222222,
   });
   const [countdown, setCountdown] = useState<Countdown>(getCountdown(null));
+  const [presaleTheme, setPresaleTheme] = useState<(typeof PRESALE_THEMES)[number]>("white-blue");
   const [signedIn, setSignedIn] = useState(false);
   const [authLoading, setAuthLoading] = useState(true);
+
+  useEffect(() => {
+    try {
+      const key = "striverse-presale-theme-index";
+      const previous = Number(window.localStorage.getItem(key) ?? "-1");
+      const next = (Number.isFinite(previous) ? previous + 1 : 0) % PRESALE_THEMES.length;
+      window.localStorage.setItem(key, String(next));
+      setPresaleTheme(PRESALE_THEMES[next]);
+    } catch {
+      setPresaleTheme("white-blue");
+    }
+  }, []);
 
   useEffect(() => {
     fetch("/api/user/me", { credentials: "include", cache: "no-store" })
@@ -124,7 +147,7 @@ export default function Hero() {
           <p className="reference-lead">Explore a next-generation ecosystem built around STV,<br className="desktop-break" />with investing, staking, vesting, airdrops, and a connected<br className="desktop-break" />community — all in one place.</p>
           <div className="reference-hero-actions"><a href="#invest" className="reference-video-cta"><span className="reference-play"><PlayCircle size={18} strokeWidth={1.7} /></span>Watch Video</a><a href="#whitepaper" className="reference-video-cta reference-whitepaper-cta"><span className="reference-play"><FileText size={18} strokeWidth={1.7} /></span>Whitepaper</a></div>
 
-          <div className="reference-countdown relative mt-6 w-full max-w-[760px] overflow-hidden rounded-[28px] border border-cyan-300/25 bg-[#020b1b]/80 p-4 shadow-[0_0_55px_rgba(25,220,255,.12)] backdrop-blur-2xl sm:p-5" aria-label="STV Token Presale countdown">
+          <div className="reference-countdown relative mt-6 w-full max-w-[760px] overflow-hidden rounded-[28px] border border-cyan-300/25 bg-[#020b1b]/80 p-4 shadow-[0_0_55px_rgba(25,220,255,.12)] backdrop-blur-2xl sm:p-5" data-presale-theme={presaleTheme} aria-label="STV Token Presale countdown">
             <div className="pointer-events-none absolute -right-12 -top-14 h-32 w-32 rounded-full bg-cyan-400/15 blur-3xl" />
             <div className="pointer-events-none absolute -bottom-16 left-1/3 h-32 w-32 rounded-full bg-violet-500/15 blur-3xl" />
             <div className="relative flex items-center justify-between gap-4">
