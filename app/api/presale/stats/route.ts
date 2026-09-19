@@ -17,13 +17,17 @@ export async function GET() {
     };
     const effective = settings ?? fallback;
 
-    const [aggregate, approvedInvestors, appSettings] = await Promise.all([
+    const [aggregate, approvedInvestors, stvAggregate, appSettings] = await Promise.all([
       prisma.purchase.aggregate({
         _sum: { usdtAmount: true },
         where: { status: "APPROVED" },
       }),
       prisma.user.count({
         where: { purchases: { some: { status: "APPROVED" } } },
+      }),
+      prisma.purchase.aggregate({
+        _sum: { stvAmount: true },
+        where: { status: "APPROVED" },
       }),
       prisma.appSetting.findMany({
         where: { key: { in: ["hero_potential_users", "hero_community_driven"] } },
@@ -35,6 +39,9 @@ export async function GET() {
     const manualRaised = effective.raisedAmount ?? 0;
     const approvedRaised = aggregate._sum.usdtAmount ?? 0;
     const raised = manualRaised + approvedRaised;
+    const totalTokens = Number(effective.totalTokens ?? 0n);
+    const stvSold = stvAggregate._sum.stvAmount ?? 0;
+    const stvRemaining = Math.max(0, totalTokens - stvSold);
     const potentialUsers = Number(appMap.get("hero_potential_users") ?? 1000000);
     const communityDriven = Number(appMap.get("hero_community_driven") ?? 100);
 
@@ -48,6 +55,8 @@ export async function GET() {
       hardCap: effective.hardCap,
       tokenPrice: effective.tokenPrice,
       totalTokens: effective.totalTokens.toString(),
+      stvSold,
+      stvRemaining,
       endDate: presaleEndDate,
       progress,
       investors,
