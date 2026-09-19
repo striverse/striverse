@@ -2911,6 +2911,7 @@ html[data-mode="light"] .reference-wallet {
 
 /* Reference artwork: use the supplied STRIVERSE visual as the hero right-side composition. */
 .reference-hero-art{
+  display:none!important;
   position:absolute;
   z-index:7;
   top:0;
@@ -2925,7 +2926,7 @@ html[data-mode="light"] .reference-wallet {
   mix-blend-mode:screen;
   opacity:.98;
 }
-.reference-planet,.reference-moon,.reference-mountain,.reference-platform,.reference-light-beam,.reference-nebula{display:none!important;}
+.reference-planet,.reference-moon,.reference-mountain{display:block!important;}.reference-platform,.reference-light-beam,.reference-nebula{display:none!important;}
 .reference-side-copy{display:none!important;}
 .reference-hero-content{z-index:20;}
 .reference-stats{position:relative;z-index:22;}
