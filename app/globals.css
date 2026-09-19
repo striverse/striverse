@@ -3110,3 +3110,34 @@ html[data-mode="light"] .reference-search-popover input { color: #071226; }
     border-radius: 10px !important;
   }
 }
+
+
+/* HERO VIDEO CTA — fixed clean alignment under the copy. */
+@media (min-width: 901px) {
+  .reference-hero-actions {
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    width: min(700px, 52%) !important;
+    margin-top: 27px !important;
+    min-height: 62px;
+  }
+
+  .reference-hero-actions .reference-video-cta {
+    width: 220px !important;
+    min-width: 220px !important;
+    height: 62px !important;
+    margin: 0 !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .reference-hero-actions {
+    width: 100% !important;
+  }
+
+  .reference-hero-actions .reference-video-cta {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+}
