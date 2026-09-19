@@ -30,7 +30,7 @@ export async function GET() {
         where: { status: "APPROVED" },
       }),
       prisma.appSetting.findMany({
-        where: { key: { in: ["hero_potential_users", "hero_community_driven", "presale_allocated_tokens"] } },
+        where: { key: { in: ["hero_potential_users", "hero_community_driven", "presale_allocated_tokens", "presale_sold_manual"] } },
       }),
     ]);
 
@@ -41,7 +41,7 @@ export async function GET() {
     const raised = manualRaised + approvedRaised;
     const totalTokens = Number(effective.totalTokens ?? 0n);
     const presaleAllocatedTokens = Number(appMap.get("presale_allocated_tokens") ?? 2222222222);
-    const stvSold = stvAggregate._sum.stvAmount ?? 0;
+    const stvSold = Number(appMap.get("presale_sold_manual") ?? 0) + (stvAggregate._sum.stvAmount ?? 0);
     const stvRemaining = Math.max(0, presaleAllocatedTokens - stvSold);
     const potentialUsers = Number(appMap.get("hero_potential_users") ?? 1000000);
     const communityDriven = Number(appMap.get("hero_community_driven") ?? 100);
