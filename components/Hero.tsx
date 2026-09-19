@@ -171,13 +171,6 @@ export default function Hero() {
               <span className="hidden sm:inline">{stats.endDate ? new Date(stats.endDate).toLocaleDateString() : "—"}</span>
             </div>
           </div>
-
-          <div className="reference-stats">
-            <div className="reference-stat"><span className="reference-stat-icon"><Users size={28} /></span><div><b>{formatCompact(stats.community)}+</b><small>Community</small></div></div>
-            <div className="reference-stat"><span className="reference-stat-icon"><Coins size={28} /></span><div><b>${formatNumber(stats.raised)}</b><small>Raised</small></div></div>
-            <div className="reference-stat"><span className="reference-stat-icon"><UserRound size={28} /></span><div><b>{formatCompact(stats.potentialUsers)}+</b><small>Potential Users</small></div></div>
-            <div className="reference-stat"><span className="reference-stat-icon"><Globe2 size={28} /></span><div><b>{stats.communityDriven}%</b><small>Community Driven</small></div></div>
-          </div>
         </div>
         <div className="reference-side-copy"><span>STRIVE</span><span>GROW</span><span>BELONG</span></div>
       </div>
