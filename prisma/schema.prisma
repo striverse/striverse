@@ -177,7 +177,7 @@ model PresaleSettings {
   id String @id @default(cuid())
 
   tokenPrice   Float @default(0.0009)
-  hardCap      Float @default(500000)
+  hardCap      Float @default(2084734)
   raisedAmount Float @default(150000)
 
   manualInvestors Int @default(0)
