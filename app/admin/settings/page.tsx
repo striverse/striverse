@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import { ChevronDown, ChevronUp, Lock, Save, ShieldCheck } from "lucide-react";
 
 type Pkg = { id?: string; name: string; usdtAmount: number; stvAmount: number; sortOrder: number; isActive: boolean; isCollapsed?: boolean };
-type HeroStats = { community: number; raised: number; potentialUsers: number; communityDriven: number };
+type HeroStats = { community: number; raised: number; potentialUsers: number; communityDriven: number; tokenPrice: number; hardCap: number; endDate: string };
 
 const defaults: Pkg[] = ["LUNA", "AURORA", "ANDROMEDA", "ORION", "CELESTIA"].map((name, i) => ({ name, usdtAmount: [100, 300, 500, 700, 1000][i], stvAmount: [100000, 300000, 500000, 700000, 1000000][i], sortOrder: i + 1, isActive: true, isCollapsed: false }));
-const defaultHeroStats: HeroStats = { community: 50000, raised: 150000, potentialUsers: 1000000, communityDriven: 100 };
+const defaultHeroStats: HeroStats = { community: 50000, raised: 150000, potentialUsers: 1000000, communityDriven: 100, tokenPrice: 0.0009, hardCap: 500000, endDate: "2027-04-08T18:29:59.000Z" };
 
 export default function Settings() {
   const [role, setRole] = useState("");
@@ -41,6 +41,7 @@ export default function Settings() {
   const developer = role === "DEVELOPER";
   const updatePkg = (i: number, k: string, v: any) => setPackages(a => a.map((p, j) => j === i ? { ...p, [k]: v } : p));
   const updateHero = (key: keyof HeroStats, value: number) => setHeroStats(s => ({ ...s, [key]: value }));
+  const toLocalDateTime = (iso: string) => { const d = new Date(iso); const p = (n: number) => String(n).padStart(2, "0"); return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}T${p(d.getHours())}:${p(d.getMinutes())}`; };
 
   async function savePackages() {
     const r = await fetch("/api/admin/packages", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ packages }) });
@@ -63,9 +64,10 @@ export default function Settings() {
     <header><p className="text-xs uppercase tracking-[.3em] text-cyan-300/70">Developer Control Center</p><h1 className="mt-2 text-3xl font-black">Striverse Settings</h1><p className="mt-2 text-sm text-slate-400">Central configuration for packages, hero statistics, Partner rewards, wallets and operating rules.</p></header>
 
     <section className="rounded-3xl border border-cyan-400/15 bg-white/[.035] p-5">
-      <div className="flex items-center justify-between gap-3"><div><h2 className="text-xl font-bold">Homepage Statistics</h2><p className="text-sm text-slate-400">Only Developer can edit Community, Raised, Potential Users and Community Driven shown on the homepage.</p></div>{!developer && <Lock className="text-slate-500" size={18} />}</div>
-      <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {([["community", "Community"], ["raised", "Raised (USDT)"], ["potentialUsers", "Potential Users"], ["communityDriven", "Community Driven (%)"]] as const).map(([key, label]) => <label key={key} className="text-xs text-slate-400">{label}<input disabled={!developer} type="number" min="0" max={key === "communityDriven" ? 100 : undefined} value={heroStats[key]} onChange={e => updateHero(key, +e.target.value)} className="mt-1 w-full rounded-xl bg-black/30 p-3 text-white" /></label>)}
+      <div className="flex items-center justify-between gap-3"><div><h2 className="text-xl font-bold">Homepage Statistics</h2><p className="text-sm text-slate-400">Developer controls the live STV presale timer, Raised, Hard Cap and STV Price shown on the homepage.</p></div>{!developer && <Lock className="text-slate-500" size={18} />}</div>
+      <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {([["community", "Community"], ["raised", "Raised (USDT)"], ["hardCap", "Hard Cap (USDT)"], ["tokenPrice", "STV Price"], ["potentialUsers", "Potential Users"], ["communityDriven", "Community Driven (%)"]] as const).map(([key, label]) => <label key={key} className="text-xs text-slate-400">{label}<input disabled={!developer} type="number" min="0" max={key === "communityDriven" ? 100 : undefined} step={key === "tokenPrice" ? "0.000001" : "1"} value={heroStats[key]} onChange={e => updateHero(key, +e.target.value)} className="mt-1 w-full rounded-xl bg-black/30 p-3 text-white" /></label>)}
+        <label className="text-xs text-slate-400 sm:col-span-2 lg:col-span-3">Presale End Date & Time<input disabled={!developer} type="datetime-local" value={toLocalDateTime(heroStats.endDate)} onChange={e => setHeroStats(s => ({ ...s, endDate: new Date(e.target.value).toISOString() }))} className="mt-1 w-full rounded-xl bg-black/30 p-3 text-white" /></label>
       </div>
       {developer && <button onClick={saveHeroStats} className="mt-5 inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-5 py-3 font-bold"><Save size={16} /> Save Homepage Statistics</button>}
     </section>
