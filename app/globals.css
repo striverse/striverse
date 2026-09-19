@@ -3351,3 +3351,11 @@ html[data-mode="light"] .reference-search-popover input { color: #071226; }
     margin-top: 38px !important;
   }
 }
+
+
+/* HERO BASELINE FIX — align presale card bottom exactly with CTA buttons. */
+@media (min-width: 901px) {
+  .reference-countdown {
+    bottom: 2px !important;
+  }
+}
