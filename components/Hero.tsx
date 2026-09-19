@@ -130,7 +130,7 @@ export default function Hero() {
             <div className="relative flex items-center justify-between gap-4">
               <div className="flex items-center gap-2 text-[10px] font-black tracking-[.32em] sm:text-xs">
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-red-500 shadow-[0_0_12px_#ef4444]" />
-                <span className="text-white">STV TOKEN PRESALE</span>
+                <span><span className="text-red-500">STV</span> <span className="text-white">TOKEN PRESALE</span></span>
               </div>
               <div className="flex shrink-0 items-center gap-2 text-[10px] font-black tracking-[.24em] text-green-500 sm:text-xs">
                 <span className="text-cyan-300">•</span>
