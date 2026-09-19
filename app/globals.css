@@ -3092,3 +3092,21 @@ html[data-mode="light"] .reference-search-popover input { color: #071226; }
     margin-top: 24px !important;
   }
 }
+
+
+/* PRESALE CARD — cleaner premium rectangle shape. */
+@media (min-width: 901px) {
+  .reference-countdown {
+    border-radius: 18px !important;
+    padding: 18px !important;
+    width: min(540px, 42%) !important;
+  }
+
+  .reference-countdown .rounded-2xl {
+    border-radius: 12px !important;
+  }
+
+  .reference-countdown .rounded-xl {
+    border-radius: 10px !important;
+  }
+}
