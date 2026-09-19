@@ -162,10 +162,23 @@ export default function Hero() {
                 <div><small className="block text-[8px] font-black uppercase tracking-[.16em] text-slate-500">Hard Cap</small><b className="text-sm text-white sm:text-base">${formatNumber(stats.hardCap)}</b></div>
                 <div className="col-span-2 sm:col-span-1"><small className="block text-[8px] font-black uppercase tracking-[.16em] text-slate-500">STV Price</small><b className="text-sm text-cyan-200 sm:text-base">${stats.tokenPrice}</b></div>
               </div>
-              <div className="mt-3 grid grid-cols-2 gap-2">
+              <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
                 <div><small className="block text-[8px] font-black uppercase tracking-[.16em] text-slate-500">Total STV Presale</small><b className="text-sm text-white sm:text-base">{formatNumber(stats.totalTokens)}</b></div>
                 <div><small className="block text-[8px] font-black uppercase tracking-[.16em] text-slate-500">Presale Allocated</small><b className="text-sm text-cyan-200 sm:text-base">{formatNumber(stats.presaleAllocatedTokens)}</b></div>
-                <div><small className="block text-[8px] font-black uppercase tracking-[.16em] text-slate-500">STV Sold</small><b className="text-sm text-cyan-200 sm:text-base">{formatNumber(stats.stvSold)}</b></div>
+                <div><small className="block text-[8px] font-black uppercase tracking-[.16em] text-slate-500">STV Sold</small><b className="text-sm text-cyan-200 sm:text-base">{formatNumber(stats.stvSold)}</b></div><div><small className="block text-[8px] font-black uppercase tracking-[.16em] text-slate-500">STV Remaining</small><b className="text-sm text-white sm:text-base">{formatNumber(stats.stvRemaining)}</b></div>
+              </div>
+            </div>
+            <div className="relative mt-4 flex flex-col gap-3 sm:flex-row">
+              <Link href="/register" className="flex-1 rounded-xl bg-gradient-to-r from-cyan-400 to-violet-500 px-4 py-3 text-center text-xs font-black uppercase tracking-[.16em] text-slate-950 shadow-[0_0_28px_rgba(34,211,238,.18)] transition-transform hover:scale-[1.01]">Buy STV Now ↗</Link>
+              <a href="#tokenomics" className="flex-1 rounded-xl border border-cyan-200/20 bg-white/[.04] px-4 py-3 text-center text-xs font-black uppercase tracking-[.16em] text-cyan-100 transition-colors hover:bg-white/[.08]">View Token Details</a>
+            </div>
+            <div className="relative mt-4 rounded-2xl border border-white/10 bg-white/[.025] p-3">
+              <div className="mb-2 flex items-center justify-between">
+                <span className="text-[9px] font-black uppercase tracking-[.2em] text-slate-400">Presale Packages</span>
+                <span className="text-[9px] font-bold uppercase tracking-[.14em] text-cyan-300">Choose your allocation</span>
+              </div>
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
+                <div className="rounded-xl border border-cyan-200/10 bg-slate-950/35 p-2.5"><b className="block text-[10px] font-black tracking-[.12em] text-white">LUNA</b><span className="mt-1 block text-[10px] font-bold text-cyan-200">100 USDT</span><small className="mt-1 block text-[8px] uppercase tracking-[.12em] text-slate-500">100,000 STV</small></div><div className="rounded-xl border border-cyan-200/10 bg-slate-950/35 p-2.5"><b className="block text-[10px] font-black tracking-[.12em] text-white">AURORA</b><span className="mt-1 block text-[10px] font-bold text-cyan-200">300 USDT</span><small className="mt-1 block text-[8px] uppercase tracking-[.12em] text-slate-500">300,000 STV</small></div><div className="rounded-xl border border-cyan-200/10 bg-slate-950/35 p-2.5"><b className="block text-[10px] font-black tracking-[.12em] text-white">ANDROMEDA</b><span className="mt-1 block text-[10px] font-bold text-cyan-200">500 USDT</span><small className="mt-1 block text-[8px] uppercase tracking-[.12em] text-slate-500">500,000 STV</small></div><div className="rounded-xl border border-cyan-200/10 bg-slate-950/35 p-2.5"><b className="block text-[10px] font-black tracking-[.12em] text-white">ORION</b><span className="mt-1 block text-[10px] font-bold text-cyan-200">700 USDT</span><small className="mt-1 block text-[8px] uppercase tracking-[.12em] text-slate-500">700,000 STV</small></div><div className="rounded-xl border border-cyan-200/10 bg-slate-950/35 p-2.5"><b className="block text-[10px] font-black tracking-[.12em] text-white">CELESTIA</b><span className="mt-1 block text-[10px] font-bold text-cyan-200">1,000 USDT</span><small className="mt-1 block text-[8px] uppercase tracking-[.12em] text-slate-500">1,000,000 STV</small></div>
               </div>
             </div>
             <div className="relative mt-3 flex items-center justify-between text-[9px] uppercase tracking-[.2em] text-slate-500 sm:text-[10px]">
