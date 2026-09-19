@@ -7,7 +7,11 @@ export async function GET() {
 
     // Keep the public presale card live even when a fresh database has not
     // been seeded with PresaleSettings yet. Admin-configured values still win.
-    const presaleEndDate = settings?.endDate?.toISOString() ?? "2027-04-08T18:29:59.000Z";
+    const configuredEndDate = settings?.endDate ?? null;
+    const defaultPresaleEndDate = new Date("2027-04-08T18:29:59.000Z");
+    const presaleEndDate = (configuredEndDate && configuredEndDate.getTime() > Date.now())
+      ? configuredEndDate.toISOString()
+      : defaultPresaleEndDate.toISOString();
     const fallback = {
       raisedAmount: 150000,
       hardCap: 2084734,
