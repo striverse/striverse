@@ -3267,3 +3267,32 @@ html[data-mode="light"] .reference-search-popover input { color: #071226; }
     width: min(680px, 48%) !important;
   }
 }
+
+
+/* HERO SECONDARY CTA — keep Whitepaper beside Watch Video. */
+@media (min-width: 901px) {
+  .reference-hero-actions {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 12px !important;
+  }
+
+  .reference-hero-actions .reference-video-cta {
+    flex: 1 1 0 !important;
+    width: auto !important;
+    min-width: 0 !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .reference-hero-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+
+  .reference-hero-actions .reference-video-cta {
+    width: 100% !important;
+  }
+}
