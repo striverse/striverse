@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Coins, Globe2, PlayCircle, UserRound, Users } from "lucide-react";
+import { Coins, FileText, Globe2, PlayCircle, UserRound, Users } from "lucide-react";
 
 interface HeroStats {
   raised: number;
@@ -125,7 +125,7 @@ export default function Hero() {
           <p className="reference-kicker">THE NEXT DIMENSION OF DIGITAL OPPORTUNITY</p>
           <h1>Secure, Smart,<br />and <span>Limitless!</span><br /><span>Join</span><br /><span>STRIVERSE</span></h1>
           <p className="reference-lead">Explore a next-generation ecosystem built around STV,<br className="desktop-break" />with investing, staking, vesting, airdrops, and a connected<br className="desktop-break" />community — all in one place.</p>
-          <div className="reference-hero-actions"><a href="#invest" className="reference-video-cta"><span className="reference-play"><PlayCircle size={18} strokeWidth={1.7} /></span>Watch Video</a></div>
+          <div className="reference-hero-actions"><a href="#invest" className="reference-video-cta"><span className="reference-play"><PlayCircle size={18} strokeWidth={1.7} /></span>Watch Video</a><a href="#whitepaper" className="reference-video-cta reference-whitepaper-cta"><span className="reference-play"><FileText size={18} strokeWidth={1.7} /></span>Whitepaper</a></div>
 
           <div className="reference-countdown relative mt-6 w-full max-w-[760px] overflow-hidden rounded-[28px] border border-cyan-300/25 bg-[#020b1b]/80 p-4 shadow-[0_0_55px_rgba(25,220,255,.12)] backdrop-blur-2xl sm:p-5" aria-label="STV Token Presale countdown">
             <div className="pointer-events-none absolute -right-12 -top-14 h-32 w-32 rounded-full bg-cyan-400/15 blur-3xl" />
