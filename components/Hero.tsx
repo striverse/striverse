@@ -13,6 +13,9 @@ interface HeroStats {
   potentialUsers: number;
   communityDriven: number;
   endDate: string | null;
+  totalTokens: number;
+  stvSold: number;
+  stvRemaining: number;
 }
 
 interface Countdown {
@@ -51,6 +54,9 @@ export default function Hero() {
     potentialUsers: 1000000,
     communityDriven: 100,
     endDate: null,
+    totalTokens: 0,
+    stvSold: 0,
+    stvRemaining: 0,
   });
   const [countdown, setCountdown] = useState<Countdown>(getCountdown(null));
 
@@ -69,6 +75,9 @@ export default function Hero() {
             potentialUsers: Number(data.potentialUsers ?? 1000000),
             communityDriven: Number(data.communityDriven ?? 100),
             endDate,
+            totalTokens: Number(data.totalTokens ?? 0),
+            stvSold: Number(data.stvSold ?? 0),
+            stvRemaining: Number(data.stvRemaining ?? 0),
           });
           setCountdown(getCountdown(endDate));
         }
@@ -147,6 +156,10 @@ export default function Hero() {
                 <div><small className="block text-[8px] font-black uppercase tracking-[.16em] text-slate-500">Raised</small><b className="text-sm text-white sm:text-base">${formatNumber(stats.raised)}</b></div>
                 <div><small className="block text-[8px] font-black uppercase tracking-[.16em] text-slate-500">Hard Cap</small><b className="text-sm text-white sm:text-base">${formatNumber(stats.hardCap)}</b></div>
                 <div className="col-span-2 sm:col-span-1"><small className="block text-[8px] font-black uppercase tracking-[.16em] text-slate-500">STV Price</small><b className="text-sm text-cyan-200 sm:text-base">${stats.tokenPrice}</b></div>
+              </div>
+              <div className="mt-3 grid grid-cols-2 gap-2">
+                <div><small className="block text-[8px] font-black uppercase tracking-[.16em] text-slate-500">Total STV Presale</small><b className="text-sm text-white sm:text-base">{formatNumber(stats.totalTokens)}</b></div>
+                <div><small className="block text-[8px] font-black uppercase tracking-[.16em] text-slate-500">STV Sold</small><b className="text-sm text-cyan-200 sm:text-base">{formatNumber(stats.stvSold)}</b></div>
               </div>
             </div>
             <div className="relative mt-3 flex items-center justify-between text-[9px] uppercase tracking-[.2em] text-slate-500 sm:text-[10px]">
