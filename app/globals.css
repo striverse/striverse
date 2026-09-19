@@ -3359,3 +3359,109 @@ html[data-mode="light"] .reference-search-popover input { color: #071226; }
     bottom: 2px !important;
   }
 }
+
+
+/* PRESALE DYNAMIC THEME ROTATION — one premium palette per browser refresh. */
+.reference-countdown[data-presale-theme="white-blue"] {
+  --presale-accent: #63d9ff;
+  --presale-accent-2: #4f7cff;
+  --presale-border: rgba(92, 210, 255, .30);
+  --presale-panel: rgba(13, 28, 52, .62);
+  --presale-glow: rgba(55, 190, 255, .22);
+}
+.reference-countdown[data-presale-theme="cyan-purple"] {
+  --presale-accent: #22e8ff;
+  --presale-accent-2: #a855f7;
+  --presale-border: rgba(87, 211, 255, .30);
+  --presale-panel: rgba(24, 13, 55, .58);
+  --presale-glow: rgba(145, 70, 255, .24);
+}
+.reference-countdown[data-presale-theme="orange-gold"] {
+  --presale-accent: #ff9d24;
+  --presale-accent-2: #ffd166;
+  --presale-border: rgba(255, 157, 36, .34);
+  --presale-panel: rgba(55, 29, 8, .52);
+  --presale-glow: rgba(255, 137, 24, .25);
+}
+.reference-countdown[data-presale-theme="pink-magenta"] {
+  --presale-accent: #ff4fc8;
+  --presale-accent-2: #c084fc;
+  --presale-border: rgba(255, 79, 200, .34);
+  --presale-panel: rgba(49, 10, 43, .52);
+  --presale-glow: rgba(255, 45, 184, .24);
+}
+.reference-countdown[data-presale-theme="green-teal"] {
+  --presale-accent: #20e6a2;
+  --presale-accent-2: #42d9ff;
+  --presale-border: rgba(32, 230, 162, .32);
+  --presale-panel: rgba(6, 43, 38, .54);
+  --presale-glow: rgba(20, 225, 174, .24);
+}
+.reference-countdown[data-presale-theme="ocean-blue"] {
+  --presale-accent: #27c7ff;
+  --presale-accent-2: #38bdf8;
+  --presale-border: rgba(39, 199, 255, .34);
+  --presale-panel: rgba(5, 34, 60, .56);
+  --presale-glow: rgba(22, 170, 255, .24);
+}
+.reference-countdown[data-presale-theme="purple-violet"] {
+  --presale-accent: #b56cff;
+  --presale-accent-2: #7c3aed;
+  --presale-border: rgba(181, 108, 255, .34);
+  --presale-panel: rgba(27, 10, 55, .54);
+  --presale-glow: rgba(139, 70, 255, .25);
+}
+
+.reference-countdown[data-presale-theme] {
+  border-color: var(--presale-border) !important;
+  box-shadow: 0 0 55px var(--presale-glow) !important;
+}
+.reference-countdown[data-presale-theme] > .rounded-2xl.border {
+  border-color: color-mix(in srgb, var(--presale-border) 75%, transparent) !important;
+  background: var(--presale-panel) !important;
+}
+.reference-countdown[data-presale-theme] .group.rounded-2xl {
+  border-color: color-mix(in srgb, var(--presale-accent) 32%, transparent) !important;
+  background: color-mix(in srgb, var(--presale-panel) 72%, #020713) !important;
+  box-shadow: inset 0 0 20px color-mix(in srgb, var(--presale-accent) 7%, transparent) !important;
+}
+.reference-countdown[data-presale-theme] .group.rounded-2xl strong {
+  color: color-mix(in srgb, var(--presale-accent) 82%, white) !important;
+}
+.reference-countdown[data-presale-theme] .group.rounded-2xl small,
+.reference-countdown[data-presale-theme] .font-mono.text-cyan-300\/50 {
+  color: color-mix(in srgb, var(--presale-accent) 72%, white) !important;
+}
+.reference-countdown[data-presale-theme] .group.rounded-2xl > div {
+  background: linear-gradient(90deg, transparent, var(--presale-accent), transparent) !important;
+}
+.reference-countdown[data-presale-theme] .text-cyan-200 {
+  color: color-mix(in srgb, var(--presale-accent) 88%, white) !important;
+}
+.reference-countdown[data-presale-theme] .h-full.rounded-full {
+  background: linear-gradient(90deg, var(--presale-accent), var(--presale-accent-2)) !important;
+  box-shadow: 0 0 18px color-mix(in srgb, var(--presale-accent) 60%, transparent) !important;
+}
+.reference-countdown[data-presale-theme] .reference-presale-accent {
+  color: var(--presale-accent) !important;
+}
+.reference-countdown[data-presale-theme] > .relative.mt-4.flex a:first-child {
+  background: linear-gradient(100deg, var(--presale-accent), var(--presale-accent-2)) !important;
+  box-shadow: 0 0 28px var(--presale-glow) !important;
+}
+.reference-countdown[data-presale-theme] > .relative.mt-4.flex a:last-child {
+  border-color: color-mix(in srgb, var(--presale-accent) 34%, transparent) !important;
+  color: color-mix(in srgb, var(--presale-accent) 80%, white) !important;
+}
+.reference-countdown[data-presale-theme] > .relative.mt-4.rounded-2xl {
+  border-color: color-mix(in srgb, var(--presale-border) 75%, transparent) !important;
+}
+.reference-countdown[data-presale-theme] > .relative.mt-4.rounded-2xl .text-cyan-300 {
+  color: color-mix(in srgb, var(--presale-accent) 86%, white) !important;
+}
+.reference-countdown[data-presale-theme] > .relative.mt-4.rounded-2xl .border-cyan-200\/10 {
+  border-color: color-mix(in srgb, var(--presale-accent) 22%, transparent) !important;
+}
+.reference-countdown[data-presale-theme] > .relative.mt-4.rounded-2xl .text-cyan-200 {
+  color: color-mix(in srgb, var(--presale-accent) 82%, white) !important;
+}
