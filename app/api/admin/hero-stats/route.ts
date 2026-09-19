@@ -8,7 +8,7 @@ const DEFAULTS = {
   potentialUsers: 1000000,
   communityDriven: 100,
   tokenPrice: 0.0009,
-  hardCap: 500000,
+  hardCap: 2084734,
   endDate: "2027-04-08T18:29:59.000Z",
 };
 
