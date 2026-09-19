@@ -3167,3 +3167,31 @@ html[data-mode="light"] .reference-search-popover input { color: #071226; }
     transform: none !important;
   }
 }
+
+
+/* HERO SCALE REFINEMENT */
+@media (min-width: 901px) {
+  .reference-hero-copy h1 {
+    font-size: clamp(48px, 4.2vw, 70px) !important;
+    line-height: .98 !important;
+  }
+
+  .reference-lead {
+    font-size: 17px !important;
+    line-height: 1.55 !important;
+  }
+
+  .reference-countdown {
+    width: min(610px, 46%) !important;
+    padding: 22px !important;
+    border-radius: 18px !important;
+  }
+
+  .reference-countdown .text-2xl {
+    font-size: 2rem !important;
+  }
+
+  .reference-countdown .sm\:text-4xl {
+    font-size: 2.35rem !important;
+  }
+}
