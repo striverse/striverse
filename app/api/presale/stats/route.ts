@@ -10,12 +10,12 @@ export async function GET() {
     const presaleEndDate = settings?.endDate?.toISOString() ?? "2027-04-08T18:29:59.000Z";
     const fallback = {
       raisedAmount: 150000,
-      hardCap: 500000,
+      hardCap: 2084734,
       tokenPrice: 0.0009,
       totalTokens: BigInt(8888888888),
       manualInvestors: 50000,
     };
-    const effective = settings ?? fallback;
+    const effective = settings && settings.hardCap !== 500000 ? settings : { ...settings, ...fallback, hardCap: 2084734 };
 
     const [aggregate, approvedInvestors, stvAggregate, appSettings] = await Promise.all([
       prisma.purchase.aggregate({
