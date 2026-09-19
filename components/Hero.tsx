@@ -28,7 +28,7 @@ interface Countdown {
 }
 
 const formatNumber = (value: number) => new Intl.NumberFormat("en-US").format(value);
-const formatCompact = (value: number) => value >= 1000000 ? `${value / 1000000}M` : value >= 1000 ? `${value / 1000}K` : formatNumber(value);
+const formatCompact = (value: number) => formatNumber(value);
 
 const getCountdown = (endDate: string | null): Countdown => {
   if (!endDate) return { days: 0, hours: 0, minutes: 0, seconds: 0, ended: true };
