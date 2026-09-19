@@ -7,6 +7,9 @@ const DEFAULTS = {
   raised: 150000,
   potentialUsers: 1000000,
   communityDriven: 100,
+  tokenPrice: 0.0009,
+  hardCap: 500000,
+  endDate: "2027-04-08T18:29:59.000Z",
 };
 
 async function getValues() {
@@ -17,6 +20,9 @@ async function getValues() {
   const map = new Map(appSettings.map((item) => [item.key, item.value]));
   return {
     community: settings?.manualInvestors ?? DEFAULTS.community,
+    tokenPrice: settings?.tokenPrice ?? DEFAULTS.tokenPrice,
+    hardCap: settings?.hardCap ?? DEFAULTS.hardCap,
+    endDate: settings?.endDate?.toISOString() ?? DEFAULTS.endDate,
     raised: settings?.raisedAmount ?? DEFAULTS.raised,
     potentialUsers: Number(map.get("hero_potential_users") ?? DEFAULTS.potentialUsers),
     communityDriven: Number(map.get("hero_community_driven") ?? DEFAULTS.communityDriven),
@@ -39,21 +45,27 @@ export async function PUT(req: NextRequest) {
     const raised = Math.max(0, Number(body.raised));
     const potentialUsers = Math.max(0, Math.round(Number(body.potentialUsers)));
     const communityDriven = Math.min(100, Math.max(0, Number(body.communityDriven)));
+    const tokenPrice = Math.max(0, Number(body.tokenPrice));
+    const hardCap = Math.max(0, Number(body.hardCap));
+    const endDate = new Date(String(body.endDate));
 
-    if (![community, raised, potentialUsers, communityDriven].every(Number.isFinite)) {
+    if (![community, raised, potentialUsers, communityDriven, tokenPrice, hardCap].every(Number.isFinite) || Number.isNaN(endDate.getTime())) {
       return NextResponse.json({ success: false, message: "Invalid hero statistics." }, { status: 400 });
     }
 
     const settings = await prisma.presaleSettings.findFirst();
-    if (!settings) {
-      return NextResponse.json({ success: false, message: "Presale settings not found." }, { status: 404 });
-    }
 
     await prisma.$transaction(async (tx) => {
-      await tx.presaleSettings.update({
-        where: { id: settings.id },
-        data: { manualInvestors: community, raisedAmount: raised },
-      });
+      if (settings) {
+        await tx.presaleSettings.update({
+          where: { id: settings.id },
+          data: { manualInvestors: community, raisedAmount: raised, tokenPrice, hardCap, endDate },
+        });
+      } else {
+        await tx.presaleSettings.create({
+          data: { manualInvestors: community, raisedAmount: raised, tokenPrice, hardCap, endDate, startDate: new Date() },
+        });
+      }
       for (const [key, value] of [
         ["hero_potential_users", String(potentialUsers)],
         ["hero_community_driven", String(communityDriven)],
@@ -69,12 +81,12 @@ export async function PUT(req: NextRequest) {
           userId: admin.id,
           actorRole: admin.role,
           action: "HERO_STATS_UPDATED",
-          metadata: JSON.stringify({ community, raised, potentialUsers, communityDriven }),
+          metadata: JSON.stringify({ community, raised, potentialUsers, communityDriven, tokenPrice, hardCap, endDate }),
         },
       });
     });
 
-    return NextResponse.json({ success: true, message: "Hero statistics updated.", stats: { community, raised, potentialUsers, communityDriven } });
+    return NextResponse.json({ success: true, message: "Hero statistics updated.", stats: { community, raised, potentialUsers, communityDriven, tokenPrice, hardCap, endDate: endDate.toISOString() } });
   } catch (error) {
     console.error(error);
     return NextResponse.json({ success: false, message: "Failed to update hero statistics." }, { status: 500 });
