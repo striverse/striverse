@@ -45,7 +45,16 @@ export async function GET() {
     const raised = manualRaised + approvedRaised;
     const totalTokens = Number(effective.totalTokens ?? 0n);
     const presaleAllocatedTokens = Number(appMap.get("presale_allocated_tokens") ?? 2222222222);
-    const stvSold = Number(appMap.get("presale_sold_manual") ?? 0) + (stvAggregate._sum.stvAmount ?? 0);
+    // The configured raised amount represents the existing presale baseline.
+    // Convert that baseline to STV at the configured token price, then add
+    // any manual adjustment and approved package purchases. This keeps the
+    // Sold/Remaining figures consistent with the Raised amount.
+    const baselineStvSold = effective.tokenPrice > 0
+      ? Math.round(manualRaised / effective.tokenPrice)
+      : 0;
+    const manualStvAdjustment = Number(appMap.get("presale_sold_manual") ?? 0);
+    const approvedStvSold = Number(stvAggregate._sum.stvAmount ?? 0);
+    const stvSold = baselineStvSold + manualStvAdjustment + approvedStvSold;
     const stvRemaining = Math.max(0, presaleAllocatedTokens - stvSold);
     const potentialUsers = Number(appMap.get("hero_potential_users") ?? 1000000);
     const communityDriven = Number(appMap.get("hero_community_driven") ?? 100);
