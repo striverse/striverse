@@ -6,8 +6,8 @@ import { ChevronDown, ChevronUp, Lock, Save, ShieldCheck } from "lucide-react";
 type Pkg = { id?: string; name: string; usdtAmount: number; stvAmount: number; sortOrder: number; isActive: boolean; isCollapsed?: boolean };
 type HeroStats = { community: number; raised: number; potentialUsers: number; communityDriven: number; tokenPrice: number; hardCap: number; endDate: string; presaleAllocatedTokens: number; presaleSoldManual: number };
 
-const defaults: Pkg[] = ["LUNA", "AURORA", "ANDROMEDA", "ORION", "CELESTIA"].map((name, i) => ({ name, usdtAmount: [100, 300, 500, 700, 1000][i], stvAmount: [100000, 300000, 500000, 700000, 1000000][i], sortOrder: i + 1, isActive: true, isCollapsed: false }));
-const defaultHeroStats: HeroStats = { community: 50000, raised: 150000, potentialUsers: 1000000, communityDriven: 100, presaleAllocatedTokens: 2222222222, presaleSoldManual: 0, tokenPrice: 0.0009, hardCap: 500000, endDate: "2027-04-08T18:29:59.000Z", presaleAllocatedTokens: 2222222222, presaleSoldManual: 0 };
+const defaults: Pkg[] = ["LUNA", "AURORA", "ANDROMEDA", "ORION", "CELESTIA"].map((name, i) => ({ name, usdtAmount: [100, 300, 500, 700, 1000][i], stvAmount: [100000, 300000, 2084734, 700000, 1000000][i], sortOrder: i + 1, isActive: true, isCollapsed: false }));
+const defaultHeroStats: HeroStats = { community: 50000, raised: 150000, potentialUsers: 1000000, communityDriven: 100, presaleAllocatedTokens: 2222222222, presaleSoldManual: 0, tokenPrice: 0.0009, hardCap: 2084734, endDate: "2027-04-08T18:29:59.000Z", presaleAllocatedTokens: 2222222222, presaleSoldManual: 0 };
 
 export default function Settings() {
   const [role, setRole] = useState("");
