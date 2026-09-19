@@ -3248,3 +3248,22 @@ html[data-mode="light"] .reference-search-popover input { color: #071226; }
     border-radius: 14px !important;
   }
 }
+
+
+/* HERO FINAL BALANCE — give the presale panel more horizontal space. */
+@media (min-width: 901px) {
+  .reference-countdown {
+    width: min(680px, 50%) !important;
+    right: -8px !important;
+    padding: 24px !important;
+  }
+
+  .reference-hero-copy > h1 {
+    width: min(760px, 48%) !important;
+  }
+
+  .reference-hero-copy > .reference-lead,
+  .reference-hero-actions {
+    width: min(680px, 48%) !important;
+  }
+}
