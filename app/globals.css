@@ -3337,3 +3337,17 @@ html[data-mode="light"] .reference-search-popover input { color: #071226; }
     bottom: auto !important;
   }
 }
+
+
+/* HERO FINAL VISUAL TUNING */
+@media (min-width: 901px) {
+  /* Drop the presale card by roughly one text line while keeping its size. */
+  .reference-countdown {
+    bottom: 18px !important;
+  }
+
+  /* Add a clear single-line breathing space after the description. */
+  .reference-hero-actions {
+    margin-top: 38px !important;
+  }
+}
