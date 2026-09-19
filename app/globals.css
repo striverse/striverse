@@ -3057,3 +3057,38 @@ html[data-mode="light"] .reference-search-popover input { color: #071226; }
 .reference-hero-art,.reference-planet,.reference-moon,.reference-mountain,.reference-platform,.reference-light-beam,.reference-nebula{display:none !important;}
 .reference-hero-content{display:block !important; position:relative !important; z-index:20 !important; visibility:visible !important; opacity:1 !important;}
 .reference-hero-copy{display:block !important; visibility:visible !important; opacity:1 !important; position:relative !important; z-index:21 !important;}
+
+
+/* PRESALE SPLIT HERO — keep the message left and STV presale card right. */
+@media (min-width: 901px) {
+  .reference-hero-copy {
+    width: 100%;
+  }
+
+  .reference-countdown {
+    position: absolute !important;
+    top: 0;
+    right: 0;
+    width: min(560px, 43%) !important;
+    max-width: none !important;
+    margin-top: 0 !important;
+  }
+
+  .reference-hero-copy > .reference-kicker,
+  .reference-hero-copy > h1,
+  .reference-hero-copy > .reference-lead,
+  .reference-hero-copy > .reference-hero-actions {
+    width: min(700px, 52%);
+  }
+}
+
+@media (max-width: 900px) {
+  .reference-countdown {
+    position: relative !important;
+    top: auto;
+    right: auto;
+    width: 100% !important;
+    max-width: 760px !important;
+    margin-top: 24px !important;
+  }
+}
