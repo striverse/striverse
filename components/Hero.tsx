@@ -61,6 +61,15 @@ export default function Hero() {
     presaleAllocatedTokens: 2222222222,
   });
   const [countdown, setCountdown] = useState<Countdown>(getCountdown(null));
+  const [signedIn, setSignedIn] = useState(false);
+  const [authLoading, setAuthLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("/api/user/me", { credentials: "include", cache: "no-store" })
+      .then((res) => setSignedIn(res.ok))
+      .catch(() => setSignedIn(false))
+      .finally(() => setAuthLoading(false));
+  }, []);
 
   useEffect(() => {
     fetch("/api/presale/stats", { cache: "no-store" })
@@ -172,15 +181,25 @@ export default function Hero() {
               <Link href="/register" className="flex-1 rounded-xl bg-gradient-to-r from-cyan-400 to-violet-500 px-4 py-3 text-center text-xs font-black uppercase tracking-[.16em] text-slate-950 shadow-[0_0_28px_rgba(34,211,238,.18)] transition-transform hover:scale-[1.01]">Buy STV Now ↗</Link>
               <a href="#tokenomics" className="flex-1 rounded-xl border border-cyan-200/20 bg-white/[.04] px-4 py-3 text-center text-xs font-black uppercase tracking-[.16em] text-cyan-100 transition-colors hover:bg-white/[.08]">View Token Details</a>
             </div>
-            <div className="relative mt-4 rounded-2xl border border-white/10 bg-white/[.025] p-3">
-              <div className="mb-2 flex items-center justify-between">
-                <span className="text-[9px] font-black uppercase tracking-[.2em] text-slate-400">Presale Packages</span>
-                <span className="text-[9px] font-bold uppercase tracking-[.14em] text-cyan-300">Choose your allocation</span>
+            {!authLoading && signedIn && (
+              <div className="relative mt-4 rounded-2xl border border-white/10 bg-white/[.025] p-3">
+                <div className="mb-2 flex items-center justify-between">
+                  <span className="text-[9px] font-black uppercase tracking-[.2em] text-slate-400">Presale Packages</span>
+                  <span className="text-[9px] font-bold uppercase tracking-[.14em] text-cyan-300">Choose your allocation</span>
+                </div>
+                <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
+                  {[
+                    ["LUNA","100 USDT","100,000 STV"],["AURORA","300 USDT","300,000 STV"],["ANDROMEDA","500 USDT","500,000 STV"],["ORION","700 USDT","700,000 STV"],["CELESTIA","1,000 USDT","1,000,000 STV"],
+                  ].map(([name, usdt, stv]) => (
+                    <div key={name} className="rounded-xl border border-cyan-200/10 bg-slate-950/35 p-2.5">
+                      <b className="block text-[10px] font-black tracking-[.12em] text-white">{name}</b>
+                      <span className="mt-1 block text-[10px] font-bold text-cyan-200">{usdt}</span>
+                      <small className="mt-1 block text-[8px] uppercase tracking-[.12em] text-slate-500">{stv}</small>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
-                <div className="rounded-xl border border-cyan-200/10 bg-slate-950/35 p-2.5"><b className="block text-[10px] font-black tracking-[.12em] text-white">LUNA</b><span className="mt-1 block text-[10px] font-bold text-cyan-200">100 USDT</span><small className="mt-1 block text-[8px] uppercase tracking-[.12em] text-slate-500">100,000 STV</small></div><div className="rounded-xl border border-cyan-200/10 bg-slate-950/35 p-2.5"><b className="block text-[10px] font-black tracking-[.12em] text-white">AURORA</b><span className="mt-1 block text-[10px] font-bold text-cyan-200">300 USDT</span><small className="mt-1 block text-[8px] uppercase tracking-[.12em] text-slate-500">300,000 STV</small></div><div className="rounded-xl border border-cyan-200/10 bg-slate-950/35 p-2.5"><b className="block text-[10px] font-black tracking-[.12em] text-white">ANDROMEDA</b><span className="mt-1 block text-[10px] font-bold text-cyan-200">500 USDT</span><small className="mt-1 block text-[8px] uppercase tracking-[.12em] text-slate-500">500,000 STV</small></div><div className="rounded-xl border border-cyan-200/10 bg-slate-950/35 p-2.5"><b className="block text-[10px] font-black tracking-[.12em] text-white">ORION</b><span className="mt-1 block text-[10px] font-bold text-cyan-200">700 USDT</span><small className="mt-1 block text-[8px] uppercase tracking-[.12em] text-slate-500">700,000 STV</small></div><div className="rounded-xl border border-cyan-200/10 bg-slate-950/35 p-2.5"><b className="block text-[10px] font-black tracking-[.12em] text-white">CELESTIA</b><span className="mt-1 block text-[10px] font-bold text-cyan-200">1,000 USDT</span><small className="mt-1 block text-[8px] uppercase tracking-[.12em] text-slate-500">1,000,000 STV</small></div>
-              </div>
-            </div>
+            )}
             <div className="relative mt-3 flex items-center justify-between text-[9px] uppercase tracking-[.2em] text-slate-500 sm:text-[10px]">
               <span>LIVE • AUTO UPDATES EVERY SECOND</span>
               <span className="hidden sm:inline">{stats.endDate ? new Date(stats.endDate).toLocaleDateString() : "—"}</span>
