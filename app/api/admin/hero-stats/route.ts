@@ -15,7 +15,7 @@ const DEFAULTS = {
 async function getValues() {
   const settings = await prisma.presaleSettings.findFirst();
   const appSettings = await prisma.appSetting.findMany({
-    where: { key: { in: ["hero_potential_users", "hero_community_driven"] } },
+    where: { key: { in: ["hero_potential_users", "hero_community_driven", "presale_allocated_tokens", "presale_sold_manual"] } },
   });
   const map = new Map(appSettings.map((item) => [item.key, item.value]));
   return {
@@ -26,6 +26,8 @@ async function getValues() {
     raised: settings?.raisedAmount ?? DEFAULTS.raised,
     potentialUsers: Number(map.get("hero_potential_users") ?? DEFAULTS.potentialUsers),
     communityDriven: Number(map.get("hero_community_driven") ?? DEFAULTS.communityDriven),
+    presaleAllocatedTokens: Number(map.get("presale_allocated_tokens") ?? 2222222222),
+    presaleSoldManual: Number(map.get("presale_sold_manual") ?? 0),
   };
 }
 
@@ -48,8 +50,10 @@ export async function PUT(req: NextRequest) {
     const tokenPrice = Math.max(0, Number(body.tokenPrice));
     const hardCap = Math.max(0, Number(body.hardCap));
     const endDate = new Date(String(body.endDate));
+    const presaleAllocatedTokens = Math.max(0, Number(body.presaleAllocatedTokens));
+    const presaleSoldManual = Math.max(0, Number(body.presaleSoldManual));
 
-    if (![community, raised, potentialUsers, communityDriven, tokenPrice, hardCap].every(Number.isFinite) || Number.isNaN(endDate.getTime())) {
+    if (![community, raised, potentialUsers, communityDriven, tokenPrice, hardCap, presaleAllocatedTokens, presaleSoldManual].every(Number.isFinite) || Number.isNaN(endDate.getTime())) {
       return NextResponse.json({ success: false, message: "Invalid hero statistics." }, { status: 400 });
     }
 
@@ -69,6 +73,8 @@ export async function PUT(req: NextRequest) {
       for (const [key, value] of [
         ["hero_potential_users", String(potentialUsers)],
         ["hero_community_driven", String(communityDriven)],
+        ["presale_allocated_tokens", String(presaleAllocatedTokens)],
+        ["presale_sold_manual", String(presaleSoldManual)],
       ]) {
         await tx.appSetting.upsert({
           where: { key },
@@ -81,12 +87,12 @@ export async function PUT(req: NextRequest) {
           userId: admin.id,
           actorRole: admin.role,
           action: "HERO_STATS_UPDATED",
-          metadata: JSON.stringify({ community, raised, potentialUsers, communityDriven, tokenPrice, hardCap, endDate }),
+          metadata: JSON.stringify({ community, raised, potentialUsers, communityDriven, tokenPrice, hardCap, endDate, presaleAllocatedTokens, presaleSoldManual }),
         },
       });
     });
 
-    return NextResponse.json({ success: true, message: "Hero statistics updated.", stats: { community, raised, potentialUsers, communityDriven, tokenPrice, hardCap, endDate: endDate.toISOString() } });
+    return NextResponse.json({ success: true, message: "Hero statistics updated.", stats: { community, raised, potentialUsers, communityDriven, tokenPrice, hardCap, endDate: endDate.toISOString(), presaleAllocatedTokens, presaleSoldManual } });
   } catch (error) {
     console.error(error);
     return NextResponse.json({ success: false, message: "Failed to update hero statistics." }, { status: 500 });
