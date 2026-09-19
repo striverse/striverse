@@ -3195,3 +3195,56 @@ html[data-mode="light"] .reference-search-popover input { color: #071226; }
     font-size: 2.35rem !important;
   }
 }
+
+
+/* MOBILE HERO — keep split layout responsive and prevent horizontal overflow. */
+@media (max-width: 900px) {
+  .reference-hero-live {
+    overflow-x: hidden !important;
+  }
+
+  .reference-hero-content {
+    width: 100% !important;
+    padding: 80px 20px 40px !important;
+  }
+
+  .reference-hero-copy,
+  .reference-hero-copy > h1,
+  .reference-hero-copy > .reference-lead,
+  .reference-hero-actions {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .reference-hero-copy > h1 {
+    font-size: clamp(40px, 11vw, 62px) !important;
+    line-height: .98 !important;
+  }
+
+  .reference-countdown {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 16px !important;
+  }
+
+  .reference-countdown .grid {
+    min-width: 0 !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .reference-hero-content {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .reference-hero-copy > h1 {
+    font-size: clamp(34px, 10.5vw, 48px) !important;
+  }
+
+  .reference-countdown {
+    padding: 12px !important;
+    border-radius: 14px !important;
+  }
+}
