@@ -195,7 +195,7 @@ export default function Hero() {
               </div>
             </div>
             <div className="relative mt-4 flex flex-col gap-3 sm:flex-row">
-              <Link href="/register" className="flex-1 rounded-xl bg-gradient-to-r from-cyan-400 to-violet-500 px-4 py-3 text-center text-xs font-black uppercase tracking-[.16em] text-slate-950 shadow-[0_0_28px_rgba(34,211,238,.18)] transition-transform hover:scale-[1.01]">Buy STV Now ↗</Link>
+              <Link href="/register" className="flex-1 rounded-xl bg-gradient-to-r from-cyan-400 to-violet-500 px-4 py-3 text-center text-xs font-black uppercase tracking-[.16em] text-sm text-slate-950 shadow-[0_0_28px_rgba(34,211,238,.18)] transition-transform hover:scale-[1.01]">Buy STV Now ↗</Link>
               <a href="#tokenomics" className="flex-1 rounded-xl border border-cyan-200/20 bg-white/[.04] px-4 py-3 text-center text-xs font-black uppercase tracking-[.16em] text-cyan-100 transition-colors hover:bg-white/[.08]">View Token Details</a>
             </div>
             {!authLoading && signedIn && (
