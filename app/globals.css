@@ -3319,3 +3319,21 @@ html[data-mode="light"] .reference-search-popover input { color: #071226; }
     margin-top: auto !important;
   }
 }
+
+
+/* PRESALE / CTA BOTTOM BASELINE */
+@media (min-width: 901px) {
+  .reference-countdown {
+    top: auto !important;
+    bottom: 58px !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .reference-countdown {
+    top: auto !important;
+    bottom: auto !important;
+  }
+}
