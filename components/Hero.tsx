@@ -123,7 +123,7 @@ export default function Hero() {
       <div className="reference-hero-content">
         <div className="reference-hero-copy">
           <p className="reference-kicker">THE NEXT DIMENSION OF DIGITAL OPPORTUNITY</p>
-          <h1>Secure, Smart,<br />and <span>Limitless! Join</span><br /><span>STRIVERSE</span></h1>
+          <h1>Secure, Smart,<br />and <span>Limitless!</span><br /><span>Join</span><br /><span>STRIVERSE</span></h1>
           <p className="reference-lead">Explore a next-generation ecosystem built around STV,<br className="desktop-break" />with investing, staking, vesting, airdrops, and a connected<br className="desktop-break" />community — all in one place.</p>
           <div className="reference-hero-actions"><a href="#invest" className="reference-video-cta"><span className="reference-play"><PlayCircle size={18} strokeWidth={1.7} /></span>Watch Video</a></div>
 
