@@ -2512,10 +2512,10 @@ html[data-mode="light"] .reference-wallet {
 .reference-planet {
   position: absolute;
   z-index: 4;
-  width: 590px;
-  height: 590px;
-  right: 10%;
-  top: 82px;
+  width: 285px;
+  height: 285px;
+  right: 25%;
+  top: 150px;
   border-radius: 50%;
 }
 
@@ -2566,10 +2566,10 @@ html[data-mode="light"] .reference-wallet {
 .reference-moon {
   position: absolute;
   z-index: 5;
-  width: 115px;
-  height: 115px;
-  right: 5.5%;
-  top: 92px;
+  width: 105px;
+  height: 105px;
+  right: 6.5%;
+  top: 175px;
   border-radius: 50%;
   background: radial-gradient(circle at 34% 28%, #425582, #0b1534 66%, #030713);
   box-shadow: 0 0 45px rgba(88, 145, 255, .25);
@@ -2704,9 +2704,10 @@ html[data-mode="light"] .reference-wallet {
   }
 
   .reference-planet {
-    right: -4%;
-    width: 540px;
-    height: 540px;
+    right: 14%;
+    top: 185px;
+    width: 235px;
+    height: 235px;
   }
 
   .reference-hero-copy {
@@ -2781,18 +2782,18 @@ html[data-mode="light"] .reference-wallet {
   }
 
   .reference-planet {
-    width: 440px;
-    height: 440px;
-    right: -120px;
-    top: 420px;
-    opacity: .82;
+    width: 220px;
+    height: 220px;
+    right: 8%;
+    top: 430px;
+    opacity: .78;
   }
 
   .reference-moon {
-    width: 82px;
-    height: 82px;
-    right: 8%;
-    top: 425px;
+    width: 72px;
+    height: 72px;
+    right: 15%;
+    top: 410px;
   }
 
   .reference-platform {
