@@ -96,7 +96,7 @@ export default function Home() {
         <div className="section-shell split-section">
           <div>
             <p className="section-kicker">ABOUT</p>
-            <h2>STRIVERSE is built for the next dimension.</h2>
+            <h2>STRIVERSE is built for enlightening the wealth.</h2>
           </div>
           <div className="section-copy">
             <p>STRIVERSE brings the core pieces of a digital asset ecosystem together in one focused experience.</p>
