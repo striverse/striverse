@@ -69,9 +69,16 @@ export default function Hero() {
     stvRemaining: 0,
     presaleAllocatedTokens: 2222222222,
   });
-  // Start the countdown immediately from the same future fallback used by the API.
-  // This prevents a blank/late countdown while the stats request is loading.
-  const [countdown, setCountdown] = useState<Countdown>(() => getCountdown(DEFAULT_PRESALE_END_DATE));
+  // Keep the initial render deterministic for SSR hydration. The countdown is
+  // started immediately after mount, so there is no hydration mismatch or
+  // visible API-loading delay.
+  const [countdown, setCountdown] = useState<Countdown>({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+    ended: false,
+  });
   const [presaleTheme, setPresaleTheme] = useState<(typeof PRESALE_THEMES)[number]>("white-blue");
   const [signedIn, setSignedIn] = useState(false);
   const [authLoading, setAuthLoading] = useState(true);
@@ -123,8 +130,8 @@ export default function Hero() {
   useEffect(() => {
     const endDate = stats.endDate ?? DEFAULT_PRESALE_END_DATE;
 
-    // Keep ticking immediately on mount; the API can replace the end date
-    // when its response arrives without causing a visible countdown delay.
+    // Calculate on the client only. This avoids Date.now() during SSR while
+    // still starting the timer immediately after hydration.
     setCountdown(getCountdown(endDate));
 
     const timer = window.setInterval(() => {
