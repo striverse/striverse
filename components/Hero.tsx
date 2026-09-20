@@ -28,6 +28,7 @@ interface Countdown {
 
 const formatNumber = (value: number) => new Intl.NumberFormat("en-US").format(value);
 const formatCompact = (value: number) => formatNumber(value);
+const DEFAULT_PRESALE_END_DATE = "2027-04-08T18:29:59.000Z";
 
 const getCountdown = (endDate: string | null): Countdown => {
   if (!endDate) return { days: 0, hours: 0, minutes: 0, seconds: 0, ended: true };
@@ -68,7 +69,9 @@ export default function Hero() {
     stvRemaining: 0,
     presaleAllocatedTokens: 2222222222,
   });
-  const [countdown, setCountdown] = useState<Countdown>(getCountdown(null));
+  // Start the countdown immediately from the same future fallback used by the API.
+  // This prevents a blank/late countdown while the stats request is loading.
+  const [countdown, setCountdown] = useState<Countdown>(() => getCountdown(DEFAULT_PRESALE_END_DATE));
   const [presaleTheme, setPresaleTheme] = useState<(typeof PRESALE_THEMES)[number]>("white-blue");
   const [signedIn, setSignedIn] = useState(false);
   const [authLoading, setAuthLoading] = useState(true);
@@ -118,10 +121,16 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
-    if (!stats.endDate) return;
+    const endDate = stats.endDate ?? DEFAULT_PRESALE_END_DATE;
+
+    // Keep ticking immediately on mount; the API can replace the end date
+    // when its response arrives without causing a visible countdown delay.
+    setCountdown(getCountdown(endDate));
+
     const timer = window.setInterval(() => {
-      setCountdown(getCountdown(stats.endDate));
+      setCountdown(getCountdown(endDate));
     }, 1000);
+
     return () => window.clearInterval(timer);
   }, [stats.endDate]);
 
