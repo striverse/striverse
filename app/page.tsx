@@ -157,19 +157,19 @@ export default function Home() {
             <div className="token-orbit token-orbit-inner" />
             <div className="token-core-halo" />
             <div className="token-core-coin">
-              <div className="token-core-mark">STRIVERSE</div>
+              <img src="/striverse-logo-only.png" alt="" className="token-core-logo-image" />
               <strong>STV</strong>
             </div>
             <div className="token-ref-node token-ref-top">
               <div className="token-ref-card"><b>25%</b><strong>Community &amp; Ecosystem</strong></div>
-              <div className="token-ref-orb">♟</div>
+              <div className="token-ref-orb">👥</div>
             </div>
             <div className="token-ref-node token-ref-left">
               <div className="token-ref-orb">▤</div>
               <div className="token-ref-card"><b>20%</b><strong>Development</strong></div>
             </div>
             <div className="token-ref-node token-ref-right">
-              <div className="token-ref-orb">⌁</div>
+              <div className="token-ref-orb">◖</div>
               <div className="token-ref-card"><b>15%</b><strong>Marketing</strong></div>
             </div>
             <div className="token-ref-node token-ref-bottom-left">
@@ -177,7 +177,7 @@ export default function Home() {
               <div className="token-ref-orb">♜</div>
             </div>
             <div className="token-ref-node token-ref-bottom-right">
-              <div className="token-ref-orb">◉</div>
+              <div className="token-ref-orb">◒</div>
               <div className="token-ref-card"><b>20%</b><strong>Liquidity</strong></div>
             </div>
           </div>
