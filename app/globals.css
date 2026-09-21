@@ -3639,3 +3639,33 @@ html[data-mode="light"] .reference-search-popover input { color: #071226; }
     0 14px 35px rgba(0,0,0,.34),
     0 0 32px rgba(150, 80, 255, .20) !important;
 }
+
+/* Tokenomics reference composition */
+.token-section{padding:0!important;min-height:calc(100vh - 102px);display:flex;align-items:stretch}
+.token-section::before{opacity:.72}
+.tokenomics-visual-shell{width:100%;max-width:none;margin:0}
+.token-visual{height:calc(100vh - 102px);min-height:680px;background:radial-gradient(circle at 50% 50%,rgba(28,137,255,.18),transparent 25%),radial-gradient(circle at 50% 42%,rgba(160,44,255,.11),transparent 40%),linear-gradient(180deg,#010717 0%,#02091b 56%,#010715 100%)}
+.token-space-planet-left{width:310px;height:310px;left:-150px;top:34px}
+.token-space-planet-right{width:150px;height:150px;right:34px;top:86px}
+.token-space-moon{left:14%;top:15%;width:70px;height:70px}
+.token-city{bottom:0;height:190px;width:34%;opacity:.82}
+.token-horizon-glow{bottom:8%;height:220px}
+.token-platform{bottom:2.5%;min-width:390px;padding:13px 38px}
+.token-core-halo{top:55%;width:330px;height:330px}
+.token-core-coin{top:55%;width:270px;height:270px}
+.token-core-logo-image{width:68px;height:68px;object-fit:contain;display:block;margin:0 auto 5px;filter:drop-shadow(0 0 14px rgba(73,221,255,.55))}
+.token-core-coin strong{font-size:62px}
+.token-ref-card{min-width:260px;padding:17px 25px}
+.token-ref-card b{font-size:32px}
+.token-ref-card strong{font-size:16px}
+.token-ref-orb{width:90px;height:90px;flex-basis:90px;font-size:32px}
+.token-ref-top{top:4%;left:50%}
+.token-ref-left{left:12%;top:34%}
+.token-ref-right{right:12%;top:34%}
+.token-ref-bottom-left{left:15%;bottom:9%}
+.token-ref-bottom-right{right:14%;bottom:9%}
+.token-orbit-outer{width:960px;height:455px}
+.token-orbit-mid{width:730px;height:350px}
+.token-orbit-inner{width:535px;height:255px}
+@media(max-width:1050px){.token-section{min-height:calc(100vh - 90px)}.token-visual{height:calc(100vh - 90px);min-height:620px}.token-ref-left{left:5%}.token-ref-right{right:5%}.token-ref-bottom-left{left:5%}.token-ref-bottom-right{right:5%}}
+@media(max-width:650px){.token-section{min-height:760px}.token-visual{height:760px;min-height:760px}.token-space-planet-left{width:190px;height:190px;left:-110px}.token-space-planet-right{width:95px;height:95px;right:-10px}.token-city{height:125px}.token-core-coin{width:175px;height:175px}.token-core-logo-image{width:45px;height:45px}.token-core-coin strong{font-size:43px}.token-ref-card{min-width:132px;padding:9px 11px}.token-ref-card b{font-size:19px}.token-ref-card strong{font-size:9px}.token-ref-orb{width:52px;height:52px;flex-basis:52px;font-size:18px}.token-ref-left{left:1%;top:28%}.token-ref-right{right:1%;top:40%}.token-ref-bottom-left{left:1%;bottom:13%}.token-ref-bottom-right{right:1%;bottom:4%}.token-platform{min-width:260px;padding:9px 16px;font-size:9px}}
