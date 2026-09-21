@@ -142,20 +142,28 @@ export default function Home() {
         <div className="section-shell">
           <p className="section-kicker">TOKENOMICS</p>
           <div className="section-heading-row"><h2>STV <span>tokenomics.</span></h2><p>A clean overview of the categories that can power the STRIVERSE ecosystem.</p></div>
-          <div className="token-layout token-command-center">
-            <div className="token-core-panel">
-              <div className="token-core-grid" />
-              <div className="token-core-orbit token-core-orbit-a" />
-              <div className="token-core-orbit token-core-orbit-b" />
-              <div className="token-core">
-                <span className="token-core-live">STV / ECOSYSTEM</span>
-                <strong>STV</strong>
-                <small>STRIVERSE TOKEN</small>
+          <div className="token-galaxy">
+            <div className="token-galaxy-stage">
+              <div className="token-stars" />
+              <div className="token-nebula token-nebula-a" />
+              <div className="token-nebula token-nebula-b" />
+              <div className="token-orbit-line token-orbit-line-a" />
+              <div className="token-orbit-line token-orbit-line-b" />
+              <div className="token-orbit-line token-orbit-line-c" />
+              <div className="token-sun">
+                <span>STV</span>
+                <small>CORE TOKEN</small>
               </div>
-              <div className="token-core-meta"><span>UTILITY</span><b>CONNECTED</b></div>
-              <div className="token-core-meta token-core-meta-right"><span>NETWORK</span><b>STRIVERSE</b></div>
+              {distribution.map(([title, desc], i) => (
+                <div className={\`token-planet token-planet-\${i + 1}\`} key={title}>
+                  <div className="token-planet-glow" />
+                  <b>0{i + 1}</b>
+                  <strong>{title}</strong>
+                  <small>{desc}</small>
+                </div>
+              ))}
             </div>
-            <div className="distribution-list">
+          </div>           <div className="distribution-list">
               {distribution.map(([title, desc], i) => (
                 <div className="distribution-row" key={title}>
                   <span>0{i + 1}</span>
