@@ -3744,3 +3744,38 @@ radial-gradient(circle at 53% 9%,#fff 0 1px,transparent 2px)}
 .token-reference-platform i{font-style:normal;color:#a65dff;padding:0 10px}
 @media(max-width:1100px){.token-reference-card{min-width:220px}.token-reference-development{left:3%}.token-reference-marketing{right:3%}.token-reference-treasury{left:4%}.token-reference-liquidity{right:4%}.token-reference-core{width:290px;height:290px}}
 @media(max-width:650px){.token-reference-stage{height:820px;min-height:820px}.token-reference-core{width:185px;height:185px;top:54%}.token-reference-coin img{width:48px;height:48px}.token-reference-coin span{font-size:44px}.token-reference-orb{width:54px;height:54px;flex-basis:54px;font-size:19px}.token-reference-card{min-width:125px;padding:9px 11px}.token-reference-card b{font-size:19px}.token-reference-card strong{font-size:9px}.token-reference-community{top:4%}.token-reference-development{left:0;top:29%}.token-reference-marketing{right:0;top:41%}.token-reference-treasury{left:0;bottom:14%}.token-reference-liquidity{right:0;bottom:5%}.token-reference-platform{min-width:270px;padding:9px 16px;font-size:9px}}
+
+/* Final reference-scale correction */
+.token-section{padding-top:0!important;margin-top:0!important}
+.tokenomics-visual-shell{height:100%;padding-top:0!important}
+.token-reference-stage{height:calc(100vh - 100px)!important;min-height:0!important}
+.token-reference-core{width:276px!important;height:276px!important;top:57%!important}
+.token-reference-coin img{width:70px!important;height:70px!important}
+.token-reference-coin span{font-size:58px!important}
+.token-reference-card{min-width:250px!important;padding:15px 21px!important}
+.token-reference-card b{font-size:31px!important}
+.token-reference-card strong{font-size:15px!important}
+.token-reference-orb{width:82px!important;height:82px!important;flex-basis:82px!important;font-size:29px!important}
+.token-reference-community{top:3%!important}
+.token-reference-development{left:7%!important;top:30%!important}
+.token-reference-marketing{right:7%!important;top:30%!important}
+.token-reference-treasury{left:10%!important;bottom:6%!important}
+.token-reference-liquidity{right:9%!important;bottom:6%!important}
+.token-reference-platform{display:none!important}
+@media(max-width:1100px){
+ .token-reference-core{width:250px!important;height:250px!important;top:56%!important}
+ .token-reference-card{min-width:205px!important}
+ .token-reference-development{left:2%!important}.token-reference-marketing{right:2%!important}
+ .token-reference-treasury{left:3%!important}.token-reference-liquidity{right:3%!important}
+}
+@media(max-width:650px){
+ .token-reference-stage{height:760px!important}
+ .token-reference-core{width:185px!important;height:185px!important;top:53%!important}
+ .token-reference-coin img{width:48px!important;height:48px!important}
+ .token-reference-coin span{font-size:43px!important}
+ .token-reference-card{min-width:125px!important;padding:9px 10px!important}
+ .token-reference-card b{font-size:19px!important}.token-reference-card strong{font-size:9px!important}
+ .token-reference-orb{width:52px!important;height:52px!important;flex-basis:52px!important;font-size:18px!important}
+ .token-reference-development{left:0!important;top:28%!important}.token-reference-marketing{right:0!important;top:39%!important}
+ .token-reference-treasury{left:0!important;bottom:13%!important}.token-reference-liquidity{right:0!important;bottom:4%!important}
+}
