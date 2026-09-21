@@ -148,18 +148,29 @@ export default function Home() {
             <div className="token-orbit token-orbit-inner" />
             <div className="token-core-halo" />
             <div className="token-core-coin">
-              <div className="token-core-logo">STRIVERSE</div>
+              <div className="token-core-mark">STRIVERSE</div>
               <strong>STV</strong>
             </div>
-            {distribution.map(([title, desc], i) => (
-              <div className={`token-node token-node-${i + 1}`} key={title}>
-                <div className="token-node-orb"><span>{["✦", "◈", "⌁", "◆", "◉"][i]}</span></div>
-                <div className="token-node-card">
-                  <b>{title}</b>
-                  <small>{desc}</small>
-                </div>
-              </div>
-            ))}
+            <div className="token-ref-node token-ref-top">
+              <div className="token-ref-card"><b>25%</b><strong>Community &amp; Ecosystem</strong></div>
+              <div className="token-ref-orb">♟</div>
+            </div>
+            <div className="token-ref-node token-ref-left">
+              <div className="token-ref-orb">▤</div>
+              <div className="token-ref-card"><b>20%</b><strong>Development</strong></div>
+            </div>
+            <div className="token-ref-node token-ref-right">
+              <div className="token-ref-orb">⌁</div>
+              <div className="token-ref-card"><b>15%</b><strong>Marketing</strong></div>
+            </div>
+            <div className="token-ref-node token-ref-bottom-left">
+              <div className="token-ref-card"><b>20%</b><strong>Treasury</strong></div>
+              <div className="token-ref-orb">♜</div>
+            </div>
+            <div className="token-ref-node token-ref-bottom-right">
+              <div className="token-ref-orb">◉</div>
+              <div className="token-ref-card"><b>20%</b><strong>Liquidity</strong></div>
+            </div>
           </div>
         </div>
       </section>
