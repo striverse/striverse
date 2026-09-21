@@ -150,28 +150,13 @@ export default function Home() {
               <div className="token-orbit-line token-orbit-line-a" />
               <div className="token-orbit-line token-orbit-line-b" />
               <div className="token-orbit-line token-orbit-line-c" />
-              <div className="token-sun">
-                <span>STV</span>
-                <small>CORE TOKEN</small>
-              </div>
+              <div className="token-sun"><span>STV</span><small>CORE TOKEN</small></div>
               {distribution.map(([title, desc], i) => (
                 <div className={`token-planet token-planet-${i + 1}`} key={title}>
                   <div className="token-planet-glow" />
                   <b>0{i + 1}</b>
                   <strong>{title}</strong>
                   <small>{desc}</small>
-                </div>
-              ))}
-            </div>
-          </div>           <div className="distribution-list">
-              {distribution.map(([title, desc], i) => (
-                <div className="distribution-row" key={title}>
-                  <span>0{i + 1}</span>
-                  <div className="distribution-row-main">
-                    <div className="distribution-icon">{["✦","◈","⌁","◉","◇"][i]}</div>
-                    <div><b>{title}</b><small>{desc}</small></div>
-                  </div>
-                  <em>↗</em>
                 </div>
               ))}
             </div>
