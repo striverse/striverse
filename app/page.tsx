@@ -142,9 +142,31 @@ export default function Home() {
         <div className="section-shell">
           <p className="section-kicker">TOKENOMICS</p>
           <div className="section-heading-row"><h2>STV <span>tokenomics.</span></h2><p>A clean overview of the categories that can power the STRIVERSE ecosystem.</p></div>
-          <div className="token-layout">
-            <div className="token-ring"><div><b>STV</b><span>ECOSYSTEM</span></div></div>
-            <div className="distribution-list">{distribution.map(([title, desc], i) => <div className="distribution-row" key={title}><span>0{i+1}</span><div><b>{title}</b><small>{desc}</small></div><em>—</em></div>)}</div>
+          <div className="token-layout token-command-center">
+            <div className="token-core-panel">
+              <div className="token-core-grid" />
+              <div className="token-core-orbit token-core-orbit-a" />
+              <div className="token-core-orbit token-core-orbit-b" />
+              <div className="token-core">
+                <span className="token-core-live">STV / ECOSYSTEM</span>
+                <strong>STV</strong>
+                <small>STRIVERSE TOKEN</small>
+              </div>
+              <div className="token-core-meta"><span>UTILITY</span><b>CONNECTED</b></div>
+              <div className="token-core-meta token-core-meta-right"><span>NETWORK</span><b>STRIVERSE</b></div>
+            </div>
+            <div className="distribution-list">
+              {distribution.map(([title, desc], i) => (
+                <div className="distribution-row" key={title}>
+                  <span>0{i + 1}</span>
+                  <div className="distribution-row-main">
+                    <div className="distribution-icon">{["✦","◈","⌁","◉","◇"][i]}</div>
+                    <div><b>{title}</b><small>{desc}</small></div>
+                  </div>
+                  <em>↗</em>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
