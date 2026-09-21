@@ -155,7 +155,7 @@ export default function Home() {
                 <small>CORE TOKEN</small>
               </div>
               {distribution.map(([title, desc], i) => (
-                <div className={\`token-planet token-planet-\${i + 1}\`} key={title}>
+                <div className={`token-planet token-planet-${i + 1}`} key={title}>
                   <div className="token-planet-glow" />
                   <b>0{i + 1}</b>
                   <strong>{title}</strong>
