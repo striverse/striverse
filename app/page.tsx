@@ -143,6 +143,15 @@ export default function Home() {
           <div className="token-visual">
             <div className="token-grid-floor" />
             <div className="token-visual-stars" />
+            <div className="token-space-planet token-space-planet-left" />
+            <div className="token-space-planet token-space-planet-right" />
+            <div className="token-space-moon" />
+            <div className="token-city token-city-left" />
+            <div className="token-city token-city-right" />
+            <div className="token-horizon-glow" />
+            <div className="token-platform">
+              <span>BUILD</span><i>•</i><span>EARN</span><i>•</i><span>BELONG</span>
+            </div>
             <div className="token-orbit token-orbit-outer" />
             <div className="token-orbit token-orbit-mid" />
             <div className="token-orbit token-orbit-inner" />
