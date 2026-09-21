@@ -139,33 +139,27 @@ export default function Home() {
       </section>
 
       <section id="tokenomics" className="site-section token-section">
-        <div className="section-shell">
-          <p className="section-kicker">TOKENOMICS</p>
-          <div className="section-heading-row">
-            <h2>STV <span>tokenomics.</span></h2>
-            <p>A clean overview of the categories that can power the STRIVERSE ecosystem.</p>
-          </div>
-          <div className="token-galaxy">
-            <div className="token-galaxy-stage">
-              <div className="token-stars" />
-              <div className="token-nebula token-nebula-a" />
-              <div className="token-nebula token-nebula-b" />
-              <div className="token-orbit-line token-orbit-line-a" />
-              <div className="token-orbit-line token-orbit-line-b" />
-              <div className="token-orbit-line token-orbit-line-c" />
-              <div className="token-sun">
-                <span>STV</span>
-                <small>CORE TOKEN</small>
-              </div>
-              {distribution.map(([title, desc], i) => (
-                <div className={`token-planet token-planet-${i + 1}`} key={title}>
-                  <div className="token-planet-glow" />
-                  <b>0{i + 1}</b>
-                  <strong>{title}</strong>
+        <div className="section-shell tokenomics-visual-shell">
+          <div className="token-visual">
+            <div className="token-grid-floor" />
+            <div className="token-visual-stars" />
+            <div className="token-orbit token-orbit-outer" />
+            <div className="token-orbit token-orbit-mid" />
+            <div className="token-orbit token-orbit-inner" />
+            <div className="token-core-halo" />
+            <div className="token-core-coin">
+              <div className="token-core-logo">STRIVERSE</div>
+              <strong>STV</strong>
+            </div>
+            {distribution.map(([title, desc], i) => (
+              <div className={`token-node token-node-${i + 1}`} key={title}>
+                <div className="token-node-orb"><span>{["✦", "◈", "⌁", "◆", "◉"][i]}</span></div>
+                <div className="token-node-card">
+                  <b>{title}</b>
                   <small>{desc}</small>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
