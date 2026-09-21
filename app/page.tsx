@@ -141,7 +141,10 @@ export default function Home() {
       <section id="tokenomics" className="site-section token-section">
         <div className="section-shell">
           <p className="section-kicker">TOKENOMICS</p>
-          <div className="section-heading-row"><h2>STV <span>tokenomics.</span></h2><p>A clean overview of the categories that can power the STRIVERSE ecosystem.</p></div>
+          <div className="section-heading-row">
+            <h2>STV <span>tokenomics.</span></h2>
+            <p>A clean overview of the categories that can power the STRIVERSE ecosystem.</p>
+          </div>
           <div className="token-galaxy">
             <div className="token-galaxy-stage">
               <div className="token-stars" />
@@ -150,7 +153,10 @@ export default function Home() {
               <div className="token-orbit-line token-orbit-line-a" />
               <div className="token-orbit-line token-orbit-line-b" />
               <div className="token-orbit-line token-orbit-line-c" />
-              <div className="token-sun"><span>STV</span><small>CORE TOKEN</small></div>
+              <div className="token-sun">
+                <span>STV</span>
+                <small>CORE TOKEN</small>
+              </div>
               {distribution.map(([title, desc], i) => (
                 <div className={`token-planet token-planet-${i + 1}`} key={title}>
                   <div className="token-planet-glow" />
