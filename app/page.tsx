@@ -140,46 +140,61 @@ export default function Home() {
 
       <section id="tokenomics" className="site-section token-section">
         <div className="section-shell tokenomics-visual-shell">
-          <div className="token-visual">
-            <div className="token-grid-floor" />
-            <div className="token-visual-stars" />
-            <div className="token-space-planet token-space-planet-left" />
-            <div className="token-space-planet token-space-planet-right" />
-            <div className="token-space-moon" />
-            <div className="token-city token-city-left" />
-            <div className="token-city token-city-right" />
-            <div className="token-horizon-glow" />
-            <div className="token-platform">
-              <span>BUILD</span><i>•</i><span>EARN</span><i>•</i><span>BELONG</span>
+          <div className="token-reference-stage">
+            <svg className="token-reference-bg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <defs>
+                <radialGradient id="spaceBg" cx="50%" cy="48%" r="75%"><stop offset="0%" stopColor="#142b75"/><stop offset="34%" stopColor="#07133d"/><stop offset="72%" stopColor="#02071d"/><stop offset="100%" stopColor="#01030d"/></radialGradient>
+                <radialGradient id="nebulaPink"><stop stopColor="#f43cff" stopOpacity=".75"/><stop offset=".45" stopColor="#7d2bff" stopOpacity=".24"/><stop offset="1" stopColor="#000" stopOpacity="0"/></radialGradient>
+                <radialGradient id="nebulaBlue"><stop stopColor="#22c9ff" stopOpacity=".55"/><stop offset=".45" stopColor="#235cff" stopOpacity=".2"/><stop offset="1" stopColor="#000" stopOpacity="0"/></radialGradient>
+                <radialGradient id="coinFace" cx="30%" cy="22%"><stop stopColor="#154f82"/><stop offset=".45" stopColor="#071d47"/><stop offset="1" stopColor="#010713"/></radialGradient>
+                <filter id="glowC"><feGaussianBlur stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                <filter id="glowS"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                <linearGradient id="floor" x1="0" x2="0" y1="0" y2="1"><stop stopColor="#071c45" stopOpacity=".1"/><stop offset="1" stopColor="#071b4d" stopOpacity=".75"/></linearGradient>
+              </defs>
+              <rect width="1600" height="900" fill="url(#spaceBg)"/>
+              <ellipse cx="1190" cy="170" rx="470" ry="210" fill="url(#nebulaPink)" opacity=".9"/>
+              <ellipse cx="390" cy="210" rx="500" ry="250" fill="url(#nebulaBlue)"/>
+              <g fill="#fff" opacity=".85">
+                <circle cx="85" cy="140" r="1.4"/><circle cx="160" cy="280" r="1.2"/><circle cx="255" cy="110" r="1"/><circle cx="355" cy="205" r="1.5"/><circle cx="480" cy="90" r="1.2"/><circle cx="590" cy="180" r="1"/><circle cx="700" cy="75" r="1.3"/><circle cx="910" cy="120" r="1.2"/><circle cx="1040" cy="75" r="1.5"/><circle cx="1160" cy="210" r="1"/><circle cx="1290" cy="105" r="1.3"/><circle cx="1420" cy="190" r="1.2"/><circle cx="1510" cy="95" r="1.5"/><circle cx="80" cy="500" r="1"/><circle cx="1450" cy="480" r="1.2"/>
+              </g>
+              <g filter="url(#glowS)" opacity=".9">
+                <circle cx="205" cy="180" r="4" fill="#63dfff"/><circle cx="320" cy="300" r="3" fill="#b76cff"/><circle cx="1110" cy="250" r="4" fill="#ff58d5"/><circle cx="1370" cy="330" r="3" fill="#63dfff"/>
+              </g>
+              <g opacity=".9">
+                <circle cx="-35" cy="350" r="205" fill="#08132e" stroke="#255ea2" strokeWidth="3"/>
+                <ellipse cx="-35" cy="350" rx="215" ry="48" fill="none" stroke="#48a8ff" strokeWidth="8" opacity=".45" transform="rotate(-18 -35 350)"/>
+                <circle cx="1470" cy="255" r="94" fill="#08152f" stroke="#2b7dca" strokeWidth="2"/>
+                <ellipse cx="1470" cy="255" rx="145" ry="31" fill="none" stroke="#5db9ff" strokeWidth="7" opacity=".75" transform="rotate(-20 1470 255)"/>
+                <circle cx="220" cy="205" r="39" fill="#0a1833" stroke="#3d6d9f" strokeWidth="2"/>
+              </g>
+              <g strokeLinecap="round">
+                <ellipse cx="800" cy="485" rx="545" ry="250" fill="none" stroke="#27dfff" strokeWidth="2" opacity=".8"/>
+                <ellipse cx="800" cy="485" rx="450" ry="205" fill="none" stroke="#a74cff" strokeWidth="2" opacity=".8" transform="rotate(18 800 485)"/>
+                <ellipse cx="800" cy="485" rx="345" ry="165" fill="none" stroke="#25e7ff" strokeWidth="2" opacity=".9" transform="rotate(-20 800 485)"/>
+                <ellipse cx="800" cy="485" rx="275" ry="132" fill="none" stroke="#6f5cff" strokeWidth="2" opacity=".8"/>
+              </g>
+              <g filter="url(#glowS)">
+                <circle cx="540" cy="440" r="7" fill="#ff9b3d"/><circle cx="1060" cy="440" r="7" fill="#ff51ce"/><circle cx="800" cy="250" r="7" fill="#31ecff"/><circle cx="590" cy="690" r="7" fill="#ff9b3d"/><circle cx="1010" cy="690" r="7" fill="#39ef91"/>
+              </g>
+              <path d="M0 735 L0 620 45 620 45 680 70 680 70 580 105 580 105 665 130 665 130 550 165 550 165 640 195 640 195 590 225 590 225 710 270 710 270 610 305 610 305 540 340 540 340 690 380 690 380 620 420 620 420 570 455 570 455 710 L1600 710 1600 735Z" fill="url(#floor)"/>
+              <path d="M0 735H1600M0 790H1600M0 845H1600" stroke="#1261bc" opacity=".55"/>
+              <path d="M70 735V900M190 735V900M330 735V900M500 735V900M650 735V900M800 735V900M950 735V900M1100 735V900M1270 735V900M1430 735V900M1550 735V900" stroke="#1261bc" opacity=".42"/>
+            </svg>
+
+            <div className="token-reference-core">
+              <div className="token-reference-coin">
+                <img src="/striverse-logo-only.png" alt="" />
+                <span>STV</span>
+              </div>
             </div>
-            <div className="token-orbit token-orbit-outer" />
-            <div className="token-orbit token-orbit-mid" />
-            <div className="token-orbit token-orbit-inner" />
-            <div className="token-core-halo" />
-            <div className="token-core-coin">
-              <img src="/striverse-logo-only.png" alt="" className="token-core-logo-image" />
-              <strong>STV</strong>
-            </div>
-            <div className="token-ref-node token-ref-top">
-              <div className="token-ref-card"><b>25%</b><strong>Community &amp; Ecosystem</strong></div>
-              <div className="token-ref-orb">👥</div>
-            </div>
-            <div className="token-ref-node token-ref-left">
-              <div className="token-ref-orb">▤</div>
-              <div className="token-ref-card"><b>20%</b><strong>Development</strong></div>
-            </div>
-            <div className="token-ref-node token-ref-right">
-              <div className="token-ref-orb">◖</div>
-              <div className="token-ref-card"><b>15%</b><strong>Marketing</strong></div>
-            </div>
-            <div className="token-ref-node token-ref-bottom-left">
-              <div className="token-ref-card"><b>20%</b><strong>Treasury</strong></div>
-              <div className="token-ref-orb">♜</div>
-            </div>
-            <div className="token-ref-node token-ref-bottom-right">
-              <div className="token-ref-orb">◒</div>
-              <div className="token-ref-card"><b>20%</b><strong>Liquidity</strong></div>
-            </div>
+
+            <div className="token-reference-item token-reference-community"><div className="token-reference-orb">👥</div><div className="token-reference-card"><b>25%</b><strong>Community &amp; Ecosystem</strong></div></div>
+            <div className="token-reference-item token-reference-development"><div className="token-reference-orb">▤</div><div className="token-reference-card"><b>20%</b><strong>Development</strong></div></div>
+            <div className="token-reference-item token-reference-marketing"><div className="token-reference-card"><b>15%</b><strong>Marketing</strong></div><div className="token-reference-orb">📣</div></div>
+            <div className="token-reference-item token-reference-treasury"><div className="token-reference-card"><b>20%</b><strong>Treasury</strong></div><div className="token-reference-orb">♜</div></div>
+            <div className="token-reference-item token-reference-liquidity"><div className="token-reference-orb">🔥</div><div className="token-reference-card"><b>20%</b><strong>Liquidity</strong></div></div>
+
+            <div className="token-reference-platform">BUILD <i>•</i> EARN <i>•</i> BELONG</div>
           </div>
         </div>
       </section>
