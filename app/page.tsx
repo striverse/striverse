@@ -140,34 +140,61 @@ export default function Home() {
 
       <section id="tokenomics" className="site-section token-section">
         <div className="section-shell tokenomics-design2-shell">
-          <div className="token-design2">
-            <div className="token-design2-stars" />
-            <div className="token-design2-nebula token-design2-nebula-a" />
-            <div className="token-design2-nebula token-design2-nebula-b" />
-            <div className="token-design2-header">
+          <div className="token-design2-reference">
+            <div className="d2-blueprint" />
+            <header className="d2-heading">
               <span>STRIVERSE</span>
-              <strong>TOKENOMICS</strong>
+              <strong><i>TOKENOMICS</i></strong>
               <small>TOKEN DISTRIBUTION</small>
-            </div>
-            <div className="token-design2-orbit token-design2-orbit-outer" />
-            <div className="token-design2-orbit token-design2-orbit-inner" />
-            <div className="token-design2-ring">
-              <div className="token-design2-center">
+            </header>
+
+            <div className="d2-orbit d2-orbit-outer" />
+            <div className="d2-orbit d2-orbit-inner" />
+
+            <div className="d2-donut">
+              <div className="d2-donut-hole">
                 <img src="/striverse-logo-only.png" alt="" />
                 <strong>STV</strong>
               </div>
-              <div className="token-design2-segment segment-cyan" />
-              <div className="token-design2-segment segment-purple" />
-              <div className="token-design2-segment segment-pink" />
-              <div className="token-design2-segment segment-orange" />
-              <div className="token-design2-segment segment-green" />
             </div>
-            <div className="token-design2-card token-d2-community"><b>25%</b><strong>Community &amp; Ecosystem</strong><span>👥</span></div>
-            <div className="token-design2-card token-d2-development"><b>20%</b><strong>Development</strong><span>▤</span></div>
-            <div className="token-design2-card token-d2-marketing"><b>15%</b><strong>Marketing</strong><span>📣</span></div>
-            <div className="token-design2-card token-d2-treasury"><b>20%</b><strong>Treasury</strong><span>♜</span></div>
-            <div className="token-design2-card token-d2-liquidity"><b>20%</b><strong>Liquidity</strong><span>🔥</span></div>
-            <div className="token-design2-footer">BUILD <i>•</i> EARN <i>•</i> BELONG</div>
+
+            <div className="d2-card d2-card-community">
+              <div className="d2-icon d2-icon-cyan">
+                <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="15" r="6"/><circle cx="11" cy="20" r="5"/><circle cx="37" cy="20" r="5"/><path d="M13 37c0-7 4-11 11-11s11 4 11 11"/><path d="M2 36c0-6 3-9 9-9 3 0 5 1 7 3M46 36c0-6-3-9-9-9-3 0-5 1-7 3"/></svg>
+              </div>
+              <div><b>25%</b><strong>Community &amp; Ecosystem</strong></div>
+            </div>
+
+            <div className="d2-card d2-card-development">
+              <div className="d2-icon d2-icon-purple">
+                <svg viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="13" rx="14" ry="6"/><path d="M10 13v9c0 3 6 6 14 6s14-3 14-6v-9M10 22v9c0 3 6 6 14 6s14-3 14-6v-9"/><path d="M10 31v5c0 3 6 6 14 6s14-3 14-6v-5"/></svg>
+              </div>
+              <div><b>20%</b><strong>Development</strong></div>
+            </div>
+
+            <div className="d2-card d2-card-marketing">
+              <div className="d2-icon d2-icon-pink">
+                <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 27h8l20 10V11L15 21H7z"/><path d="M15 27l4 13h5l-3-13"/><path d="M40 18c4 4 4 8 0 12"/></svg>
+              </div>
+              <div><b>15%</b><strong>Marketing</strong></div>
+            </div>
+
+            <div className="d2-card d2-card-treasury">
+              <div className="d2-icon d2-icon-orange">
+                <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 20l18-10 18 10H6z"/><path d="M10 22v15M19 22v15M29 22v15M38 22v15M6 40h36"/></svg>
+              </div>
+              <div><b>20%</b><strong>Treasury</strong></div>
+            </div>
+
+            <div className="d2-card d2-card-liquidity">
+              <div className="d2-icon d2-icon-green">
+                <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6C19 15 12 20 12 29a12 12 0 0024 0c0-9-7-14-12-23z"/><path d="M24 22c-3 4-5 7-5 10a5 5 0 0010 0c0-3-2-6-5-10z"/></svg>
+              </div>
+              <div><b>20%</b><strong>Liquidity</strong></div>
+            </div>
+
+            <footer className="d2-footer">BUILD <i>•</i> EARN <i>•</i> BELONG</footer>
+            <span className="d2-label">DESIGN 2</span>
           </div>
         </div>
       </section>
