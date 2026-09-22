@@ -3842,3 +3842,8 @@ radial-gradient(circle at 81% 21%,rgba(157,65,255,.24) 0 1px,transparent 2px);
 .d2-label{position:absolute;z-index:15;left:10px;bottom:8px;font-size:14px;font-weight:900;color:#fff}
 @media(max-width:900px){.d2-donut{width:270px;height:270px}.d2-orbit-outer{width:610px}.d2-orbit-inner{width:450px}.d2-card-development{left:2%}.d2-card-marketing{right:2%}.d2-card-treasury{left:5%}.d2-card-liquidity{right:5%}}
 @media(max-width:650px){.token-design2-reference{height:760px;min-height:760px}.d2-heading strong{font-size:21px}.d2-heading small{font-size:6px}.d2-donut{width:205px;height:205px;padding:19px;top:54%}.d2-donut-hole img{width:40px;height:40px}.d2-donut-hole strong{font-size:34px}.d2-orbit-outer{width:410px;height:285px;top:54%}.d2-orbit-inner{width:320px;height:230px;top:54%}.d2-card{width:124px!important;min-height:48px;padding:6px 7px;gap:6px}.d2-icon{width:30px;height:30px;flex-basis:30px}.d2-icon svg{width:27px;height:27px}.d2-card b{font-size:17px}.d2-card strong{font-size:7px}.d2-card-community{top:17%}.d2-card-development{left:0;top:32%}.d2-card-marketing{right:0;top:42%}.d2-card-treasury{left:3%;bottom:14%}.d2-card-liquidity{right:3%;bottom:6%}.d2-footer{font-size:8px;bottom:2.5%}.d2-label{font-size:10px}}
+
+/* Tokenomics exported reference image */
+.tokenomics-reference-image-wrap{width:100%;max-width:1672px;margin:0 auto;padding:0;line-height:0;overflow:hidden;background:#01030d}
+.tokenomics-reference-image{display:block;width:100%;height:auto;min-height:760px;object-fit:cover;object-position:center top}
+@media(max-width:900px){.tokenomics-reference-image{min-height:0;height:auto;object-fit:contain}}
