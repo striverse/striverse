@@ -3847,3 +3847,8 @@ radial-gradient(circle at 81% 21%,rgba(157,65,255,.24) 0 1px,transparent 2px);
 .tokenomics-reference-image-wrap{width:100%;max-width:1672px;margin:0 auto;padding:0;line-height:0;overflow:hidden;background:#01030d}
 .tokenomics-reference-image{display:block;width:100%;height:auto;min-height:760px;object-fit:cover;object-position:center top}
 @media(max-width:900px){.tokenomics-reference-image{min-height:0;height:auto;object-fit:contain}}
+
+/* Tokenomics image zoom-out */
+.tokenomics-reference-image{width:100%!important;height:auto!important;max-height:calc(100vh - 150px);object-fit:contain!important;object-position:center top!important;transform:scale(.88);transform-origin:center top}
+.tokenomics-reference-image-wrap{display:flex!important;justify-content:center!important;overflow:hidden!important}
+@media(max-width:900px){.tokenomics-reference-image{transform:scale(.94);max-height:none}}
