@@ -142,7 +142,7 @@ export default function Home() {
         <div className="tokenomics-reference-image-wrap">
           <img
             className="tokenomics-reference-image"
-            src="/tokenomics-reference-40.webp"
+            src="/a_futuristic_neon_sci_fi_infographics_poster_ui.png"
             alt="STRIVERSE tokenomics — Strive, Grow, Belong"
           />
         </div>
