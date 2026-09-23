@@ -3939,3 +3939,43 @@ radial-gradient(circle at 81% 21%,rgba(157,65,255,.24) 0 1px,transparent 2px);
   object-fit:initial!important;
   object-position:center top!important;
 }
+
+/* Tokenomics: fit the complete artwork into one viewport with no crop or side bars */
+#tokenomics.token-section{
+  width:100vw!important;
+  height:100svh!important;
+  min-height:0!important;
+  max-height:100svh!important;
+  overflow:hidden!important;
+  padding:0!important;
+  margin:0!important;
+}
+#tokenomics .tokenomics-reference-image-wrap{
+  width:100vw!important;
+  height:100svh!important;
+  min-height:0!important;
+  max-height:100svh!important;
+  margin:0!important;
+  padding:0!important;
+  overflow:hidden!important;
+  display:block!important;
+}
+#tokenomics .tokenomics-reference-image{
+  display:block!important;
+  width:100vw!important;
+  height:100svh!important;
+  max-width:none!important;
+  max-height:none!important;
+  min-height:0!important;
+  object-fit:fill!important;
+  object-position:center center!important;
+}
+@media(max-width:900px){
+  #tokenomics.token-section,
+  #tokenomics .tokenomics-reference-image-wrap,
+  #tokenomics .tokenomics-reference-image{
+    width:100vw!important;
+    height:100svh!important;
+    max-height:100svh!important;
+  }
+}
