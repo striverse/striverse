@@ -3878,3 +3878,42 @@ radial-gradient(circle at 81% 21%,rgba(157,65,255,.24) 0 1px,transparent 2px);
 #tokenomics .section-shell.tokenomics-reference-image-wrap{width:100vw!important;max-width:none!important;margin:0!important;padding:0!important;position:relative;left:auto;transform:none}
 #tokenomics .tokenomics-reference-image-wrap{height:auto!important;min-height:0!important;aspect-ratio:auto!important;display:block!important;overflow:hidden!important}
 #tokenomics .tokenomics-reference-image{display:block!important;width:100vw!important;height:auto!important;max-width:none!important;max-height:none!important;min-height:0!important;object-fit:initial!important;object-position:center top!important}
+
+/* Tokenomics: show the entire 16:9 artwork, with cinematic edge fill */
+#tokenomics .tokenomics-reference-image-wrap{
+  position:relative!important;
+  width:100vw!important;
+  height:100vh!important;
+  min-height:0!important;
+  overflow:hidden!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  background:#01030d!important;
+}
+#tokenomics .tokenomics-reference-image-wrap::before{
+  content:""!important;
+  position:absolute!important;
+  inset:-5%!important;
+  background-image:url("/a_wide_ultra_detailed_futuristic_sci_fi_ui_infogr.png")!important;
+  background-size:cover!important;
+  background-position:center!important;
+  filter:blur(18px) brightness(.42)!important;
+  transform:scale(1.06)!important;
+  opacity:.9!important;
+}
+#tokenomics .tokenomics-reference-image{
+  position:relative!important;
+  z-index:1!important;
+  width:auto!important;
+  height:100%!important;
+  max-width:100%!important;
+  max-height:100%!important;
+  min-height:0!important;
+  object-fit:contain!important;
+  object-position:center!important;
+}
+@media(max-width:900px){
+  #tokenomics .tokenomics-reference-image-wrap{height:100svh!important}
+  #tokenomics .tokenomics-reference-image{width:100%!important;height:auto!important;max-height:100%!important}
+}
