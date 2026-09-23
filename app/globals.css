@@ -3861,3 +3861,9 @@ radial-gradient(circle at 81% 21%,rgba(157,65,255,.24) 0 1px,transparent 2px);
 /* Auto-hide navbar while scrolling down */
 .reference-nav-wrap{transition:transform .32s ease,opacity .25s ease;will-change:transform}
 .reference-nav-wrap.nav-hidden{transform:translateY(calc(-100% - 18px));opacity:0;pointer-events:none}
+
+/* Tokenomics: fit the complete artwork inside the visible viewport */
+.token-section{min-height:100vh!important;height:100vh!important;padding:0!important}
+.tokenomics-reference-image-wrap{width:100%!important;height:100vh!important;min-height:0!important;aspect-ratio:auto!important;display:flex!important;align-items:center!important;justify-content:center!important;overflow:hidden!important;background:#01030d!important}
+.tokenomics-reference-image{width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;min-height:0!important;object-fit:contain!important;object-position:center center!important;transform:none!important}
+@media(max-width:900px){.tokenomics-reference-image-wrap{height:100vh!important}.tokenomics-reference-image{width:100%!important;height:100%!important;object-fit:contain!important}}
