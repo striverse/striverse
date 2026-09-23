@@ -26,6 +26,7 @@ export default function Navbar() {
 
   useEffect(() => {
     let lastY = window.scrollY;
+    setNavHidden(lastY > 12);
     const handleScroll = () => {
       const currentY = window.scrollY;
       if (currentY <= 12) {
