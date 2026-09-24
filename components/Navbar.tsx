@@ -68,6 +68,16 @@ export default function Navbar() {
     };
   }, []);
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (!element) return;
+    setNavHidden(true);
+    const top = element.getBoundingClientRect().top + window.scrollY;
+    window.history.replaceState(null, "", id === "home" ? "/" : `#${id}`);
+    window.scrollTo({ top, behavior: "smooth" });
+    setMoreOpen(false);
+  };
+
   const appHref = loading ? "/login" : user ? (user.role === "ADMIN" ? "/admin/dashboard" : "/dashboard") : "/login";
 
   return (
@@ -81,8 +91,8 @@ export default function Navbar() {
         </Link>
 
         <div className="reference-nav-links" style={{ flex: "0 0 auto", minWidth: 0, gap: 12, whiteSpace: "nowrap" }}>
-          <a className={activeSection === "home" ? "is-active" : ""} href="#" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>Home</a><a className={activeSection === "features" ? "is-active" : ""} href="#features">Features</a><a className={activeSection === "about" ? "is-active" : ""} href="#about">About</a><a className={activeSection === "tokenomics" ? "is-active" : ""} href="#tokenomics">Tokenomics</a><a className={activeSection === "community" ? "is-active" : ""} href="#community">Community</a>
-          <div className={`reference-more ${["staking","vesting","airdrop","roadmap"].includes(activeSection) ? "is-active" : ""}`}><button type="button" onClick={() => setMoreOpen((value) => !value)} aria-expanded={moreOpen}>More <span className={`reference-chevron ${moreOpen ? "open" : ""}`} /></button>{moreOpen && <div className="reference-more-menu"><a className={activeSection === "staking" ? "is-active" : ""} href="#staking" onClick={() => setMoreOpen(false)}>Staking</a><a className={activeSection === "vesting" ? "is-active" : ""} href="#vesting" onClick={() => setMoreOpen(false)}>Vesting</a><a className={activeSection === "airdrop" ? "is-active" : ""} href="#airdrop" onClick={() => setMoreOpen(false)}>Airdrop</a><a className={activeSection === "roadmap" ? "is-active" : ""} href="#roadmap" onClick={() => setMoreOpen(false)}>Roadmap</a></div>}</div>
+          <a className={activeSection === "home" ? "is-active" : ""} href="/" onClick={(event) => { event.preventDefault(); scrollToSection("home"); }}>Home</a><a className={activeSection === "features" ? "is-active" : ""} href="#features" onClick={(event) => { event.preventDefault(); scrollToSection("features"); }}>Features</a><a className={activeSection === "about" ? "is-active" : ""} href="#about" onClick={(event) => { event.preventDefault(); scrollToSection("about"); }}>About</a><a className={activeSection === "tokenomics" ? "is-active" : ""} href="#tokenomics" onClick={(event) => { event.preventDefault(); scrollToSection("tokenomics"); }}>Tokenomics</a><a className={activeSection === "community" ? "is-active" : ""} href="#community" onClick={(event) => { event.preventDefault(); scrollToSection("community"); }}>Community</a>
+          <div className={`reference-more ${["staking","vesting","airdrop","roadmap"].includes(activeSection) ? "is-active" : ""}`}><button type="button" onClick={() => setMoreOpen((value) => !value)} aria-expanded={moreOpen}>More <span className={`reference-chevron ${moreOpen ? "open" : ""}`} /></button>{moreOpen && <div className="reference-more-menu"><a className={activeSection === "staking" ? "is-active" : ""} href="#staking" onClick={(event) => { event.preventDefault(); scrollToSection("staking"); }}>Staking</a><a className={activeSection === "vesting" ? "is-active" : ""} href="#vesting" onClick={(event) => { event.preventDefault(); scrollToSection("vesting"); }}>Vesting</a><a className={activeSection === "airdrop" ? "is-active" : ""} href="#airdrop" onClick={(event) => { event.preventDefault(); scrollToSection("airdrop"); }}>Airdrop</a><a className={activeSection === "roadmap" ? "is-active" : ""} href="#roadmap" onClick={(event) => { event.preventDefault(); scrollToSection("roadmap"); }}>Roadmap</a></div>}</div>
         </div>
 
         <div className="reference-nav-actions" style={{ marginLeft: "auto", gap: 8, flex: "0 0 auto", minWidth: 0 }}>
