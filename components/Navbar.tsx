@@ -55,7 +55,7 @@ export default function Navbar() {
         </Link>
 
         <div className="reference-nav-links" style={{ flex: "0 0 auto", minWidth: 0, gap: 12, whiteSpace: "nowrap" }}>
-          <a className="is-active" href="#">Home</a><a href="#about">About</a><a href="#features">Features</a><a href="#tokenomics">Tokenomics</a><a href="#community">Community</a>
+          <a className="is-active" href="#">Home</a><a href="#features">Features</a><a href="#about">About</a><a href="#tokenomics">Tokenomics</a><a href="#community">Community</a>
           <div className="reference-more"><button type="button" onClick={() => setMoreOpen((value) => !value)} aria-expanded={moreOpen}>More <span className={`reference-chevron ${moreOpen ? "open" : ""}`} /></button>{moreOpen && <div className="reference-more-menu"><a href="#staking" onClick={() => setMoreOpen(false)}>Staking</a><a href="#vesting" onClick={() => setMoreOpen(false)}>Vesting</a><a href="#airdrop" onClick={() => setMoreOpen(false)}>Airdrop</a><a href="#roadmap" onClick={() => setMoreOpen(false)}>Roadmap</a></div>}</div>
         </div>
 
