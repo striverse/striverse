@@ -3979,3 +3979,20 @@ radial-gradient(circle at 81% 21%,rgba(157,65,255,.24) 0 1px,transparent 2px);
     max-height:100svh!important;
   }
 }
+
+/* Features section: keep the full composition comfortably inside the viewport */
+#features.features-section{overflow:visible!important;padding:86px 0 96px!important}
+#features .section-heading-row{gap:56px}
+#features .section-heading-row h2{font-size:clamp(52px,5.7vw,82px)!important}
+#features .feature-grid{margin-top:48px!important}
+#features .feature-card{min-height:300px!important}
+@media(max-width:1050px){
+  #features.features-section{padding:76px 0 88px!important}
+  #features .feature-grid{margin-top:38px!important}
+}
+@media(max-width:650px){
+  #features.features-section{padding:70px 0 78px!important}
+  #features .section-heading-row h2{font-size:48px!important}
+  #features .feature-grid{margin-top:32px!important}
+  #features .feature-card{min-height:280px!important}
+}
