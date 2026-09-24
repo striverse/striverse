@@ -22,10 +22,11 @@ const distribution = [
 ];
 
 const roadmap = [
-  ["01", "Foundation", "Website, documentation and community foundation."],
-  ["02", "Ecosystem", "STV ecosystem experiences and product expansion."],
-  ["03", "Rewards", "Staking, vesting and community reward experiences."],
-  ["04", "Expansion", "Broader ecosystem integrations and community growth."],
+  ["01", "Genesis", "STRIVERSE launch, STV token launch, website, documentation and community foundation.", "◈"],
+  ["02", "Liquidity", "Presale completion, DEX liquidity, trading launch and transparent token distribution.", "◉"],
+  ["03", "Earn", "STV staking, vesting, rewards and community incentive programs.", "✦"],
+  ["04", "Govern", "Community governance, ecosystem proposals and treasury participation.", "⌁"],
+  ["05", "Scale", "CEX expansion, DeFi integrations, cross-chain growth, mobile experiences and strategic partnerships.", "↗"],
 ];
 
 function FeatureIcon({ type }: { type: string }) {
@@ -123,8 +124,8 @@ export default function Home() {
 <section id="roadmap" className="site-section roadmap-section">
         <div className="section-shell">
           <p className="section-kicker">ROADMAP</p>
-          <div className="section-heading-row"><h2>Build.<br /><span>Grow. Belong.</span></h2><p>A flexible roadmap that can evolve with the ecosystem and confirmed delivery milestones.</p></div>
-          <div className="roadmap-grid">{roadmap.map(([num, title, text]) => <article key={num} className="roadmap-card"><span>{num}</span><div className="roadmap-dot" /><h3>{title}</h3><p>{text}</p></article>)}</div>
+          <div className="section-heading-row"><h2>Strive.<br /><span>Grow. Belong.</span></h2><p>A crypto-native roadmap covering the STV launch, liquidity, rewards, governance and ecosystem expansion.</p></div>
+          <div className="roadmap-grid crypto-roadmap-grid">{roadmap.map(([num, title, text, icon], index) => <article key={num} className="roadmap-card crypto-roadmap-card"><div className="roadmap-phase"><span>{num}</span><i>{index === 0 ? "LIVE" : "PHASE " + num}</i></div><div className="roadmap-crypto-icon">{icon}</div><div className="roadmap-dot" /><h3>{title}</h3><p>{text}</p><div className="roadmap-line"><span /></div></article>)}</div>
         </div>
       </section>
 
