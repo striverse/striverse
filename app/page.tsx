@@ -114,8 +114,8 @@ export default function Home() {
         <div className="tokenomics-reference-image-wrap">
           <img
             className="tokenomics-reference-image"
-            src="/a_futuristic_neon_sci_fi_infographics_poster_ui.png"
-            alt="STRIVERSE tokenomics — Strive, Grow, Belong"
+            src="/a_sleek_futuristic_neon_cyberpunk_infographic_on.png"
+            alt="STRIVERSE tokenomics — 8,888,888,888 STV total supply — 25% presale"
           />
         </div>
       </section>
