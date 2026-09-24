@@ -108,6 +108,8 @@ export default function Home() {
         </div>
       </section>
 
+
+
 <section id="tokenomics" className="site-section token-section">
         <div className="tokenomics-reference-image-wrap">
           <img
@@ -115,6 +117,14 @@ export default function Home() {
             src="/a_futuristic_neon_sci_fi_infographics_poster_ui.png"
             alt="STRIVERSE tokenomics — Strive, Grow, Belong"
           />
+        </div>
+      </section>
+
+<section id="roadmap" className="site-section roadmap-section">
+        <div className="section-shell">
+          <p className="section-kicker">ROADMAP</p>
+          <div className="section-heading-row"><h2>Build.<br /><span>Grow. Belong.</span></h2><p>A flexible roadmap that can evolve with the ecosystem and confirmed delivery milestones.</p></div>
+          <div className="roadmap-grid">{roadmap.map(([num, title, text]) => <article key={num} className="roadmap-card"><span>{num}</span><div className="roadmap-dot" /><h3>{title}</h3><p>{text}</p></article>)}</div>
         </div>
       </section>
 
@@ -150,7 +160,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="more" className="site-section more-section">
+<section id="more" className="site-section more-section">
         <div className="section-shell">
           <p className="section-kicker">MORE</p>
           <h2>Airdrop.<br /><span>Roadmap. Community.</span></h2>
@@ -161,13 +171,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="roadmap" className="site-section roadmap-section">
-        <div className="section-shell">
-          <p className="section-kicker">ROADMAP</p>
-          <div className="section-heading-row"><h2>Build.<br /><span>Grow. Belong.</span></h2><p>A flexible roadmap that can evolve with the ecosystem and confirmed delivery milestones.</p></div>
-          <div className="roadmap-grid">{roadmap.map(([num, title, text]) => <article key={num} className="roadmap-card"><span>{num}</span><div className="roadmap-dot" /><h3>{title}</h3><p>{text}</p></article>)}</div>
-        </div>
-      </section>
+
 
       <section id="community" className="site-section community-section">
         <div className="community-shell">
