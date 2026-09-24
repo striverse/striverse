@@ -13,6 +13,7 @@ export default function Navbar() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [isLight, setIsLight] = useState(false);
   const [navHidden, setNavHidden] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("striverse-theme");
@@ -42,6 +43,31 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const sectionIds = ["features", "about", "tokenomics", "community", "staking", "vesting", "airdrop", "roadmap"];
+    const updateFromHash = () => {
+      const hash = window.location.hash.replace("#", "");
+      setActiveSection(hash || "home");
+    };
+    updateFromHash();
+
+    const observers = sectionIds.map((id) => {
+      const element = document.getElementById(id);
+      if (!element) return null;
+      const observer = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) setActiveSection(id);
+      }, { rootMargin: "-20% 0px -65% 0px", threshold: 0 });
+      observer.observe(element);
+      return observer;
+    });
+
+    window.addEventListener("hashchange", updateFromHash);
+    return () => {
+      observers.forEach((observer) => observer?.disconnect());
+      window.removeEventListener("hashchange", updateFromHash);
+    };
+  }, []);
+
   const appHref = loading ? "/login" : user ? (user.role === "ADMIN" ? "/admin/dashboard" : "/dashboard") : "/login";
 
   return (
@@ -55,8 +81,8 @@ export default function Navbar() {
         </Link>
 
         <div className="reference-nav-links" style={{ flex: "0 0 auto", minWidth: 0, gap: 12, whiteSpace: "nowrap" }}>
-          <a className="is-active" href="#">Home</a><a href="#features">Features</a><a href="#about">About</a><a href="#tokenomics">Tokenomics</a><a href="#community">Community</a>
-          <div className="reference-more"><button type="button" onClick={() => setMoreOpen((value) => !value)} aria-expanded={moreOpen}>More <span className={`reference-chevron ${moreOpen ? "open" : ""}`} /></button>{moreOpen && <div className="reference-more-menu"><a href="#staking" onClick={() => setMoreOpen(false)}>Staking</a><a href="#vesting" onClick={() => setMoreOpen(false)}>Vesting</a><a href="#airdrop" onClick={() => setMoreOpen(false)}>Airdrop</a><a href="#roadmap" onClick={() => setMoreOpen(false)}>Roadmap</a></div>}</div>
+          <a className={activeSection === "home" ? "is-active" : ""} href="#home">Home</a><a className={activeSection === "features" ? "is-active" : ""} href="#features">Features</a><a className={activeSection === "about" ? "is-active" : ""} href="#about">About</a><a className={activeSection === "tokenomics" ? "is-active" : ""} href="#tokenomics">Tokenomics</a><a className={activeSection === "community" ? "is-active" : ""} href="#community">Community</a>
+          <div className={`reference-more ${["staking","vesting","airdrop","roadmap"].includes(activeSection) ? "is-active" : ""}`}><button type="button" onClick={() => setMoreOpen((value) => !value)} aria-expanded={moreOpen}>More <span className={`reference-chevron ${moreOpen ? "open" : ""}`} /></button>{moreOpen && <div className="reference-more-menu"><a className={activeSection === "staking" ? "is-active" : ""} href="#staking" onClick={() => setMoreOpen(false)}>Staking</a><a className={activeSection === "vesting" ? "is-active" : ""} href="#vesting" onClick={() => setMoreOpen(false)}>Vesting</a><a className={activeSection === "airdrop" ? "is-active" : ""} href="#airdrop" onClick={() => setMoreOpen(false)}>Airdrop</a><a className={activeSection === "roadmap" ? "is-active" : ""} href="#roadmap" onClick={() => setMoreOpen(false)}>Roadmap</a></div>}</div>
         </div>
 
         <div className="reference-nav-actions" style={{ marginLeft: "auto", gap: 8, flex: "0 0 auto", minWidth: 0 }}>
