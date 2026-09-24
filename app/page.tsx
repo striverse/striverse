@@ -92,7 +92,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="about" className="site-section about-section">
+      
+
+<section id="about" className="site-section about-section">
         <div className="section-shell split-section">
           <div>
             <p className="section-kicker">ABOUT</p>
@@ -106,7 +108,17 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="staking" className="site-section dark-panel-section">
+<section id="tokenomics" className="site-section token-section">
+        <div className="tokenomics-reference-image-wrap">
+          <img
+            className="tokenomics-reference-image"
+            src="/a_futuristic_neon_sci_fi_infographics_poster_ui.png"
+            alt="STRIVERSE tokenomics — Strive, Grow, Belong"
+          />
+        </div>
+      </section>
+
+<section id="staking" className="site-section dark-panel-section">
         <div className="section-shell split-section panel-split">
           <div>
             <p className="section-kicker">STAKING</p>
@@ -122,7 +134,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="vesting" className="site-section vesting-section">
+<section id="vesting" className="site-section vesting-section">
         <div className="section-shell split-section">
           <div>
             <p className="section-kicker">VESTING</p>
@@ -135,16 +147,6 @@ export default function Home() {
             <p>Vesting schedules can be surfaced here once the project's final allocation and unlock rules are connected.</p>
             <Link href="/app" className="text-link">View vesting ↗</Link>
           </div>
-        </div>
-      </section>
-
-      <section id="tokenomics" className="site-section token-section">
-        <div className="tokenomics-reference-image-wrap">
-          <img
-            className="tokenomics-reference-image"
-            src="/a_futuristic_neon_sci_fi_infographics_poster_ui.png"
-            alt="STRIVERSE tokenomics — Strive, Grow, Belong"
-          />
         </div>
       </section>
 
