@@ -4022,3 +4022,51 @@ radial-gradient(circle at 81% 21%,rgba(157,65,255,.24) 0 1px,transparent 2px);
   #features .feature-grid{margin-top:28px!important}
   #features .feature-card{min-height:245px!important}
 }
+
+/* Crypto-native Roadmap */
+.roadmap-section{
+  background:
+    radial-gradient(circle at 50% 18%,rgba(43,198,255,.10),transparent 34%),
+    radial-gradient(circle at 85% 70%,rgba(161,65,255,.08),transparent 30%),
+    #020918!important;
+}
+.crypto-roadmap-grid{grid-template-columns:repeat(5,1fr)!important;gap:12px!important;position:relative}
+.crypto-roadmap-grid::before{
+  content:"";position:absolute;left:8%;right:8%;top:92px;height:1px;
+  background:linear-gradient(90deg,transparent,#36dff1,#8b5cff,#ff3ccf,#31e7a4,transparent);
+  opacity:.65;box-shadow:0 0 16px rgba(50,210,255,.35);
+}
+.crypto-roadmap-card{
+  min-height:360px!important;padding:24px!important;border-radius:22px!important;
+  background:linear-gradient(180deg,rgba(10,24,52,.88),rgba(3,10,25,.96))!important;
+  border:1px solid rgba(79,214,255,.20)!important;overflow:hidden;
+}
+.crypto-roadmap-card:nth-child(2){border-color:rgba(139,92,255,.30)!important}
+.crypto-roadmap-card:nth-child(3){border-color:rgba(255,61,196,.30)!important}
+.crypto-roadmap-card:nth-child(4){border-color:rgba(255,174,54,.28)!important}
+.crypto-roadmap-card:nth-child(5){border-color:rgba(49,231,164,.28)!important}
+.roadmap-phase{display:flex;align-items:center;justify-content:space-between;position:relative;z-index:2}
+.roadmap-phase span{color:#55dff0!important;font-weight:900;letter-spacing:.18em}
+.roadmap-phase i{font-style:normal;font-size:9px;letter-spacing:.16em;color:#7890b2;border:1px solid rgba(120,144,178,.22);padding:5px 7px;border-radius:999px}
+.roadmap-crypto-icon{
+  width:62px;height:62px;margin:32px 0 22px;border-radius:18px;display:grid;place-items:center;
+  font-size:28px;color:#58e8ff;background:radial-gradient(circle,rgba(62,220,255,.22),rgba(9,18,40,.7));
+  border:1px solid rgba(82,220,255,.35);box-shadow:0 0 26px rgba(45,206,255,.16);
+}
+.crypto-roadmap-card:nth-child(2) .roadmap-crypto-icon{color:#a878ff;border-color:rgba(168,120,255,.4)}
+.crypto-roadmap-card:nth-child(3) .roadmap-crypto-icon{color:#ff58ca;border-color:rgba(255,88,202,.4)}
+.crypto-roadmap-card:nth-child(4) .roadmap-crypto-icon{color:#ffbd4a;border-color:rgba(255,189,74,.4)}
+.crypto-roadmap-card:nth-child(5) .roadmap-crypto-icon{color:#36e8a0;border-color:rgba(54,232,160,.4)}
+.crypto-roadmap-card h3{margin-top:0!important;font-size:25px!important}
+.crypto-roadmap-card p{font-size:13px;line-height:1.6;margin-top:12px}
+.crypto-roadmap-card .roadmap-dot{top:86px;right:25px;width:7px;height:7px}
+.roadmap-line{position:absolute;left:24px;right:24px;bottom:22px;height:2px;background:rgba(92,123,164,.15);overflow:hidden}
+.roadmap-line span{display:block;width:42%;height:100%;background:linear-gradient(90deg,#39def1,#8d5cff);box-shadow:0 0 10px #39def1}
+.crypto-roadmap-card:nth-child(1) .roadmap-line span{width:100%}
+.crypto-roadmap-card:nth-child(2) .roadmap-line span{width:78%}
+.crypto-roadmap-card:nth-child(3) .roadmap-line span{width:58%}
+.crypto-roadmap-card:nth-child(4) .roadmap-line span{width:38%}
+.crypto-roadmap-card:nth-child(5) .roadmap-line span{width:20%}
+.crypto-roadmap-card:hover{transform:translateY(-8px);box-shadow:0 20px 55px rgba(31,171,255,.13)}
+@media(max-width:1050px){.crypto-roadmap-grid{grid-template-columns:repeat(2,1fr)!important}.crypto-roadmap-grid::before{display:none}}
+@media(max-width:650px){.crypto-roadmap-grid{grid-template-columns:1fr!important}.crypto-roadmap-card{min-height:320px!important}}
