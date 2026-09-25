@@ -340,6 +340,48 @@ export default function Home() {
           .roadmap-card-footer{left:20px;right:20px}
         }
 
+
+        /* Final tokenomics viewport fit: keep the complete artwork visible below the fixed navbar */
+        #tokenomics.token-section{
+          width:100%!important;
+          max-width:none!important;
+          height:calc(100svh - 96px)!important;
+          min-height:calc(100svh - 96px)!important;
+          margin:0!important;
+          padding:0!important;
+          position:relative!important;
+          left:auto!important;
+          transform:none!important;
+          display:flex!important;
+          align-items:center!important;
+          justify-content:center!important;
+          overflow:hidden!important
+        }
+        #tokenomics .tokenomics-reference-image-wrap{
+          width:100%!important;
+          height:100%!important;
+          max-width:100%!important;
+          min-height:0!important;
+          max-height:100%!important;
+          margin:0!important;
+          padding:0!important;
+          display:flex!important;
+          align-items:center!important;
+          justify-content:center!important;
+          overflow:hidden!important
+        }
+        #tokenomics .tokenomics-reference-image{
+          display:block!important;
+          width:auto!important;
+          height:auto!important;
+          max-width:100%!important;
+          max-height:100%!important;
+          min-width:0!important;
+          min-height:0!important;
+          object-fit:contain!important;
+          object-position:center center!important
+        }
+
         .site-section{scroll-margin-top:108px}.reference-nav-wrap.nav-hidden{transform:none!important;opacity:1!important;pointer-events:auto!important}.community-fit .community-section{min-height:calc(100vh - 96px);height:calc(100vh - 96px);padding:72px 0 48px;display:flex;align-items:center;box-sizing:border-box}.community-fit .community-section h2{font-size:clamp(54px,6.5vw,88px);line-height:.9;margin:12px 0 0}.community-fit .community-section>div>p:not(.section-kicker){margin:22px auto 0;font-size:16px}.community-fit .community-actions{margin-top:26px}.token-section{scroll-margin-top:0;min-height:calc(100vh - 96px)!important;height:calc(100vh - 96px)!important;padding:0!important;display:flex!important;align-items:center!important;justify-content:center!important}.tokenomics-reference-image-wrap{width:100%!important;height:calc(100vh - 96px)!important;min-height:0!important;aspect-ratio:auto!important;display:flex!important;align-items:center!important;justify-content:center!important;overflow:hidden!important}.tokenomics-reference-image{width:auto!important;height:auto!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;object-position:center center!important}.roadmap-section{position:relative;isolation:isolate;overflow:visible;min-height:calc(100vh - 84px);padding:28px 0 34px!important;background:radial-gradient(circle at 50% 8%,rgba(50,224,255,.13),transparent 30%),radial-gradient(circle at 8% 58%,rgba(107,76,255,.10),transparent 28%),radial-gradient(circle at 92% 78%,rgba(255,67,198,.08),transparent 28%),#020918!important}
         .roadmap-section::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(92,210,240,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(92,210,240,.045) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(to bottom,transparent,black 18%,black 82%,transparent);z-index:-1}
         .roadmap-section .section-heading-row{gap:24px!important;align-items:end}.roadmap-section .section-heading-row h2{font-size:clamp(58px,6vw,82px)!important;line-height:.88!important}.roadmap-section .section-heading-row>p{font-size:15px!important;line-height:1.55!important}.roadmap-grid.crypto-roadmap-grid{grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:12px!important;margin-top:30px!important}
