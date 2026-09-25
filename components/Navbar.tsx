@@ -86,6 +86,9 @@ export default function Navbar() {
     window.dispatchEvent(new Event("striverse-section-change"));
 
     // Scroll so the section starts below the fixed navbar instead of hiding its top.
+    // Keep the navbar visible while navigating so the offset does not turn into
+    // an empty gap after the smooth scroll finishes.
+    setNavHidden(false);
     requestAnimationFrame(() => {
       const nav = document.querySelector<HTMLElement>(".reference-nav-wrap");
       const navHeight = nav?.getBoundingClientRect().height ?? 0;
@@ -94,7 +97,7 @@ export default function Navbar() {
         element.getBoundingClientRect().top + window.scrollY - navHeight - 16
       );
       window.scrollTo({ top, behavior: "smooth" });
-      setNavHidden(false);
+      window.setTimeout(() => setNavHidden(false), 850);
     });
   };
 
