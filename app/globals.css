@@ -1796,9 +1796,9 @@ html[data-theme="orange"] .crystal-flash {
 
 /* ===== STRIVERSE FULL PUBLIC WEBSITE SECTIONS ===== */
 .site-section{position:relative;overflow:hidden;border-top:1px solid rgba(90,210,235,.09);background:#020b20;color:#f7f9ff;padding:120px 0}.about-section{
-  height:100svh!important;
-  min-height:100svh!important;
-  max-height:100svh!important;
+  height:100vh!important;
+  min-height:100vh!important;
+  max-height:none!important;
   box-sizing:border-box!important;
   padding:0!important;
   display:flex!important;
