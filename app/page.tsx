@@ -341,54 +341,47 @@ export default function Home() {
         }
 
 
-        /* Tokenomics: show the full-width artwork without horizontal cropping */
+        /* Tokenomics: fit the entire artwork inside the visible viewport */
         #tokenomics.token-section{
           width:100%!important;
           max-width:none!important;
-          height:auto!important;
+          height:calc(100svh - 96px)!important;
           min-height:calc(100svh - 96px)!important;
           margin:0!important;
           padding:0!important;
           position:relative!important;
           left:auto!important;
           transform:none!important;
-          display:block!important;
-          overflow:visible!important
+          display:flex!important;
+          align-items:center!important;
+          justify-content:center!important;
+          overflow:hidden!important;
+          background:#01030d!important
         }
         #tokenomics .tokenomics-reference-image-wrap{
           width:100%!important;
-          height:auto!important;
-          max-width:none!important;
+          height:100%!important;
+          max-width:100%!important;
+          max-height:100%!important;
           min-height:0!important;
-          max-height:none!important;
           margin:0!important;
           padding:0!important;
-          display:block!important;
-          overflow:visible!important
+          display:flex!important;
+          align-items:center!important;
+          justify-content:center!important;
+          overflow:hidden!important;
+          background:#01030d!important
         }
         #tokenomics .tokenomics-reference-image{
           display:block!important;
-          width:100%!important;
+          width:auto!important;
           height:auto!important;
-          max-width:none!important;
-          max-height:none!important;
+          max-width:100%!important;
+          max-height:100%!important;
           min-width:0!important;
           min-height:0!important;
-          object-fit:initial!important;
-          object-position:center top!important
-        }
-        @media (max-width:900px){
-          #tokenomics.token-section{
-            min-height:0!important;
-            height:auto!important
-          }
-          #tokenomics .tokenomics-reference-image-wrap{
-            height:auto!important
-          }
-          #tokenomics .tokenomics-reference-image{
-            width:100%!important;
-            height:auto!important
-          }
+          object-fit:contain!important;
+          object-position:center center!important
         }
 
         .site-section{scroll-margin-top:108px}.reference-nav-wrap.nav-hidden{transform:none!important;opacity:1!important;pointer-events:auto!important}.community-fit .community-section{min-height:calc(100vh - 96px);height:calc(100vh - 96px);padding:72px 0 48px;display:flex;align-items:center;box-sizing:border-box}.community-fit .community-section h2{font-size:clamp(54px,6.5vw,88px);line-height:.9;margin:12px 0 0}.community-fit .community-section>div>p:not(.section-kicker){margin:22px auto 0;font-size:16px}.community-fit .community-actions{margin-top:26px}.token-section{scroll-margin-top:0;min-height:calc(100vh - 96px)!important;height:calc(100vh - 96px)!important;padding:0!important;display:flex!important;align-items:center!important;justify-content:center!important}.tokenomics-reference-image-wrap{width:100%!important;height:calc(100vh - 96px)!important;min-height:0!important;aspect-ratio:auto!important;display:flex!important;align-items:center!important;justify-content:center!important;overflow:hidden!important}.tokenomics-reference-image{width:auto!important;height:auto!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;object-position:center center!important}.roadmap-section{position:relative;isolation:isolate;overflow:visible;min-height:calc(100vh - 84px);padding:28px 0 34px!important;background:radial-gradient(circle at 50% 8%,rgba(50,224,255,.13),transparent 30%),radial-gradient(circle at 8% 58%,rgba(107,76,255,.10),transparent 28%),radial-gradient(circle at 92% 78%,rgba(255,67,198,.08),transparent 28%),#020918!important}
