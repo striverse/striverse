@@ -60,71 +60,77 @@ function FeatureIcon({ type }: { type: string }) {
   useEffect(() => {
     const ids = ["features", "about", "tokenomics", "roadmap", "staking", "vesting", "more", "community"];
     let locked = false;
+    let unlockTimer: number | undefined;
 
-    const getTargets = () => ids
+    const getSections = () => ids
       .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => Boolean(el));
+      .filter((section): section is HTMLElement => Boolean(section));
 
-    const snapToSection = (direction: 1 | -1) => {
+    const moveOneSection = (direction: 1 | -1) => {
       if (locked) return;
-      const sections = getTargets();
+
+      const sections = getSections();
       if (!sections.length) return;
 
-      const current = window.scrollY;
-      const nav = document.querySelector<HTMLElement>(".reference-nav-wrap");
-      const offset = nav?.getBoundingClientRect().height ?? 0;
-      const tolerance = 24;
+      const scrollY = window.scrollY;
+      const navHeight = document.querySelector<HTMLElement>(".reference-nav-wrap")?.offsetHeight ?? 0;
+      const currentLine = scrollY + navHeight + 24;
 
-      let index = sections.findIndex((section) => {
-        const top = section.getBoundingClientRect().top + current - offset;
-        const bottom = top + section.offsetHeight;
-        return current >= top - tolerance && current < bottom - tolerance;
-      });
+      let target: HTMLElement | undefined;
 
-      if (index < 0) {
-        index = sections.reduce((closest, section, i) => {
-          const top = Math.abs(section.getBoundingClientRect().top + current - current);
-          const closestTop = Math.abs(sections[closest].getBoundingClientRect().top);
-          return top < closestTop ? i : closest;
-        }, 0);
+      if (direction > 0) {
+        // Pick the first section whose top is below the current viewport position.
+        target = sections.find((section) => {
+          const top = section.getBoundingClientRect().top + scrollY;
+          return top > currentLine;
+        });
+      } else {
+        // Pick the nearest section above the current position.
+        const previous = sections.filter((section) => {
+          const top = section.getBoundingClientRect().top + scrollY;
+          return top < scrollY - 24;
+        });
+        target = previous[previous.length - 1];
       }
 
-      const nextIndex = Math.max(0, Math.min(sections.length - 1, index + direction));
-      if (nextIndex === index) return;
+      if (!target) return;
 
-      const target = sections[nextIndex];
-      const top = Math.max(0, target.getBoundingClientRect().top + current - offset);
+      const targetTop = Math.max(
+        0,
+        target.getBoundingClientRect().top + scrollY - navHeight - 12
+      );
+
       locked = true;
-      window.scrollTo({ top, behavior: "smooth" });
-      window.setTimeout(() => { locked = false; }, 700);
+      window.clearTimeout(unlockTimer);
+      window.scrollTo({ top: targetTop, behavior: "smooth" });
+      unlockTimer = window.setTimeout(() => {
+        locked = false;
+      }, 900);
     };
 
     const onWheel = (event: WheelEvent) => {
-      if (Math.abs(event.deltaY) < 8 || locked) return;
+      if (Math.abs(event.deltaY) < 10 || locked) return;
 
-      const sections = getTargets();
-      const current = window.scrollY;
-      const direction = event.deltaY > 0 ? 1 : -1;
-      const nav = document.querySelector<HTMLElement>(".reference-nav-wrap");
-      const offset = nav?.getBoundingClientRect().height ?? 0;
+      const sections = getSections();
+      const firstTop = sections[0]?.getBoundingClientRect().top ?? 0;
+      const last = sections[sections.length - 1];
+      const lastBottom = last
+        ? last.getBoundingClientRect().bottom
+        : Number.POSITIVE_INFINITY;
 
-      const index = sections.findIndex((section) => {
-        const top = section.getBoundingClientRect().top + current - offset;
-        const bottom = top + section.offsetHeight;
-        return current >= top - 24 && current < bottom - 24;
-      });
-
-      const nextIndex = index < 0 ? -1 : index + direction;
-
-      // At the first/last section, keep native scrolling available.
-      if (index < 0 || nextIndex < 0 || nextIndex >= sections.length) return;
+      // Keep native scrolling available beyond the section range.
+      if (event.deltaY < 0 && window.scrollY <= Math.max(0, firstTop + window.scrollY - 24)) return;
+      if (event.deltaY > 0 && last && lastBottom <= window.innerHeight + 24) return;
 
       event.preventDefault();
-      snapToSection(direction);
+      moveOneSection(event.deltaY > 0 ? 1 : -1);
     };
 
     window.addEventListener("wheel", onWheel, { passive: false });
-    return () => window.removeEventListener("wheel", onWheel);
+    return () => {
+      window.removeEventListener("wheel", onWheel);
+      window.clearTimeout(unlockTimer);
+    };
   }, []);
 
   return (
@@ -143,7 +149,7 @@ export default function Home() {
       <Navbar />
       <style jsx global>{`
 
-        html{scroll-snap-type:y mandatory;scroll-padding-top:96px}body{scroll-snap-type:y mandatory}.site-section{scroll-snap-align:start;scroll-snap-stop:always;scroll-margin-top:96px}.token-section{scroll-margin-top:0;min-height:calc(100vh - 87px)!important;height:calc(100vh - 87px)!important;padding:0!important;display:flex!important;align-items:center!important;justify-content:center!important}.tokenomics-reference-image-wrap{width:100%!important;height:calc(100vh - 87px)!important;min-height:0!important;aspect-ratio:auto!important;display:flex!important;align-items:center!important;justify-content:center!important;overflow:hidden!important}.tokenomics-reference-image{width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;object-position:center center!important}.roadmap-section{position:relative;isolation:isolate;overflow:visible;min-height:calc(100vh - 84px);padding:28px 0 34px!important;background:radial-gradient(circle at 50% 8%,rgba(50,224,255,.13),transparent 30%),radial-gradient(circle at 8% 58%,rgba(107,76,255,.10),transparent 28%),radial-gradient(circle at 92% 78%,rgba(255,67,198,.08),transparent 28%),#020918!important}
+        .site-section{scroll-margin-top:96px}.token-section{scroll-margin-top:0;min-height:calc(100vh - 87px)!important;height:calc(100vh - 87px)!important;padding:0!important;display:flex!important;align-items:center!important;justify-content:center!important}.tokenomics-reference-image-wrap{width:100%!important;height:calc(100vh - 87px)!important;min-height:0!important;aspect-ratio:auto!important;display:flex!important;align-items:center!important;justify-content:center!important;overflow:hidden!important}.tokenomics-reference-image{width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;object-position:center center!important}.roadmap-section{position:relative;isolation:isolate;overflow:visible;min-height:calc(100vh - 84px);padding:28px 0 34px!important;background:radial-gradient(circle at 50% 8%,rgba(50,224,255,.13),transparent 30%),radial-gradient(circle at 8% 58%,rgba(107,76,255,.10),transparent 28%),radial-gradient(circle at 92% 78%,rgba(255,67,198,.08),transparent 28%),#020918!important}
         .roadmap-section::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(92,210,240,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(92,210,240,.045) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(to bottom,transparent,black 18%,black 82%,transparent);z-index:-1}
         .roadmap-section .section-heading-row{gap:24px!important;align-items:end}.roadmap-section .section-heading-row h2{font-size:clamp(58px,6vw,82px)!important;line-height:.88!important}.roadmap-section .section-heading-row>p{font-size:15px!important;line-height:1.55!important}.roadmap-grid.crypto-roadmap-grid{grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:12px!important;margin-top:30px!important}
         .crypto-roadmap-grid::before{left:6%;right:6%;top:64px;height:2px;background:linear-gradient(90deg,#36e4f6,#7d63ff,#ff4bc8,#ffb43f,#35e6a0);opacity:.5;box-shadow:0 0 24px rgba(54,228,246,.18)}
