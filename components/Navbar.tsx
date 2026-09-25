@@ -86,9 +86,9 @@ export default function Navbar() {
     window.history.replaceState(null, "", `#${id}`);
 
     requestAnimationFrame(() => {
-      // Anchor to the visible content wrapper, not the section's outer padding.
-      const target = element.querySelector<HTMLElement>(".section-shell, .tokenomics-reference-image-wrap") ?? element;
-      const top = target.getBoundingClientRect().top + window.scrollY;
+      // Always anchor to the selected section itself so its full top edge is shown.
+      // Do not anchor to an inner wrapper; section padding is part of the section.
+      const top = Math.max(0, element.getBoundingClientRect().top + window.scrollY);
       window.scrollTo({ top, behavior: "smooth" });
     });
   };
