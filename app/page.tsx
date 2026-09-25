@@ -68,39 +68,10 @@ function FeatureIcon({ type }: { type: string }) {
 }
 
 export default function Home() {
-  const [activeView, setActiveView] = useState("home");
-
-  useEffect(() => {
-    const syncView = () => setActiveView(window.location.hash.replace("#", "") || "home");
-    syncView();
-    window.addEventListener("hashchange", syncView);
-    window.addEventListener("striverse-section-change", syncView);
-    return () => {
-      window.removeEventListener("hashchange", syncView);
-      window.removeEventListener("striverse-section-change", syncView);
-    };
-  }, []);
-
   return (
-    <main className="reference-site" data-view={activeView}>
+    <main className="reference-site">
       <Navbar />
       <style jsx global>{`
-        .reference-site[data-view="features"] > .site-section:not(#features),
-        .reference-site[data-view="about"] > .site-section:not(#about),
-        .reference-site[data-view="tokenomics"] > .site-section:not(#tokenomics),
-        .reference-site[data-view="roadmap"] > .site-section:not(#roadmap),
-        .reference-site[data-view="staking"] > .site-section:not(#staking),
-        .reference-site[data-view="vesting"] > .site-section:not(#vesting),
-        .reference-site[data-view="community"] > .site-section:not(#community),
-        .reference-site[data-view="airdrop"] > .site-section:not(#more) {
-          display: none !important;
-        }
-        .reference-site[data-view="airdrop"] #more > .section-shell > .more-grid > .more-card:not(#airdrop) {
-          display: none !important;
-        }
-        .reference-site[data-view]:not([data-view="home"]) > .site-footer {
-          display: none !important;
-        }
 
         .roadmap-section{position:relative;isolation:isolate;overflow:visible;min-height:calc(100vh - 84px);padding:28px 0 34px!important;background:radial-gradient(circle at 50% 8%,rgba(50,224,255,.13),transparent 30%),radial-gradient(circle at 8% 58%,rgba(107,76,255,.10),transparent 28%),radial-gradient(circle at 92% 78%,rgba(255,67,198,.08),transparent 28%),#020918!important}
         .roadmap-section::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(92,210,240,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(92,210,240,.045) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(to bottom,transparent,black 18%,black 82%,transparent);z-index:-1}
