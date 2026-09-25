@@ -69,13 +69,25 @@ export default function Navbar() {
   }, []);
 
   const scrollToSection = (id: string) => {
+    if (id === "home") {
+      window.history.replaceState(null, "", "/");
+      setMoreOpen(false);
+      setNavHidden(false);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
     const element = document.getElementById(id);
     if (!element) return;
+
+    // Hide the fixed navbar first so the selected section can occupy the viewport.
     setNavHidden(true);
-    const top = element.getBoundingClientRect().top + window.scrollY;
-    window.history.replaceState(null, "", id === "home" ? "/" : `#${id}`);
-    window.scrollTo({ top, behavior: "smooth" });
     setMoreOpen(false);
+    window.history.replaceState(null, "", `#${id}`);
+
+    requestAnimationFrame(() => {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
   };
 
   const appHref = loading ? "/login" : user ? (user.role === "ADMIN" ? "/admin/dashboard" : "/dashboard") : "/login";
