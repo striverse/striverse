@@ -191,6 +191,155 @@ export default function Home() {
             scroll-margin-top:92px!important
           }
         }
+
+        .roadmap-section{
+          position:relative;
+          isolation:isolate;
+          overflow:hidden;
+          min-height:calc(100vh - 84px);
+          padding:54px 0 58px!important;
+          background:
+            radial-gradient(circle at 12% 15%,rgba(52,226,255,.12),transparent 25%),
+            radial-gradient(circle at 88% 20%,rgba(123,82,255,.12),transparent 26%),
+            linear-gradient(180deg,#030b1d 0%,#020714 100%)!important
+        }
+        .roadmap-section::before{
+          content:"";
+          position:absolute;inset:0;pointer-events:none;z-index:-1;
+          background-image:linear-gradient(rgba(100,205,235,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(100,205,235,.045) 1px,transparent 1px);
+          background-size:64px 64px;
+          mask-image:linear-gradient(to bottom,transparent,black 10%,black 90%,transparent)
+        }
+        .roadmap-shell{position:relative}
+        .roadmap-topline{
+          display:flex;align-items:flex-end;justify-content:space-between;gap:60px;
+          margin-bottom:54px
+        }
+        .roadmap-topline h2{
+          margin:10px 0 0!important;
+          font-size:clamp(48px,5.8vw,78px)!important;
+          line-height:.9!important;
+          letter-spacing:-.055em!important
+        }
+        .roadmap-topline h2 span{
+          color:#55dce9;
+          text-shadow:0 0 28px rgba(85,220,233,.16)
+        }
+        .roadmap-intro{
+          width:min(390px,34%);
+          margin:0 0 4px!important;
+          color:#8e9db5!important;
+          font-size:14px!important;
+          line-height:1.65!important
+        }
+        .roadmap-track{
+          position:relative;
+          display:grid;
+          grid-template-columns:repeat(5,minmax(0,1fr));
+          gap:14px;
+          padding-top:22px
+        }
+        .roadmap-track-line{
+          position:absolute;
+          left:4%;
+          right:4%;
+          top:8px;
+          height:1px;
+          background:linear-gradient(90deg,#35e4f2 0%,#6c72ff 25%,#f05bd8 50%,#ffb34f 75%,#42e6a5 100%);
+          opacity:.55;
+          box-shadow:0 0 22px rgba(73,220,240,.28)
+        }
+        .roadmap-track-line::before,.roadmap-track-line::after{
+          content:"";
+          position:absolute;top:50%;width:7px;height:7px;border-radius:50%;
+          background:#58e1ed;box-shadow:0 0 14px #58e1ed;
+          transform:translateY(-50%)
+        }
+        .roadmap-track-line::before{left:-1px}.roadmap-track-line::after{right:-1px;background:#43e5a6;box-shadow:0 0 14px #43e5a6}
+        .crypto-roadmap-card{
+          position:relative;
+          min-height:338px!important;
+          padding:22px!important;
+          border-radius:24px!important;
+          background:linear-gradient(180deg,rgba(11,29,58,.96),rgba(3,10,25,.98))!important;
+          border:1px solid rgba(96,205,231,.16)!important;
+          box-shadow:inset 0 1px 0 rgba(255,255,255,.045),0 22px 60px rgba(0,0,0,.22)!important;
+          overflow:hidden;
+          transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease
+        }
+        .crypto-roadmap-card::before{
+          content:"";position:absolute;inset:0;pointer-events:none;
+          background:linear-gradient(145deg,rgba(72,221,255,.08),transparent 38%,rgba(120,76,255,.05))
+        }
+        .crypto-roadmap-card::after{
+          content:"";position:absolute;right:-75px;bottom:-95px;width:220px;height:220px;border-radius:50%;
+          background:radial-gradient(circle,rgba(64,222,255,.12),transparent 68%);pointer-events:none
+        }
+        .roadmap-card-top{
+          position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between
+        }
+        .roadmap-index{
+          display:inline-flex;align-items:center;justify-content:center;
+          width:42px;height:28px;border-radius:9px;
+          background:#54e2ef;color:#061526;font-size:10px;font-weight:950;letter-spacing:.12em;
+          box-shadow:0 0 20px rgba(84,226,239,.2)
+        }
+        .roadmap-status{
+          padding:6px 9px;border:1px solid rgba(145,168,201,.16);border-radius:999px;
+          color:#7285a1;font-size:8px;letter-spacing:.14em;font-weight:800
+        }
+        .roadmap-node{
+          position:relative;z-index:2;
+          width:54px;height:54px;margin:24px 0 20px;
+          display:grid;place-items:center;border-radius:18px;
+          background:radial-gradient(circle at 35% 25%,rgba(70,226,255,.22),rgba(6,18,40,.88) 68%);
+          border:1px solid rgba(79,220,239,.36);
+          color:#5de4f1;font-size:25px;
+          box-shadow:0 0 30px rgba(61,214,240,.12),inset 0 0 22px rgba(70,225,245,.06)
+        }
+        .phase-02 .roadmap-node{color:#b28bff;border-color:rgba(178,139,255,.42);background:radial-gradient(circle at 35% 25%,rgba(143,100,255,.22),rgba(11,12,38,.9) 68%)}
+        .phase-03 .roadmap-node{color:#ff72d2;border-color:rgba(255,114,210,.42);background:radial-gradient(circle at 35% 25%,rgba(255,75,198,.2),rgba(33,11,39,.9) 68%)}
+        .phase-04 .roadmap-node{color:#ffc35f;border-color:rgba(255,195,95,.42);background:radial-gradient(circle at 35% 25%,rgba(255,172,54,.2),rgba(38,24,10,.9) 68%)}
+        .phase-05 .roadmap-node{color:#47e7aa;border-color:rgba(71,231,170,.42);background:radial-gradient(circle at 35% 25%,rgba(49,231,164,.2),rgba(8,34,28,.9) 68%)}
+        .roadmap-card-copy{position:relative;z-index:2}
+        .roadmap-phase-label{
+          margin:0 0 7px!important;color:#607691!important;font-size:9px!important;font-weight:800!important;letter-spacing:.18em!important
+        }
+        .roadmap-card-copy h3{
+          margin:0!important;font-size:27px!important;letter-spacing:-.035em!important
+        }
+        .roadmap-card-copy>p:last-child{
+          margin:13px 0 0!important;color:#91a2bb!important;font-size:12px!important;line-height:1.6!important
+        }
+        .roadmap-card-footer{
+          position:absolute;left:22px;right:22px;bottom:19px;
+          display:flex;align-items:center;gap:10px;color:#526781;font-size:8px;font-weight:900;letter-spacing:.17em
+        }
+        .roadmap-card-footer i{
+          height:1px;flex:1;background:rgba(112,137,169,.16);position:relative
+        }
+        .roadmap-card-footer i::after{
+          content:"";position:absolute;left:0;top:-1px;width:28%;height:3px;border-radius:4px;background:#55dce9;box-shadow:0 0 12px rgba(85,220,233,.4)
+        }
+        .phase-02{border-color:rgba(145,104,255,.28)!important}.phase-03{border-color:rgba(255,78,197,.28)!important}.phase-04{border-color:rgba(255,178,62,.28)!important}.phase-05{border-color:rgba(63,229,166,.28)!important}
+        .crypto-roadmap-card:hover{transform:translateY(-8px);border-color:rgba(85,224,240,.5)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 30px 80px rgba(23,185,245,.13)!important}
+        @media(max-width:1050px){
+          .roadmap-section{min-height:auto;padding:64px 0!important}
+          .roadmap-topline{align-items:flex-start;flex-direction:column;gap:22px}
+          .roadmap-intro{width:100%;max-width:620px}
+          .roadmap-track{grid-template-columns:repeat(2,minmax(0,1fr));padding-top:0}
+          .roadmap-track-line{display:none}
+          .crypto-roadmap-card{min-height:310px!important}
+        }
+        @media(max-width:650px){
+          .roadmap-section{padding:46px 0 52px!important}
+          .roadmap-topline h2{font-size:46px!important}
+          .roadmap-track{grid-template-columns:1fr;gap:12px}
+          .crypto-roadmap-card{min-height:280px!important;padding:20px!important}
+          .roadmap-node{margin:18px 0 16px}
+          .roadmap-card-footer{left:20px;right:20px}
+        }
+
         .site-section{scroll-margin-top:108px}.reference-nav-wrap.nav-hidden{transform:none!important;opacity:1!important;pointer-events:auto!important}.community-fit .community-section{min-height:calc(100vh - 96px);height:calc(100vh - 96px);padding:72px 0 48px;display:flex;align-items:center;box-sizing:border-box}.community-fit .community-section h2{font-size:clamp(54px,6.5vw,88px);line-height:.9;margin:12px 0 0}.community-fit .community-section>div>p:not(.section-kicker){margin:22px auto 0;font-size:16px}.community-fit .community-actions{margin-top:26px}.token-section{scroll-margin-top:0;min-height:calc(100vh - 96px)!important;height:calc(100vh - 96px)!important;padding:0!important;display:flex!important;align-items:center!important;justify-content:center!important}.tokenomics-reference-image-wrap{width:100%!important;height:calc(100vh - 96px)!important;min-height:0!important;aspect-ratio:auto!important;display:flex!important;align-items:center!important;justify-content:center!important;overflow:hidden!important}.tokenomics-reference-image{width:auto!important;height:auto!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;object-position:center center!important}.roadmap-section{position:relative;isolation:isolate;overflow:visible;min-height:calc(100vh - 84px);padding:28px 0 34px!important;background:radial-gradient(circle at 50% 8%,rgba(50,224,255,.13),transparent 30%),radial-gradient(circle at 8% 58%,rgba(107,76,255,.10),transparent 28%),radial-gradient(circle at 92% 78%,rgba(255,67,198,.08),transparent 28%),#020918!important}
         .roadmap-section::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(92,210,240,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(92,210,240,.045) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(to bottom,transparent,black 18%,black 82%,transparent);z-index:-1}
         .roadmap-section .section-heading-row{gap:24px!important;align-items:end}.roadmap-section .section-heading-row h2{font-size:clamp(58px,6vw,82px)!important;line-height:.88!important}.roadmap-section .section-heading-row>p{font-size:15px!important;line-height:1.55!important}.roadmap-grid.crypto-roadmap-grid{grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:12px!important;margin-top:30px!important}
@@ -262,10 +411,32 @@ export default function Home() {
       </section>
 
 <section id="roadmap" className="site-section roadmap-section">
-        <div className="section-shell">
-          <p className="section-kicker">ROADMAP</p>
-          <div className="section-heading-row"><h2>Strive.<br /><span>Grow. Belong.</span></h2><p>A crypto-native roadmap covering the STV launch, liquidity, rewards, governance and ecosystem expansion.</p></div>
-          <div className="roadmap-grid crypto-roadmap-grid">{roadmap.map(([num, title, text, icon], index) => <article key={num} className="roadmap-card crypto-roadmap-card"><div className="roadmap-phase"><span>{num}</span><i>{index === 0 ? "LIVE" : "PHASE " + num}</i></div><div className="roadmap-crypto-icon">{icon}</div><div className="roadmap-dot" /><h3>{title}</h3><p>{text}</p><div className="roadmap-line"><span /></div></article>)}</div>
+        <div className="section-shell roadmap-shell">
+          <div className="roadmap-topline">
+            <div>
+              <p className="section-kicker">ROADMAP / 2026 →</p>
+              <h2>Built in <span>phases.</span><br />Designed to scale.</h2>
+            </div>
+            <p className="roadmap-intro">A clear progression from launch and liquidity to rewards, governance and the wider STRIVERSE ecosystem.</p>
+          </div>
+          <div className="roadmap-track">
+            <div className="roadmap-track-line" />
+            {roadmap.map(([num, title, text, icon], index) => (
+              <article key={num} className={`roadmap-card crypto-roadmap-card roadmap-phase-card phase-${num}`}>
+                <div className="roadmap-card-top">
+                  <span className="roadmap-index">0{num === "01" ? "1" : num.slice(1)}</span>
+                  <span className="roadmap-status">{index === 0 ? "LIVE" : "UP NEXT"}</span>
+                </div>
+                <div className="roadmap-node"><span>{icon}</span></div>
+                <div className="roadmap-card-copy">
+                  <p className="roadmap-phase-label">PHASE {num}</p>
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+                </div>
+                <div className="roadmap-card-footer"><span>{index === 0 ? "NOW" : "PLANNED"}</span><i /></div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
