@@ -86,7 +86,10 @@ export default function Navbar() {
     window.history.replaceState(null, "", `#${id}`);
 
     requestAnimationFrame(() => {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
+      // Anchor to the visible content wrapper, not the section's outer padding.
+      const target = element.querySelector<HTMLElement>(".section-shell, .tokenomics-reference-image-wrap") ?? element;
+      const top = target.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ top, behavior: "smooth" });
     });
   };
 
