@@ -57,6 +57,58 @@ function FeatureIcon({ type }: { type: string }) {
       <path d="M27 12h10" stroke="#64e7f3" strokeWidth="3" strokeLinecap="round"/>
     </svg>
   );
+  useEffect(() => {
+    const ids = ["features", "about", "tokenomics", "roadmap", "staking", "vesting", "more", "community"];
+    let locked = false;
+
+    const getTargets = () => ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => Boolean(el));
+
+    const snapToSection = (direction: 1 | -1) => {
+      if (locked) return;
+      const sections = getTargets();
+      if (!sections.length) return;
+
+      const current = window.scrollY;
+      const nav = document.querySelector<HTMLElement>(".reference-nav-wrap");
+      const offset = nav?.getBoundingClientRect().height ?? 0;
+      const tolerance = 24;
+
+      let index = sections.findIndex((section) => {
+        const top = section.getBoundingClientRect().top + current - offset;
+        const bottom = top + section.offsetHeight;
+        return current >= top - tolerance && current < bottom - tolerance;
+      });
+
+      if (index < 0) {
+        index = sections.reduce((closest, section, i) => {
+          const top = Math.abs(section.getBoundingClientRect().top + current - current);
+          const closestTop = Math.abs(sections[closest].getBoundingClientRect().top);
+          return top < closestTop ? i : closest;
+        }, 0);
+      }
+
+      const nextIndex = Math.max(0, Math.min(sections.length - 1, index + direction));
+      if (nextIndex === index) return;
+
+      const target = sections[nextIndex];
+      const top = Math.max(0, target.getBoundingClientRect().top + current - offset);
+      locked = true;
+      window.scrollTo({ top, behavior: "smooth" });
+      window.setTimeout(() => { locked = false; }, 700);
+    };
+
+    const onWheel = (event: WheelEvent) => {
+      if (Math.abs(event.deltaY) < 8 || locked) return;
+      event.preventDefault();
+      snapToSection(event.deltaY > 0 ? 1 : -1);
+    };
+
+    window.addEventListener("wheel", onWheel, { passive: false });
+    return () => window.removeEventListener("wheel", onWheel);
+  }, []);
+
   return (
     <svg {...common}>
       <defs><linearGradient id="airdropLogo" x1="8" y1="56" x2="56" y2="8"><stop stopColor="#19dce9"/><stop offset="1" stopColor="#9b50ff"/></linearGradient></defs>
