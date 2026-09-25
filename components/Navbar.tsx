@@ -80,16 +80,19 @@ export default function Navbar() {
     const element = document.getElementById(id);
     if (!element) return;
 
-    // Hide the fixed navbar first so the selected section can occupy the viewport.
-    setNavHidden(true);
     setMoreOpen(false);
     window.history.replaceState(null, "", `#${id}`);
 
+    // Scroll so the section starts below the fixed navbar instead of hiding its top.
     requestAnimationFrame(() => {
-      // Always anchor to the selected section itself so its full top edge is shown.
-      // Do not anchor to an inner wrapper; section padding is part of the section.
-      const top = Math.max(0, element.getBoundingClientRect().top + window.scrollY);
+      const nav = document.querySelector<HTMLElement>(".reference-nav-wrap");
+      const navHeight = nav?.getBoundingClientRect().height ?? 0;
+      const top = Math.max(
+        0,
+        element.getBoundingClientRect().top + window.scrollY - navHeight - 16
+      );
       window.scrollTo({ top, behavior: "smooth" });
+      setNavHidden(false);
     });
   };
 
