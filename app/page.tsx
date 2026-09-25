@@ -62,68 +62,71 @@ function FeatureIcon({ type }: { type: string }) {
     let locked = false;
     let unlockTimer: number | undefined;
 
-    const getSections = () => ids
-      .map((id) => document.getElementById(id))
-      .filter((section): section is HTMLElement => Boolean(section));
+    const getTargets = () => {
+      const navHeight = document.querySelector<HTMLElement>(".reference-nav-wrap")?.offsetHeight ?? 0;
+      const offset = navHeight + 12;
+
+      return [
+        { id: "home", top: 0 },
+        ...ids
+          .map((id) => document.getElementById(id))
+          .filter((section): section is HTMLElement => Boolean(section))
+          .map((section) => ({
+            id: section.id,
+            top: Math.max(0, section.getBoundingClientRect().top + window.scrollY - offset),
+          })),
+      ];
+    };
 
     const moveOneSection = (direction: 1 | -1) => {
       if (locked) return;
 
-      const sections = getSections();
-      if (!sections.length) return;
+      const targets = getTargets();
+      if (!targets.length) return;
 
-      const scrollY = window.scrollY;
-      const navHeight = document.querySelector<HTMLElement>(".reference-nav-wrap")?.offsetHeight ?? 0;
-      const currentLine = scrollY + navHeight + 24;
-
-      let target: HTMLElement | undefined;
+      const currentY = window.scrollY;
+      let targetIndex = -1;
 
       if (direction > 0) {
-        // Pick the first section whose top is below the current viewport position.
-        target = sections.find((section) => {
-          const top = section.getBoundingClientRect().top + scrollY;
-          return top > currentLine;
-        });
+        targetIndex = targets.findIndex((target) => target.top > currentY + 40);
       } else {
-        // Pick the nearest section above the current position.
-        const previous = sections.filter((section) => {
-          const top = section.getBoundingClientRect().top + scrollY;
-          return top < scrollY - 24;
-        });
-        target = previous[previous.length - 1];
+        for (let index = targets.length - 1; index >= 0; index -= 1) {
+          if (targets[index].top < currentY - 40) {
+            targetIndex = index;
+            break;
+          }
+        }
       }
 
-      if (!target) return;
-
-      const targetTop = Math.max(
-        0,
-        target.getBoundingClientRect().top + scrollY - navHeight - 12
-      );
+      if (targetIndex < 0) return;
 
       locked = true;
       window.clearTimeout(unlockTimer);
-      window.scrollTo({ top: targetTop, behavior: "smooth" });
+      window.scrollTo({
+        top: targets[targetIndex].top,
+        behavior: "smooth",
+      });
+
       unlockTimer = window.setTimeout(() => {
         locked = false;
-      }, 900);
+      }, 750);
     };
 
     const onWheel = (event: WheelEvent) => {
       if (Math.abs(event.deltaY) < 10 || locked) return;
 
-      const sections = getSections();
-      const firstTop = sections[0]?.getBoundingClientRect().top ?? 0;
-      const last = sections[sections.length - 1];
-      const lastBottom = last
-        ? last.getBoundingClientRect().bottom
-        : Number.POSITIVE_INFINITY;
+      const direction = event.deltaY > 0 ? 1 : -1;
+      const targets = getTargets();
+      const currentY = window.scrollY;
 
-      // Keep native scrolling available beyond the section range.
-      if (event.deltaY < 0 && window.scrollY <= Math.max(0, firstTop + window.scrollY - 24)) return;
-      if (event.deltaY > 0 && last && lastBottom <= window.innerHeight + 24) return;
+      const hasTarget = direction > 0
+        ? targets.some((target) => target.top > currentY + 40)
+        : targets.some((target) => target.top < currentY - 40);
+
+      if (!hasTarget) return;
 
       event.preventDefault();
-      moveOneSection(event.deltaY > 0 ? 1 : -1);
+      moveOneSection(direction);
     };
 
     window.addEventListener("wheel", onWheel, { passive: false });
@@ -149,7 +152,7 @@ export default function Home() {
       <Navbar />
       <style jsx global>{`
 
-        .site-section{scroll-margin-top:96px}.reference-nav-wrap.nav-hidden{transform:none!important;opacity:1!important;pointer-events:auto!important}.community-fit .community-section{min-height:calc(100vh - 96px);height:calc(100vh - 96px);padding:72px 0 48px;display:flex;align-items:center;box-sizing:border-box}.community-fit .community-section h2{font-size:clamp(54px,6.5vw,88px);line-height:.9;margin:12px 0 0}.community-fit .community-section>div>p:not(.section-kicker){margin:22px auto 0;font-size:16px}.community-fit .community-actions{margin-top:26px}.token-section{scroll-margin-top:0;min-height:calc(100vh - 96px)!important;height:calc(100vh - 96px)!important;padding:0!important;display:flex!important;align-items:center!important;justify-content:center!important}.tokenomics-reference-image-wrap{width:100%!important;height:calc(100vh - 96px)!important;min-height:0!important;aspect-ratio:auto!important;display:flex!important;align-items:center!important;justify-content:center!important;overflow:hidden!important}.tokenomics-reference-image{width:auto!important;height:auto!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;object-position:center center!important}.roadmap-section{position:relative;isolation:isolate;overflow:visible;min-height:calc(100vh - 84px);padding:28px 0 34px!important;background:radial-gradient(circle at 50% 8%,rgba(50,224,255,.13),transparent 30%),radial-gradient(circle at 8% 58%,rgba(107,76,255,.10),transparent 28%),radial-gradient(circle at 92% 78%,rgba(255,67,198,.08),transparent 28%),#020918!important}
+        .site-section{scroll-margin-top:108px}.reference-nav-wrap.nav-hidden{transform:none!important;opacity:1!important;pointer-events:auto!important}.community-fit .community-section{min-height:calc(100vh - 96px);height:calc(100vh - 96px);padding:72px 0 48px;display:flex;align-items:center;box-sizing:border-box}.community-fit .community-section h2{font-size:clamp(54px,6.5vw,88px);line-height:.9;margin:12px 0 0}.community-fit .community-section>div>p:not(.section-kicker){margin:22px auto 0;font-size:16px}.community-fit .community-actions{margin-top:26px}.token-section{scroll-margin-top:0;min-height:calc(100vh - 96px)!important;height:calc(100vh - 96px)!important;padding:0!important;display:flex!important;align-items:center!important;justify-content:center!important}.tokenomics-reference-image-wrap{width:100%!important;height:calc(100vh - 96px)!important;min-height:0!important;aspect-ratio:auto!important;display:flex!important;align-items:center!important;justify-content:center!important;overflow:hidden!important}.tokenomics-reference-image{width:auto!important;height:auto!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;object-position:center center!important}.roadmap-section{position:relative;isolation:isolate;overflow:visible;min-height:calc(100vh - 84px);padding:28px 0 34px!important;background:radial-gradient(circle at 50% 8%,rgba(50,224,255,.13),transparent 30%),radial-gradient(circle at 8% 58%,rgba(107,76,255,.10),transparent 28%),radial-gradient(circle at 92% 78%,rgba(255,67,198,.08),transparent 28%),#020918!important}
         .roadmap-section::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(92,210,240,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(92,210,240,.045) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(to bottom,transparent,black 18%,black 82%,transparent);z-index:-1}
         .roadmap-section .section-heading-row{gap:24px!important;align-items:end}.roadmap-section .section-heading-row h2{font-size:clamp(58px,6vw,82px)!important;line-height:.88!important}.roadmap-section .section-heading-row>p{font-size:15px!important;line-height:1.55!important}.roadmap-grid.crypto-roadmap-grid{grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:12px!important;margin-top:30px!important}
         .crypto-roadmap-grid::before{left:6%;right:6%;top:64px;height:2px;background:linear-gradient(90deg,#36e4f6,#7d63ff,#ff4bc8,#ffb43f,#35e6a0);opacity:.5;box-shadow:0 0 24px rgba(54,228,246,.18)}
