@@ -71,6 +71,7 @@ export default function Navbar() {
   const scrollToSection = (id: string) => {
     if (id === "home") {
       window.history.replaceState(null, "", "/");
+      window.dispatchEvent(new Event("striverse-section-change"));
       setMoreOpen(false);
       setNavHidden(false);
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -82,6 +83,7 @@ export default function Navbar() {
 
     setMoreOpen(false);
     window.history.replaceState(null, "", `#${id}`);
+    window.dispatchEvent(new Event("striverse-section-change"));
 
     // Scroll so the section starts below the fixed navbar instead of hiding its top.
     requestAnimationFrame(() => {
