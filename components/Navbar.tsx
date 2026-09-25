@@ -12,7 +12,6 @@ export default function Navbar() {
   const [moreOpen, setMoreOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [isLight, setIsLight] = useState(false);
-  const [navHidden, setNavHidden] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
@@ -23,24 +22,6 @@ export default function Navbar() {
     fetch("/api/user/me", { credentials: "include", cache: "no-store" })
       .then(async (res) => (res.ok ? (await res.json()).user : null))
       .then(setUser).catch(() => setUser(null)).finally(() => setLoading(false));
-  }, []);
-
-  useEffect(() => {
-    let lastY = window.scrollY;
-    setNavHidden(lastY > 12);
-    const handleScroll = () => {
-      const currentY = window.scrollY;
-      if (currentY <= 12) {
-        setNavHidden(false);
-      } else if (currentY > lastY + 4) {
-        setNavHidden(true);
-      } else if (currentY < lastY - 4) {
-        setNavHidden(false);
-      }
-      lastY = currentY;
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
@@ -71,8 +52,8 @@ export default function Navbar() {
   const scrollToSection = (id: string) => {
     if (id === "home") {
       window.history.replaceState(null, "", "/");
+      window.dispatchEvent(new Event("striverse-section-change"));
       setMoreOpen(false);
-      setNavHidden(false);
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
@@ -80,15 +61,18 @@ export default function Navbar() {
     const element = document.getElementById(id);
     if (!element) return;
 
-    // Hide the fixed navbar first so the selected section can occupy the viewport.
-    setNavHidden(true);
     setMoreOpen(false);
     window.history.replaceState(null, "", `#${id}`);
+    window.dispatchEvent(new Event("striverse-section-change"));
 
+    // Scroll so the section starts below the fixed navbar instead of hiding its top.
     requestAnimationFrame(() => {
-      // Always anchor to the selected section itself so its full top edge is shown.
-      // Do not anchor to an inner wrapper; section padding is part of the section.
-      const top = Math.max(0, element.getBoundingClientRect().top + window.scrollY);
+      const nav = document.querySelector<HTMLElement>(".reference-nav-wrap");
+      const navHeight = nav?.getBoundingClientRect().height ?? 0;
+      const top = Math.max(
+        0,
+        element.getBoundingClientRect().top + window.scrollY - navHeight - 16
+      );
       window.scrollTo({ top, behavior: "smooth" });
     });
   };
@@ -96,7 +80,7 @@ export default function Navbar() {
   const appHref = loading ? "/login" : user ? (user.role === "ADMIN" ? "/admin/dashboard" : "/dashboard") : "/login";
 
   return (
-    <header className={`reference-nav-wrap ${navHidden ? "nav-hidden" : ""}`}>
+    <header className="reference-nav-wrap">
       <nav className="reference-nav" aria-label="Primary navigation">
         <Link href="/" className="reference-brand" aria-label="STRIVERSE home">
           <span className="reference-brand-icon-clip" style={{ width: 62, height: 46, overflow: "hidden", display: "block", flex: "0 0 62px", position: "relative", background: "transparent" }}>
