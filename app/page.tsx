@@ -101,8 +101,26 @@ function FeatureIcon({ type }: { type: string }) {
 
     const onWheel = (event: WheelEvent) => {
       if (Math.abs(event.deltaY) < 8 || locked) return;
+
+      const sections = getTargets();
+      const current = window.scrollY;
+      const direction = event.deltaY > 0 ? 1 : -1;
+      const nav = document.querySelector<HTMLElement>(".reference-nav-wrap");
+      const offset = nav?.getBoundingClientRect().height ?? 0;
+
+      const index = sections.findIndex((section) => {
+        const top = section.getBoundingClientRect().top + current - offset;
+        const bottom = top + section.offsetHeight;
+        return current >= top - 24 && current < bottom - 24;
+      });
+
+      const nextIndex = index < 0 ? -1 : index + direction;
+
+      // At the first/last section, keep native scrolling available.
+      if (index < 0 || nextIndex < 0 || nextIndex >= sections.length) return;
+
       event.preventDefault();
-      snapToSection(event.deltaY > 0 ? 1 : -1);
+      snapToSection(direction);
     };
 
     window.addEventListener("wheel", onWheel, { passive: false });
