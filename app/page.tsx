@@ -399,7 +399,7 @@ export default function Home() {
         .crypto-roadmap-card:hover{transform:translateY(-10px);border-color:rgba(85,228,243,.55)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 28px 70px rgba(22,171,255,.16)}
         @media(max-width:1050px){.roadmap-section{min-height:auto;padding:64px 0!important}.roadmap-section .section-heading-row h2{font-size:58px!important}.roadmap-grid.crypto-roadmap-grid{grid-template-columns:repeat(2,1fr)!important}.crypto-roadmap-grid::before{display:none}.crypto-roadmap-card{min-height:320px!important}}
         @media(max-width:650px){.roadmap-section{padding:52px 0!important}.roadmap-section .section-heading-row h2{font-size:50px!important}.roadmap-grid.crypto-roadmap-grid{grid-template-columns:1fr!important;gap:14px!important}.crypto-roadmap-card{min-height:300px!important;padding:20px!important}.roadmap-crypto-icon{margin:22px 0 18px}.crypto-roadmap-card p{max-width:none}}
-      `}
+      
         /* Final Tokenomics viewport fix: preserve the supplied artwork's native aspect ratio and never crop/stretch it. */
         #tokenomics.token-section{
           width:100%!important;
@@ -440,6 +440,7 @@ export default function Home() {
           #tokenomics .tokenomics-reference-image-wrap{height:auto!important}
           #tokenomics .tokenomics-reference-image{width:100%!important;height:auto!important}
         }
+      `
 </style>
       <Hero />
 
