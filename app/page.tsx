@@ -477,7 +477,8 @@ export default function Home() {
         /* Final Tokenomics viewport fix: show the complete supplied artwork below the fixed navbar. */
         #tokenomics.token-section{
           width:100%!important;
-          height:calc(100vh - 110px)!important;
+          aspect-ratio:16/9!important;
+          height:auto!important;
           min-height:0!important;
           max-height:none!important;
           margin-top:110px!important;
@@ -492,7 +493,8 @@ export default function Home() {
         }
         #tokenomics .tokenomics-reference-image-wrap{
           width:100%!important;
-          height:100%!important;
+          aspect-ratio:16/9!important;
+          height:auto!important;
           min-height:0!important;
           max-height:100%!important;
           margin:0!important;
@@ -505,10 +507,10 @@ export default function Home() {
         }
         #tokenomics .tokenomics-reference-image{
           display:block!important;
-          width:auto!important;
-          height:auto!important;
-          max-width:88%!important;
-          max-height:88%!important;
+          width:100%!important;
+          height:100%!important;
+          max-width:100%!important;
+          max-height:100%!important;
           min-width:0!important;
           min-height:0!important;
           margin:0 auto!important;
