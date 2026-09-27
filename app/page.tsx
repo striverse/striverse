@@ -151,7 +151,7 @@ function FeatureIcon({ type }: { type: string }) {
 }
 
 export default function Home() {
-  const [activeView, setActiveView] = useState(() => (typeof window !== "undefined" ? window.location.hash.replace("#", "") || "home" : "home"));
+  const [activeView, setActiveView] = useState("home");
 
   useEffect(() => {
     const syncView = () => {
