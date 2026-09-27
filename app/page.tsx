@@ -482,7 +482,7 @@ export default function Home() {
           height:auto!important;
           min-height:0!important;
           max-height:none!important;
-          margin-top:110px!important;
+          margin-top:60px!important;
           margin-bottom:0!important;
           padding:0!important;
           overflow:visible!important;
