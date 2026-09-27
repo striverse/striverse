@@ -506,12 +506,13 @@ export default function Home() {
         }
         #tokenomics .tokenomics-reference-image{
           display:block!important;
-          width:auto!important;
-          height:100%!important;
+          width:min(100%, calc((100vh - 110px) * 16 / 9))!important;
+          height:auto!important;
           max-width:100%!important;
-          max-height:100%!important;
+          max-height:calc(100vh - 110px)!important;
           min-width:0!important;
           min-height:0!important;
+          flex:0 0 auto!important;
           margin:0 auto!important;
           object-fit:contain!important;
           object-position:center center!important;
