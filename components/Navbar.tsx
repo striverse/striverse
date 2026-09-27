@@ -85,14 +85,9 @@ export default function Navbar() {
     window.history.replaceState(null, "", `#${id}`);
     window.dispatchEvent(new Event("striverse-section-change"));
 
-    // Scroll so the section starts below the fixed navbar instead of hiding its top.
+    // Snap the selected section to the very top so no previous section remains visible.
     requestAnimationFrame(() => {
-      const nav = document.querySelector<HTMLElement>(".reference-nav-wrap");
-      const navHeight = nav?.getBoundingClientRect().height ?? 0;
-      const top = Math.max(
-        0,
-        element.getBoundingClientRect().top + window.scrollY - navHeight - 16
-      );
+      const top = Math.max(0, element.getBoundingClientRect().top + window.scrollY);
       window.scrollTo({ top, behavior: "smooth" });
     });
   };
