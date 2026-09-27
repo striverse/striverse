@@ -404,10 +404,12 @@ export default function Home() {
         }
 
         /* Navbar focus mode: render only the section selected in the navbar. */
-        .reference-site[data-active-section] > .home-section,
-        .reference-site[data-active-section] > .site-section,
-        .reference-site[data-active-section] > .community-section{display:none!important}
+        .reference-site[data-active-section]:not([data-active-section="home"]) > .home-section,
+        .reference-site[data-active-section]:not([data-active-section="home"]) > .site-section,
+        .reference-site[data-active-section]:not([data-active-section="home"]) > .community-section{display:none!important}
         .reference-site[data-active-section="home"] > .home-section,
+        .reference-site[data-active-section="home"] > .site-section,
+        .reference-site[data-active-section="home"] > .community-section,
         .reference-site[data-active-section="features"] #features,
         .reference-site[data-active-section="about"] #about,
         .reference-site[data-active-section="tokenomics"] #tokenomics,
