@@ -26,26 +26,46 @@ export default function Navbar() {
 
   useEffect(() => {
     const sectionIds = ["features", "about", "tokenomics", "community", "staking", "vesting", "airdrop", "roadmap"];
+
+    const updateActiveSection = () => {
+      const nav = document.querySelector<HTMLElement>(".reference-nav-wrap");
+      const navHeight = nav?.getBoundingClientRect().height ?? 0;
+      const marker = window.scrollY + navHeight + 80;
+
+      // The hero is the home state. Do not let the first section become active
+      // while its top edge is only barely visible at the bottom of the viewport.
+      const firstSection = document.getElementById(sectionIds[0]);
+      if (!firstSection || marker < firstSection.offsetTop) {
+        setActiveSection("home");
+        return;
+      }
+
+      let current = "home";
+      for (const id of sectionIds) {
+        const section = document.getElementById(id);
+        if (section && section.offsetTop <= marker) current = id;
+      }
+      setActiveSection(current);
+    };
+
     const updateFromHash = () => {
       const hash = window.location.hash.replace("#", "");
-      setActiveSection(hash || "home");
+      if (hash) {
+        setActiveSection(hash);
+      } else {
+        updateActiveSection();
+      }
     };
+
     updateFromHash();
-
-    const observers = sectionIds.map((id) => {
-      const element = document.getElementById(id);
-      if (!element) return null;
-      const observer = new IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting) setActiveSection(id);
-      }, { rootMargin: "-20% 0px -65% 0px", threshold: 0 });
-      observer.observe(element);
-      return observer;
-    });
-
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
     window.addEventListener("hashchange", updateFromHash);
+    window.addEventListener("striverse-section-change", updateActiveSection);
+
     return () => {
-      observers.forEach((observer) => observer?.disconnect());
+      window.removeEventListener("scroll", updateActiveSection);
       window.removeEventListener("hashchange", updateFromHash);
+      window.removeEventListener("striverse-section-change", updateActiveSection);
     };
   }, []);
 
