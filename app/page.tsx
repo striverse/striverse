@@ -505,7 +505,7 @@ export default function Home() {
         }
         #tokenomics .tokenomics-reference-image{
           display:block!important;
-          width:88%!important;
+          width:auto!important;
           height:auto!important;
           max-width:88%!important;
           max-height:88%!important;
@@ -524,8 +524,9 @@ export default function Home() {
           }
           #tokenomics .tokenomics-reference-image-wrap{height:100%!important}
           #tokenomics .tokenomics-reference-image{
-            width:94%!important;
+            width:auto!important;
             height:auto!important;
+            max-width:94%!important;
             max-height:94%!important;
             object-fit:contain!important;
           }
