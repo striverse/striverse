@@ -65,7 +65,8 @@ function FeatureIcon({ type }: { type: string }) {
     let unlockTimer: number | undefined;
 
     const getTargets = () => {
-      const offset = 0;
+      const navHeight = document.querySelector<HTMLElement>(".reference-nav-wrap")?.offsetHeight ?? 0;
+      const offset = navHeight + 12;
 
       return [
         { id: "home", top: 0 },
@@ -398,7 +399,48 @@ export default function Home() {
         .crypto-roadmap-card:hover{transform:translateY(-10px);border-color:rgba(85,228,243,.55)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 28px 70px rgba(22,171,255,.16)}
         @media(max-width:1050px){.roadmap-section{min-height:auto;padding:64px 0!important}.roadmap-section .section-heading-row h2{font-size:58px!important}.roadmap-grid.crypto-roadmap-grid{grid-template-columns:repeat(2,1fr)!important}.crypto-roadmap-grid::before{display:none}.crypto-roadmap-card{min-height:320px!important}}
         @media(max-width:650px){.roadmap-section{padding:52px 0!important}.roadmap-section .section-heading-row h2{font-size:50px!important}.roadmap-grid.crypto-roadmap-grid{grid-template-columns:1fr!important;gap:14px!important}.crypto-roadmap-card{min-height:300px!important;padding:20px!important}.roadmap-crypto-icon{margin:22px 0 18px}.crypto-roadmap-card p{max-width:none}}
-      `}</style>
+      `}
+        /* Final Tokenomics viewport fix: preserve the supplied artwork's native aspect ratio and never crop/stretch it. */
+        #tokenomics.token-section{
+          width:100%!important;
+          height:auto!important;
+          min-height:0!important;
+          max-height:none!important;
+          margin:0!important;
+          padding:0!important;
+          overflow:hidden!important;
+          background:#01030d!important;
+        }
+        #tokenomics .tokenomics-reference-image-wrap{
+          width:100%!important;
+          height:auto!important;
+          min-height:0!important;
+          max-height:none!important;
+          margin:0 auto!important;
+          padding:0!important;
+          display:block!important;
+          overflow:hidden!important;
+          background:#01030d!important;
+        }
+        #tokenomics .tokenomics-reference-image{
+          display:block!important;
+          width:100%!important;
+          height:auto!important;
+          max-width:100%!important;
+          max-height:none!important;
+          min-width:0!important;
+          min-height:0!important;
+          margin:0!important;
+          object-fit:initial!important;
+          object-position:center top!important;
+          transform:none!important;
+        }
+        @media(max-width:900px){
+          #tokenomics.token-section{height:auto!important;min-height:0!important}
+          #tokenomics .tokenomics-reference-image-wrap{height:auto!important}
+          #tokenomics .tokenomics-reference-image{width:100%!important;height:auto!important}
+        }
+</style>
       <Hero />
 
       <section id="features" className="site-section features-section">
