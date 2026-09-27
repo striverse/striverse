@@ -1776,6 +1776,12 @@ html[data-theme="orange"] .crystal-flash {
    The supplied approved hero artwork is rendered at its native
    16:9 composition. Invisible hotspots preserve navigation.
 ========================================================== */
+/* Keep the main marketing page vertically scrollable. */
+html, body{
+  min-height:100%;
+  overflow-x:hidden!important;
+  overflow-y:auto!important;
+}
 .reference-site{background:#020b20;color:#fff;min-height:100vh}
 .reference-hero{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:#020b20}
 .reference-hero-image{object-fit:contain;object-position:center top}
