@@ -115,6 +115,8 @@ function FeatureIcon({ type }: { type: string }) {
     };
 
     const onWheel = (event: WheelEvent) => {
+      const site = document.querySelector<HTMLElement>(".reference-site");
+      if (site?.dataset.activeSection && site.dataset.activeSection !== "home") return;
       if (Math.abs(event.deltaY) < 10 || locked) return;
 
       const direction = event.deltaY > 0 ? 1 : -1;
@@ -149,7 +151,7 @@ function FeatureIcon({ type }: { type: string }) {
 }
 
 export default function Home() {
-  const [activeView, setActiveView] = useState("home");
+  const [activeView, setActiveView] = useState(() => (typeof window !== "undefined" ? window.location.hash.replace("#", "") || "home" : "home"));
 
   useEffect(() => {
     const syncView = () => {
