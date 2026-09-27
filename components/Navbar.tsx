@@ -72,7 +72,7 @@ export default function Navbar() {
   const scrollToSection = (id: string) => {
     if (id === "home") {
       window.history.replaceState(null, "", "/");
-      window.dispatchEvent(new Event("striverse-section-change"));
+      window.dispatchEvent(new CustomEvent("striverse-section-change", { detail: { section: id } }));
       setMoreOpen(false);
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
