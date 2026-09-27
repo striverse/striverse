@@ -65,8 +65,7 @@ function FeatureIcon({ type }: { type: string }) {
     let unlockTimer: number | undefined;
 
     const getTargets = () => {
-      const navHeight = document.querySelector<HTMLElement>(".reference-nav-wrap")?.offsetHeight ?? 0;
-      const offset = navHeight + 12;
+      const offset = 0;
 
       return [
         { id: "home", top: 0 },
