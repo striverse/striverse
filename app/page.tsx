@@ -419,6 +419,12 @@ export default function Home() {
           visibility:visible!important;
           opacity:1!important;
         }
+        .reference-site[data-active-section] > .site-footer{display:none!important}
+        .reference-site[data-active-section="airdrop"] #more{display:block!important}
+        .reference-site[data-active-section="airdrop"] #more .section-shell>*{display:none!important}
+        .reference-site[data-active-section="airdrop"] #more .more-grid{display:block!important}
+        .reference-site[data-active-section="airdrop"] #more #airdrop{display:block!important;margin:0 auto!important;max-width:760px!important}
+
         .reference-site > .home-section,
         .reference-site > .site-section,
         .reference-site > .community-section{
