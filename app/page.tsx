@@ -505,10 +505,10 @@ export default function Home() {
         }
         #tokenomics .tokenomics-reference-image{
           display:block!important;
-          width:92%!important;
+          width:88%!important;
           height:auto!important;
-          max-width:92%!important;
-          max-height:92%!important;
+          max-width:88%!important;
+          max-height:88%!important;
           min-width:0!important;
           min-height:0!important;
           margin:0 auto!important;
@@ -524,9 +524,9 @@ export default function Home() {
           }
           #tokenomics .tokenomics-reference-image-wrap{height:100%!important}
           #tokenomics .tokenomics-reference-image{
-            width:100%!important;
+            width:94%!important;
             height:auto!important;
-            max-height:100%!important;
+            max-height:94%!important;
             object-fit:contain!important;
           }
         }
