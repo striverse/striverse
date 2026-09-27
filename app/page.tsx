@@ -440,8 +440,7 @@ export default function Home() {
           #tokenomics .tokenomics-reference-image-wrap{height:auto!important}
           #tokenomics .tokenomics-reference-image{width:100%!important;height:auto!important}
         }
-      `
-</style>
+      `}</style>
       <Hero />
 
       <section id="features" className="site-section features-section">
