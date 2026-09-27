@@ -83,7 +83,7 @@ export default function Navbar() {
 
     setMoreOpen(false);
     window.history.replaceState(null, "", `#${id}`);
-    window.dispatchEvent(new Event("striverse-section-change"));
+    window.dispatchEvent(new CustomEvent("striverse-section-change", { detail: { section: id } }));
 
     // Focus mode hides the other sections, so reset the document to the selected section.
     requestAnimationFrame(() => {
