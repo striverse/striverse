@@ -85,12 +85,9 @@ export default function Navbar() {
     window.history.replaceState(null, "", `#${id}`);
     window.dispatchEvent(new Event("striverse-section-change"));
 
-    // Snap the selected section just below the fixed navbar so the full section stays visible.
+    // Focus mode hides the other sections, so reset the document to the selected section.
     requestAnimationFrame(() => {
-      const nav = document.querySelector<HTMLElement>(".reference-nav-wrap");
-      const navHeight = nav?.getBoundingClientRect().height ?? 0;
-      const top = Math.max(0, element.getBoundingClientRect().top + window.scrollY - navHeight - 12);
-      window.scrollTo({ top, behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
   };
 
