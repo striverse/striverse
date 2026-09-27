@@ -475,7 +475,7 @@ export default function Home() {
         @media(max-width:650px){.roadmap-section{padding:52px 0!important}.roadmap-section .section-heading-row h2{font-size:50px!important}.roadmap-grid.crypto-roadmap-grid{grid-template-columns:1fr!important;gap:14px!important}.crypto-roadmap-card{min-height:300px!important;padding:20px!important}.roadmap-crypto-icon{margin:22px 0 18px}.crypto-roadmap-card p{max-width:none}}
       
         /* Final Tokenomics viewport fix: show the complete supplied artwork below the fixed navbar. */
-        /* Final Tokenomics viewport fit: use the full area below the fixed navbar. */
+        /* Final Tokenomics viewport fit: show the complete 16:9 artwork below the fixed navbar. */
         #tokenomics.token-section{
           width:100%!important;
           height:calc(100vh - 110px)!important;
@@ -506,7 +506,7 @@ export default function Home() {
         }
         #tokenomics .tokenomics-reference-image{
           display:block!important;
-          width:100%!important;
+          width:auto!important;
           height:100%!important;
           max-width:100%!important;
           max-height:100%!important;
