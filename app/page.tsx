@@ -149,8 +149,28 @@ function FeatureIcon({ type }: { type: string }) {
 }
 
 export default function Home() {
+  const [activeView, setActiveView] = useState("home");
+
+  useEffect(() => {
+    const syncView = () => {
+      const hash = window.location.hash.replace("#", "");
+      setActiveView(hash || "home");
+    };
+    const onSectionChange = (event: Event) => {
+      const section = (event as CustomEvent<{ section?: string }>).detail?.section;
+      setActiveView(section || "home");
+    };
+    syncView();
+    window.addEventListener("hashchange", syncView);
+    window.addEventListener("striverse-section-change", onSectionChange);
+    return () => {
+      window.removeEventListener("hashchange", syncView);
+      window.removeEventListener("striverse-section-change", onSectionChange);
+    };
+  }, []);
+
   return (
-    <main className="reference-site community-fit">
+    <main className="reference-site community-fit" data-active-section={activeView}>
       <Navbar />
       <style jsx global>{`
 
@@ -381,6 +401,46 @@ export default function Home() {
           #tokenomics .tokenomics-reference-image{width:100%!important;height:auto!important}
         }
 
+        /* Navbar focus mode: render only the section selected in the navbar. */
+        .reference-site[data-active-section] > .home-section,
+        .reference-site[data-active-section] > .site-section,
+        .reference-site[data-active-section] > .community-section{display:none!important}
+        .reference-site[data-active-section="home"] > .home-section,
+        .reference-site[data-active-section="features"] #features,
+        .reference-site[data-active-section="about"] #about,
+        .reference-site[data-active-section="tokenomics"] #tokenomics,
+        .reference-site[data-active-section="roadmap"] #roadmap,
+        .reference-site[data-active-section="staking"] #staking,
+        .reference-site[data-active-section="vesting"] #vesting,
+        .reference-site[data-active-section="airdrop"] #airdrop,
+        .reference-site[data-active-section="more"] #more,
+        .reference-site[data-active-section="community"] #community{
+          display:block!important;
+          visibility:visible!important;
+          opacity:1!important;
+        }
+        .reference-site > .home-section,
+        .reference-site > .site-section,
+        .reference-site > .community-section{
+          min-height:calc(100vh - 110px);
+          box-sizing:border-box;
+          padding-top:110px!important;
+          scroll-margin-top:110px!important;
+        }
+        .reference-site > #tokenomics.token-section{
+          padding-top:110px!important;
+          height:auto!important;
+          min-height:0!important;
+        }
+        .reference-site > #roadmap.roadmap-section{
+          min-height:calc(100vh - 110px)!important;
+        }
+        .reference-site > .home-section{
+          min-height:100vh;
+          padding-top:110px!important;
+          box-sizing:border-box;
+        }
+
         .site-section{scroll-margin-top:108px}.reference-nav-wrap.nav-hidden{transform:none!important;opacity:1!important;pointer-events:auto!important}.community-fit .community-section{min-height:calc(100vh - 96px);height:calc(100vh - 96px);padding:72px 0 48px;display:flex;align-items:center;box-sizing:border-box}.community-fit .community-section h2{font-size:clamp(54px,6.5vw,88px);line-height:.9;margin:12px 0 0}.community-fit .community-section>div>p:not(.section-kicker){margin:22px auto 0;font-size:16px}.community-fit .community-actions{margin-top:26px}.token-section{scroll-margin-top:0;min-height:calc(100vh - 96px)!important;height:calc(100vh - 96px)!important;padding:0!important;display:flex!important;align-items:center!important;justify-content:center!important}.tokenomics-reference-image-wrap{width:100%!important;height:calc(100vh - 96px)!important;min-height:0!important;aspect-ratio:auto!important;display:flex!important;align-items:center!important;justify-content:center!important;overflow:hidden!important}.tokenomics-reference-image{width:auto!important;height:auto!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;object-position:center center!important}.roadmap-section{position:relative;isolation:isolate;overflow:visible;min-height:calc(100vh - 84px);padding:28px 0 34px!important;background:radial-gradient(circle at 50% 8%,rgba(50,224,255,.13),transparent 30%),radial-gradient(circle at 8% 58%,rgba(107,76,255,.10),transparent 28%),radial-gradient(circle at 92% 78%,rgba(255,67,198,.08),transparent 28%),#020918!important}
         .roadmap-section::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(92,210,240,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(92,210,240,.045) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(to bottom,transparent,black 18%,black 82%,transparent);z-index:-1}
         .roadmap-section .section-heading-row{gap:24px!important;align-items:end}.roadmap-section .section-heading-row h2{font-size:clamp(58px,6vw,82px)!important;line-height:.88!important}.roadmap-section .section-heading-row>p{font-size:15px!important;line-height:1.55!important}.roadmap-grid.crypto-roadmap-grid{grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:12px!important;margin-top:30px!important}
@@ -441,7 +501,7 @@ export default function Home() {
           #tokenomics .tokenomics-reference-image{width:100%!important;height:auto!important}
         }
       `}</style>
-      <Hero />
+      <div className="home-section"><Hero /></div>
 
       <section id="features" className="site-section features-section">
         <div className="section-shell">
