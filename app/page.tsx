@@ -476,45 +476,41 @@ export default function Home() {
       
         /* Final Tokenomics viewport fix: show the complete supplied artwork below the fixed navbar. */
         /* Final Tokenomics viewport fit: show the complete 16:9 artwork below the fixed navbar. */
+        /* Tokenomics: full-width artwork, preserve the complete image and allow page scroll for its full height. */
         #tokenomics.token-section{
           width:100%!important;
-          height:calc(100vh - 110px)!important;
+          height:auto!important;
           min-height:0!important;
           max-height:none!important;
           margin-top:110px!important;
           margin-bottom:0!important;
           padding:0!important;
-          overflow:hidden!important;
+          overflow:visible!important;
           background:#01030d!important;
-          display:flex!important;
-          align-items:center!important;
-          justify-content:center!important;
+          display:block!important;
           box-sizing:border-box!important;
         }
         #tokenomics .tokenomics-reference-image-wrap{
           width:100%!important;
-          height:100%!important;
+          height:auto!important;
           min-height:0!important;
-          max-height:100%!important;
+          max-height:none!important;
           margin:0!important;
           padding:0!important;
-          display:flex!important;
-          align-items:center!important;
-          justify-content:center!important;
-          overflow:hidden!important;
+          display:block!important;
+          overflow:visible!important;
           background:#01030d!important;
         }
         #tokenomics .tokenomics-reference-image{
           display:block!important;
-          width:min(100%, calc((100vh - 110px) * 16 / 9))!important;
+          width:100%!important;
           height:auto!important;
           max-width:100%!important;
-          max-height:calc(100vh - 110px)!important;
+          max-height:none!important;
           min-width:0!important;
           min-height:0!important;
-          flex:0 0 auto!important;
-          margin:0 auto!important;
-          object-fit:contain!important;
+          margin:0!important;
+          object-fit:initial!important;
           object-position:center center!important;
           transform:none!important;
         }
