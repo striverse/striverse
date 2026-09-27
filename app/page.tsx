@@ -474,25 +474,32 @@ export default function Home() {
         @media(max-width:1050px){.roadmap-section{min-height:auto;padding:64px 0!important}.roadmap-section .section-heading-row h2{font-size:58px!important}.roadmap-grid.crypto-roadmap-grid{grid-template-columns:repeat(2,1fr)!important}.crypto-roadmap-grid::before{display:none}.crypto-roadmap-card{min-height:320px!important}}
         @media(max-width:650px){.roadmap-section{padding:52px 0!important}.roadmap-section .section-heading-row h2{font-size:50px!important}.roadmap-grid.crypto-roadmap-grid{grid-template-columns:1fr!important;gap:14px!important}.crypto-roadmap-card{min-height:300px!important;padding:20px!important}.roadmap-crypto-icon{margin:22px 0 18px}.crypto-roadmap-card p{max-width:none}}
       
-        /* Final Tokenomics viewport fix: preserve the supplied artwork's native aspect ratio and never crop/stretch it. */
+        /* Final Tokenomics viewport fix: show the complete supplied artwork below the fixed navbar. */
         #tokenomics.token-section{
           width:100%!important;
-          height:auto!important;
+          height:calc(100vh - 110px)!important;
           min-height:0!important;
           max-height:none!important;
-          margin:0!important;
+          margin-top:110px!important;
+          margin-bottom:0!important;
           padding:0!important;
           overflow:hidden!important;
           background:#01030d!important;
+          display:flex!important;
+          align-items:center!important;
+          justify-content:center!important;
+          box-sizing:border-box!important;
         }
         #tokenomics .tokenomics-reference-image-wrap{
           width:100%!important;
-          height:auto!important;
+          height:100%!important;
           min-height:0!important;
-          max-height:none!important;
-          margin:0 auto!important;
+          max-height:100%!important;
+          margin:0!important;
           padding:0!important;
-          display:block!important;
+          display:flex!important;
+          align-items:center!important;
+          justify-content:center!important;
           overflow:hidden!important;
           background:#01030d!important;
         }
@@ -501,18 +508,27 @@ export default function Home() {
           width:100%!important;
           height:auto!important;
           max-width:100%!important;
-          max-height:none!important;
+          max-height:100%!important;
           min-width:0!important;
           min-height:0!important;
           margin:0!important;
-          object-fit:initial!important;
-          object-position:center top!important;
+          object-fit:contain!important;
+          object-position:center center!important;
           transform:none!important;
         }
         @media(max-width:900px){
-          #tokenomics.token-section{height:auto!important;min-height:0!important}
-          #tokenomics .tokenomics-reference-image-wrap{height:auto!important}
-          #tokenomics .tokenomics-reference-image{width:100%!important;height:auto!important}
+          #tokenomics.token-section{
+            height:calc(100svh - 92px)!important;
+            margin-top:92px!important;
+            min-height:0!important;
+          }
+          #tokenomics .tokenomics-reference-image-wrap{height:100%!important}
+          #tokenomics .tokenomics-reference-image{
+            width:100%!important;
+            height:auto!important;
+            max-height:100%!important;
+            object-fit:contain!important;
+          }
         }
       `}</style>
       <div className="home-section"><Hero /></div>
