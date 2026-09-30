@@ -3877,6 +3877,22 @@ radial-gradient(circle at 81% 21%,rgba(157,65,255,.24) 0 1px,transparent 2px);
 .tokenomics-reference-image{display:block!important;width:100%!important;height:100%!important;max-height:none!important;min-height:0!important;object-fit:contain!important;object-position:center top!important;transform:none!important}
 @media(max-width:900px){.tokenomics-reference-image-wrap{aspect-ratio:16/9!important}.tokenomics-reference-image{width:100%!important;height:100%!important;object-fit:contain!important}}
 
+/* Shared STRIVERSE grid texture across all main sections. */
+.reference-site > .home-section,
+.reference-site > .site-section,
+.reference-site > .community-section{
+  background-image:
+    linear-gradient(rgba(100,205,235,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(100,205,235,.045) 1px, transparent 1px);
+  background-size:64px 64px;
+  background-position:center top;
+}
+
+/* Keep the supplied Tokenomics artwork untouched. */
+.reference-site > #tokenomics.token-section{
+  background-image:none!important;
+}
+
 /* Auto-hide navbar while scrolling down */
 .reference-nav-wrap{transition:transform .32s ease,opacity .25s ease;will-change:transform}
 .reference-nav-wrap.nav-hidden{transform:translateY(calc(-100% - 18px));opacity:0;pointer-events:none}
