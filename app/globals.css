@@ -4105,3 +4105,49 @@ radial-gradient(circle at 81% 21%,rgba(157,65,255,.24) 0 1px,transparent 2px);
 .crypto-roadmap-card:hover{transform:translateY(-8px);box-shadow:0 20px 55px rgba(31,171,255,.13)}
 @media(max-width:1050px){.crypto-roadmap-grid{grid-template-columns:repeat(2,1fr)!important}.crypto-roadmap-grid::before{display:none}}
 @media(max-width:650px){.crypto-roadmap-grid{grid-template-columns:1fr!important}.crypto-roadmap-card{min-height:320px!important}}
+
+/* Colorful ecosystem feature cards */
+.features-section .feature-card{
+  --feature-color:#55e4f3;
+  --feature-color-2:#6b5cff;
+  background:
+    radial-gradient(circle at 88% 18%,color-mix(in srgb,var(--feature-color) 20%,transparent),transparent 34%),
+    linear-gradient(145deg,rgba(10,27,55,.96),rgba(3,10,27,.98))!important;
+  border-color:color-mix(in srgb,var(--feature-color) 34%,rgba(100,170,220,.14))!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 18px 45px rgba(0,0,0,.18);
+}
+.features-section .feature-card:nth-child(1){--feature-color:#35e7f5;--feature-color-2:#5965ff}
+.features-section .feature-card:nth-child(2){--feature-color:#a86cff;--feature-color-2:#ff4bc8}
+.features-section .feature-card:nth-child(3){--feature-color:#38e7a2;--feature-color-2:#25bfff}
+.features-section .feature-card:nth-child(4){--feature-color:#ffbd4a;--feature-color-2:#ff4fca}
+.features-section .feature-card:nth-child(5){--feature-color:#ff5f9e;--feature-color-2:#8b5cff}
+.features-section .feature-card:nth-child(6){--feature-color:#52a8ff;--feature-color-2:#7b5cff}
+.features-section .feature-card:nth-child(7){--feature-color:#2de4df;--feature-color-2:#4c8cff}
+.features-section .feature-card:nth-child(8){--feature-color:#ffe05b;--feature-color-2:#ff7a45}
+.features-section .feature-card::before{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(135deg,color-mix(in srgb,var(--feature-color) 10%,transparent),transparent 42%,color-mix(in srgb,var(--feature-color-2) 8%,transparent));
+}
+.features-section .feature-card::after{
+  content:"";position:absolute;width:190px;height:190px;right:-55px;top:20px;border-radius:50%;
+  background:radial-gradient(circle,color-mix(in srgb,var(--feature-color) 58%,transparent),transparent 68%);
+  filter:blur(10px);opacity:.65;pointer-events:none;
+}
+.features-section .feature-card .card-number{position:relative;z-index:3;color:var(--feature-color);text-shadow:0 0 12px color-mix(in srgb,var(--feature-color) 55%,transparent)}
+.features-section .feature-card .card-orb{
+  background:radial-gradient(circle,var(--feature-color),color-mix(in srgb,var(--feature-color-2) 55%,transparent) 46%,transparent 72%);
+  opacity:.7;
+}
+.features-section .feature-card .feature-icon{
+  z-index:3;border-color:color-mix(in srgb,var(--feature-color) 55%,transparent);
+  background:linear-gradient(145deg,color-mix(in srgb,var(--feature-color) 18%,transparent),color-mix(in srgb,var(--feature-color-2) 18%,transparent));
+  box-shadow:0 0 28px color-mix(in srgb,var(--feature-color) 25%,transparent),inset 0 0 18px color-mix(in srgb,var(--feature-color) 8%,transparent);
+}
+.features-section .feature-card .feature-icon svg{stroke:var(--feature-color);filter:drop-shadow(0 0 7px var(--feature-color))}
+.features-section .feature-card h3,.features-section .feature-card p{z-index:3}
+.features-section .feature-card h3{color:#fff}
+.features-section .feature-card p{color:#a5b6cf}
+.features-section .feature-card:hover{
+  border-color:color-mix(in srgb,var(--feature-color) 72%,transparent)!important;
+  box-shadow:0 24px 65px color-mix(in srgb,var(--feature-color) 12%,transparent),inset 0 1px 0 rgba(255,255,255,.09);
+}
