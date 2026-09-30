@@ -58,6 +58,26 @@ function FeatureIcon({ type }: { type: string }) {
     </svg>
   );
   useEffect(() => {
+    const clampTokenomicsScroll = () => {
+      const site = document.querySelector<HTMLElement>(".reference-site");
+      if (site?.dataset.activeSection !== "tokenomics") return;
+
+      const section = document.getElementById("tokenomics");
+      if (!section) return;
+
+      const minY = section.offsetTop;
+      const maxY = Math.max(minY, section.offsetTop + section.offsetHeight - window.innerHeight);
+      const y = window.scrollY;
+
+      if (y < minY) window.scrollTo(0, minY);
+      else if (y > maxY) window.scrollTo(0, maxY);
+    };
+
+    window.addEventListener("scroll", clampTokenomicsScroll, { passive: true });
+    return () => window.removeEventListener("scroll", clampTokenomicsScroll);
+  }, []);
+
+  useEffect(() => {
     if (window.matchMedia("(max-width: 900px)").matches) return;
 
     const ids = ["features", "about", "tokenomics", "roadmap", "staking", "vesting", "more", "community"];
