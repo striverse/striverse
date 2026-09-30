@@ -704,6 +704,27 @@ export default function Home() {
                 <div className="tokenomics-bar"><i style={{width:"15%"}} /></div>
                 <p>Platform development, expansion and strategic partnerships.</p>
               </article>
+              <article className="tokenomics-card tokenomics-card-orange">
+                <div className="tokenomics-icon">◈</div>
+                <div className="tokenomics-card-top"><span>05 / GROW</span><b>MARKETING</b></div>
+                <strong>15%</strong>
+                <div className="tokenomics-bar"><i style={{width:"15%"}} /></div>
+                <p>Brand growth, global awareness, community engagement and partnerships.</p>
+              </article>
+              <article className="tokenomics-card tokenomics-card-blue">
+                <div className="tokenomics-icon">◉</div>
+                <div className="tokenomics-card-top"><span>06 / COMMUNITY</span><b>REWARDS</b></div>
+                <strong>10%</strong>
+                <div className="tokenomics-bar"><i style={{width:"10%"}} /></div>
+                <p>Community incentives, airdrops, campaigns and staking participation.</p>
+              </article>
+              <article className="tokenomics-card tokenomics-card-gold">
+                <div className="tokenomics-icon">✦</div>
+                <div className="tokenomics-card-top"><span>07 / CORE</span><b>TEAM &amp; ADVISORS</b></div>
+                <strong>5%</strong>
+                <div className="tokenomics-bar"><i style={{width:"5%"}} /></div>
+                <p>Long-term commitment from the core team and strategic advisors.</p>
+              </article>
             </div>
           </div>
 
