@@ -373,7 +373,7 @@ export default function Home() {
         .crypto-roadmap-card:hover{transform:translateY(-8px);border-color:rgba(85,224,240,.5)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 30px 80px rgba(23,185,245,.13)!important}
         /* Desktop roadmap fit: keep the full timeline visible below the fixed navbar. */
         @media(min-width:1051px){
-          .roadmap-section{min-height:calc(100svh - 92px)!important;height:calc(100svh - 92px)!important;padding:28px 0 24px!important;box-sizing:border-box}
+          .roadmap-section{min-height:calc(100svh - 92px)!important;height:calc(100svh - 92px)!important;padding:10px 0 24px!important;box-sizing:border-box}
           .roadmap-topline{margin-bottom:22px!important;gap:28px!important}
           .roadmap-topline h2{font-size:clamp(40px,4.35vw,58px)!important}
           .roadmap-intro{font-size:12px!important;line-height:1.4!important}
