@@ -502,6 +502,36 @@ export default function Home() {
       
         /* Final Tokenomics viewport fix: show the complete supplied artwork below the fixed navbar. */
         /* Final Tokenomics viewport fit: show the complete 16:9 artwork below the fixed navbar. */
+        /* Tokenomics redesign */
+        .tokenomics-shell{position:relative;z-index:2;width:min(1480px,calc(100% - 64px))!important}
+        .tokenomics-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-bottom:42px}
+        .tokenomics-heading h2{margin:10px 0 0!important;font-size:clamp(48px,6vw,82px)!important;line-height:.88!important;letter-spacing:-.055em!important}
+        .tokenomics-heading h2 span{color:#55dce9;text-shadow:0 0 30px rgba(85,220,233,.18)}
+        .tokenomics-supply{min-width:190px;padding:18px 22px;border:1px solid rgba(70,220,245,.25);border-radius:18px;background:rgba(5,17,35,.72);box-shadow:inset 0 0 28px rgba(0,210,255,.04)}
+        .tokenomics-supply span,.tokenomics-supply small{display:block;color:#71839e;font-size:10px;letter-spacing:.18em;font-weight:800}
+        .tokenomics-supply strong{display:block;margin:5px 0 1px;font-size:30px;letter-spacing:-.04em}
+        .tokenomics-layout{display:grid;grid-template-columns:minmax(280px,.75fr) minmax(0,1.25fr);align-items:center;gap:56px}
+        .tokenomics-orbit{position:relative;width:min(420px,100%);aspect-ratio:1;margin:auto;display:grid;place-items:center;border-radius:50%;background:radial-gradient(circle,rgba(23,64,105,.28),rgba(2,8,20,.08) 55%,transparent 70%)}
+        .tokenomics-orbit-ring{position:absolute;border-radius:50%;border:1px solid rgba(70,220,245,.28)}
+        .tokenomics-ring-a{inset:10%;border-top-color:#55dce9;border-right-color:rgba(180,139,255,.65);box-shadow:0 0 30px rgba(50,220,245,.08);animation:tokenOrbit 14s linear infinite}
+        .tokenomics-ring-b{inset:22%;border-bottom-color:#ff69d1;border-left-color:#45edaa;opacity:.7;animation:tokenOrbitReverse 10s linear infinite}
+        .tokenomics-orbit-core{width:42%;aspect-ratio:1;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid rgba(85,220,233,.5);background:radial-gradient(circle at 35% 25%,rgba(55,225,255,.2),rgba(4,15,31,.96) 68%);box-shadow:0 0 55px rgba(40,205,255,.13),inset 0 0 35px rgba(60,215,255,.08)}
+        .tokenomics-orbit-core span{color:#55dce9;font-weight:950;letter-spacing:.18em;font-size:12px}
+        .tokenomics-orbit-core strong{font-size:28px;letter-spacing:-.05em}
+        .tokenomics-orbit-core small{color:#71839e;font-size:8px;letter-spacing:.18em}
+        .tokenomics-dot{position:absolute;width:8px;height:8px;border-radius:50%;background:#55e4f3;box-shadow:0 0 18px #55e4f3}
+        .tokenomics-dot-1{top:9%;left:50%}.tokenomics-dot-2{right:12%;bottom:27%;background:#ff69d1;box-shadow:0 0 18px #ff69d1}.tokenomics-dot-3{left:15%;bottom:23%;background:#45edaa;box-shadow:0 0 18px #45edaa}
+        .tokenomics-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+        .tokenomics-card{padding:22px;border:1px solid rgba(103,135,176,.22);border-radius:18px;background:linear-gradient(145deg,rgba(7,22,42,.9),rgba(3,11,25,.86));box-shadow:inset 0 0 24px rgba(40,190,255,.025)}
+        .tokenomics-card-main{border-color:rgba(85,220,233,.4);box-shadow:inset 0 0 30px rgba(45,215,245,.06),0 0 25px rgba(40,205,255,.05)}
+        .tokenomics-card-top{display:flex;justify-content:space-between;color:#71839e;font-size:10px;letter-spacing:.16em}
+        .tokenomics-card-top b{color:#a7bad2}
+        .tokenomics-card>strong{display:block;margin:22px 0 12px;font-size:42px;letter-spacing:-.06em}
+        .tokenomics-bar{height:3px;background:rgba(120,150,190,.12);border-radius:10px;overflow:hidden}.tokenomics-bar i{display:block;height:100%;background:linear-gradient(90deg,#55dce9,#9d72ff);box-shadow:0 0 12px rgba(85,220,233,.45)}
+        .tokenomics-card p{margin:14px 0 0;color:#8192aa;font-size:12px;line-height:1.6}
+        @keyframes tokenOrbit{to{transform:rotate(360deg)}}@keyframes tokenOrbitReverse{to{transform:rotate(-360deg)}}
+        @media(max-width:900px){.tokenomics-shell{width:min(100% - 32px,680px)!important}.tokenomics-heading{align-items:flex-start;flex-direction:column;gap:20px}.tokenomics-layout{grid-template-columns:1fr;gap:28px}.tokenomics-orbit{width:min(320px,80vw)}.tokenomics-grid{grid-template-columns:1fr}.tokenomics-card>strong{font-size:36px}}
+        
         /* Tokenomics: full-width artwork, preserve the complete image and allow page scroll for its full height. */
         #tokenomics.token-section{
           width:100%!important;
