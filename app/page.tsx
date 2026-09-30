@@ -65,12 +65,18 @@ function FeatureIcon({ type }: { type: string }) {
       const section = document.getElementById("tokenomics");
       if (!section) return;
 
-      const minY = section.offsetTop;
-      const maxY = Math.max(minY, section.offsetTop + section.offsetHeight - window.innerHeight);
-      const y = window.scrollY;
-
-      if (y < minY) window.scrollTo(0, minY);
-      else if (y > maxY) window.scrollTo(0, maxY);
+      const rect = section.getBoundingClientRect();
+      if (rect.bottom < window.innerHeight) {
+        window.scrollTo({
+          top: Math.max(0, window.scrollY + rect.bottom - window.innerHeight),
+          behavior: "auto",
+        });
+      } else if (rect.top > 0 && window.scrollY > section.offsetTop) {
+        window.scrollTo({
+          top: section.offsetTop,
+          behavior: "auto",
+        });
+      }
     };
 
     window.addEventListener("scroll", clampTokenomicsScroll, { passive: true });
