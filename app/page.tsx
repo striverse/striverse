@@ -630,11 +630,6 @@ export default function Home() {
               <p className="section-kicker">STV / TOKEN ECONOMY</p>
               <h2>One token.<br /><span>Seven allocations.</span></h2>
             </div>
-            <div className="tokenomics-supply">
-              <span>TOTAL SUPPLY</span>
-              <strong>8,888,888,888</strong>
-              <small>STV</small>
-            </div>
           </div>
 
           <div className="tokenomics-command">
