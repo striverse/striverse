@@ -716,8 +716,8 @@ export default function Home() {
               <article className="tokenomics-card tokenomics-card-orange">
                 <div className="tokenomics-icon">◈</div>
                 <div className="tokenomics-card-top"><span>05 / GROW</span><b>MARKETING</b></div>
-                <strong>15%</strong>
-                <div className="tokenomics-bar"><i style={{width:"15%"}} /></div>
+                <strong>10%</strong>
+                <div className="tokenomics-bar"><i style={{width:"10%"}} /></div>
                 <p>Brand growth, global awareness, community engagement and partnerships.</p>
               </article>
               <article className="tokenomics-card tokenomics-card-blue">
