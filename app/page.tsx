@@ -638,8 +638,8 @@ export default function Home() {
               <div className="tokenomics-core-ring" />
               <div className="tokenomics-core-inner">
                 <span>STV</span>
-                <strong>100%</strong>
-                <small>ALLOCATION</small>
+                <strong>8.8B</strong>
+                <small>TOTAL SUPPLY</small>
               </div>
             </div>
 
