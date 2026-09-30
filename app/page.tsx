@@ -371,6 +371,20 @@ export default function Home() {
         }
         .phase-02{border-color:rgba(145,104,255,.28)!important}.phase-03{border-color:rgba(255,78,197,.28)!important}.phase-04{border-color:rgba(255,178,62,.28)!important}.phase-05{border-color:rgba(63,229,166,.28)!important}
         .crypto-roadmap-card:hover{transform:translateY(-8px);border-color:rgba(85,224,240,.5)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 30px 80px rgba(23,185,245,.13)!important}
+        /* Desktop roadmap fit: keep the full timeline visible below the fixed navbar. */
+        @media(min-width:1051px){
+          .roadmap-section{min-height:calc(100svh - 92px)!important;height:calc(100svh - 92px)!important;padding:38px 0 34px!important;box-sizing:border-box}
+          .roadmap-topline{margin-bottom:30px!important;gap:40px!important}
+          .roadmap-topline h2{font-size:clamp(42px,4.7vw,64px)!important}
+          .roadmap-intro{font-size:13px!important;line-height:1.5!important}
+          .roadmap-track{padding-top:18px!important;gap:10px!important}
+          .crypto-roadmap-card{min-height:255px!important;padding:18px!important}
+          .roadmap-node{width:48px!important;height:48px!important;margin:18px 0 14px!important;font-size:22px!important}
+          .roadmap-card-copy h3{font-size:23px!important}
+          .roadmap-card-copy>p:last-child{margin-top:9px!important;font-size:11px!important;line-height:1.45!important}
+          .roadmap-card-footer{left:18px!important;right:18px!important;bottom:15px!important}
+        }
+
         @media(max-width:1050px){
           .roadmap-section{min-height:auto;padding:64px 0!important}
           .roadmap-topline{align-items:flex-start;flex-direction:column;gap:22px}
