@@ -473,7 +473,7 @@ export default function Home() {
           visibility:visible!important;
           opacity:1!important;
         }
-        .reference-site[data-active-section]:not([data-active-section="home"]) > .site-footer{display:none!important}
+
         .reference-site[data-active-section="airdrop"] #more{display:block!important}
         .reference-site[data-active-section="airdrop"] #more .section-shell>*{display:none!important}
         .reference-site[data-active-section="airdrop"] #more .more-grid{display:block!important}
