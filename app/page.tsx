@@ -672,8 +672,6 @@ export default function Home() {
               </article>
             </div>
           </div>
-
-          </div>
         </div>
       </section>
 
