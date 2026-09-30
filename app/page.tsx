@@ -373,16 +373,16 @@ export default function Home() {
         .crypto-roadmap-card:hover{transform:translateY(-8px);border-color:rgba(85,224,240,.5)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 30px 80px rgba(23,185,245,.13)!important}
         /* Desktop roadmap fit: keep the full timeline visible below the fixed navbar. */
         @media(min-width:1051px){
-          .roadmap-section{min-height:calc(100svh - 92px)!important;height:calc(100svh - 92px)!important;padding:38px 0 34px!important;box-sizing:border-box}
-          .roadmap-topline{margin-bottom:30px!important;gap:40px!important}
-          .roadmap-topline h2{font-size:clamp(42px,4.7vw,64px)!important}
-          .roadmap-intro{font-size:13px!important;line-height:1.5!important}
-          .roadmap-track{padding-top:18px!important;gap:10px!important}
-          .crypto-roadmap-card{min-height:255px!important;padding:18px!important}
-          .roadmap-node{width:48px!important;height:48px!important;margin:18px 0 14px!important;font-size:22px!important}
-          .roadmap-card-copy h3{font-size:23px!important}
-          .roadmap-card-copy>p:last-child{margin-top:9px!important;font-size:11px!important;line-height:1.45!important}
-          .roadmap-card-footer{left:18px!important;right:18px!important;bottom:15px!important}
+          .roadmap-section{min-height:calc(100svh - 92px)!important;height:calc(100svh - 92px)!important;padding:28px 0 24px!important;box-sizing:border-box}
+          .roadmap-topline{margin-bottom:22px!important;gap:28px!important}
+          .roadmap-topline h2{font-size:clamp(40px,4.35vw,58px)!important}
+          .roadmap-intro{font-size:12px!important;line-height:1.4!important}
+          .roadmap-track{padding-top:16px!important;gap:9px!important}
+          .crypto-roadmap-card{min-height:225px!important;height:225px!important;padding:16px!important}
+          .roadmap-node{width:44px!important;height:44px!important;margin:14px 0 11px!important;font-size:20px!important}
+          .roadmap-card-copy h3{font-size:21px!important}
+          .roadmap-card-copy>p:last-child{margin-top:7px!important;font-size:10px!important;line-height:1.35!important}
+          .roadmap-card-footer{left:16px!important;right:16px!important;bottom:12px!important}
         }
 
         @media(max-width:1050px){
