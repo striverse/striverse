@@ -12,6 +12,10 @@ const features = [
   ["02", "Stake", "Earn rewards while supporting the network and community.", "stake"],
   ["03", "Vest", "Track long-term allocations and unlocks with clear visibility.", "vest"],
   ["04", "Airdrops", "Be part of community campaigns, rewards and exclusive drops.", "airdrop"],
+  ["05", "Swap", "Move between supported assets with a simple STV trading experience.", "swap"],
+  ["06", "Governance", "Participate in proposals and help shape the STRIVERSE ecosystem.", "governance"],
+  ["07", "Analytics", "Follow token activity, rewards and ecosystem data in one place.", "analytics"],
+  ["08", "Security", "Built with transparent allocations and user-first protection in mind.", "security"],
 ];
 
 const distribution = [
@@ -166,6 +170,35 @@ function FeatureIcon({ type }: { type: string }) {
     };
   }, []);
 
+  if (type === "swap") return (
+    <svg {...common}>
+      <path d="M12 22h35M42 14l8 8-8 8M52 42H17M22 34l-8 8 8 8" />
+      <circle cx="12" cy="22" r="3" fill="#57e0ee" />
+      <circle cx="52" cy="42" r="3" fill="#a78bff" />
+    </svg>
+  );
+  if (type === "governance") return (
+    <svg {...common}>
+      <path d="M10 20h44M16 20v24M26 20v24M38 20v24M48 20v24M10 44h44" />
+      <path d="m32 7 24 13H8L32 7Z" />
+      <circle cx="32" cy="32" r="4" />
+    </svg>
+  );
+  if (type === "analytics") return (
+    <svg {...common}>
+      <path d="M10 50V14M10 50h44" />
+      <path d="m18 40 10-11 8 6 13-18" />
+      <circle cx="18" cy="40" r="2.5" fill="#57e0ee" />
+      <circle cx="36" cy="35" r="2.5" fill="#a78bff" />
+      <circle cx="49" cy="17" r="2.5" fill="#57e0ee" />
+    </svg>
+  );
+  if (type === "security") return (
+    <svg {...common}>
+      <path d="M32 7 51 15v14c0 12-8 21-19 27C21 50 13 41 13 29V15L32 7Z" />
+      <path d="m23 31 6 6 12-14" />
+    </svg>
+  );
   return (
     <svg {...common}>
       <defs><linearGradient id="airdropLogo" x1="8" y1="56" x2="56" y2="8"><stop stopColor="#19dce9"/><stop offset="1" stopColor="#9b50ff"/></linearGradient></defs>
