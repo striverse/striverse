@@ -393,6 +393,16 @@ export default function Home() {
           .roadmap-track-line{display:none}
           .crypto-roadmap-card{min-height:310px!important}
         }
+        /* Final roadmap containment: never let cards overflow into the next section. */
+        @media(min-width:1051px){
+          .roadmap-section{
+            height:auto!important;
+            min-height:calc(100svh - 92px)!important;
+            overflow:hidden!important;
+          }
+          .roadmap-track{padding-bottom:18px!important}
+        }
+
         @media(max-width:650px){
           .roadmap-section{padding:46px 0 52px!important}
           .roadmap-topline h2{font-size:46px!important}
