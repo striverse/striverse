@@ -673,14 +673,6 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="tokenomics-total">
-            <div><span>25%</span><i /><b>PRESALE</b></div>
-            <div><span>20%</span><i /><b>LIQUIDITY</b></div>
-            <div><span>15%</span><i /><b>REWARDS</b></div>
-            <div><span>15%</span><i /><b>ECOSYSTEM</b></div>
-            <div><span>10%</span><i /><b>MARKETING</b></div>
-            <div><span>10%</span><i /><b>COMMUNITY</b></div>
-            <div><span>5%</span><i /><b>TEAM</b></div>
           </div>
         </div>
       </section>
