@@ -13,6 +13,7 @@ export default function Navbar() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [isLight, setIsLight] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [navHidden, setNavHidden] = useState(false);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("striverse-theme");
@@ -69,6 +70,29 @@ export default function Navbar() {
     };
   }, []);
 
+  useEffect(() => {
+    let lastY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+      const delta = currentY - lastY;
+
+      if (currentY <= 12) {
+        setNavHidden(false);
+      } else if (delta > 4) {
+        setNavHidden(true);
+        setMoreOpen(false);
+      } else if (delta < -4) {
+        setNavHidden(false);
+      }
+
+      lastY = currentY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const scrollToSection = (id: string) => {
     if (id === "home") {
       window.history.replaceState(null, "", "/");
@@ -94,7 +118,7 @@ export default function Navbar() {
   const appHref = loading ? "/login" : user ? (user.role === "ADMIN" ? "/admin/dashboard" : "/dashboard") : "/login";
 
   return (
-    <header className="reference-nav-wrap">
+    <header className={`reference-nav-wrap${navHidden ? " nav-hidden" : ""}`}>
       <nav className="reference-nav" aria-label="Primary navigation">
         <Link href="/" className="reference-brand" aria-label="STRIVERSE home">
           <span className="reference-brand-icon-clip" style={{ width: 62, height: 46, overflow: "hidden", display: "block", flex: "0 0 62px", position: "relative", background: "transparent" }}>
