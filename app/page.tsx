@@ -656,97 +656,65 @@ export default function Home() {
         <div className="section-shell tokenomics-shell">
           <div className="tokenomics-heading">
             <div>
-              <p className="section-kicker">TOKENOMICS / STV</p>
-              <h2>The economy<br /><span>behind STRIVERSE.</span></h2>
+              <p className="section-kicker">STV / TOKEN ECONOMY</p>
+              <h2>One token.<br /><span>Seven allocations.</span></h2>
             </div>
             <div className="tokenomics-supply">
               <span>TOTAL SUPPLY</span>
-              <strong>8.888B</strong>
+              <strong>8,888,888,888</strong>
               <small>STV</small>
             </div>
           </div>
 
-          <div className="tokenomics-stage">
-            <div className="tokenomics-visual">
-              <div className="tokenomics-scanline" />
-              <div className="tokenomics-donut">
-                <div className="tokenomics-donut-inner">
-                  <span>STV</span>
-                  <strong>8.888B</strong>
-                  <small>TOTAL SUPPLY</small>
-                </div>
+          <div className="tokenomics-command">
+            <div className="tokenomics-core">
+              <div className="tokenomics-core-glow" />
+              <div className="tokenomics-core-ring" />
+              <div className="tokenomics-core-inner">
+                <span>STV</span>
+                <strong>100%</strong>
+                <small>ALLOCATION</small>
               </div>
-              <div className="tokenomics-orbit-label tokenomics-label-top"><b>25%</b><span>PRESALE</span></div>
-              <div className="tokenomics-orbit-label tokenomics-label-right"><b>20%</b><span>LIQUIDITY</span></div>
-              <div className="tokenomics-orbit-label tokenomics-label-bottom"><b>15%</b><span>REWARDS</span></div>
-              <div className="tokenomics-orbit-label tokenomics-label-left"><b>15%</b><span>ECOSYSTEM</span></div>
-              <div className="tokenomics-crosshair tokenomics-crosshair-h" />
-              <div className="tokenomics-crosshair tokenomics-crosshair-v" />
             </div>
 
-            <div className="tokenomics-grid">
-              <article className="tokenomics-card tokenomics-card-main">
-                <div className="tokenomics-icon">↗</div>
-                <div className="tokenomics-card-top"><span>01 / LAUNCH</span><b>PRESALE</b></div>
-                <strong>25%</strong>
-                <div className="tokenomics-bar"><i style={{width:"25%"}} /></div>
-                <p>Public allocation for early supporters, fair launch and initial liquidity.</p>
+            <div className="tokenomics-nodes">
+              <article className="token-node node-cyan">
+                <span className="node-index">01</span><div><b>25%</b><strong>PRESALE</strong><small>Public launch</small></div>
               </article>
-              <article className="tokenomics-card tokenomics-card-purple">
-                <div className="tokenomics-icon">◎</div>
-                <div className="tokenomics-card-top"><span>02 / MARKET</span><b>LIQUIDITY</b></div>
-                <strong>20%</strong>
-                <div className="tokenomics-bar"><i style={{width:"20%"}} /></div>
-                <p>DEX liquidity, listings and long-term market stability.</p>
+              <article className="token-node node-purple">
+                <span className="node-index">02</span><div><b>20%</b><strong>LIQUIDITY</strong><small>Market depth</small></div>
               </article>
-              <article className="tokenomics-card tokenomics-card-pink">
-                <div className="tokenomics-icon">✦</div>
-                <div className="tokenomics-card-top"><span>03 / PEOPLE</span><b>REWARDS</b></div>
-                <strong>15%</strong>
-                <div className="tokenomics-bar"><i style={{width:"15%"}} /></div>
-                <p>Community incentives, staking rewards and ecosystem campaigns.</p>
+              <article className="token-node node-pink">
+                <span className="node-index">03</span><div><b>15%</b><strong>REWARDS</strong><small>Participation</small></div>
               </article>
-              <article className="tokenomics-card tokenomics-card-green">
-                <div className="tokenomics-icon">⌁</div>
-                <div className="tokenomics-card-top"><span>04 / BUILD</span><b>ECOSYSTEM</b></div>
-                <strong>15%</strong>
-                <div className="tokenomics-bar"><i style={{width:"15%"}} /></div>
-                <p>Platform development, expansion and strategic partnerships.</p>
+              <article className="token-node node-green">
+                <span className="node-index">04</span><div><b>15%</b><strong>ECOSYSTEM</strong><small>Development</small></div>
               </article>
-              <article className="tokenomics-card tokenomics-card-orange">
-                <div className="tokenomics-icon">◈</div>
-                <div className="tokenomics-card-top"><span>05 / GROW</span><b>MARKETING</b></div>
-                <strong>10%</strong>
-                <div className="tokenomics-bar"><i style={{width:"10%"}} /></div>
-                <p>Brand growth, global awareness, community engagement and partnerships.</p>
+              <article className="token-node node-orange">
+                <span className="node-index">05</span><div><b>10%</b><strong>MARKETING</strong><small>Growth</small></div>
               </article>
-              <article className="tokenomics-card tokenomics-card-blue">
-                <div className="tokenomics-icon">◉</div>
-                <div className="tokenomics-card-top"><span>06 / COMMUNITY</span><b>REWARDS</b></div>
-                <strong>10%</strong>
-                <div className="tokenomics-bar"><i style={{width:"10%"}} /></div>
-                <p>Community incentives, airdrops, campaigns and staking participation.</p>
+              <article className="token-node node-blue">
+                <span className="node-index">06</span><div><b>10%</b><strong>COMMUNITY</strong><small>Incentives</small></div>
               </article>
-              <article className="tokenomics-card tokenomics-card-gold">
-                <div className="tokenomics-icon">✦</div>
-                <div className="tokenomics-card-top"><span>07 / CORE</span><b>TEAM &amp; ADVISORS</b></div>
-                <strong>5%</strong>
-                <div className="tokenomics-bar"><i style={{width:"5%"}} /></div>
-                <p>Long-term commitment from the core team and strategic advisors.</p>
+              <article className="token-node node-gold">
+                <span className="node-index">07</span><div><b>5%</b><strong>TEAM &amp; ADVISORS</strong><small>Long-term</small></div>
               </article>
             </div>
           </div>
 
-          <div className="tokenomics-footer">
-            <span><i /> TRANSPARENT ALLOCATION</span>
-            <span><i /> COMMUNITY FIRST</span>
-            <span><i /> LONG-TERM GROWTH</span>
-            <span><i /> STV UTILITY</span>
+          <div className="tokenomics-total">
+            <div><span>25%</span><i /><b>PRESALE</b></div>
+            <div><span>20%</span><i /><b>LIQUIDITY</b></div>
+            <div><span>15%</span><i /><b>REWARDS</b></div>
+            <div><span>15%</span><i /><b>ECOSYSTEM</b></div>
+            <div><span>10%</span><i /><b>MARKETING</b></div>
+            <div><span>10%</span><i /><b>COMMUNITY</b></div>
+            <div><span>5%</span><i /><b>TEAM</b></div>
           </div>
         </div>
       </section>
 
-      <section id="roadmap" className="site-section roadmap-section">
+<section id="roadmap" className="site-section roadmap-section">
         <div className="section-shell roadmap-shell">
           <div className="roadmap-topline">
             <div>
