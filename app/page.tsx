@@ -598,12 +598,60 @@ export default function Home() {
 
 
 <section id="tokenomics" className="site-section token-section">
-        <div className="tokenomics-reference-image-wrap">
-          <img
-            className="tokenomics-reference-image"
-            src="/tokenomics_16_9.png"
-            alt="STRIVERSE tokenomics — 8,888,888,888 STV total supply — 25% presale"
-          />
+        <div className="section-shell tokenomics-shell">
+          <div className="tokenomics-heading">
+            <div>
+              <p className="section-kicker">TOKENOMICS / STV</p>
+              <h2>Built around<br /><span>8,888,888,888 STV.</span></h2>
+            </div>
+            <div className="tokenomics-supply">
+              <span>TOTAL SUPPLY</span>
+              <strong>8.888B</strong>
+              <small>STV</small>
+            </div>
+          </div>
+
+          <div className="tokenomics-layout">
+            <div className="tokenomics-orbit">
+              <div className="tokenomics-orbit-ring tokenomics-ring-a" />
+              <div className="tokenomics-orbit-ring tokenomics-ring-b" />
+              <div className="tokenomics-orbit-core">
+                <span>STV</span>
+                <strong>8.888B</strong>
+                <small>TOTAL SUPPLY</small>
+              </div>
+              <span className="tokenomics-dot tokenomics-dot-1" />
+              <span className="tokenomics-dot tokenomics-dot-2" />
+              <span className="tokenomics-dot tokenomics-dot-3" />
+            </div>
+
+            <div className="tokenomics-grid">
+              <article className="tokenomics-card tokenomics-card-main">
+                <div className="tokenomics-card-top"><span>01</span><b>PRESALE</b></div>
+                <strong>25%</strong>
+                <div className="tokenomics-bar"><i style={{width:"25%"}} /></div>
+                <p>Community-first allocation designed for the public launch.</p>
+              </article>
+              <article className="tokenomics-card">
+                <div className="tokenomics-card-top"><span>02</span><b>LIQUIDITY</b></div>
+                <strong>20%</strong>
+                <div className="tokenomics-bar"><i style={{width:"20%"}} /></div>
+                <p>Liquidity support for a stronger and more accessible market.</p>
+              </article>
+              <article className="tokenomics-card">
+                <div className="tokenomics-card-top"><span>03</span><b>REWARDS</b></div>
+                <strong>15%</strong>
+                <div className="tokenomics-bar"><i style={{width:"15%"}} /></div>
+                <p>Designed for ecosystem participation and community incentives.</p>
+              </article>
+              <article className="tokenomics-card">
+                <div className="tokenomics-card-top"><span>04</span><b>ECOSYSTEM</b></div>
+                <strong>15%</strong>
+                <div className="tokenomics-bar"><i style={{width:"15%"}} /></div>
+                <p>Long-term ecosystem growth, products and strategic development.</p>
+              </article>
+            </div>
+          </div>
         </div>
       </section>
 
