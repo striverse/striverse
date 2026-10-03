@@ -12,8 +12,8 @@ export default function Navbar() {
   const [moreOpen, setMoreOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [isLight, setIsLight] = useState(false);
-  const [navHidden, setNavHidden] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [navHidden, setNavHidden] = useState(false);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("striverse-theme");
@@ -26,53 +26,78 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    let lastY = window.scrollY;
-    setNavHidden(lastY > 12);
-    const handleScroll = () => {
-      const currentY = window.scrollY;
-      if (currentY <= 12) {
-        setNavHidden(false);
-      } else if (currentY > lastY + 4) {
-        setNavHidden(true);
-      } else if (currentY < lastY - 4) {
-        setNavHidden(false);
+    const sectionIds = ["features", "about", "tokenomics", "community", "staking", "vesting", "airdrop", "roadmap"];
+
+    const updateActiveSection = () => {
+      const nav = document.querySelector<HTMLElement>(".reference-nav-wrap");
+      const navHeight = nav?.getBoundingClientRect().height ?? 0;
+      const marker = window.scrollY + navHeight + 80;
+
+      // The hero is the home state. Do not let the first section become active
+      // while its top edge is only barely visible at the bottom of the viewport.
+      const firstSection = document.getElementById(sectionIds[0]);
+      if (!firstSection || marker < firstSection.offsetTop) {
+        setActiveSection("home");
+        return;
       }
-      lastY = currentY;
+
+      let current = "home";
+      for (const id of sectionIds) {
+        const section = document.getElementById(id);
+        if (section && section.offsetTop <= marker) current = id;
+      }
+      setActiveSection(current);
     };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    const updateFromHash = () => {
+      const hash = window.location.hash.replace("#", "");
+      if (hash) {
+        setActiveSection(hash);
+      } else {
+        updateActiveSection();
+      }
+    };
+
+    updateFromHash();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("hashchange", updateFromHash);
+    window.addEventListener("striverse-section-change", updateActiveSection);
+
+    return () => {
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("hashchange", updateFromHash);
+      window.removeEventListener("striverse-section-change", updateActiveSection);
+    };
   }, []);
 
   useEffect(() => {
-    const sectionIds = ["features", "about", "tokenomics", "community", "staking", "vesting", "airdrop", "roadmap"];
-    const updateFromHash = () => {
-      const hash = window.location.hash.replace("#", "");
-      setActiveSection(hash || "home");
-    };
-    updateFromHash();
+    let lastY = window.scrollY;
 
-    const observers = sectionIds.map((id) => {
-      const element = document.getElementById(id);
-      if (!element) return null;
-      const observer = new IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting) setActiveSection(id);
-      }, { rootMargin: "-20% 0px -65% 0px", threshold: 0 });
-      observer.observe(element);
-      return observer;
-    });
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+      const delta = currentY - lastY;
 
-    window.addEventListener("hashchange", updateFromHash);
-    return () => {
-      observers.forEach((observer) => observer?.disconnect());
-      window.removeEventListener("hashchange", updateFromHash);
+      if (currentY <= 12) {
+        setNavHidden(false);
+      } else if (delta > 4) {
+        setNavHidden(true);
+        setMoreOpen(false);
+      } else if (delta < -4) {
+        setNavHidden(false);
+      }
+
+      lastY = currentY;
     };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToSection = (id: string) => {
     if (id === "home") {
       window.history.replaceState(null, "", "/");
+      window.dispatchEvent(new CustomEvent("striverse-section-change", { detail: { section: id } }));
       setMoreOpen(false);
-      setNavHidden(false);
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
@@ -80,23 +105,20 @@ export default function Navbar() {
     const element = document.getElementById(id);
     if (!element) return;
 
-    // Hide the fixed navbar first so the selected section can occupy the viewport.
-    setNavHidden(true);
     setMoreOpen(false);
     window.history.replaceState(null, "", `#${id}`);
+    window.dispatchEvent(new CustomEvent("striverse-section-change", { detail: { section: id } }));
 
+    // Focus mode hides the other sections, so reset the document to the selected section.
     requestAnimationFrame(() => {
-      // Always anchor to the selected section itself so its full top edge is shown.
-      // Do not anchor to an inner wrapper; section padding is part of the section.
-      const top = Math.max(0, element.getBoundingClientRect().top + window.scrollY);
-      window.scrollTo({ top, behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
   };
 
   const appHref = loading ? "/login" : user ? (user.role === "ADMIN" ? "/admin/dashboard" : "/dashboard") : "/login";
 
   return (
-    <header className={`reference-nav-wrap ${navHidden ? "nav-hidden" : ""}`}>
+    <header className={`reference-nav-wrap${navHidden ? " nav-hidden" : ""}`}>
       <nav className="reference-nav" aria-label="Primary navigation">
         <Link href="/" className="reference-brand" aria-label="STRIVERSE home">
           <span className="reference-brand-icon-clip" style={{ width: 62, height: 46, overflow: "hidden", display: "block", flex: "0 0 62px", position: "relative", background: "transparent" }}>

@@ -37,3 +37,34 @@
     gap: 12px;
   }
 }
+
+
+/* Keep previous section content from showing through the fixed navbar. */
+.reference-nav{
+  background:linear-gradient(110deg,rgba(3,20,37,.985),rgba(5,13,31,.985));
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+}
+
+
+/* Solid top shield: prevents the previous section from showing above/behind the fixed navbar. */
+.reference-nav-wrap{
+  top:12px;
+}
+.reference-nav-wrap::before{
+  content:"";
+  position:absolute;
+  z-index:0;
+  top:-12px;
+  left:-16px;
+  right:-16px;
+  height:108px;
+  background:#020a18;
+  pointer-events:none;
+}
+.reference-nav{
+  position:relative;
+  z-index:1;
+  background:#041225!important;
+  opacity:1!important;
+}
