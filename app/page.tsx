@@ -630,7 +630,7 @@ export default function Home() {
         }
         .tokenomics-core{width:245px!important}
         .tokenomics-core-inner strong{font-size:42px!important}
-        .tokenomics-core-inner strong em{font-size:.48em!important;font-style:normal;vertical-align:.14em;letter-spacing:-.03em}
+        .tokenomics-core-inner strong em{font-size:.68em!important;font-style:normal;vertical-align:.08em;letter-spacing:-.03em}
         .token-node{min-height:74px!important;padding:10px 14px!important}
         .token-node b{font-size:24px!important}
         @media(max-width:900px){
