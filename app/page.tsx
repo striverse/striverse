@@ -62,32 +62,6 @@ function FeatureIcon({ type }: { type: string }) {
     </svg>
   );
   useEffect(() => {
-    const clampTokenomicsScroll = () => {
-      const site = document.querySelector<HTMLElement>(".reference-site");
-      if (site?.dataset.activeSection !== "tokenomics") return;
-
-      const section = document.getElementById("tokenomics");
-      if (!section) return;
-
-      const rect = section.getBoundingClientRect();
-      if (rect.bottom < window.innerHeight) {
-        window.scrollTo({
-          top: Math.max(0, window.scrollY + rect.bottom - window.innerHeight),
-          behavior: "auto",
-        });
-      } else if (rect.top > 0 && window.scrollY > section.offsetTop) {
-        window.scrollTo({
-          top: section.offsetTop,
-          behavior: "auto",
-        });
-      }
-    };
-
-    window.addEventListener("scroll", clampTokenomicsScroll, { passive: true });
-    return () => window.removeEventListener("scroll", clampTokenomicsScroll);
-  }, []);
-
-  useEffect(() => {
     if (window.matchMedia("(max-width: 900px)").matches) return;
 
     const ids = ["features", "about", "tokenomics", "roadmap", "staking", "vesting", "more", "community"];
@@ -695,7 +669,7 @@ export default function Home() {
               <div className="tokenomics-core-ring" />
               <div className="tokenomics-core-inner">
                 <span>STV</span>
-                <strong>8.8₿</strong>
+                <strong>8.8<em>B</em></strong>
                 <small>TOTAL SUPPLY</small>
               </div>
             </div>
@@ -823,3 +797,30 @@ export default function Home() {
     </main>
   );
 }
+
+        /* Tokenomics viewport fit + compact supply typography. */
+        #tokenomics.token-section{
+          min-height:calc(100svh - 104px)!important;
+          height:auto!important;
+          padding:20px 0 28px!important;
+          box-sizing:border-box!important;
+          overflow:hidden!important;
+        }
+        .tokenomics-heading{margin-bottom:20px!important}
+        .tokenomics-heading h2{font-size:clamp(44px,5vw,70px)!important}
+        .tokenomics-command{
+          min-height:420px!important;
+          padding:22px 18px!important;
+          gap:42px!important;
+          grid-template-columns:350px 1fr!important;
+        }
+        .tokenomics-core{width:270px!important}
+        .tokenomics-core-inner strong{font-size:46px!important}
+        .tokenomics-core-inner strong em{font-size:.58em!important;font-style:normal;vertical-align:.12em;letter-spacing:-.03em}
+        .token-node{min-height:92px!important;padding:13px 16px!important}
+        .token-node b{font-size:27px!important}
+        @media(max-width:900px){
+          #tokenomics.token-section{min-height:0!important;height:auto!important;padding:20px 0 28px!important;overflow:visible!important}
+          .tokenomics-command{grid-template-columns:1fr!important;min-height:0!important}
+          .tokenomics-core{width:min(250px,72vw)!important}
+        }
