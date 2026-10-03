@@ -620,19 +620,19 @@ export default function Home() {
           box-sizing:border-box!important;
           overflow:hidden!important;
         }
-        .tokenomics-heading{margin-bottom:20px!important}
-        .tokenomics-heading h2{font-size:clamp(44px,5vw,70px)!important}
+        .tokenomics-heading{margin-bottom:12px!important}
+        .tokenomics-heading h2{font-size:clamp(42px,4.7vw,64px)!important}
         .tokenomics-command{
-          min-height:420px!important;
-          padding:22px 18px!important;
-          gap:42px!important;
-          grid-template-columns:350px 1fr!important;
+          min-height:350px!important;
+          padding:14px 16px!important;
+          gap:28px!important;
+          grid-template-columns:330px 1fr!important;
         }
-        .tokenomics-core{width:270px!important}
-        .tokenomics-core-inner strong{font-size:46px!important}
-        .tokenomics-core-inner strong em{font-size:.58em!important;font-style:normal;vertical-align:.12em;letter-spacing:-.03em}
-        .token-node{min-height:92px!important;padding:13px 16px!important}
-        .token-node b{font-size:27px!important}
+        .tokenomics-core{width:245px!important}
+        .tokenomics-core-inner strong{font-size:42px!important}
+        .tokenomics-core-inner strong em{font-size:.48em!important;font-style:normal;vertical-align:.14em;letter-spacing:-.03em}
+        .token-node{min-height:74px!important;padding:10px 14px!important}
+        .token-node b{font-size:24px!important}
         @media(max-width:900px){
           #tokenomics.token-section{min-height:0!important;height:auto!important;padding:20px 0 28px!important;overflow:visible!important}
           .tokenomics-command{grid-template-columns:1fr!important;min-height:0!important}
