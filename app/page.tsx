@@ -723,7 +723,7 @@ export default function Home() {
                   <span className="node-index">{num}</span><div><b>{percent}%</b><strong>{name}</strong><small>{description}</small></div>
                 </button>
               ))}
-            </div></div>
+            </div>
           </div>
         </div>
       </section>
