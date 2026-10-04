@@ -185,6 +185,7 @@ function FeatureIcon({ type }: { type: string }) {
 
 export default function Home() {
   const [activeView, setActiveView] = useState("home");
+  const [activeTokenAllocation, setActiveTokenAllocation] = useState({ name: "PRESALE", percent: 25, color: "#55e4f3" });
 
   useEffect(() => {
     const syncView = () => {
@@ -612,6 +613,13 @@ export default function Home() {
             object-fit:contain!important;
           }
         }
+        /* Interactive Tokenomics allocation globe. */
+        .tokenomics-core{--token-percent:25%;--token-color:#55e4f3;}
+        .tokenomics-core::before{content:"";position:absolute;inset:-2%;border-radius:50%;background:conic-gradient(from -90deg,var(--token-color) 0 var(--token-percent),transparent var(--token-percent) 100%);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 7px),#000 calc(100% - 6px));mask:radial-gradient(farthest-side,transparent calc(100% - 7px),#000 calc(100% - 6px));filter:drop-shadow(0 0 8px var(--token-color));opacity:.95;transition:background .45s ease,filter .45s ease;z-index:2;pointer-events:none;}
+        .token-node{cursor:pointer!important;text-align:left;font:inherit;color:inherit;transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease,filter .28s ease!important;}
+        .token-node.is-selected{transform:translateY(-4px) scale(1.018)!important;border-color:var(--node-color)!important;box-shadow:0 0 32px color-mix(in srgb,var(--node-color) 28%,transparent),inset 0 0 22px color-mix(in srgb,var(--node-color) 7%,transparent)!important;filter:saturate(1.25);}
+        .token-node.is-selected .node-index{color:var(--node-color)!important;text-shadow:0 0 12px var(--node-color);}
+
         /* Tokenomics viewport fit + compact supply typography. */
         #tokenomics.token-section{
           min-height:calc(100svh - 104px)!important;
@@ -691,7 +699,7 @@ export default function Home() {
           </div>
 
           <div className="tokenomics-command">
-            <div className="tokenomics-core">
+            <div className="tokenomics-core" style={{ "--token-percent": `${activeTokenAllocation.percent}%`, "--token-color": activeTokenAllocation.color } as React.CSSProperties}>
               <div className="tokenomics-core-glow" />
               <div className="tokenomics-core-ring" />
               <div className="tokenomics-core-inner">
@@ -702,28 +710,20 @@ export default function Home() {
             </div>
 
             <div className="tokenomics-nodes">
-              <article className="token-node node-cyan">
-                <span className="node-index">01</span><div><b>25%</b><strong>PRESALE</strong><small>Public launch</small></div>
-              </article>
-              <article className="token-node node-purple">
-                <span className="node-index">02</span><div><b>20%</b><strong>LIQUIDITY</strong><small>Market depth</small></div>
-              </article>
-              <article className="token-node node-pink">
-                <span className="node-index">03</span><div><b>15%</b><strong>REWARDS</strong><small>Participation</small></div>
-              </article>
-              <article className="token-node node-green">
-                <span className="node-index">04</span><div><b>15%</b><strong>ECOSYSTEM</strong><small>Development</small></div>
-              </article>
-              <article className="token-node node-orange">
-                <span className="node-index">05</span><div><b>10%</b><strong>MARKETING</strong><small>Growth</small></div>
-              </article>
-              <article className="token-node node-blue">
-                <span className="node-index">06</span><div><b>10%</b><strong>COMMUNITY</strong><small>Incentives</small></div>
-              </article>
-              <article className="token-node node-gold">
-                <span className="node-index">07</span><div><b>5%</b><strong>TEAM &amp; ADVISORS</strong><small>Long-term</small></div>
-              </article>
-            </div>
+              {[
+                ["01", "PRESALE", 25, "#55e4f3", "Public launch", "node-cyan"],
+                ["02", "LIQUIDITY", 20, "#b47aff", "Market depth", "node-purple"],
+                ["03", "REWARDS", 15, "#ff5ccc", "Participation", "node-pink"],
+                ["04", "ECOSYSTEM", 15, "#45edaa", "Development", "node-green"],
+                ["05", "MARKETING", 10, "#ffad45", "Growth", "node-orange"],
+                ["06", "COMMUNITY", 10, "#45a7ff", "Incentives", "node-blue"],
+                ["07", "TEAM & ADVISORS", 5, "#ffdc65", "Long-term", "node-gold"],
+              ].map(([num, name, percent, color, description, tone]) => (
+                <button key={num} type="button" className={`token-node ${tone}${activeTokenAllocation.name === name ? " is-selected" : ""}`} style={{ "--node-color": color } as React.CSSProperties} onClick={() => setActiveTokenAllocation({ name, percent: Number(percent), color })} aria-pressed={activeTokenAllocation.name === name}>
+                  <span className="node-index">{num}</span><div><b>{percent}%</b><strong>{name}</strong><small>{description}</small></div>
+                </button>
+              ))}
+            </div></div>
           </div>
         </div>
       </section>
