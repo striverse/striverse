@@ -126,28 +126,28 @@
     letter-spacing: .12em !important;
   }
 
-  .reference-countdown .grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] {
+  .reference-countdown .grid-cols-\\[1fr_auto_1fr_auto_1fr_auto_1fr\\] {
     gap: 3px !important;
     margin-top: 10px !important;
   }
 
-  .reference-countdown .grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] > div {
+  .reference-countdown .grid-cols-\\[1fr_auto_1fr_auto_1fr_auto_1fr\\] > div {
     min-width: 0 !important;
     padding: 8px 3px !important;
     border-radius: 11px !important;
   }
 
-  .reference-countdown .grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] strong {
+  .reference-countdown .grid-cols-\\[1fr_auto_1fr_auto_1fr_auto_1fr\\] strong {
     font-size: 19px !important;
   }
 
-  .reference-countdown .grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] small {
+  .reference-countdown .grid-cols-\\[1fr_auto_1fr_auto_1fr_auto_1fr\\] small {
     margin-top: 1px !important;
     font-size: 6px !important;
     letter-spacing: .12em !important;
   }
 
-  .reference-countdown .grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] > span {
+  .reference-countdown .grid-cols-\\[1fr_auto_1fr_auto_1fr_auto_1fr\\] > span {
     font-size: 13px !important;
     padding-bottom: 11px !important;
   }
