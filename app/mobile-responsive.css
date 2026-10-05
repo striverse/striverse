@@ -1,0 +1,475 @@
+/* STRIVERSE mobile experience — compact, premium, touch-first */
+@media (max-width: 900px) {
+  html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden !important;
+  }
+
+  .reference-nav-wrap {
+    top: 8px !important;
+    left: 10px !important;
+    right: 10px !important;
+    z-index: 100 !important;
+  }
+
+  .reference-nav-wrap::before {
+    top: -8px !important;
+    left: -10px !important;
+    right: -10px !important;
+    height: 78px !important;
+  }
+
+  .reference-site > .home-section,
+  .reference-site > .site-section,
+  .reference-site > .community-section {
+    min-height: 0 !important;
+    padding-top: 0 !important;
+    scroll-margin-top: 82px !important;
+  }
+
+  .reference-site[data-active-section="home"] > .home-section {
+    min-height: 0 !important;
+  }
+
+  /* Hero */
+  .reference-hero-live {
+    min-height: auto !important;
+    height: auto !important;
+    padding: 82px 14px 26px !important;
+    overflow: hidden !important;
+  }
+
+  .reference-hero-content {
+    width: 100% !important;
+    min-height: 0 !important;
+    display: block !important;
+  }
+
+  .reference-hero-copy {
+    width: 100% !important;
+    max-width: 680px !important;
+    margin: 0 auto !important;
+  }
+
+  .reference-kicker {
+    margin: 8px 0 13px !important;
+    font-size: 9px !important;
+    line-height: 1.25 !important;
+    letter-spacing: .22em !important;
+    text-align: left !important;
+  }
+
+  .reference-hero-copy h1 {
+    margin: 0 !important;
+    max-width: 12ch !important;
+    font-size: clamp(43px, 12vw, 58px) !important;
+    line-height: .91 !important;
+    letter-spacing: -.065em !important;
+  }
+
+  .reference-lead {
+    margin: 17px 0 0 !important;
+    max-width: 42rem !important;
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+    color: #aab8ca !important;
+  }
+
+  .reference-lead .desktop-break,
+  .desktop-break {
+    display: none !important;
+  }
+
+  .reference-hero-actions {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 9px !important;
+    margin-top: 17px !important;
+  }
+
+  .reference-video-cta {
+    min-height: 48px !important;
+    padding: 9px 10px !important;
+    border-radius: 14px !important;
+    gap: 8px !important;
+    font-size: 10px !important;
+    letter-spacing: .12em !important;
+  }
+
+  .reference-play {
+    width: 30px !important;
+    height: 30px !important;
+    flex: 0 0 30px !important;
+  }
+
+  /* Presale card */
+  .reference-countdown {
+    width: 100% !important;
+    max-width: none !important;
+    margin-top: 14px !important;
+    padding: 11px !important;
+    border-radius: 18px !important;
+  }
+
+  .reference-countdown > .relative.flex {
+    gap: 8px !important;
+  }
+
+  .reference-countdown > .relative.flex > div:first-child {
+    font-size: 8px !important;
+    letter-spacing: .18em !important;
+  }
+
+  .reference-countdown > .relative.flex > div:last-child {
+    font-size: 8px !important;
+    letter-spacing: .12em !important;
+  }
+
+  .reference-countdown .grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] {
+    gap: 3px !important;
+    margin-top: 10px !important;
+  }
+
+  .reference-countdown .grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] > div {
+    min-width: 0 !important;
+    padding: 8px 3px !important;
+    border-radius: 11px !important;
+  }
+
+  .reference-countdown .grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] strong {
+    font-size: 19px !important;
+  }
+
+  .reference-countdown .grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] small {
+    margin-top: 1px !important;
+    font-size: 6px !important;
+    letter-spacing: .12em !important;
+  }
+
+  .reference-countdown .grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] > span {
+    font-size: 13px !important;
+    padding-bottom: 11px !important;
+  }
+
+  .reference-countdown .relative.mt-4.overflow-hidden {
+    margin-top: 9px !important;
+    padding: 10px !important;
+    border-radius: 13px !important;
+  }
+
+  .reference-countdown .relative.mt-4.overflow-hidden .mt-3 {
+    margin-top: 8px !important;
+  }
+
+  .reference-countdown .relative.mt-4.overflow-hidden b {
+    font-size: 11px !important;
+  }
+
+  .reference-countdown .relative.mt-4.overflow-hidden small {
+    font-size: 6px !important;
+  }
+
+  .reference-countdown .relative.mt-4.flex.flex-col {
+    margin-top: 9px !important;
+    gap: 7px !important;
+  }
+
+  .reference-countdown .relative.mt-4.flex.flex-col a {
+    min-height: 42px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 9px 10px !important;
+    border-radius: 11px !important;
+    font-size: 9px !important;
+    letter-spacing: .11em !important;
+  }
+
+  .reference-side-copy,
+  .reference-hero-art,
+  .reference-planet,
+  .reference-moon,
+  .reference-mountain,
+  .reference-platform,
+  .reference-light-beam {
+    opacity: .25 !important;
+    transform: scale(.72) !important;
+  }
+
+  /* Sections */
+  .section-shell {
+    width: min(100% - 28px, 680px) !important;
+    margin-inline: auto !important;
+  }
+
+  .section-kicker {
+    font-size: 8px !important;
+    letter-spacing: .22em !important;
+  }
+
+  .section-heading-row {
+    display: block !important;
+  }
+
+  .section-heading-row h2,
+  .split-section h2,
+  .community-section h2 {
+    font-size: clamp(40px, 11vw, 54px) !important;
+    line-height: .92 !important;
+    letter-spacing: -.055em !important;
+  }
+
+  .features-section {
+    padding: 34px 0 42px !important;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 9px !important;
+    margin-top: 20px !important;
+  }
+
+  .feature-card {
+    min-height: 178px !important;
+    padding: 14px !important;
+    border-radius: 17px !important;
+  }
+
+  .feature-icon {
+    width: 42px !important;
+    height: 42px !important;
+    margin-bottom: 13px !important;
+  }
+
+  .feature-card h3 {
+    font-size: 16px !important;
+  }
+
+  .feature-card p {
+    margin-top: 6px !important;
+    font-size: 10px !important;
+    line-height: 1.45 !important;
+  }
+
+  .about-section,
+  .dark-panel-section,
+  .vesting-section,
+  .more-section,
+  .community-section {
+    padding: 42px 0 !important;
+  }
+
+  .split-section {
+    display: block !important;
+  }
+
+  .split-section > div + div {
+    margin-top: 22px !important;
+  }
+
+  .section-copy {
+    font-size: 13px !important;
+    line-height: 1.65 !important;
+  }
+
+  /* Tokenomics */
+  #tokenomics.token-section {
+    min-height: 0 !important;
+    height: auto !important;
+    padding: 38px 0 42px !important;
+    overflow: visible !important;
+  }
+
+  .tokenomics-shell {
+    width: min(100% - 28px, 680px) !important;
+  }
+
+  .tokenomics-heading {
+    margin-bottom: 15px !important;
+  }
+
+  .tokenomics-heading h2 {
+    font-size: clamp(40px, 11vw, 54px) !important;
+  }
+
+  .tokenomics-command {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+    padding: 15px 11px !important;
+    min-height: 0 !important;
+    border-radius: 19px !important;
+  }
+
+  .tokenomics-core {
+    width: min(190px, 56vw) !important;
+  }
+
+  .tokenomics-core-inner strong {
+    font-size: 33px !important;
+  }
+
+  .tokenomics-core-inner span {
+    font-size: 10px !important;
+  }
+
+  .tokenomics-core-inner small {
+    margin-top: 5px !important;
+    font-size: 6px !important;
+  }
+
+  .tokenomics-nodes {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 7px !important;
+  }
+
+  .token-node {
+    min-height: 67px !important;
+    padding: 8px 9px !important;
+    gap: 7px !important;
+    border-radius: 12px !important;
+  }
+
+  .token-node b {
+    font-size: 18px !important;
+  }
+
+  .token-node strong {
+    margin-top: 4px !important;
+    font-size: 7px !important;
+    letter-spacing: .1em !important;
+  }
+
+  .token-node small {
+    margin-top: 2px !important;
+    font-size: 6px !important;
+  }
+
+  .node-index {
+    font-size: 6px !important;
+  }
+
+  /* Roadmap */
+  .roadmap-section {
+    min-height: 0 !important;
+    padding: 42px 0 48px !important;
+  }
+
+  .roadmap-topline {
+    margin-bottom: 22px !important;
+    gap: 15px !important;
+  }
+
+  .roadmap-topline h2 {
+    font-size: clamp(40px, 11vw, 54px) !important;
+  }
+
+  .roadmap-intro {
+    width: 100% !important;
+    font-size: 12px !important;
+  }
+
+  .roadmap-track {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    padding-top: 0 !important;
+  }
+
+  .crypto-roadmap-card {
+    min-height: 230px !important;
+    height: auto !important;
+    padding: 15px !important;
+    border-radius: 17px !important;
+  }
+
+  .roadmap-node {
+    width: 45px !important;
+    height: 45px !important;
+    margin: 15px 0 12px !important;
+    border-radius: 14px !important;
+  }
+
+  .roadmap-card-copy h3 {
+    font-size: 21px !important;
+  }
+
+  .roadmap-card-copy > p:last-child {
+    margin-top: 7px !important;
+    font-size: 10px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Other panels */
+  .community-actions,
+  .more-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 9px !important;
+  }
+
+  .feature-panel,
+  .vesting-card,
+  .more-card {
+    border-radius: 17px !important;
+  }
+
+  .site-footer {
+    padding: 32px 0 22px !important;
+  }
+
+  .footer-shell {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 22px 14px !important;
+  }
+
+  .footer-shell > div:first-child {
+    grid-column: 1 / -1 !important;
+  }
+
+  .footer-bottom {
+    font-size: 8px !important;
+    gap: 8px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .reference-hero-live {
+    padding-inline: 11px !important;
+  }
+
+  .reference-hero-copy h1 {
+    font-size: 42px !important;
+  }
+
+  .reference-lead {
+    font-size: 13px !important;
+  }
+
+  .reference-hero-actions {
+    gap: 7px !important;
+  }
+
+  .reference-video-cta {
+    font-size: 9px !important;
+  }
+
+  .reference-countdown {
+    padding: 9px !important;
+  }
+
+  .reference-countdown .grid-cols-\[1fr_auto_1fr_auto_1fr_auto_1fr\] strong {
+    font-size: 17px !important;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .feature-card {
+    min-height: 150px !important;
+  }
+
+  .tokenomics-nodes {
+    grid-template-columns: 1fr !important;
+  }
+}
