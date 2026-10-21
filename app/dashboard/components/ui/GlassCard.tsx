@@ -19,8 +19,7 @@ export default function GlassCard({
       whileHover={
         hover
           ? {
-              y: -4,
-              scale: 1.01,
+              y: -2,
             }
           : {}
       }
@@ -31,21 +30,14 @@ export default function GlassCard({
       className={`
         relative
         overflow-hidden
-        rounded-3xl
+        rounded-2xl
         border
-        border-white/10
-        bg-white/5
-        backdrop-blur-2xl
-        shadow-[0_8px_40px_rgba(0,0,0,0.35)]
+        border-slate-200
+        bg-white
+        shadow-sm
         ${className}
       `}
     >
-      {/* Top Glow */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent" />
-
-      {/* Background Glow */}
-      <div className="pointer-events-none absolute -top-24 -right-24 h-52 w-52 rounded-full bg-cyan-500/10 blur-3xl" />
-
       {/* Content */}
       <div className="relative z-10">
         {children}
