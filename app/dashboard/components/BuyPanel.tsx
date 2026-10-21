@@ -60,7 +60,7 @@ export default function BuyPanel({
             </div>
             <p className="text-right text-xs font-semibold text-teal-700">{stv.toLocaleString()} STV</p>
           </div>
-          <button type="button" onClick={onToggleCollapsed} className="mt-3 w-full rounded-xl border border-teal-700 bg-teal-700 py-2.5 text-sm font-semibold text-white transition hover:bg-teal-800">Expand purchase panel</button>
+          <button type="button" onClick={onToggleCollapsed} className="mt-3 w-full rounded-xl border border-teal-700 bg-teal-700 py-2.5 text-sm font-semibold !text-white transition hover:bg-teal-800">Expand purchase panel</button>
         </div>
       ) : (
         <div className="space-y-5 p-4">
@@ -91,7 +91,7 @@ export default function BuyPanel({
           </div>
 
           <div>
-            <label className="mb-2 block text-xs font-medium text-slate-400">Payment network</label>
+            <label className="mb-2 block text-xs font-medium text-slate-700">Payment network</label>
             <select
               value={network}
               onChange={(event) => setNetwork(event.target.value)}
@@ -105,7 +105,7 @@ export default function BuyPanel({
 
           <div className="rounded-xl border border-teal-100 bg-teal-50 p-4">
             <div className="flex items-center justify-between gap-3">
-              <span className="text-xs text-slate-400">You receive</span>
+              <span className="text-xs text-slate-700">You receive</span>
               <span className="text-lg font-semibold text-teal-800">{stv.toLocaleString()} STV</span>
             </div>
             <p className="mt-2 text-[10px] leading-4 text-slate-600">Indicative package amount · 1 USDT = {STV_RATE.toLocaleString()} STV</p>
