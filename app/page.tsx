@@ -719,7 +719,7 @@ export default function Home() {
                 ["06", "COMMUNITY", 10, "#45a7ff", "Incentives", "node-blue"],
                 ["07", "TEAM & ADVISORS", 5, "#ffdc65", "Long-term", "node-gold"],
               ].map(([num, name, percent, color, description, tone]) => (
-                <button key={num} type="button" className={`token-node ${tone}${activeTokenAllocation.name === name ? " is-selected" : ""}`} style={{ "--node-color": color } as React.CSSProperties} onClick={() => setActiveTokenAllocation({ name, percent: Number(percent), color })} aria-pressed={activeTokenAllocation.name === name}>
+                <button key={num} type="button" className={`token-node ${tone}${activeTokenAllocation.name === name ? " is-selected" : ""}`} style={{ "--node-color": color } as React.CSSProperties} onClick={() => setActiveTokenAllocation({ name: String(name), percent: Number(percent), color: String(color) })} aria-pressed={activeTokenAllocation.name === name}>
                   <span className="node-index">{num}</span><div><b>{percent}%</b><strong>{name}</strong><small>{description}</small></div>
                 </button>
               ))}
