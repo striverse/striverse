@@ -275,7 +275,7 @@ if (!entered) {
   return (
     <>
       <BackgroundEffects />
-      <main className="relative min-h-screen px-3 py-4 text-white sm:px-5 lg:px-6">
+      <main className="dashboard-light relative min-h-screen px-3 py-4 text-slate-900 sm:px-5 lg:px-6">
         <div className="mx-auto max-w-[1600px]">
           <header className="mb-5 flex items-center justify-between gap-4 rounded-2xl border border-white/[0.08] bg-[#071426]/90 px-4 py-3 shadow-[0_12px_40px_rgba(0,0,0,.22)] backdrop-blur-xl sm:px-6">
             <Link href="/dashboard" className="flex min-w-0 items-center gap-3">
