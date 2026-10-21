@@ -347,7 +347,7 @@ if (!entered) {
                 <div className="text-xs text-slate-500">{new Date().toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric", year: "numeric" })}</div>
               </div>
 
-              <div className="grid items-start gap-5 2xl:grid-cols-[minmax(0,1fr)_310px]">
+              <div className="grid items-start gap-5 xl:grid-cols-[minmax(0,1fr)_300px]">
                 <div className="min-w-0">
                   <PortfolioSection lockedSTV={user?.wallet?.lockedSTV ?? 0} availableSTV={user?.wallet?.unlockedSTV ?? 0} totalInvested={totalInvested} walletConnected={!!user?.walletAddress} />
                   <AnnouncementBanner />
