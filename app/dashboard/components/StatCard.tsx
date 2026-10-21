@@ -18,7 +18,7 @@ export default function StatCard({
   value,
   subtitle,
   icon,
-  iconColor = "text-cyan-400",
+  iconColor = "text-teal-700",
 }: StatCardProps) {
   return (
     <motion.div
@@ -26,20 +26,20 @@ export default function StatCard({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45 }}
     >
-      <GlassCard className="p-6 h-full">
+      <GlassCard className="h-full !rounded-2xl !border-slate-200 !bg-white !p-6 !text-slate-900 !shadow-sm">
         <div className="flex items-start justify-between">
           {/* Left */}
           <div>
-            <p className="text-sm font-medium text-gray-400">
+            <p className="text-sm font-medium text-slate-600">
               {title}
             </p>
 
-            <h2 className="mt-3 text-3xl font-bold text-white">
+            <h2 className="mt-3 text-3xl font-bold text-slate-900">
               {value}
             </h2>
 
             {subtitle && (
-              <p className="mt-2 text-sm text-gray-500">
+              <p className="mt-2 text-sm text-slate-600">
                 {subtitle}
               </p>
             )}

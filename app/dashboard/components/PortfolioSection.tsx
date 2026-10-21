@@ -25,23 +25,23 @@ export default function PortfolioSection({
     <section className="mt-8">
       {/* Section Heading */}
       <div className="mb-6">
-        <h2 className="text-2xl font-bold text-white">
+        <h2 className="text-2xl font-bold text-slate-900">
           Portfolio Overview
         </h2>
 
-        <p className="mt-1 text-sm text-gray-400">
+        <p className="mt-1 text-sm text-slate-600">
           
         </p>
       </div>
 
       {/* Cards */}
-      <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-4">
         <StatCard
           title="Locked STV"
           value={lockedSTV.toLocaleString()}
           subtitle="Locked Balance"
           icon={<Lock size={28} />}
-          iconColor="text-cyan-400"
+          iconColor="text-teal-700"
         />
 
         <StatCard
@@ -49,7 +49,7 @@ export default function PortfolioSection({
           value={availableSTV.toLocaleString()}
           subtitle="Ready to Use"
           icon={<Coins size={28} />}
-          iconColor="text-emerald-400"
+          iconColor="text-emerald-700"
         />
 
         <StatCard
@@ -57,7 +57,7 @@ export default function PortfolioSection({
           value={`$${totalInvested.toLocaleString()}`}
           subtitle="USDT Invested"
           icon={<DollarSign size={28} />}
-          iconColor="text-yellow-400"
+          iconColor="text-amber-700"
         />
 
         <StatCard
@@ -69,7 +69,7 @@ export default function PortfolioSection({
               : "Connect Wallet"
           }
           icon={<Wallet size={28} />}
-          iconColor="text-violet-400"
+          iconColor="text-violet-700"
         />
       </div>
     </section>

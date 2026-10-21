@@ -17,7 +17,7 @@ export default function DashboardStats({
   pendingOrders,
 }: DashboardStatsProps) {
   return (
-    <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+    <div className="mt-8 grid gap-4 md:grid-cols-2 2xl:grid-cols-4">
 
       <StatCard
         title="Purchased STV"
