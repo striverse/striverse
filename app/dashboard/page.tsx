@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { User } from "./types";
 import Link from "next/link";
-import { Bell, LayoutDashboard, ShoppingCart, ReceiptText, Layers3, Gift, Wallet, UserRound, ShieldCheck, LogOut, ChevronRight } from "lucide-react";
+import { Bell, LayoutDashboard, ShoppingCart, ReceiptText, Gift, Wallet, ShieldCheck, LogOut, ChevronRight } from "lucide-react";
 import BackgroundEffects from "./components/BackgroundEffects";
 import PortfolioSection from "./components/PortfolioSection";
 import BuyPanel from "./components/BuyPanel";
@@ -290,6 +290,7 @@ if (!entered) {
                 <Bell size={18} />
                 {notificationCount > 0 && <span className="absolute -right-1 -top-1 grid h-4 min-w-4 place-items-center rounded-full bg-cyan-400 px-1 text-[10px] font-bold text-slate-950">{notificationCount}</span>}
               </button>
+              <button type="button" onClick={() => setShowReferral(true)} aria-label="Partner program" className="grid h-10 w-10 place-items-center rounded-xl border border-white/10 bg-white/[0.04] text-slate-300 transition hover:border-cyan-300/40 hover:text-cyan-200"><Gift size={17} /></button>
               <Link href="/dashboard/profile" className="flex items-center gap-2 rounded-xl px-1 py-1 transition hover:bg-white/5 sm:px-2">
                 <span className="grid h-9 w-9 place-items-center rounded-full border border-cyan-300/30 bg-cyan-300/10 font-semibold text-cyan-200">{(user?.fullName || "I").charAt(0).toUpperCase()}</span>
                 <span className="hidden text-left sm:block"><span className="block max-w-36 truncate text-sm font-semibold">{user?.fullName || "Investor"}</span><span className="block text-xs text-slate-400">STRIVERSE member</span></span>
