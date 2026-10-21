@@ -50,8 +50,8 @@ export default function StatCard({
             className={`
               flex h-14 w-14 items-center justify-center
               rounded-2xl
-              bg-white/5
-              border border-white/10
+              bg-teal-50
+              border border-teal-100
               ${iconColor}
             `}
           >
