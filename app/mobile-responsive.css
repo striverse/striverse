@@ -529,3 +529,28 @@
 .dashboard-light [class*="text-violet-400"] { color: #6d28d9 !important; }
 .dashboard-light [class*="bg-cyan-400"] { background-color: #0f766e !important; }
 .dashboard-light [class*="bg-cyan-300/"] { background-color: #e6f4f1 !important; }
+
+/* Final dashboard light-theme contrast and elevation corrections */
+.dashboard-light .relative.min-h-screen { background: #f4f7fb !important; }
+.dashboard-light [class*="shadow-"] { box-shadow: 0 3px 12px rgba(15, 23, 42, .045) !important; }
+.dashboard-light [class*="text-gray-400"],
+.dashboard-light [class*="text-gray-500"] { color: #526176 !important; }
+.dashboard-light [class*="text-slate-200"] { color: #263449 !important; }
+.dashboard-light [class*="text-slate-100"] { color: #263449 !important; }
+.dashboard-light [class*="text-emerald-200"] { color: #047857 !important; }
+.dashboard-light .rounded-3xl,
+.dashboard-light [class*="rounded-2xl"][class*="border"] {
+  border-color: #e1e7ef !important;
+}
+.dashboard-light .rounded-3xl [class*="via-cyan-400"] { opacity: 0 !important; }
+.dashboard-light header a > span { color: #172033; }
+.dashboard-light header a > span span { color: #0f766e !important; }
+.dashboard-light #buy-stv [class*="text-white"] { color: #172033 !important; }
+.dashboard-light #buy-stv [class*="bg-[#081629]"] { background: #ffffff !important; }
+.dashboard-light #buy-stv [class*="border-white"] { border-color: #e2e8f0 !important; }
+.dashboard-light #buy-stv [class*="text-slate-500"],
+.dashboard-light #buy-stv [class*="text-slate-400"],
+.dashboard-light #buy-stv [class*="text-slate-600"] { color: #526176 !important; }
+.dashboard-light #buy-stv [class*="bg-cyan-300/"] { background: #e6f4f1 !important; }
+.dashboard-light #buy-stv [class*="text-cyan-200"],
+.dashboard-light #buy-stv [class*="text-cyan-100"] { color: #0f766e !important; }
