@@ -473,3 +473,59 @@
     grid-template-columns: 1fr !important;
   }
 }
+
+/* STRIVERSE dashboard: accessible, calm light theme */
+.dashboard-light {
+  background: #f4f7fb !important;
+  color: #172033 !important;
+  min-height: 100vh;
+}
+.dashboard-light header,
+.dashboard-light aside nav,
+.dashboard-light [class*="bg-[#071426]"],
+.dashboard-light [class*="bg-[#081629]"],
+.dashboard-light [class*="bg-[#0b1b2f]"] {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05) !important;
+}
+.dashboard-light [class*="rounded-2xl"][class*="border"],
+.dashboard-light [class*="rounded-xl"][class*="border"] {
+  border-color: #e2e8f0 !important;
+}
+.dashboard-light [class*="bg-white/"],
+.dashboard-light [class*="bg-cyan-300/"],
+.dashboard-light [class*="bg-gradient-to-br"] {
+  background-color: #f8fafc !important;
+  background-image: none !important;
+}
+.dashboard-light [class*="text-white"] { color: #172033 !important; }
+.dashboard-light [class*="text-slate-500"],
+.dashboard-light [class*="text-slate-600"] { color: #64748b !important; }
+.dashboard-light [class*="text-slate-400"],
+.dashboard-light [class*="text-slate-300"] { color: #526176 !important; }
+.dashboard-light [class*="text-cyan-300"],
+.dashboard-light [class*="text-cyan-200"],
+.dashboard-light [class*="text-cyan-100"] { color: #0f766e !important; }
+.dashboard-light [class*="border-white/"],
+.dashboard-light [class*="border-cyan-300/"] { border-color: #dbe4ee !important; }
+.dashboard-light button[class*="bg-cyan-300"] {
+  background: #0f766e !important;
+  color: #ffffff !important;
+}
+.dashboard-light button[class*="bg-cyan-300"]:hover { background: #115e59 !important; }
+.dashboard-light input,
+.dashboard-light select,
+.dashboard-light textarea {
+  color: #172033 !important;
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+}
+.dashboard-light select option { color: #172033; background: #ffffff; }
+.dashboard-light [class*="text-emerald-200"],
+.dashboard-light [class*="text-emerald-400"] { color: #047857 !important; }
+.dashboard-light [class*="text-yellow-400"] { color: #a16207 !important; }
+.dashboard-light [class*="text-violet-400"] { color: #6d28d9 !important; }
+.dashboard-light [class*="bg-cyan-400"] { background-color: #0f766e !important; }
+.dashboard-light [class*="bg-cyan-300/"] { background-color: #e6f4f1 !important; }
