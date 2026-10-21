@@ -277,12 +277,12 @@ if (!entered) {
       <BackgroundEffects />
       <main className="dashboard-light relative min-h-screen px-3 py-4 text-slate-900 sm:px-5 lg:px-6">
         <div className="mx-auto max-w-[1600px]">
-          <header className="mb-5 flex items-center justify-between gap-4 rounded-2xl border border-white/[0.08] bg-[#071426]/90 px-4 py-3 shadow-[0_12px_40px_rgba(0,0,0,.22)] backdrop-blur-xl sm:px-6">
+          <header className="mb-5 flex items-center justify-between gap-4 rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-sm sm:px-6">
             <Link href="/dashboard" className="flex min-w-0 items-center gap-3">
-              <img src="/logo1.png" alt="STRIVERSE" className="h-10 w-10 object-contain" />
-              <span className="text-lg font-bold tracking-[0.22em] sm:text-xl">STRI<span className="text-cyan-300">VERSE</span></span>
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-teal-700 text-sm font-bold tracking-tight text-white">S</span>
+              <span className="text-lg font-bold tracking-[0.22em] text-slate-900 sm:text-xl">STRI<span className="text-teal-700">VERSE</span></span>
             </Link>
-            <div className="hidden max-w-md flex-1 items-center rounded-xl border border-white/[0.08] bg-white/[0.035] px-4 py-2.5 text-sm text-slate-400 md:flex">
+            <div className="hidden max-w-md flex-1 items-center rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm text-slate-600 md:flex">
               <span className="mr-3 text-cyan-300">⌕</span> Your investor dashboard
             </div>
             <div className="flex items-center gap-2 sm:gap-3">
@@ -301,7 +301,7 @@ if (!entered) {
 
           <div className="grid gap-5 lg:grid-cols-[190px_minmax(0,1fr)] xl:grid-cols-[205px_minmax(0,1fr)]">
             <aside className="hidden lg:flex lg:flex-col">
-              <nav className="sticky top-5 rounded-2xl border border-white/[0.08] bg-[#071426]/80 p-3 backdrop-blur-xl">
+              <nav className="sticky top-5 rounded-2xl border border-slate-200 bg-white p-3 shadow-sm">
                 <p className="px-3 pb-3 pt-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-slate-500">Workspace</p>
                 {[
                   { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard, active: true },
@@ -340,11 +340,11 @@ if (!entered) {
 
               <div className="mb-5 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
                 <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-cyan-300/80">Investor workspace</p>
-                  <h1 className="mt-2 text-2xl font-semibold tracking-tight text-white sm:text-3xl">Welcome back, {user?.fullName?.split(" ")[0] || "Investor"}</h1>
-                  <p className="mt-1 text-sm text-slate-400">Your account overview and latest activity.</p>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-teal-700">Investor workspace</p>
+                  <h1 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Welcome back, {user?.fullName?.split(" ")[0] || "Investor"}</h1>
+                  <p className="mt-1 text-sm text-slate-600">Your account overview and latest activity.</p>
                 </div>
-                <div className="text-xs text-slate-500">{new Date().toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric", year: "numeric" })}</div>
+                <div className="text-xs text-slate-600">{new Date().toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric", year: "numeric" })}</div>
               </div>
 
               <div className="grid items-start gap-5 xl:grid-cols-[minmax(0,1fr)_300px]">
