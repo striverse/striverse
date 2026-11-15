@@ -61,7 +61,7 @@ export default function PurchaseHistoryPage() {
   }, [search, purchases]);
 
   return (
-    <div className="min-h-screen bg-[#050816] text-white p-6">
+    <div className="sv-dashboard-page min-h-screen bg-[#050816] text-white p-6">
 
       <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-5 mb-8">
 
