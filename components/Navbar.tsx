@@ -11,7 +11,6 @@ export default function Navbar() {
   const [loading, setLoading] = useState(true);
   const [moreOpen, setMoreOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
   const [isLight, setIsLight] = useState(false);
   const [navHidden, setNavHidden] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -113,11 +112,9 @@ export default function Navbar() {
 
         <button type="button" className="sv-mobile-menu-toggle" aria-label={mobileOpen ? "Close navigation" : "Open navigation"} aria-expanded={mobileOpen} onClick={() => setMobileOpen((value) => !value)}>{mobileOpen ? "✕" : "☰"}</button>
         <div className="reference-nav-actions" style={{ marginLeft: "auto", gap: 8, flex: "0 0 auto", minWidth: 0 }}>
-          <button type="button" className="reference-icon-btn" aria-label={searchOpen ? "Close search" : "Open search"} aria-expanded={searchOpen} onClick={() => setSearchOpen((value) => !value)} style={{ width: 44, height: 44 }}><span className="reference-search-icon" /></button>
           <button type="button" className={`reference-theme ${isLight ? "is-light" : ""}`} aria-label={isLight ? "Switch to dark theme" : "Switch to light theme"} aria-pressed={isLight} onClick={() => { const next = !isLight; setIsLight(next); document.documentElement.dataset.mode = next ? "light" : "dark"; localStorage.setItem("striverse-theme", next ? "light" : "dark"); }}><span className="reference-sun">☼</span><span className="reference-theme-knob">{isLight ? "☀" : "☾"}</span></button>
-          <Link href="/login" className="reference-wallet">Connect Wallet</Link><Link href={appHref} className="reference-launch">Launch App <span>↗</span></Link>
+          <Link href="/login" className="reference-wallet">Member Login</Link><Link href={appHref} className="reference-launch">Launch App <span>↗</span></Link>
         </div>
-        {searchOpen && <div className="reference-search-popover"><input autoFocus placeholder="Search STRIVERSE..." aria-label="Search STRIVERSE" /><span>⌕</span></div>}
         {mobileOpen && <div className="sv-mobile-nav-panel">
           {["home","features","about","tokenomics","community","invest","staking","vesting","airdrop","roadmap"].map((id) => <a key={id} href={id === "home" ? "/" : "#"+id} onClick={(event) => { event.preventDefault(); scrollToSection(id); setMobileOpen(false); }}>{id === "home" ? "Home" : id.charAt(0).toUpperCase()+id.slice(1)}</a>)}
           <Link href={appHref} onClick={() => setMobileOpen(false)}>Launch App ↗</Link>
