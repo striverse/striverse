@@ -125,7 +125,7 @@ export default function Home() {
         <div className="section-shell">
           <p className="section-kicker">ROADMAP</p>
           <div className="section-heading-row"><h2>Strive.<br /><span>Grow. Belong.</span></h2><p>A crypto-native roadmap covering the STV launch, liquidity, rewards, governance and ecosystem expansion.</p></div>
-          <div className="roadmap-grid crypto-roadmap-grid">{roadmap.map(([num, title, text, icon], index) => <article key={num} className="roadmap-card crypto-roadmap-card"><div className="roadmap-phase"><span>{num}</span><i>{index === 0 ? "LIVE" : "PHASE " + num}</i></div><div className="roadmap-crypto-icon">{icon}</div><div className="roadmap-dot" /><h3>{title}</h3><p>{text}</p><div className="roadmap-line"><span /></div></article>)}</div>
+          <div className="roadmap-grid crypto-roadmap-grid">{roadmap.map(([num, title, text, icon], index) => <article key={num} className="roadmap-card crypto-roadmap-card"><div className="roadmap-phase"><span>{num}</span><i>{"PHASE " + num}</i></div><div className="roadmap-crypto-icon">{icon}</div><div className="roadmap-dot" /><h3>{title}</h3><p>{text}</p><div className="roadmap-line"><span /></div></article>)}</div>
         </div>
       </section>
 
@@ -137,10 +137,10 @@ export default function Home() {
           </div>
           <div className="feature-panel">
             <div className="panel-glow" />
-            <div className="panel-top"><span>STV STAKING</span><b>LIVE EXPERIENCE</b></div>
+            <div className="panel-top"><span>STV STAKING</span><b>ECOSYSTEM MODULE</b></div>
             <div className="staking-metric"><strong>Stake</strong><span>Lock STV and participate in the reward experience.</span></div>
             <div className="metric-row"><div><b>APY</b><span>Connected data</span></div><div><b>TERM</b><span>Pool dependent</span></div><div><b>REWARD</b><span>STV</span></div></div>
-            <Link href="/app" className="panel-button">Open Staking ↗</Link>
+            <Link href="/login" className="panel-button">Member Login ↗</Link>
           </div>
         </div>
       </section>
@@ -156,7 +156,7 @@ export default function Home() {
             <div className="vesting-progress"><span /></div>
             <div className="vesting-grid"><div><small>VESTED</small><b>Connected data</b></div><div><small>CLAIMABLE</small><b>Connected data</b></div><div><small>NEXT UNLOCK</small><b>Schedule</b></div></div>
             <p>Vesting schedules can be surfaced here once the project's final allocation and unlock rules are connected.</p>
-            <Link href="/app" className="text-link">View vesting ↗</Link>
+            <Link href="/login" className="text-link">Member Login ↗</Link>
           </div>
         </div>
       </section>
