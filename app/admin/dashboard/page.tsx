@@ -80,7 +80,7 @@ export default function AdminDashboard() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#050816] text-white">
+    <main className="sv-admin-dashboard min-h-screen bg-[#050816] text-white">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute left-20 top-20 h-72 w-72 rounded-full bg-cyan-500/20 blur-[120px]" />
         <div className="absolute bottom-20 right-20 h-72 w-72 rounded-full bg-blue-500/20 blur-[120px]" />
