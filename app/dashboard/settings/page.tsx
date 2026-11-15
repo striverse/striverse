@@ -31,7 +31,7 @@ export default function SettingsPage() {
     </button>
   );
 
-  return <main className="min-h-screen bg-[#050816] px-4 pb-28 pt-6 text-white">
+  return <main className="sv-dashboard-page min-h-screen bg-[#050816] px-4 pb-28 pt-6 text-white">
     <div className="mx-auto max-w-md">
       <header className="mb-7"><p className="text-xs font-semibold uppercase tracking-[0.25em] text-cyan-300">STRIVERSE</p><h1 className="mt-2 text-3xl font-bold">Security & Settings</h1><p className="mt-2 text-sm text-white/50">Keep your account and recovery controls secure.</p></header>
 
