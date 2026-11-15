@@ -30,3 +30,8 @@ jobs:
           DATABASE_URL: postgresql://ci:ci@127.0.0.1:5432/striverse
       - name: TypeScript check
         run: npx tsc --noEmit
+      - name: Production build
+        run: npm run build
+        env:
+          DATABASE_URL: postgresql://ci:ci@127.0.0.1:5432/striverse
+          JWT_SECRET: ci-only-build-secret
