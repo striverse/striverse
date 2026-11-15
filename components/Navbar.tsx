@@ -45,7 +45,7 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const sectionIds = ["features", "about", "tokenomics", "community", "staking", "vesting", "airdrop", "roadmap"];
+    const sectionIds = ["features", "about", "tokenomics", "community", "invest", "staking", "vesting", "airdrop", "roadmap"];
     const updateFromHash = () => {
       const hash = window.location.hash.replace("#", "");
       setActiveSection(hash || "home");
@@ -108,7 +108,7 @@ export default function Navbar() {
 
         <div className="reference-nav-links" style={{ flex: "0 0 auto", minWidth: 0, gap: 12, whiteSpace: "nowrap" }}>
           <a className={activeSection === "home" ? "is-active" : ""} href="/" onClick={(event) => { event.preventDefault(); scrollToSection("home"); }}>Home</a><a className={activeSection === "features" ? "is-active" : ""} href="#features" onClick={(event) => { event.preventDefault(); scrollToSection("features"); }}>Features</a><a className={activeSection === "about" ? "is-active" : ""} href="#about" onClick={(event) => { event.preventDefault(); scrollToSection("about"); }}>About</a><a className={activeSection === "tokenomics" ? "is-active" : ""} href="#tokenomics" onClick={(event) => { event.preventDefault(); scrollToSection("tokenomics"); }}>Tokenomics</a><a className={activeSection === "community" ? "is-active" : ""} href="#community" onClick={(event) => { event.preventDefault(); scrollToSection("community"); }}>Community</a>
-          <div className={`reference-more ${["staking","vesting","airdrop","roadmap"].includes(activeSection) ? "is-active" : ""}`}><button type="button" onClick={() => setMoreOpen((value) => !value)} aria-expanded={moreOpen}>More <span className={`reference-chevron ${moreOpen ? "open" : ""}`} /></button>{moreOpen && <div className="reference-more-menu"><a className={activeSection === "staking" ? "is-active" : ""} href="#staking" onClick={(event) => { event.preventDefault(); scrollToSection("staking"); }}>Staking</a><a className={activeSection === "vesting" ? "is-active" : ""} href="#vesting" onClick={(event) => { event.preventDefault(); scrollToSection("vesting"); }}>Vesting</a><a className={activeSection === "airdrop" ? "is-active" : ""} href="#airdrop" onClick={(event) => { event.preventDefault(); scrollToSection("airdrop"); }}>Airdrop</a><a className={activeSection === "roadmap" ? "is-active" : ""} href="#roadmap" onClick={(event) => { event.preventDefault(); scrollToSection("roadmap"); }}>Roadmap</a></div>}</div>
+          <div className={`reference-more ${["invest","staking","vesting","airdrop","roadmap"].includes(activeSection) ? "is-active" : ""}`}><button type="button" onClick={() => setMoreOpen((value) => !value)} aria-expanded={moreOpen}>More <span className={`reference-chevron ${moreOpen ? "open" : ""}`} /></button>{moreOpen && <div className="reference-more-menu"><a className={activeSection === "invest" ? "is-active" : ""} href="#invest" onClick={(event) => { event.preventDefault(); scrollToSection("invest"); }}>Invest</a><a className={activeSection === "staking" ? "is-active" : ""} href="#staking" onClick={(event) => { event.preventDefault(); scrollToSection("staking"); }}>Staking</a><a className={activeSection === "vesting" ? "is-active" : ""} href="#vesting" onClick={(event) => { event.preventDefault(); scrollToSection("vesting"); }}>Vesting</a><a className={activeSection === "airdrop" ? "is-active" : ""} href="#airdrop" onClick={(event) => { event.preventDefault(); scrollToSection("airdrop"); }}>Airdrop</a><a className={activeSection === "roadmap" ? "is-active" : ""} href="#roadmap" onClick={(event) => { event.preventDefault(); scrollToSection("roadmap"); }}>Roadmap</a></div>}</div>
         </div>
 
         <button type="button" className="sv-mobile-menu-toggle" aria-label={mobileOpen ? "Close navigation" : "Open navigation"} aria-expanded={mobileOpen} onClick={() => setMobileOpen((value) => !value)}>{mobileOpen ? "✕" : "☰"}</button>
@@ -119,7 +119,7 @@ export default function Navbar() {
         </div>
         {searchOpen && <div className="reference-search-popover"><input autoFocus placeholder="Search STRIVERSE..." aria-label="Search STRIVERSE" /><span>⌕</span></div>}
         {mobileOpen && <div className="sv-mobile-nav-panel">
-          {["home","features","about","tokenomics","community","staking","vesting","airdrop","roadmap"].map((id) => <a key={id} href={id === "home" ? "/" : "#"+id} onClick={(event) => { event.preventDefault(); scrollToSection(id); setMobileOpen(false); }}>{id === "home" ? "Home" : id.charAt(0).toUpperCase()+id.slice(1)}</a>)}
+          {["home","features","about","tokenomics","community","invest","staking","vesting","airdrop","roadmap"].map((id) => <a key={id} href={id === "home" ? "/" : "#"+id} onClick={(event) => { event.preventDefault(); scrollToSection(id); setMobileOpen(false); }}>{id === "home" ? "Home" : id.charAt(0).toUpperCase()+id.slice(1)}</a>)}
           <Link href={appHref} onClick={() => setMobileOpen(false)}>Launch App ↗</Link>
         </div>}
       </nav>
