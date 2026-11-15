@@ -43,7 +43,7 @@ export default function Hero() {
             <h1>STRIVERSE <span>(STV)</span><br />AI-Powered<br />Web3 Ecosystem</h1>
             <p className="sv-hero-lead">A connected digital ecosystem bringing blockchain technology, intelligent tools and real-world utility together — built to grow with its community.</p>
             <div className="sv-actions">
-              <a className="sv-btn sv-btn-primary" href="#whitepaper">Whitepaper ↗</a>
+              <a className="sv-btn sv-btn-primary" href="/register">Join STRIVERSE ↗</a>
               <a className="sv-btn sv-btn-secondary" href="#features">Explore Ecosystem</a>
             </div>
             <div className="sv-stats" aria-label="Live presale information">
