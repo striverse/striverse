@@ -40,3 +40,26 @@ a,button{-webkit-tap-highlight-color:transparent}:focus-visible{outline:2px soli
 .site-footer{background:#040a14!important;border-top:1px solid var(--sv-line)!important}
 .site-footer a,.site-footer p{color:#93a9bd!important}
 @media(max-width:900px){.reference-nav-wrap{background:rgba(5,13,26,.96)!important}}
+
+
+/* Authentication surfaces */
+.sv-auth-page{position:relative;isolation:isolate;background:radial-gradient(ellipse at 50% 12%,rgba(22,117,157,.22),transparent 42%),#050b18!important}
+.sv-auth-page:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.18;background-image:linear-gradient(rgba(100,180,220,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(100,180,220,.08) 1px,transparent 1px);background-size:48px 48px}
+.sv-auth-card{border:1px solid rgba(100,203,225,.22)!important;border-radius:18px!important;background:linear-gradient(145deg,rgba(12,32,52,.96),rgba(5,15,28,.96))!important;box-shadow:0 24px 80px rgba(0,0,0,.35)!important}
+.sv-auth-card h1{color:#f1f9ff!important;letter-spacing:-.035em}
+.sv-auth-card input,.sv-auth-card textarea{background:rgba(1,10,20,.68)!important;border:1px solid rgba(104,192,218,.22)!important;border-radius:10px!important;color:#eefaff!important}
+.sv-auth-card input:focus,.sv-auth-card textarea:focus{border-color:var(--sv-cyan)!important;box-shadow:0 0 0 3px rgba(66,217,238,.08)}
+.sv-auth-card button[type=submit]{background:linear-gradient(105deg,#f0d18b,#5cdeea)!important;color:#071522!important;border-radius:10px!important}
+.sv-auth-card a,.sv-auth-card button:not([type=submit]){color:#62dce9}
+/* Member dashboard and admin shell */
+.sv-dashboard-page{background:radial-gradient(ellipse at 85% 0%,rgba(25,108,157,.13),transparent 36%),#050b18!important}
+.sv-dashboard-page .rounded-3xl,.sv-dashboard-page .rounded-2xl{border-color:rgba(105,190,226,.16)!important}
+.sv-dashboard-page .bg-white\/5{background:rgba(10,27,45,.78)!important}
+.sv-dashboard-page .border-white\/10{border-color:rgba(105,190,226,.16)!important}
+.sv-admin-shell{background:#050b18!important}
+.sv-admin-shell aside{background:#071426!important;border-color:rgba(105,190,226,.16)!important}
+.sv-admin-shell main{background:radial-gradient(ellipse at 82% 0%,rgba(22,105,150,.12),transparent 38%),#050b18!important}
+.sv-admin-shell .bg-white\/5{background:rgba(10,27,45,.78)!important}
+.sv-admin-shell .border-white\/10{border-color:rgba(105,190,226,.16)!important}
+.sv-admin-shell button{transition:background .18s,border-color .18s,transform .18s}
+@media(max-width:760px){.sv-admin-shell>div{flex-direction:column}.sv-admin-shell aside{width:100%;height:auto}.sv-admin-shell aside nav{display:flex;flex-wrap:wrap;max-height:180px}.sv-dashboard-page{padding-left:16px!important;padding-right:16px!important}}
