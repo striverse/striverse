@@ -40,7 +40,7 @@ export default function ReferralWalletPage() {
   const link = useMemo(() => `https://striverse.com/register?ref=${code}`, [code]);
   if (loading) return <main className="min-h-screen bg-[#050711] text-white grid place-items-center"><RefreshCw className="animate-spin text-cyan-300"/></main>;
 
-  return <main className="min-h-screen bg-[#050711] text-white overflow-hidden relative">
+  return <main className="sv-dashboard-page min-h-screen bg-[#050711] text-white overflow-hidden relative">
     <div className="absolute inset-0 pointer-events-none opacity-70 bg-[radial-gradient(circle_at_20%_10%,rgba(88,48,180,.28),transparent_35%),radial-gradient(circle_at_85%_20%,rgba(20,160,255,.2),transparent_32%)]"/>
     <div className="relative max-w-md mx-auto px-4 py-5 pb-10">
       <header className="flex items-center gap-3 mb-6"><button onClick={() => router.back()} className="h-10 w-10 rounded-2xl bg-white/5 border border-white/10 grid place-items-center"><ArrowLeft size={18}/></button><div><p className="text-xs tracking-[.28em] text-cyan-300">STRIVERSE</p><h1 className="text-2xl font-bold">Partner Wallet</h1></div></header>
