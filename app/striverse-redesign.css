@@ -126,3 +126,6 @@ a,button{-webkit-tap-highlight-color:transparent}:focus-visible{outline:2px soli
  .sv-mobile-nav-panel a{padding:12px;border-radius:8px;color:#c4d9e8;font-size:13px;font-weight:700}
  .sv-mobile-nav-panel a:hover{background:rgba(66,217,238,.09);color:#63ddeb}
 }
+
+/* Non-financial hero markers; avoid presenting unverified presale fallback values as live data. */
+.sv-hero-tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:28px}.sv-hero-tags span{padding:9px 12px;border:1px solid rgba(105,190,226,.2);border-radius:999px;background:rgba(8,24,41,.68);color:#b9dce7;font-size:10px;font-weight:800;letter-spacing:.14em}
