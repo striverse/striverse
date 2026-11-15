@@ -81,7 +81,7 @@ export default function Home() {
           </div>
           <div className="feature-grid">
             {features.map(([num, title, text, icon]) => (
-              <article className="feature-card" key={num}>
+              <article className="feature-card" key={num} id={icon === "invest" ? "invest" : undefined}>
                 <span className="card-number">{num}</span>
                 <div className="card-orb" />
                 <div className="feature-icon"><FeatureIcon type={icon} /></div>
