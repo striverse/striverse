@@ -21,3 +21,22 @@ a,button{-webkit-tap-highlight-color:transparent}:focus-visible{outline:2px soli
 @media(max-width:850px){.sv-hero{padding-top:122px;min-height:auto}.sv-hero-inner{grid-template-columns:1fr;gap:8px}.sv-art{min-height:330px;order:-1}.sv-chip{width:270px}.sv-core{width:130px}.sv-core span{font-size:38px}.sv-feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:520px){.sv-hero{padding:112px 20px 68px}.sv-hero h1{font-size:clamp(43px,13vw,60px)}.sv-hero-lead{font-size:15px}.sv-art{min-height:270px}.sv-chip{width:220px}.sv-core{width:108px}.sv-stats{grid-template-columns:1fr;gap:8px}.sv-stat{display:flex;align-items:center;justify-content:space-between}.sv-stat strong{margin:0}.sv-feature-grid{grid-template-columns:1fr}.sv-features{padding:62px 20px 72px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+
+/* Shared marketing shell */
+.reference-nav-wrap{background:rgba(5,13,26,.88)!important;border-bottom:1px solid rgba(93,190,220,.16)!important;backdrop-filter:blur(18px)!important}
+.reference-nav{max-width:1320px!important}
+.reference-nav-links a,.reference-more>button{color:#b8cad9!important;font-size:12px!important;letter-spacing:.06em!important}
+.reference-nav-links a:hover,.reference-nav-links a.is-active,.reference-more.is-active>button{color:#65e4f1!important}
+.reference-wallet{border:1px solid rgba(217,182,108,.42)!important;color:#ead39d!important;background:rgba(217,182,108,.06)!important}
+.reference-launch{background:linear-gradient(105deg,#f0d18b,#5cdeea)!important;color:#06111d!important;border-radius:8px!important}
+.site-section{background:linear-gradient(180deg,#071326,#050b18)!important;color:#edf7ff!important}
+.section-shell,.community-shell,.footer-shell{max-width:1240px!important}
+.section-kicker{color:var(--sv-gold)!important;letter-spacing:.22em!important}
+.section-heading-row h2,.site-section h2{color:#eff8ff!important;letter-spacing:-.04em!important}
+.section-heading-row p,.section-copy p,.site-section p{color:#9db2c6}
+.feature-card,.staking-card,.vesting-card,.more-card{border:1px solid var(--sv-line)!important;background:linear-gradient(145deg,rgba(12,32,52,.9),rgba(6,17,31,.92))!important;box-shadow:0 18px 50px rgba(0,0,0,.16)!important;border-radius:14px!important}
+.feature-card h3,.more-card h3{color:#e9f8ff!important}
+.site-footer{background:#040a14!important;border-top:1px solid var(--sv-line)!important}
+.site-footer a,.site-footer p{color:#93a9bd!important}
+@media(max-width:900px){.reference-nav-wrap{background:rgba(5,13,26,.96)!important}}
