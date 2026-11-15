@@ -1,39 +1,4 @@
-"use client";
-
-import { useEffect, useState } from "react";
-
-interface HeroStats { raised: number; hardCap: number; progress: number; tokenPrice: number; endDate: string | null; }
-const initialStats: HeroStats = { raised: 0, hardCap: 0, progress: 0, tokenPrice: 0, endDate: null };
-const money = (value: number) => new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 }).format(value);
-const countdown = (date: string | null) => {
-  if (!date) return null;
-  const ms = Math.max(0, new Date(date).getTime() - Date.now());
-  return { days: Math.floor(ms / 86400000), hours: Math.floor(ms / 3600000) % 24, minutes: Math.floor(ms / 60000) % 60, seconds: Math.floor(ms / 1000) % 60 };
-};
-
 export default function Hero() {
-  const [stats, setStats] = useState<HeroStats>(initialStats);
-  const [clock, setClock] = useState<ReturnType<typeof countdown>>(null);
-
-  useEffect(() => {
-    let active = true;
-    fetch("/api/presale/stats", { cache: "no-store" })
-      .then(async (res) => {
-        if (!res.ok) return;
-        const data = await res.json();
-        if (active) setStats({ raised: Number(data.raised ?? 0), hardCap: Number(data.hardCap ?? 0), progress: Number(data.progress ?? 0), tokenPrice: Number(data.tokenPrice ?? 0), endDate: data.endDate ?? null });
-      }).catch(() => undefined);
-    return () => { active = false; };
-  }, []);
-
-  useEffect(() => {
-    if (!stats.endDate) return;
-    const update = () => setClock(countdown(stats.endDate));
-    update();
-    const timer = window.setInterval(update, 1000);
-    return () => window.clearInterval(timer);
-  }, [stats.endDate]);
-
   return (
     <>
       <section className="sv-hero" aria-label="STRIVERSE introduction">
@@ -46,13 +11,7 @@ export default function Hero() {
               <a className="sv-btn sv-btn-primary" href="/register">Join STRIVERSE ↗</a>
               <a className="sv-btn sv-btn-secondary" href="#features">Explore Ecosystem</a>
             </div>
-            <div className="sv-stats" aria-label="Live presale information">
-              <div className="sv-stat"><small>Raised</small><strong>${money(stats.raised)}</strong></div>
-              <div className="sv-stat"><small>Hard cap</small><strong>${money(stats.hardCap)}</strong></div>
-              <div className="sv-stat"><small>Presale progress</small><strong>{Math.max(0, Math.min(100, stats.progress)).toFixed(2)}%</strong></div>
-              {stats.tokenPrice > 0 && <div className="sv-stat"><small>STV price</small><strong>${stats.tokenPrice}</strong></div>}
-              {clock && <div className="sv-stat"><small>Sale countdown</small><strong>{clock.days}d {String(clock.hours).padStart(2,"0")}:{String(clock.minutes).padStart(2,"0")}:{String(clock.seconds).padStart(2,"0")}</strong></div>}
-            </div>
+            <div className="sv-hero-tags" aria-label="Ecosystem foundations"><span>AI</span><span>BLOCKCHAIN</span><span>STV ECOSYSTEM</span></div>
           </div>
           <div className="sv-art" aria-hidden="true">
             <div className="sv-chip" /><div className="sv-orbit" /><div className="sv-core"><span>STV</span></div>
