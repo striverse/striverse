@@ -54,7 +54,7 @@ window.location.assign("/admin/dashboard");
       <div className="absolute left-20 top-20 h-72 w-72 rounded-full bg-cyan-500/20 blur-[120px]" />
       <div className="absolute bottom-20 right-20 h-72 w-72 rounded-full bg-blue-600/20 blur-[120px]" />
 
-      <div className="relative w-full max-w-md rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-2xl">
+      <div className="sv-auth-card relative w-full max-w-md rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-2xl">
         <div className="mb-8 flex flex-col items-center">
           <Image
             src="/logo1.png"
