@@ -49,7 +49,7 @@ window.location.assign("/admin/dashboard");
 }
 
   return (
-    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#050816] px-6">
+    <main className="sv-auth-page relative flex min-h-screen items-center justify-center overflow-hidden bg-[#050816] px-6">
       {/* Background Glow */}
       <div className="absolute left-20 top-20 h-72 w-72 rounded-full bg-cyan-500/20 blur-[120px]" />
       <div className="absolute bottom-20 right-20 h-72 w-72 rounded-full bg-blue-600/20 blur-[120px]" />
