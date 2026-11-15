@@ -105,3 +105,14 @@ a,button{-webkit-tap-highlight-color:transparent}:focus-visible{outline:2px soli
 .sv-dashboard-page input,.sv-dashboard-page textarea,.sv-dashboard-page select,.sv-admin-shell input,.sv-admin-shell textarea,.sv-admin-shell select{background:#061323!important;border-color:rgba(105,190,226,.2)!important;color:#edf7ff!important}
 @media(max-width:900px){.reference-nav-wrap{background:rgba(5,13,26,.97)!important}.reference-nav{padding:8px 14px!important}.reference-brand-wordmark{width:185px!important}.reference-nav-links{display:none!important}.reference-nav-actions{gap:6px!important}}
 @media(max-width:520px){.reference-brand-wordmark{width:150px!important}.reference-wallet{display:none!important}.reference-launch{padding:10px 12px!important}.reference-nav{min-height:68px!important}}
+
+
+.sv-admin-dashboard{position:relative;background:radial-gradient(ellipse at 80% 0%,rgba(24,118,161,.14),transparent 38%),#050b18!important}
+.sv-admin-dashboard .bg-white\/5{background:linear-gradient(145deg,rgba(12,32,52,.9),rgba(6,17,31,.92))!important}
+.sv-admin-dashboard .border-white\/10{border-color:var(--sv-line)!important}
+.sv-admin-dashboard button{border-radius:10px!important}
+.sv-admin-dashboard button.bg-purple-500{background:linear-gradient(105deg,#e8c981,#4bd7e8)!important;color:#071522!important}
+.sv-admin-dashboard button.bg-green-500{background:#147b72!important}
+.sv-admin-dashboard button.bg-yellow-500{background:#b18a3e!important;color:#081321!important}
+.sv-admin-dashboard button.bg-cyan-500{background:#168da1!important}
+.sv-admin-dashboard .text-cyan-400,.sv-admin-dashboard .text-cyan-300{color:#63ddeb!important}
