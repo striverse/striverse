@@ -64,7 +64,7 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#050816] text-white p-6">
+    <div className="sv-dashboard-page min-h-screen bg-[#050816] text-white p-6">
 
       <div className="max-w-6xl mx-auto">
 
