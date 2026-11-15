@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "STRIVERSE",
-  description: "STRIVERSE Crypto Presale Platform",
+  title: "STRIVERSE (STV) | AI-Powered Web3 Ecosystem",
+  description: "Explore STRIVERSE — an AI-powered Web3 ecosystem connecting blockchain technology, digital tools and community experiences around STV.",
   manifest: "/app-manifest.webmanifest",
   icons: { icon: "/striverse-new-logo.png" },
 };
