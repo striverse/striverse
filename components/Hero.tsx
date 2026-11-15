@@ -60,7 +60,7 @@ export default function Hero() {
           </div>
         </div>
       </section>
-      <section id="features" className="sv-features">
+      <section id="ecosystem-highlights" className="sv-features">
         <div className="sv-features-head"><p className="sv-kicker">Inside the ecosystem</p><h2>Technology with purpose.</h2><p>Four foundations for a connected, accessible and scalable digital ecosystem.</p></div>
         <div className="sv-feature-grid">
           <article className="sv-feature-card"><span className="sv-feature-icon">✧</span><b>AI-Powered</b><p>Intelligent experiences designed to make digital participation more accessible.</p></article>
