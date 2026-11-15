@@ -35,8 +35,8 @@ export default function RegisterForm() {
   }
 
   if (recoveryPhrase) return (
-    <section className="min-h-screen flex items-center justify-center px-5 py-10 bg-[#03040a] text-white">
-      <div className="w-full max-w-md rounded-[30px] border border-cyan-400/20 bg-white/[.06] backdrop-blur-2xl p-6 shadow-[0_0_70px_rgba(95,50,255,.16)]">
+    <section className="sv-auth-page min-h-screen flex items-center justify-center px-5 py-10 bg-[#03040a] text-white">
+      <div className="sv-auth-card w-full max-w-md rounded-[30px] border border-cyan-400/20 bg-white/[.06] backdrop-blur-2xl p-6 shadow-[0_0_70px_rgba(95,50,255,.16)]">
         <div className="text-center">
           <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-400/20 to-violet-500/20 border border-cyan-300/20"><ShieldCheck /></div>
           <h1 className="text-2xl font-bold">Your Recovery Phrase</h1>
@@ -51,8 +51,8 @@ export default function RegisterForm() {
     </section>
   );
 
-  return <section className="min-h-screen flex items-center justify-center px-5 py-10 bg-[#03040a] text-white">
-    <form onSubmit={handleRegister} className="w-full max-w-md rounded-[30px] border border-cyan-500/20 bg-white/[.06] backdrop-blur-2xl p-6 shadow-[0_0_70px_rgba(95,50,255,.16)]">
+  return <section className="sv-auth-page min-h-screen flex items-center justify-center px-5 py-10 bg-[#03040a] text-white">
+    <form onSubmit={handleRegister} className="sv-auth-card w-full max-w-md rounded-[30px] border border-cyan-500/20 bg-white/[.06] backdrop-blur-2xl p-6 shadow-[0_0_70px_rgba(95,50,255,.16)]">
       <div className="text-center mb-7"><div className="inline-flex mb-4 rounded-2xl p-3 bg-gradient-to-br from-cyan-400/20 to-violet-500/20"><Sparkles /></div><h1 className="text-3xl font-bold">Join Striverse</h1><p className="text-white/50 mt-2">Create your cosmic wallet account</p></div>
       <div className="space-y-4">
         {([["fullName","Full Name","text"],["email","Email Address","email"],["phone","Phone Number","tel"]] as const).map(([name,ph,type])=><input key={name} name={name} type={type} placeholder={ph} value={form[name]} onChange={e=>setForm({...form,[name]:e.target.value})} required className="w-full rounded-xl bg-black/40 border border-cyan-500/20 p-4 outline-none focus:border-cyan-400"/>)}
