@@ -120,7 +120,7 @@ export default function AdminDashboard() {
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             <button onClick={() => router.push("/admin/users")} className="rounded-2xl bg-cyan-500 px-6 py-4 font-semibold transition hover:bg-cyan-600">Manage Users</button>
             <button onClick={() => router.push("/admin/purchases")} className="rounded-2xl bg-green-500 px-6 py-4 font-semibold transition hover:bg-green-600">Verify Purchases</button>
-            <button onClick={() => router.push("/admin/announcements")} className="rounded-2xl bg-yellow-500 px-6 py-4 font-semibold transition hover:bg-yellow-600">Announcements</button>
+            <button onClick={() => router.push("/admin/banners")} className="rounded-2xl bg-yellow-500 px-6 py-4 font-semibold transition hover:bg-yellow-600">Banners & Notifications</button>
             <button onClick={() => router.push("/admin/analytics")} className="rounded-2xl bg-purple-500 px-6 py-4 font-semibold transition hover:bg-purple-600">Analytics</button>
           </div>
         </div>
