@@ -69,7 +69,7 @@ export default function ResetPasswordPage() {
 
   return (
     <main className="sv-auth-page min-h-screen flex items-center justify-center bg-[#050816] px-6">
-      <div className="w-full max-w-md rounded-3xl border border-cyan-500/20 bg-white/5 backdrop-blur-xl p-8">
+      <div className="sv-auth-card w-full max-w-md rounded-3xl border border-cyan-500/20 bg-white/5 backdrop-blur-xl p-8">
 
         <h1 className="text-3xl font-bold text-white">
           Reset Password
