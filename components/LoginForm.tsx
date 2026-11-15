@@ -17,8 +17,8 @@ export default function LoginForm() {
       router.replace(data.user.role === "ADMIN" ? "/admin/dashboard" : "/dashboard"); router.refresh();
     } catch { alert("Something went wrong."); } finally { setLoading(false); }
   }
-  return <main className="min-h-screen flex items-center justify-center bg-[#03040a] px-5 text-white">
-    <div className="w-full max-w-md rounded-[30px] border border-cyan-500/20 bg-white/[.06] backdrop-blur-2xl p-7 shadow-[0_0_70px_rgba(95,50,255,.16)]">
+  return <main className="sv-auth-page min-h-screen flex items-center justify-center bg-[#03040a] px-5 text-white">
+    <div className="sv-auth-card w-full max-w-md rounded-[30px] border border-cyan-500/20 bg-white/[.06] backdrop-blur-2xl p-7 shadow-[0_0_70px_rgba(95,50,255,.16)]">
       <div className="text-center mb-8"><div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-400/20 to-violet-500/20 border border-cyan-300/20"><ShieldCheck /></div><h1 className="text-3xl font-bold">Welcome Back</h1><p className="text-white/50 mt-2">Sign in with your recovery phrase.</p></div>
       <form onSubmit={handleLogin} className="space-y-5">
         <input type="email" placeholder="Email Address" value={email} onChange={e=>setEmail(e.target.value)} required className="w-full rounded-xl bg-black/40 border border-cyan-500/20 px-4 py-4 outline-none focus:border-cyan-400"/>
