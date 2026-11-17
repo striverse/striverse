@@ -23,7 +23,7 @@ export default function Hero() {
         </div>
         <div className="sv-reference-art">
           <Image
-            src="/striverse-hero-art.webp"
+            src="/striverse-hero-art.png"
             alt="STRIVERSE AI brain, blockchain processor and connected financial data visualization"
             width={1536}
             height={1024}
