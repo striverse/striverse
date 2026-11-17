@@ -1,33 +1,43 @@
+import Image from "next/image";
+
 export default function Hero() {
   return (
-    <>
-      <section className="sv-hero" aria-label="STRIVERSE introduction">
-        <div className="sv-hero-inner">
-          <div>
-            <p className="sv-kicker">The next dimension of digital opportunity</p>
-            <h1>STRIVERSE <span>(STV)</span><br />AI-Powered<br />Web3 Ecosystem</h1>
-            <p className="sv-hero-lead">A connected digital ecosystem bringing blockchain technology, intelligent tools and real-world utility together — built to grow with its community.</p>
-            <div className="sv-actions">
-              <a className="sv-btn sv-btn-primary" href="/register">Join STRIVERSE ↗</a>
-              <a className="sv-btn sv-btn-secondary" href="#features">Explore Ecosystem</a>
-            </div>
-            <div className="sv-hero-tags" aria-label="Ecosystem foundations"><span>AI</span><span>BLOCKCHAIN</span><span>STV ECOSYSTEM</span></div>
-          </div>
-          <div className="sv-art" aria-hidden="true">
-            <div className="sv-chip" /><div className="sv-orbit" /><div className="sv-core"><span>STV</span></div>
-            <i className="sv-node n1" /><i className="sv-node n2" /><i className="sv-node n3" /><i className="sv-node n4" />
+    <section className="sv-reference-hero" aria-label="STRIVERSE AI-powered Web3 ecosystem">
+      <div className="sv-reference-hero-inner">
+        <div className="sv-reference-copy">
+          <p className="sv-reference-kicker">THE NEXT DIMENSION OF DIGITAL OPPORTUNITY</p>
+          <h1>STRIVERSE <span>(STV)</span></h1>
+          <h2>AI-Powered Web3 Ecosystem</h2>
+          <p className="sv-reference-description">
+            A next-generation, AI-driven Web3 ecosystem powered by blockchain,
+            designed for real-world utility, scalability and global adoption.
+          </p>
+          <div className="sv-reference-actions">
+            <a className="sv-reference-button sv-reference-button-gold" href="/register">
+              <span aria-hidden="true">▤</span> Explore STRIVERSE <span aria-hidden="true">→</span>
+            </a>
+            <a className="sv-reference-button sv-reference-button-outline" href="/login">
+              <span aria-hidden="true">◎</span> Member Login
+            </a>
           </div>
         </div>
-      </section>
-      <section id="ecosystem-highlights" className="sv-features">
-        <div className="sv-features-head"><p className="sv-kicker">Inside the ecosystem</p><h2>Technology with purpose.</h2><p>Four foundations for a connected, accessible and scalable digital ecosystem.</p></div>
-        <div className="sv-feature-grid">
-          <article className="sv-feature-card"><span className="sv-feature-icon">✧</span><b>AI-Powered</b><p>Intelligent experiences designed to make digital participation more accessible.</p></article>
-          <article className="sv-feature-card"><span className="sv-feature-icon">◇</span><b>Blockchain Powered</b><p>Transparent, verifiable infrastructure for a connected digital ecosystem.</p></article>
-          <article className="sv-feature-card"><span className="sv-feature-icon">◎</span><b>Real-World Utility</b><p>Practical ecosystem experiences that connect digital tools with everyday use.</p></article>
-          <article className="sv-feature-card"><span className="sv-feature-icon">⌘</span><b>Scalable &amp; Global</b><p>A flexible foundation designed to evolve as the community and ecosystem grow.</p></article>
+        <div className="sv-reference-art">
+          <Image
+            src="/striverse-hero-art.webp"
+            alt="STRIVERSE AI brain, blockchain processor and connected financial data visualization"
+            width={1536}
+            height={1024}
+            priority
+            sizes="(max-width: 900px) 100vw, 54vw"
+          />
         </div>
-      </section>
-    </>
+      </div>
+      <div className="sv-reference-feature-band">
+        <article><span className="sv-reference-feature-icon">AI</span><div><b>AI-Powered</b><p>Intelligent, automated solutions</p></div></article>
+        <article><span className="sv-reference-feature-icon">◇</span><div><b>Blockchain Powered</b><p>Secure, transparent and decentralized</p></div></article>
+        <article><span className="sv-reference-feature-icon sv-gold-icon">✓</span><div><b>Real-World Utility</b><p>Practical applications with global impact</p></div></article>
+        <article><span className="sv-reference-feature-icon sv-gold-icon">▥</span><div><b>Scalable &amp; Global</b><p>Built for mass adoption and long-term growth</p></div></article>
+      </div>
+    </section>
   );
 }
