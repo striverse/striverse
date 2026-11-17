@@ -35,7 +35,7 @@ export default function ForgotPasswordPage() {
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-[#050816] px-6">
+    <main className="sv-auth-page min-h-screen flex items-center justify-center bg-[#050816] px-6">
       <div className="w-full max-w-md rounded-3xl border border-cyan-500/20 bg-white/5 backdrop-blur-xl p-8">
 
         <h1 className="text-3xl font-bold text-white">
@@ -60,7 +60,7 @@ export default function ForgotPasswordPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 py-3 font-bold text-white transition hover:scale-[1.02] disabled:opacity-50"
+            className="w-full rounded-xl bg-gradient-to-r from-amber-200 to-cyan-300 py-3 font-bold text-slate-950 transition hover:scale-[1.02] disabled:opacity-50"
           >
             {loading ? "Sending..." : "Send Reset Link"}
           </button>

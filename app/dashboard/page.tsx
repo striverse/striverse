@@ -274,7 +274,7 @@ if (!entered) {
     <>
   <BackgroundEffects />
 
-  <main className="relative min-h-screen px-6 py-8 text-white">
+  <main className="sv-dashboard-page relative min-h-screen px-6 py-8 text-white">
     <div className="max-w-7xl mx-auto">
   <Header
   userName={user?.fullName ?? "Investor"}

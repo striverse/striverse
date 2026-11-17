@@ -43,7 +43,7 @@ export async function GET() {
     const manualRaised = effective.raisedAmount ?? 0;
     const approvedRaised = aggregate._sum.usdtAmount ?? 0;
     const raised = manualRaised + approvedRaised;
-    const totalTokens = Number(effective.totalTokens ?? 0n);
+    const totalTokens = Number(effective.totalTokens ?? BigInt(0));
     const presaleAllocatedTokens = Number(appMap.get("presale_allocated_tokens") ?? 2222222222);
     // The configured raised amount represents the existing presale baseline.
     // Convert that baseline to STV at the configured token price, then add

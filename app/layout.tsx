@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "./striverse-redesign.css";
 import { Toaster } from "react-hot-toast";
 import ThemeRotator from "@/components/ThemeRotator";
 
@@ -15,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "STRIVERSE",
-  description: "STRIVERSE Crypto Presale Platform",
+  title: "STRIVERSE (STV) | AI-Powered Web3 Ecosystem",
+  description: "Explore STRIVERSE — an AI-powered Web3 ecosystem connecting blockchain technology, digital tools and community experiences around STV.",
   manifest: "/app-manifest.webmanifest",
   icons: { icon: "/striverse-new-logo.png" },
 };

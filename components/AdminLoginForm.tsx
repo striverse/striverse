@@ -35,8 +35,8 @@ export default function AdminLoginForm() {
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-[#03040a] px-5 text-white">
-      <div className="w-full max-w-md rounded-[30px] border border-cyan-500/20 bg-white/[.06] backdrop-blur-2xl p-7 shadow-[0_0_70px_rgba(95,50,255,.16)]">
+    <main className="sv-auth-page min-h-screen flex items-center justify-center bg-[#03040a] px-5 text-white">
+      <div className="sv-auth-card w-full max-w-md rounded-[30px] border border-cyan-500/20 bg-white/[.06] backdrop-blur-2xl p-7 shadow-[0_0_70px_rgba(95,50,255,.16)]">
         <div className="text-center mb-8">
           <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-400/20 to-violet-500/20 border border-cyan-300/20">
             <ShieldCheck />
@@ -65,7 +65,7 @@ export default function AdminLoginForm() {
             autoComplete="current-password"
             className="w-full rounded-xl bg-black/40 border border-cyan-500/20 px-4 py-4 outline-none focus:border-cyan-400"
           />
-          <button disabled={loading} className="w-full rounded-xl bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 py-4 font-bold disabled:opacity-60">
+          <button disabled={loading} type="submit" className="w-full rounded-xl bg-gradient-to-r from-amber-200 to-cyan-300 py-4 font-bold text-slate-950 disabled:opacity-60">
             {loading ? "Signing in…" : "Sign In"}
           </button>
         </form>

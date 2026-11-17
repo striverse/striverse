@@ -106,8 +106,8 @@ export default function OTPInput() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-6 bg-[#050816]">
-      <div className="w-full max-w-lg rounded-3xl border border-cyan-500/20 bg-white/5 backdrop-blur-xl p-10">
+    <div className="sv-auth-page min-h-screen flex items-center justify-center px-6 bg-[#050816]">
+      <div className="sv-auth-card w-full max-w-lg rounded-3xl border border-cyan-500/20 bg-white/5 backdrop-blur-xl p-10">
 
         <h1 className="text-4xl font-bold text-white mb-3">
           Verify OTP
