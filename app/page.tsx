@@ -63,8 +63,8 @@ export default function Home() {
 
       <section id="tokenomics" className="sv-tokenomics">
         <div className="sv-container">
-          <div className="sv-token-copy"><Eyebrow>STV TOKEN</Eyebrow><h2>Designed for a<br/><em>growing universe.</em></h2><p>Explore the STV supply and allocation overview.</p></div>
-          <div className="sv-token-art"><img src="/a_sleek_futuristic_neon_cyberpunk_infographic_on.png" alt="STRIVERSE STV tokenomics allocation infographic" /></div>
+          <div className="sv-token-copy"><Eyebrow>THE STV TOKEN</Eyebrow><h2>STRIVERSE.<br/><em>Built to move forward.</em></h2><p>STV is the native token of the STRIVERSE ecosystem on BNB Smart Chain (BEP-20).</p><div className="sv-token-price"><span>Current offering price</span><strong>0.001 USDT <small>/ STV</small></strong><span className="sv-projected">Projected live-sale price · 0.0015 USDT / STV</span></div></div>
+          <div className="sv-token-art"><div className="sv-token-metrics"><article><span>TOTAL SUPPLY</span><strong>8,888,888,888</strong><small>STV</small></article><article><span>PRESALE ALLOCATION</span><strong>2,222,222,222</strong><small>STV · 25% of total supply</small></article><article><span>NETWORK</span><strong>BNB Smart Chain</strong><small>BEP-20 · USDT payments</small></article></div><p className="sv-token-disclaimer">Projected pricing is indicative only and is not a guarantee of future market value.</p></div>
         </div>
       </section>
 
