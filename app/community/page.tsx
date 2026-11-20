@@ -1,0 +1,3 @@
+import PublicPage from "@/components/PublicPage";
+
+export default function CommunityPage() { return <PublicPage eyebrow="THE COMMUNITY" title="A universe grows" accent="together." intro="STRIVERSE is shaped by the people who explore it, contribute to it and follow its journey." sections={[{title:"Stay informed",body:"Follow official STRIVERSE channels for verified project announcements and ecosystem updates."},{title:"Learn before you participate",body:"Review token information, network details and official notices before taking action."},{title:"Build with purpose",body:"Community participation should be grounded in clear information, constructive feedback and shared progress."}]} />; }
