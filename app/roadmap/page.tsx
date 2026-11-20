@@ -1,0 +1,3 @@
+import PublicPage from "@/components/PublicPage";
+
+export default function RoadmapPage() { return <PublicPage eyebrow="THE ROADMAP" title="A clear view of" accent="what's ahead." intro="A high-level view of the areas STRIVERSE intends to develop. Timing and delivery status will be published through official project updates." sections={[{title:"Foundation",body:"Website, project information and community foundations."},{title:"Token ecosystem",body:"Presale completion, token distribution planning and liquidity-related milestones."},{title:"Participation",body:"Explore future staking, vesting and community participation experiences as details are formally announced."}]} />; }
