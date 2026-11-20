@@ -60,7 +60,7 @@ export default function Hero() {
     raised: 0,
     hardCap: 0,
     progress: 0,
-    tokenPrice: 0,
+    tokenPrice: 0.001,
     community: 50000,
     potentialUsers: 1000000,
     communityDriven: 100,
@@ -203,7 +203,7 @@ export default function Hero() {
               <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
                 <div><small className="block text-[8px] font-black uppercase tracking-[.16em] text-slate-500">Raised</small><b className="text-sm text-white sm:text-base">${formatNumber(stats.raised)}</b></div>
                 <div><small className="block text-[8px] font-black uppercase tracking-[.16em] text-slate-500">Hard Cap</small><b className="text-sm text-white sm:text-base">${formatNumber(stats.hardCap)}</b></div>
-                <div className="col-span-2 sm:col-span-1"><small className="block text-[8px] font-black uppercase tracking-[.16em] text-slate-500">STV Live Price</small><b className="text-sm text-cyan-200 sm:text-base">${stats.tokenPrice}</b></div>
+                <div className="col-span-2 sm:col-span-1"><small className="block text-[8px] font-black uppercase tracking-[.16em] text-slate-500">STV Offering Price</small><b className="text-sm text-cyan-200 sm:text-base">0.001 USDT</b><small className="block text-[8px] text-slate-500">Projected live sale: 0.0015 USDT</small></div>
               </div>
               <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
                 <div><small className="block text-[8px] font-black uppercase tracking-[.16em] text-slate-500">Presale Allocated</small><b className="text-sm text-cyan-200 sm:text-base">{formatNumber(stats.presaleAllocatedTokens)}</b></div>
