@@ -53,6 +53,15 @@ export default function PublicPage({ eyebrow, title, accent, intro, sections }: 
           <Link href="/#home" className="sv-button-primary">Back to home <ArrowUpRight size={17} /></Link>
         </div>
       </section>
+      <footer className="sv-footer">
+        <div className="sv-container sv-footer-grid">
+          <div><div className="sv-footer-brand">STRIVERSE<span>®</span></div><p>Strive. Grow. Belong.</p></div>
+          <div><b>Explore</b><Link href="/about">About</Link><Link href="/#features">Ecosystem</Link><Link href="/roadmap">Roadmap</Link></div>
+          <div><b>STV</b><Link href="/tokenomics">Tokenomics</Link><Link href="/presale">Presale</Link></div>
+          <div><b>Account</b><Link href="/register">Create account</Link><Link href="/login">Sign in</Link></div>
+        </div>
+        <div className="sv-container sv-footer-bottom"><span>© 2026 STRIVERSE</span><span>Strive. Grow. Belong.</span></div>
+      </footer>
     </main>
   );
 }
