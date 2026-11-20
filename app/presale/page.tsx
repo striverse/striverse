@@ -1,0 +1,3 @@
+import PublicPage from "@/components/PublicPage";
+
+export default function PresalePage() { return <PublicPage eyebrow="STV PRESALE" title="Your entry into" accent="STRIVERSE." intro="Explore the current STV offering details. Review the token price and network information before participating." sections={[{title:"Current offering price",body:"0.001 USDT per STV."},{title:"Projected live-sale price",body:"0.0015 USDT per STV. This is a projection only, not a guaranteed future price or return."},{title:"Payment network",body:"USDT on BNB Smart Chain (BEP-20). Always verify official project information before sending funds."}]} />; }
