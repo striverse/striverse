@@ -99,10 +99,7 @@ export default function Navbar() {
     <header className={`reference-nav-wrap ${navHidden ? "nav-hidden" : ""}`}>
       <nav className="reference-nav" aria-label="Primary navigation">
         <Link href="/" className="reference-brand" aria-label="STRIVERSE home">
-          <span className="reference-brand-icon-clip" style={{ width: 62, height: 46, overflow: "hidden", display: "block", flex: "0 0 62px", position: "relative", background: "transparent" }}>
-            <Image src="/striverse-logo-only.png" alt="" width={68} height={68} priority className="reference-brand-icon" style={{ position: "absolute", left: 0, top: 0, width: 66, height: 66, maxWidth: "none", objectFit: "contain", mixBlendMode: "normal", background: "transparent", filter: "drop-shadow(0 0 8px rgba(0,229,255,.22))" }} />
-          </span>
-          <Image src="/applogo1.png" alt="STRIVERSE" width={290} height={52} priority className="reference-brand-wordmark" style={{ width: 290, height: "auto", flex: "0 0 290px", display: "block" }} />
+          <Image src="/brand/striverse-full-logo.png.png" alt="STRIVERSE" width={350} height={72} priority className="reference-brand-wordmark" style={{ width: 300, height: "auto", maxHeight: 62, objectFit: "contain", display: "block" }} />
         </Link>
 
         <div className="reference-nav-links" style={{ flex: "0 0 auto", minWidth: 0, gap: 12, whiteSpace: "nowrap" }}>
