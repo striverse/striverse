@@ -16,7 +16,7 @@ const features = [
 ];
 
 const phases = [
-  ["PHASE 01", "Genesis", "STV launch, website, documentation and community foundation.", "LIVE"],
+  ["PHASE 01", "Genesis", "Website, project information and community foundation.", "FOUNDATION"],
   ["PHASE 02", "Liquidity", "Presale completion, DEX liquidity and transparent token distribution.", "NEXT"],
   ["PHASE 03", "Earn", "Staking, vesting, rewards and community incentive programs.", "UPCOMING"],
   ["PHASE 04", "Govern", "Community governance, proposals and treasury participation.", "UPCOMING"],
