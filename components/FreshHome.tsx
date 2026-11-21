@@ -35,8 +35,8 @@ export default function FreshHome() {
           {menuOpen ? <X /> : <Menu />}
         </button>
         <nav className={menuOpen ? "fresh-nav is-open" : "fresh-nav"}>
-          <a href="#markets" onClick={() => setMenuOpen(false)}>Overview</a>
-          <a href="#ecosystem" onClick={() => setMenuOpen(false)}>Ecosystem</a>
+          <Link href="/" onClick={() => setMenuOpen(false)}>Home</Link>
+          <Link href="/about" onClick={() => setMenuOpen(false)}>Ecosystem</Link>
           <Link href="/tokenomics" onClick={() => setMenuOpen(false)}>STV Token</Link>
           <Link href="/roadmap" onClick={() => setMenuOpen(false)}>Roadmap</Link>
           <Link href="/community" onClick={() => setMenuOpen(false)}>Community</Link>
