@@ -27,7 +27,7 @@ export default function PublicPage({ eyebrow, title, accent, intro, sections }: 
           {menuOpen ? <X /> : <Menu />}
         </button>
         <nav className={menuOpen ? "fresh-nav is-open" : "fresh-nav"}>
-          <Link href="/" onClick={() => setMenuOpen(false)}>Overview</Link>
+          <Link href="/" onClick={() => setMenuOpen(false)}>Home</Link>
           <Link href="/about" onClick={() => setMenuOpen(false)}>Ecosystem</Link>
           <Link href="/tokenomics" onClick={() => setMenuOpen(false)}>STV Token</Link>
           <Link href="/roadmap" onClick={() => setMenuOpen(false)}>Roadmap</Link>
