@@ -27,7 +27,6 @@ export default function FreshHome() {
   return (
     <main className="fresh-site crypto-home">
       <div className="fresh-grain" aria-hidden="true" />
-      <div className="crypto-topline"><span><i /> STRIVERSE WEB3 ECOSYSTEM</span><span>DISCOVER <b>·</b> PARTICIPATE <b>·</b> GROW</span></div>
       <header className="fresh-header">
         <Link href="/" className="fresh-brand" aria-label="STRIVERSE home">
           <Image src="/brand/striverse-full-logo.png.png" alt="STRIVERSE" width={190} height={44} priority />
